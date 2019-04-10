@@ -1,7 +1,13 @@
 {% extends 'layout.html.twig' %}
 
+{#Insertion des fichiers de Style#}
 {% block stylecss %}
     {% include 'Common/_style.html.twig' %}
+{% endblock %}
+
+{#Insertion des fichiers du header#}
+{% block headercontent %}
+    {% include 'Common/_header.html.twig' %}
 {% endblock %}
 
 {% block content %}
