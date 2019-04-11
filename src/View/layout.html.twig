@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block stylecss %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
     {#Bootstrap Style CDN#}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -22,7 +21,7 @@
     {% block headercontent %}{% endblock %}
 </header>
 {% block content %}{% endblock %}
-{% block javascript %}{% endblock %}
+
 <footer>
     {% block footercontent %}{% endblock %}
 </footer>
@@ -37,6 +36,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+{% block javascript %}{% endblock %}
 </body>
 </html>
 
