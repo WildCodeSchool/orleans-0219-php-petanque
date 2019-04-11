@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{#Insertion des fichiers du header#}
+{% block headercontent %}
+    {% include 'Common/_header.html.twig' %}
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/style.css">
+{% endblock %}
+
+{% block footercontent %}
+    {% include 'Common/_footer.html.twig' %}
+{% endblock %}
