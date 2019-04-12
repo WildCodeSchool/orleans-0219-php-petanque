@@ -102,37 +102,40 @@ p {
 }
 
 
-
-a {
+/*---------- LIENS / ICONS FOOTER ---------------- */
+.footer_stylish a {
     transition: .25s ease-out all;
 }
-a.icon {
+.footer_stylish a.icon {
     transition: .3s ease-out all;
 }
 
-a, a:focus, a:active {
+.footer_stylish a,
+.footer_stylish a:focus,
+.footer_stylish a:active {
     color: lightgray;
     text-decoration: none;
 }
-a:hover {
+.footer-inline-list-md a:hover,
+.footer-ul  a:hover {
     color: #d3aa4e;
     text-decoration: none;
 }
-a.icon::before {
+.footer-inline-list-md a.icon::before {
     transition: 0s;
 }
-.icon-md, .icon-md.mdi {
+
+.footer-icon-md{
     font-size: 18px;
-}
-.icon-sm, .icon-sm.mdi {
-    font-size: 25px;
-}
-.icon-secondary {
     color: #d3aa4e;
 }
-
-
-
+.footer-icon-sm, .icon-sm.mdi {
+    font-size: 25px;
+}
+.footer-iconicon-secondary {
+    color: #d3aa4e;
+}
+/*------------------------------------------------- */
 /*Footer organisation Colonnes et textes*/
 .footer-unit-left, .footer-unit-right {
     flex: 0 0 auto;
@@ -162,8 +165,8 @@ a.icon::before {
 .footer-copyright{
     font-size: 12px;
 }
-
-
+/*------------------------------------------------- */
+/*Logo Footer */
 .card-footer-img-content{
     display: flex;
     align-items: center;
@@ -171,12 +174,13 @@ a.icon::before {
 .card-footer-logo-end{
     color: #d3aa4e;
 }
-
 .card-img-logo-footer{
     width: 110px;
     height: 110px;
 }
 
+/*------------------------------------------------- */
+/*Judasyan LOGO*/
 .judasyan_color_blue, .judasyan_color_orange {
     font-size: 18px;
 }
