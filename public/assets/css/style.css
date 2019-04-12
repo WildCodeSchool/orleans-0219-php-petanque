@@ -9,6 +9,11 @@
     border: none;
 }
 
+.navbar-light .navbar-nav .show > .nav-link
+{
+    color: white;
+}
+
 .dropdown-menu > a
 {
     color: white;
