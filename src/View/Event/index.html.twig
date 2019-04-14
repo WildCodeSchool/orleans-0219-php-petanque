@@ -1,13 +1,37 @@
-{% extends 'layout.html.twig' %}
+{% extends 'sublayout_visitor.html.twig' %}
 
 {% block content %}
-    <h1>Items</h1>
-    <ul>
-        {% for item in items %}
-            <li><a href="/item/show/{{ item.id }}">{{ item.id }}. {{ item.title }}</a></li>
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
-    </ul>
-    <a href="/item/add">Ajouter</a>
+    <h2>Evènements sportifs à venir</h2>
+<div>
+        <div >
+            <table>
+                <thead>
+                <tr>
+                    <th scope="col">Niveau</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Date de début</th>
+                    <th scope="col">Date de fin</th>
+                    <th scope="col">Département</th>
+                    <th scope="col">Localité</th>
+                    <th scope="col">Informations</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td>{{ event.level_id}}</td>
+                        <td>{{ event.title }}</td>
+                        <td>{{ event.date_begin }}</td>
+                        <td>{{ event.date_end }}</td>
+                        <td>{{ event.departement_id }}</td>
+                        <td>{{ event.location}}</td>
+                        <td><a>En savoir plus</a></td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+</div>
 {% endblock %}
