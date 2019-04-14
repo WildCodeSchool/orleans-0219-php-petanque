@@ -1,6 +1,31 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lato|Montserrat');
+
+
 .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover
 {
-    color: black;
+    color: white;
+}
+
+.dropdown-menu
+{
+    background-color: #3E3631;
+    border: none;
+}
+
+.navbar-light .navbar-nav .show > .nav-link
+{
+    color: white;
+}
+
+.dropdown-menu > a
+{
+    color: white;
+    transition: 0.15s ease-in-out;
+}
+
+.dropdown-menu > a:hover{
+    transition: 0.15s ease-in-out;
 }
 
 .navbar-colored
@@ -75,3 +100,324 @@
 }
 
 
+
+/*-------------------------------------------------------------------------------*/
+/* Titres de bases*/
+body {
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #737273;
+}
+
+h1,h2 {
+    font-family: ‘Montserrat’, sans-serif;
+    font-weight: 700;
+}
+
+h3,h4,h5{
+    font-family: ‘Montserrat’, sans-serif;
+    font-weight: 500;
+}
+
+
+h1 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    color: white;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 2.0rem;
+    color: #d3aa4e;
+}
+
+.h2_colored_section {
+    color: #333333;
+}
+
+h3 {
+    font-size : 1.7rem;
+    color: #333333;
+}
+
+h4 {
+    font-size : 1.4rem;
+    color: #333333;
+}
+
+h5 {
+    font-size : 1.2rem;
+    color: #333333;
+}
+
+.text_darkcolored_section {
+    color:lightgray;
+}
+
+p {
+    font-family: ‘Lato’, sans-serif;
+    font-size: calc(0.5vw + 14px);
+    color: #333333;
+}
+/*-------------------------------------------------------------------------------*/
+
+
+.text_footer {
+    font-size: 16px;
+    color:lightgray;
+}
+
+
+.footer-ul {
+    list-style: none;
+}
+.footer_stylish{
+    background-color: #3a332d;
+}
+
+
+/*HeadingDivider*/
+.heading-divider {
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    font-size: 0;
+}
+.heading-divider::before {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+.heading-divider::after {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 50px;
+    border-top: 1px solid #d3aa4e;
+}
+
+
+/*---------- LIENS / ICONS FOOTER ---------------- */
+.footer_stylish a {
+    transition: .25s ease-out all;
+}
+.footer_stylish a.icon {
+    transition: .3s ease-out all;
+}
+
+.footer_stylish a,
+.footer_stylish a:focus,
+.footer_stylish a:active {
+    color: lightgray;
+    text-decoration: none;
+}
+.footer-inline-list-md a:hover,
+.footer-ul  a:hover {
+    color: #d3aa4e;
+    text-decoration: none;
+}
+.footer-inline-list-md a.icon::before {
+    transition: 0s;
+}
+
+.footer-icon-md{
+    font-size: 18px;
+    color: #d3aa4e;
+}
+.footer-icon-sm, .icon-sm.mdi {
+    font-size: 25px;
+}
+.footer-iconicon-secondary {
+    color: #d3aa4e;
+}
+/*------------------------------------------------- */
+/*Footer organisation Colonnes et textes*/
+.footer-unit-left, .footer-unit-right {
+    flex: 0 0 auto;
+    max-width: 100%;
+}
+.footer-unit {
+    display: flex;
+    flex: 0 1 100%;
+    flex-direction: column;
+    margin-top : 0.75rem;
+    margin-bottom : 0.75rem;
+}
+.footer-unit-body {
+    flex: 0 1 auto;
+    padding-left: .5rem;
+}
+.footer-unit-horizontal {
+    flex-direction: row;
+}
+
+.footer-inline-list-md > :first-child,.footer-inline-list-md:last-child > *, .footer-inline-list-md:last-child > :first-child {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 27px;
+}
+
+.footer-copyright{
+    font-size: 12px;
+}
+/*------------------------------------------------- */
+/*Logo Footer */
+.card-footer-img-content{
+    display: flex;
+    align-items: center;
+}
+.card-footer-logo-end{
+    color: #d3aa4e;
+}
+.card-img-logo-footer{
+    width: 110px;
+    height: 110px;
+}
+
+/*------------------------------------------------- */
+/*Judasyan LOGO*/
+.judasyan_color_blue, .judasyan_color_orange {
+    font-size: 18px;
+}
+.judasyan_color_blue{
+    color:#1982c8;
+}
+.judasyan_color_orange{
+    color:#f58320;
+}
+
+/******************************************************************************/
+.comp-thead-color{
+    background-color: rgba(58, 51, 45,1);
+}
+
+.comp-button-moreinfo {
+    color: #fff;
+    background-color:rgba(58, 51, 45,1);
+    border-color: rgba(43, 37, 33,1)
+}
+
+.comp-button-moreinfo:hover, .comp-button-moreinfo:focus {
+    box-shadow: 0 0 0 .2rem rgba(58, 51, 45,1);
+    background-color:rgba(58, 51, 45,0.5);
+    color: lightgray;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    background-color: #fff;
+}
+.table > thead > tr, .table > tbody > tr, .table > tfoot > tr {
+    transition: all .3s ease;
+}
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+    text-align: left;
+    vertical-align: top;
+    border-top: 0;
+    transition: all .3s ease;
+}
+.table > tr > th {
+    font-weight: 400;
+    color: #757575;
+    vertical-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+.table > thead{
+    color: lightgray;
+    font-weight: 400;
+}
+.table > caption + thead > tr:first-child > th, .table > caption + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > thead:first-child > tr:first-child > th, .table > thead:first-child > tr:first-child > td {
+    border-top: 0;
+}
+.table > tbody + tbody {
+    border-top: 1px solid rgba(0,0,0,0.12);
+}
+.table .table {
+    background-color: #fff;
+}
+
+.table-condensed > thead > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > th, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > th, .table-condensed > tfoot > tr > td {
+    padding: 0.8rem;
+}
+.table-bordered {
+    border: 0;
+}
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > tfoot > tr > td {
+    border: 0;
+    border-bottom: 1px solid rgba(211, 170, 78, 1);
+}
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+    border-bottom-width: 2px;
+}
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #f5f5f5;
+}
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+    background-color: rgba(211, 170, 78, 1);
+}
+@media screen and (max-width: 992px) {
+    .table-responsive-vertical > .table {
+        margin-bottom: 0;
+        background-color: transparent;
+    }
+    .table-responsive-vertical > .table > thead, .table-responsive-vertical > .table > tfoot {
+        display: none;
+    }
+    .table-responsive-vertical > .table > tbody {
+        display: block;
+    }
+    .table-responsive-vertical > .table > tbody > tr {
+        display: block;
+        border: 1px solid #e0e0e0;
+        border-radius: 2px;
+        margin-bottom: 1.6rem;
+    }
+    .table-responsive-vertical > .table > tbody > tr > td {
+        background-color: #fff;
+        display: block;
+        vertical-align: middle;
+        text-align: right;
+    }
+    .table-responsive-vertical > .table > tbody > tr > td[data-title]:before {
+        content: attr(data-title);
+        float: left;
+        font-size: inherit;
+        font-weight: 500;
+        color: #757575;
+    }
+    .table-responsive-vertical.shadow-z-1 {
+        box-shadow: none;
+    }
+    .table-responsive-vertical.shadow-z-1 > .table > tbody > tr {
+        border: none;
+    }
+    .table-responsive-vertical > .table-bordered {
+        border: 0;
+    }
+    .table-responsive-vertical > .table-bordered > tbody > tr > td {
+        border: 0;
+        border-bottom: 1px solid rgba(211, 170, 78, 1);
+    }
+    .table-responsive-vertical > .table-bordered > tbody > tr > td:last-child {
+        border-bottom: 0;
+    }
+    .table-responsive-vertical > .table-striped > tbody > tr > td, .table-responsive-vertical > .table-striped > tbody > tr:nth-child(odd) {
+        background-color: #fff;
+    }
+    .table-responsive-vertical > .table-striped > tbody > tr > td:nth-child(odd) {
+        background-color: #f5f5f5;
+    }
+    .table-responsive-vertical > .table-hover > tbody > tr:hover > td, .table-responsive-vertical > .table-hover > tbody > tr:hover {
+   /*     background-color: #fff;*/
+    }
+    .table-responsive-vertical > .table-hover > tbody > tr > td:hover {
+        background-color: rgba(211, 170, 78, 1);
+    }
+
+}
