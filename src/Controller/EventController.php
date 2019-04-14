@@ -98,17 +98,14 @@ class EventController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $postdata =new PostData($_POST);
             $eventdatas=$postdata->cleanValues();
-            var_dump($postdata);
-
             $erroreventdatas = $this->checkErrorsPostData($eventdatas);
-            var_dump($erroreventdatas);
             $eventManager = new EventManager();
-            /*            $event = [
-            'eventitle' => $_POST['eventitle'],
-            ];*/
-            /*
-            $id = $eventManager->insert($event);
-            header('Location:/event/show/' . $id);*/
+
+            if (empty($erroreventdatas)) {
+                $id = $eventManager->insert($eventdatas);
+                header('Location:/event/show/' . $id);
+            }
+            $eventdatas = $_POST;
         }
 
         $departementManager = new DepartementManager();
@@ -157,7 +154,7 @@ class EventController extends AbstractController
      * @return array
      * @throws \Exception
      */
-    private function checkErrorsPostData(array $postDatas) : array
+    private function checkErrorsPostData(array &$postDatas) : array
     {
         $errors=[];
         if (empty($postDatas['title'])) {
@@ -231,6 +228,7 @@ class EventController extends AbstractController
         };
 
         if (empty($postDatas['date_register'])) {
+            $postDatas['date_register'] = $postDatas['date_begin'];
         } elseif ($postDatas['date_register']) {
             $dateBegin = DateTime::createFromFormat('Y-m-d', $postDatas['date_begin']);
             $dateRegister = DateTime::createFromFormat('Y-m-d', $postDatas['date_register']);
@@ -240,6 +238,8 @@ class EventController extends AbstractController
                 $errors['date_register'] = "La date de limite d'inscription doit êre postérieure à aujourd'hui.";
             } elseif ($dateRegister > $dateBegin) {
                 $errors['date_register'] = "La date de limite d'inscription doit êre antérieure à la date de début.";
+            } else {
+                $postDatas['date_register'] = $postDatas['date_begin'];
             }
         }
 
