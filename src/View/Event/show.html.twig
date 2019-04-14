@@ -1,0 +1,9 @@
+{% extends 'sublayout_visitor.html.twig' %}
+
+{% block content %}
+    <h1>Evenement {{ item.title }}</h1>
+    <p>{{ item.id }}. {{ item.title }}</p>
+    <a href="/event/edit/{{ item.id }}">Edit</a>
+    <a href="/event/delete/{{item.id}}">Supprimer</a>
+    <a href="/event/index">Back</a>
+{% endblock %}

@@ -291,3 +291,133 @@ p {
     color:#f58320;
 }
 
+/******************************************************************************/
+.comp-thead-color{
+    background-color: rgba(58, 51, 45,1);
+}
+
+.comp-button-moreinfo {
+    color: #fff;
+    background-color:rgba(58, 51, 45,1);
+    border-color: rgba(43, 37, 33,1)
+}
+
+.comp-button-moreinfo:hover, .comp-button-moreinfo:focus {
+    box-shadow: 0 0 0 .2rem rgba(58, 51, 45,1);
+    background-color:rgba(58, 51, 45,0.5);
+    color: lightgray;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    background-color: #fff;
+}
+.table > thead > tr, .table > tbody > tr, .table > tfoot > tr {
+    transition: all .3s ease;
+}
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+    text-align: left;
+    vertical-align: top;
+    border-top: 0;
+    transition: all .3s ease;
+}
+.table > tr > th {
+    font-weight: 400;
+    color: #757575;
+    vertical-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+.table > thead{
+    color: lightgray;
+    font-weight: 400;
+}
+.table > caption + thead > tr:first-child > th, .table > caption + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > thead:first-child > tr:first-child > th, .table > thead:first-child > tr:first-child > td {
+    border-top: 0;
+}
+.table > tbody + tbody {
+    border-top: 1px solid rgba(0,0,0,0.12);
+}
+.table .table {
+    background-color: #fff;
+}
+
+.table-condensed > thead > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > th, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > th, .table-condensed > tfoot > tr > td {
+    padding: 0.8rem;
+}
+.table-bordered {
+    border: 0;
+}
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > tfoot > tr > td {
+    border: 0;
+    border-bottom: 1px solid rgba(211, 170, 78, 1);
+}
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+    border-bottom-width: 2px;
+}
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #f5f5f5;
+}
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+    background-color: rgba(211, 170, 78, 1);
+}
+@media screen and (max-width: 992px) {
+    .table-responsive-vertical > .table {
+        margin-bottom: 0;
+        background-color: transparent;
+    }
+    .table-responsive-vertical > .table > thead, .table-responsive-vertical > .table > tfoot {
+        display: none;
+    }
+    .table-responsive-vertical > .table > tbody {
+        display: block;
+    }
+    .table-responsive-vertical > .table > tbody > tr {
+        display: block;
+        border: 1px solid #e0e0e0;
+        border-radius: 2px;
+        margin-bottom: 1.6rem;
+    }
+    .table-responsive-vertical > .table > tbody > tr > td {
+        background-color: #fff;
+        display: block;
+        vertical-align: middle;
+        text-align: right;
+    }
+    .table-responsive-vertical > .table > tbody > tr > td[data-title]:before {
+        content: attr(data-title);
+        float: left;
+        font-size: inherit;
+        font-weight: 500;
+        color: #757575;
+    }
+    .table-responsive-vertical.shadow-z-1 {
+        box-shadow: none;
+    }
+    .table-responsive-vertical.shadow-z-1 > .table > tbody > tr {
+        border: none;
+    }
+    .table-responsive-vertical > .table-bordered {
+        border: 0;
+    }
+    .table-responsive-vertical > .table-bordered > tbody > tr > td {
+        border: 0;
+        border-bottom: 1px solid rgba(211, 170, 78, 1);
+    }
+    .table-responsive-vertical > .table-bordered > tbody > tr > td:last-child {
+        border-bottom: 0;
+    }
+    .table-responsive-vertical > .table-striped > tbody > tr > td, .table-responsive-vertical > .table-striped > tbody > tr:nth-child(odd) {
+        background-color: #fff;
+    }
+    .table-responsive-vertical > .table-striped > tbody > tr > td:nth-child(odd) {
+        background-color: #f5f5f5;
+    }
+    .table-responsive-vertical > .table-hover > tbody > tr:hover > td, .table-responsive-vertical > .table-hover > tbody > tr:hover {
+   /*     background-color: #fff;*/
+    }
+    .table-responsive-vertical > .table-hover > tbody > tr > td:hover {
+        background-color: rgba(211, 170, 78, 1);
+    }
+
+}

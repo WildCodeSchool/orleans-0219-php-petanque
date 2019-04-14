@@ -1,0 +1,7 @@
+{% extends 'sublayout_visitor.html.twig' %}
+
+{% block content %}
+    <h1>Edit item {{ event.title }}</h1>
+    {% include 'Event/_form.html.twig' %}
+    <a href="/event/show/{{ event.id }}">Back</a>
+{% endblock %}
