@@ -1,3 +1,71 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lato|Montserrat');
+
+/*-------------------------------------------------------------------------------*/
+/* Titres de bases*/
+body {
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #737273;
+}
+
+h1,h2 {
+    font-family: ‘Montserrat’, sans-serif;
+    font-weight: 700;
+}
+
+h3,h4,h5{
+    font-family: ‘Montserrat’, sans-serif;
+    font-weight: 500;
+}
+
+
+h1 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    color: white;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 2.0rem;
+    color: #d3aa4e;
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
+
+.h2_colored_section {
+    color: #333333;
+}
+
+h3 {
+    font-size : 1.7rem;
+    color: #333333;
+}
+
+h4 {
+    font-size : 1.4rem;
+    color: #333333;
+}
+
+h5 {
+    font-size : 1.2rem;
+    color: #333333;
+}
+
+.text_darkcolored_section {
+    color:lightgray;
+}
+
+p {
+    font-family: ‘Lato’, sans-serif;
+    font-size: calc(0.2vw + 14px);
+    color: #333333;
+}
+/*-------------------------------------------------------------------------------*/
+
 .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover
 {
     color: white;
