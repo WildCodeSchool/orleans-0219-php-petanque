@@ -15,6 +15,8 @@ use App\Model\EventGenderManager;
 use App\Model\EventLevelManager;
 use App\Model\EventManager;
 use App\Model\EventTypeManager;
+use App\Service\PostData;
+use Nette\Utils\DateTime;
 
 /**
  * Class EventController
@@ -90,16 +92,21 @@ class EventController extends AbstractController
      */
     public function add()
     {
+       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+           $postdata =new PostData($_POST);
+           $eventdatas=$postdata->cleanValues();
+            var_dump($postdata);
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+           $erroreventdatas=[];
+           $erroreventdatas = $this->checkErrorsPostData($eventdatas);
+
             $eventManager = new EventManager();
-            $event = [
-                'title' => $_POST['title'],
-            ];
-
-
+/*            $event = [
+                'eventitle' => $_POST['eventitle'],
+            ];*/
+/*
             $id = $eventManager->insert($event);
-            header('Location:/event/show/' . $id);
+            header('Location:/event/show/' . $id);*/
         }
 
         $departementManager = new DepartementManager();
@@ -118,6 +125,8 @@ class EventController extends AbstractController
         $types = $evtTypeManager->selectall();
 
         return $this->twig->render('Event/add.html.twig', [
+            'event' => $eventdatas,
+            'errors' => $erroreventdatas,
             'departements' => $departements,
             'levels' => $levels,
             'genders'=> $genders,
@@ -125,7 +134,6 @@ class EventController extends AbstractController
             'types' => $types,
         ]);
     }
-
 
     /**
      * Handle event deletion
@@ -137,5 +145,106 @@ class EventController extends AbstractController
         $eventManager = new EventManager();
         $eventManager->delete($id);
         header('Location:/event/index');
+    }
+
+    /**
+     * Check errors from postdata array and return an errors array
+     * Before add or update event
+     *
+     * @param array $postDatas
+     * @return array
+     * @throws \Exception
+     */
+    private function checkErrorsPostData(array $postDatas) : array
+    {
+        $errors=[];
+        if (empty($postDatas['title'])) {
+            $errors['title'] = "Un titre pour l'évènement est requis.";
+        }  elseif (strlen(($postDatas['title'])) > 200) {
+            $errors['title'] = "Le titre ne doit pas avoir plus de 200 car.";
+        };
+
+        $today = new DateTime();
+
+        if (empty($postDatas['date_begin'])) {
+            $errors['date_begin'] = "Une date de début d'évènement est requis.";
+        }  elseif ($postDatas['date_begin']) {
+            $dateBegin = DateTime::createFromFormat('Y-m-d', $postDatas['date_begin']);
+            if (! $dateBegin && $dateBegin->format('Y-m-d') === $postDatas['date_begin']) {
+                $errors['date_begin'] = "Une date de début d'évènement doit êre correctement rentrée.";
+            } elseif ($dateBegin < $today) {
+                $errors['date_begin'] = "La date de début d'évènement doit êre postérieure à aujourd'hui.";
+
+            } elseif (empty($postDatas['date_end'])) {
+                $postDatas['date_end'] = $postDatas['date_begin'];
+            }
+        }
+
+        if (empty($postDatas['date_end'])) {
+        }  elseif ($postDatas['date_end']) {
+            $dateBegin = DateTime::createFromFormat('Y-m-d', $postDatas['date_begin']);
+            $dateEnd = DateTime::createFromFormat('Y-m-d', $postDatas['date_end']);
+            if (! $dateEnd && $dateEnd->format('Y-m-d') === $postDatas['date_end']) {
+                $errors['date_end'] = "Une date de fin d'évènement doit êre correctement rentrée.";
+            } elseif ($dateEnd < $today || $dateBegin > $dateEnd) {
+                $errors['date_end'] = "La date de fin d'évènement doit êre postérieure à aujourd'hui et au début de l'évènement.";
+
+            } elseif (empty($postDatas['date_end'])) {
+                $postDatas['date_end'] = $postDatas['date_begin'];
+            }
+        }
+
+        $departementManager = new DepartementManager();
+        $departements = $departementManager->selectall();
+        if (empty($postDatas['departement_id'])) {
+            $errors['departement_id'] = "Un département est requis.";
+        } elseif (! in_array($postDatas['departement_id'],$departements)) {
+            $errors['departement_id'] = "Un département valide est requis.";
+        };
+
+        $levelManager = new EventLevelManager();
+        $levels = $levelManager->selectall();
+        if (empty($postDatas['level_id'])) {
+            $errors['level_id'] = "Un niveau de compétition est requis.";
+        } elseif (! in_array($postDatas['level_id'],$levels)) {
+            $errors['level_id'] = "Un niveau de compétition valide est requis.";
+        };
+
+        $evtTypeManager = new EventTypeManager();
+        $types = $evtTypeManager->selectall();
+        if (empty($postDatas['type_id'])) {
+            $errors['type_id'] = "Un type de compétition est requis.";
+        } elseif (! in_array($postDatas['type_id'],$types)) {
+            $errors['type_id'] = "Un type de compétition valide est requis.";
+        };
+
+        $evtCategoryManager = new EventCategoryManager();
+        $categories = $evtCategoryManager->selectall();
+        if (empty($postDatas['category_id'])) {
+            $errors['category_id'] = "Une catégorie de compétition est requis.";
+        } elseif (! in_array($postDatas['category_id'],$categories)) {
+            $errors['category_id'] = "Une catégorie de compétition valide est requis.";
+        };
+
+        $genderManager = new EventGenderManager();
+        $genders = $genderManager->selectall();
+        if (empty($postDatas['gendermix_id'])) {
+            $errors['level_id'] = "Un type de mixité de compétition est requis.";
+        } elseif (! in_array($postDatas['gendermix_id'],$genders)) {
+            $errors['level_id'] = "Un type de mixité valide est requis.";
+        };
+
+        if (empty($postDatas['date_register'])) {
+        }  elseif ($postDatas['date_register']) {
+            $dateBegin = DateTime::createFromFormat('Y-m-d', $postDatas['date_begin']);
+            $dateRegister = DateTime::createFromFormat('Y-m-d', $postDatas['date_register']);
+            if (! $dateRegister && $dateRegister->format('Y-m-d') === $postDatas['date_register']) {
+                $errors['date_register'] = "Une date de limite d'inscription d'évènement doit êre correctement rentrée.";
+            } elseif ($dateRegister < $today ) {
+                $errors['date_register'] = "La date de limite d'inscription d'évènement doit êre postérieure à aujourd'hui.";
+            } elseif ($dateRegister > $dateBegin) {
+                $errors['date_register'] = "La date de limite d'inscription d'évènement doit êre antérieur ou égal à la date de début.";
+            }
+        }
     }
 }
