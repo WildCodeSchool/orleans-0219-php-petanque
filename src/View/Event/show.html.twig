@@ -1,9 +1,37 @@
 {% extends 'sublayout_visitor.html.twig' %}
 
 {% block content %}
-    <h1>Evenement {{ item.title }}</h1>
-    <p>{{ item.id }}. {{ item.title }}</p>
-    <a href="/event/edit/{{ item.id }}">Edit</a>
-    <a href="/event/delete/{{item.id}}">Supprimer</a>
-    <a href="/event/index">Back</a>
+    <h2>Evènement sportif</h2>
+    <h3>{{ event.title }}</h3>
+    <div>
+        <img src="{{ base_path ~ directory }}/assets/images/compet/evt_homm2.jpg" alt="image competition">
+        <h5 class="card-title-evt-date ">Du {{ event.date_begin }} au {{ event.date_end }}</h5>
+        <h4 class="card-title-evt ">{{ event.level | capitalize }}</h4>
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.descr }}</p>
+
+        <h5>Informations générales</h5>
+        <ul>
+            <li>{{ event.dept_name }} ( {{ event.dept_num }})</li>
+            <li> {{ event.location | capitalize }}</li>
+            <li>Du {{ event.date_begin }} au {{ event.date_end }}</li>
+        </ul>
+        <h5>Informations sportives</h5>
+        <ul>
+            <li>Niveau : {{ event.level | capitalize }}</li>
+            <li>Catégorie : {{ event.category | capitalize }}</li>
+            <li>Type : {{ event.type | capitalize }}</li>
+            <li>Mixité : {{ event.gendermix | capitalize }}</li>
+        </ul>
+
+        <h5>Modalités d'inscription</h5>
+        <ul>
+            <li>Date limite : {{ event.date_register | capitalize }}</li>
+            <li>Fiche d'inscription :
+                <a href="#" role="button"> Voir...</a>
+            </li>
+        </ul>
+
+    </div>
+
 {% endblock %}
