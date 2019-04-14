@@ -478,3 +478,12 @@ p {
     padding: 3px;
     margin-bottom: 0px;
 }
+
+
+/***********************Formulaire Global ********************************************/
+.form-required::after{
+    color: red;
+    content: '*';
+    pointer-events: none;
+    padding-left: 2px;
+}

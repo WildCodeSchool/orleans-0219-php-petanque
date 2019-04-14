@@ -5,43 +5,43 @@
             <h5>Informations générales</h5>
             <div class="heading-divider-extent"></div>
             <div class="form-group col-md-12 px-2 my-3">
-                <label for="eventitle">Nom de l'évènement :</label>
-                <input type="text" class="form-control" id="eventitle" placeholder="Nom de l'évènement">
+                <label for="eventtitle" class="form-required">Nom de l'évènement :</label>
+                <input type="text" class="form-control" id="eventtitle" name="title" value="{{ event.title }}" maxlength="200" placeholder="Nom de l'évènement" required>
             </div>
             <div class="my-3">
                 <div class="row px-2 my-1">
-                    <label for="evendatebegin" class="col-sm-2 col-form-label">Début :</label>
+                    <label for="evendatebegin" class="col-sm-2 col-form-label form-required">Début :</label>
                     <div class="col-sm-5 col-md-3 text-center">
-                        <input type="date" class="form-control" id="evendatebegin" placeholder="Date de début">
+                        <input type="date" class="form-control" id="evendatebegin" name="date_begin" value="{{ event.date_begin }}" placeholder="Date de début" required>
                     </div>
                 </div>
                 <div class="row px-2 my-1">
                     <label for="evendateend" class="col-sm-2 col-form-label">Fin :</label>
                     <div class="col-sm-5 col-md-3 text-center">
-                        <input type="date" class="form-control" id="evendateend" placeholder="Date de fin">
+                        <input type="date" class="form-control" id="evendateend" name="date_end" value="{{ event.date_end }}" data-toggle="tooltip" data-placement="top" title="Si aucune date de fin n'est fixée, la date de début sera repris." placeholder="Date de fin">
                     </div>
                 </div>
             </div>
             <div class="form-group px-2 my-3">
                 <label for="evendescription">Description :</label>
-                <textarea class="form-control" id="evendescription" rows="4"></textarea>
+                <textarea class="form-control" id="evendescription" name="descr" value="{{ event.descr }}" rows="4"></textarea>
             </div>
         </section>
         <section class="mt-5">
             <h5>Localisation</h5>
             <div class="heading-divider-extent"></div>
             <div class="form-group px-2 col-md-5">
-                <label for="evtdepartment">Département du site :</label>
-                <select class="form-control" id="evtdepartment">
+                <label for="evtdepartment" class="form-required">Département du site :</label>
+                <select class="form-control" id="evtdepartment" name="departement_id" required>
                     <option value="">Sélectionner ...</option>
                     {% for departement in departements %}
-                        <option value="{{ departement.id }}">{{ departement.name }} ({{ departement.numdept }})</option>
+                        <option value="{{ departement.id }}" {{ departement.id == event.departement_id ? 'selected' : '' }} >{{ departement.name }} ({{ departement.numdept }})</option>
                     {% endfor %}
                 </select>
             </div>
             <div class="form-group  px-2 my-3">
-                <label for="evenlocation">Localité (Ville, adresse, ...) :</label>
-                <input type="text" class="form-control" id="evenlocation" placeholder="Localité de l'évènement">
+                <label for="evenlocation" >Localité (Ville, adresse, ...) :</label>
+                <input type="text" class="form-control" id="evenlocation" name="location" value="{{ event.location }}" maxlength="255" placeholder="Localité de l'évènement">
             </div>
         </section>
         <section class="mt-5">
@@ -49,38 +49,38 @@
             <div class="heading-divider-extent"></div>
             <div class="row px-2">
                 <div class="form-group px-2 col-md-6">
-                    <label for="evtlevel">Niveau de compétition :</label>
-                    <select class="form-control" id="evtlevel">
+                    <label for="evtlevel"  class="form-required" >Niveau de compétition :</label>
+                    <select class="form-control" id="evtlevel" name="level_id" required>
                         <option value="">Sélectionner ...</option>
                         {% for level in levels %}
-                            <option value="{{ level.id }}">{{ level.name | capitalize }}</option>
+                            <option value="{{ level.id }}" {{ level.id == event.level_id ? 'selected' : '' }}>{{ level.name | capitalize }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group px-2 col-md-6">
-                    <label for="evttype">Type(s) de rencontres :</label>
-                    <select class="form-control" id="evttype">
+                    <label for="evttype"  class="form-required">Type(s) de rencontres :</label>
+                    <select class="form-control" id="evttype" name="type_id" >
                         <option value="">Sélectionner ...</option>
                         {% for type in types %}
-                            <option value="{{ type.id }}">{{ type.name | capitalize }}</option>
+                            <option value="{{ type.id }}" {{ type.id == event.type_id ? 'selected' : '' }}>{{ type.name | capitalize }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group px-2 col-md-6">
-                    <label for="evtcategory">Catégorie autorisée :</label>
-                    <select class="form-control" id="evtcategory">
+                    <label for="evtcategory"  class="form-required">Catégorie autorisée :</label>
+                    <select class="form-control" id="evtcategory" name="category_id" >
                         <option value="">Sélectionner ...</option>
                         {% for categorie in categories %}
-                            <option value="{{ categorie.id }}">{{ categorie.name | capitalize }}</option>
+                            <option value="{{ categorie.id }}" {{ categorie.id == event.category_id ? 'selected' : '' }}>{{ categorie.name | capitalize }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group px-2 col-md-6">
-                    <label for="evtgendermix">Mixité des compétitions :</label>
-                    <select class="form-control" id="evtgendermix">
+                    <label for="evtgendermix"  class="form-required">Mixité des compétitions :</label>
+                    <select class="form-control" id="evtgendermix" name="gendermix_id" >
                         <option value="">Sélectionner ...</option>
                         {% for gender in genders %}
-                            <option value="{{ gender.id }}">{{ gender.name | capitalize }}</option>
+                            <option value="{{ gender.id }}" {{ gender.id == event.gendermix_id ? 'selected' : '' }}>{{ gender.name | capitalize }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -93,17 +93,17 @@
                 <label for="evendateregister" class="col-sm-5 col-md-4 col-form-label">Date limite d'inscription
                     :</label>
                 <div class="col-sm-6 col-md-4 text-center">
-                    <input type="date" class="form-control" id="evendateregister"
+                    <input type="date" class="form-control" id="evendateregister" name="date_register"
                            placeholder="Date limite d'inscription :">
                 </div>
             </div>
             <div class="custom-file my-3">
-                <input type="file" class="custom-file-input" id="eventrulefile">
+                <input type="file" class="custom-file-input" id="eventrulefile" name="rulesfile_id" >
                 <label class="custom-file-label" for="eventrulefile">Télécharger un fichier de réglèment ...</label>
             </div>
         </section>
         <section class="mt-5 text-center">
-            <button type="submit" class="btn btn-block btn-lg w-100 btn-primary ">Ajouter l'évènement</button>
+            <button type="submit" class="btn btn-block btn-lg w-100 btn-primary">Ajouter l'évènement</input>
         </section>
     </form>
 </div>
