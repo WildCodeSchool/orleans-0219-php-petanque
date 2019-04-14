@@ -2,7 +2,7 @@
 
 {% block content %}
     <h2>Evènements sportifs à venir</h2>
-<div>
+<div class="container-fluid">
         <div class="table-responsive-vertical mx-5">
             <!-- Table starts here -->
             <table id="table" class="table table-hover table-striped table-bordered">
@@ -20,11 +20,11 @@
                 <tbody>
                 {% for event in events %}
                     <tr>
-                        <td data-title="Niveau">{{ event.level_id}}</td>
-                        <td data-title="Nom">{{ event.title }}</td>
+                        <td data-title="Niveau">{{ event.level | capitalize  }}</td>
+                        <td data-title="Nom">{{ event.title | capitalize }}</td>
                         <td data-title="Date de début">{{ event.date_begin }}</td>
                         <td data-title="Date de fin">{{ event.date_end }}</td>
-                        <td data-title="Departement">{{ event.departement_id }}</td>
+                        <td data-title="Departement">{{ event.dept_name }} ({{ event.dept_num }})</td>
                         <td data-title="Localité">{{ event.location}}</td>
                         <td><a class="btn comp-button-moreinfo w-100" href="#" role="button">En savoir plus</a></td>
                     </tr>

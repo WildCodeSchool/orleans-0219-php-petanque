@@ -29,7 +29,37 @@ class EventManager extends AbstractManager
 
 
     /**
-     * @param array $event
+     * Get all row from database - Override abstrast Method
+     *
+     * @return array
+     */
+    public function selectAll(): array
+    {
+        $selectStatement = "
+SELECT evenement.id, 
+	evenement.title, 
+    evenement.descr,
+    DATE_FORMAT(evenement.date_begin,'%d/%m/%Y') as date_begin,
+    DATE_FORMAT(evenement.date_end,'%d/%m/%Y') as date_end,
+    evenement.location, 
+    DATE_FORMAT(evenement.date_register,'%d/%m/%Y') as date_register,
+    evenement.rulesfile_id,
+    evenement.article_id,
+	departement.name as dept_name, departement.numdept as dept_num,
+    level.name as level,
+    gendermix.name as gendermix
+ FROM evenement
+INNER JOIN departement ON evenement.departement_id = departement.id
+INNER JOIN level ON evenement.level_id = level.id
+INNER JOIN gendermix ON evenement.gendermix_id = gendermix.id
+ORDER BY date_begin DESC, level.id, gendermix.id;";
+
+        return $this->pdo->query($selectStatement . $this->table)->fetchAll();
+    }
+
+
+    /**
+     * @param array $events
      * @return int
      */
     public function insert(array $events): int
@@ -70,4 +100,6 @@ class EventManager extends AbstractManager
 
         return $statement->execute();
     }
+
+
 }
