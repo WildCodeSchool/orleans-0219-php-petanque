@@ -21,10 +21,12 @@ function checkWindowSize(){
         $('#navbarNav > ul > li').addClass('nav-item-underline')
         $('#navbarMain').removeClass('navbar-transp').addClass('navbar-transp')
     }else{
+        $('#navbarMain').removeClass('navbar-transp').addClass('navbar-colored')
+        $('#navbarNav > ul > li').addClass('nav-item-underline')
+    }
+    if(width < widthBreakpoint) {
         $('#navbarNav > ul > li').removeClass('nav-item-underline')
         $('#navbarMain').removeClass('navbar-transp').addClass('navbar-colored')
     }
-    if(width < widthBreakpoint) {
-        $('#navbarMain').removeClass('navbar-transp').addClass('navbar-colored')
-    }
 }
+
