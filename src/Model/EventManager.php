@@ -36,28 +36,28 @@ class EventManager extends AbstractManager
     public function selectAll(): array
     {
         $selectStatement = "
-SELECT evenement.id, 
-	evenement.title, 
-    evenement.descr,
-    DATE_FORMAT(evenement.date_begin,'%d/%m/%Y') as date_begin,
-    DATE_FORMAT(evenement.date_end,'%d/%m/%Y') as date_end,
-    evenement.location, 
-    DATE_FORMAT(evenement.date_register,'%d/%m/%Y') as date_register,
-    evenement.rulesfile_id,
-    evenement.article_id,
-	departement.name as dept_name, departement.numdept as dept_num,
-    level.name as level,
-	gendermix.name as gendermix,
-	evtcategory.name as category,
-    evttype.name as type
- FROM evenement
-LEFT JOIN departement ON evenement.departement_id = departement.id
-LEFT JOIN level ON evenement.level_id = level.id
-LEFT JOIN gendermix ON evenement.gendermix_id = gendermix.id
-LEFT JOIN evtcategory ON evenement.category_id = evtcategory.id
-LEFT JOIN evttype ON evenement.type_id = evttype.id
-WHERE date_begin >= NOW()
-ORDER BY evenement.date_begin ASC, level.id, evtcategory.id,evttype.id, gendermix.id;";
+        SELECT evenement.id, 
+            evenement.title, 
+            evenement.descr,
+            DATE_FORMAT(evenement.date_begin,'%d/%m/%Y') as date_begin,
+            DATE_FORMAT(evenement.date_end,'%d/%m/%Y') as date_end,
+            evenement.location, 
+            DATE_FORMAT(evenement.date_register,'%d/%m/%Y') as date_register,
+            evenement.rulesfile_id,
+            evenement.article_id,
+            departement.name as dept_name, departement.numdept as dept_num,
+            level.name as level,
+            gendermix.name as gendermix,
+            evtcategory.name as category,
+            evttype.name as type
+         FROM evenement
+        LEFT JOIN departement ON evenement.departement_id = departement.id
+        LEFT JOIN level ON evenement.level_id = level.id
+        LEFT JOIN gendermix ON evenement.gendermix_id = gendermix.id
+        LEFT JOIN evtcategory ON evenement.category_id = evtcategory.id
+        LEFT JOIN evttype ON evenement.type_id = evttype.id
+        WHERE date_begin >= NOW()
+        ORDER BY evenement.date_begin ASC, level.id, evtcategory.id,evttype.id, gendermix.id;";
 
         return $this->pdo->query($selectStatement . $this->table)->fetchAll();
     }
@@ -106,30 +106,37 @@ ORDER BY evenement.date_begin ASC, level.id, evtcategory.id,evttype.id, gendermi
         return $statement->execute();
     }
 
-    public function selectOneById(int $id)
+
+    /**
+     * Get one row from database by ID. Override Abstract Method
+     *
+     * @param  int $id
+     *
+     * @return array     */
+    public function selectOneById(int $id):array
     {
-       $statement = "
-SELECT evenement.id, 
-	evenement.title, 
-    evenement.descr,
-    DATE_FORMAT(evenement.date_begin,'%d/%m/%Y') as date_begin,
-    DATE_FORMAT(evenement.date_end,'%d/%m/%Y') as date_end,
-    evenement.location, 
-    DATE_FORMAT(evenement.date_register,'%d/%m/%Y') as date_register,
-    evenement.rulesfile_id,
-    evenement.article_id,
-	departement.name as dept_name, departement.numdept as dept_num,
-    level.name as level,
-	gendermix.name as gendermix,
-	evtcategory.name as category,
-    evttype.name as type
- FROM evenement
-LEFT JOIN departement ON evenement.departement_id = departement.id
-LEFT JOIN level ON evenement.level_id = level.id
-LEFT JOIN gendermix ON evenement.gendermix_id = gendermix.id
-LEFT JOIN evtcategory ON evenement.category_id = evtcategory.id
-LEFT JOIN evttype ON evenement.type_id = evttype.id
-WHERE WHERE id=:id";
+        $statement = "
+        SELECT evenement.id, 
+            evenement.title, 
+            evenement.descr,
+            DATE_FORMAT(evenement.date_begin,'%d/%m/%Y') as date_begin,
+            DATE_FORMAT(evenement.date_end,'%d/%m/%Y') as date_end,
+            evenement.location, 
+            DATE_FORMAT(evenement.date_register,'%d/%m/%Y') as date_register,
+            evenement.rulesfile_id,
+            evenement.article_id,
+            departement.name as dept_name, departement.numdept as dept_num,
+            level.name as level,
+            gendermix.name as gendermix,
+            evtcategory.name as category,
+            evttype.name as type
+         FROM evenement
+        LEFT JOIN departement ON evenement.departement_id = departement.id
+        LEFT JOIN level ON evenement.level_id = level.id
+        LEFT JOIN gendermix ON evenement.gendermix_id = gendermix.id
+        LEFT JOIN evtcategory ON evenement.category_id = evtcategory.id
+        LEFT JOIN evttype ON evenement.type_id = evttype.id
+        WHERE evenement.id=:id";
 
         // prepared request
         $statement = $this->pdo->prepare($statement);

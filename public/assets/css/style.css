@@ -159,7 +159,7 @@ h5 {
 
 p {
     font-family: ‘Lato’, sans-serif;
-    font-size: calc(0.5vw + 14px);
+    font-size: 14px;
     color: #333333;
 }
 /*-------------------------------------------------------------------------------*/
@@ -186,6 +186,7 @@ p {
     margin-top: 20px;
     font-size: 0;
 }
+
 .heading-divider::before {
     content: '';
     display: inline-block;
@@ -198,6 +199,29 @@ p {
     left: 0;
     position: absolute;
     width: 50px;
+    border-top: 1px solid #d3aa4e;
+}
+
+.heading-divider-extent {
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 0;
+}
+
+.heading-divider-extent::before {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    border-top: 1px solid rgba(221, 221, 221, 0.5);
+}
+.heading-divider-extent::after {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 35%;
     border-top: 1px solid #d3aa4e;
 }
 
@@ -299,13 +323,14 @@ p {
 .comp-button-moreinfo {
     color: #fff;
     background-color:rgba(58, 51, 45,1);
-    border-color: rgba(43, 37, 33,1)
+    border-color: rgba(43, 37, 33,1);
+    transition: .25s ease-out all;
 }
 
-.comp-button-moreinfo:hover, .comp-button-moreinfo:focus {
-    box-shadow: 0 0 0 .2rem rgba(58, 51, 45,1);
-    background-color:rgba(58, 51, 45,0.5);
-    color: lightgray;
+.comp-button-moreinfo:hover {
+    transition: .25s ease-out all;
+    box-shadow: 0 .5rem .5rem rgba(83, 83, 83, 0.2);
+    color: #d3aa4e;
 }
 
 .table {
@@ -420,4 +445,36 @@ p {
         background-color: rgba(211, 170, 78, 1);
     }
 
+}
+
+
+/******************* EVENEMENT SPORTIF CARTE ****************************************************/
+/*-------------------------------------------------------------------------------------------------*/
+.card-evt {
+
+    max-width: 800px;
+    min-height: 300px;
+    cursor: pointer;
+    box-shadow: 0 1rem 1rem rgba(83, 83, 83, 0.2);
+    border: 2px solid rgba(211, 170, 78, 1);
+}
+.card-img_event {
+    object-fit: cover;
+    height: 100%;
+    max-height: 100%;
+    display:block;
+    margin:auto;
+    filter: blur(0px) opacity(50%);
+    transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);
+
+}
+.card-title-evt {
+    background-color: rgba(211, 170, 78, 0.8);
+    padding: 5px;
+    margin-top: 0px;
+}
+.card-title-evt-date {
+    background-color: rgba(211, 211, 211, 0.8);
+    padding: 3px;
+    margin-bottom: 0px;
 }
