@@ -1,5 +1,109 @@
-<form method="post">
-    <input type="hidden" value="{{ item.id }}" name="id">
-    <input type="text" value="{{ item.title }}" name="title">
-    <input type="submit" value="Valider">
-</form>
+<div class="container justify-content-center my-3">
+    <form method="post">
+        <input type="hidden" value="{{ event.id }}" name="id">
+        <section>
+            <h5>Informations générales</h5>
+            <div class="heading-divider-extent"></div>
+            <div class="form-group col-md-12 px-2 my-3">
+                <label for="eventitle">Nom de l'évènement :</label>
+                <input type="text" class="form-control" id="eventitle" placeholder="Nom de l'évènement">
+            </div>
+            <div class="my-3">
+                <div class="row px-2 my-1">
+                    <label for="evendatebegin" class="col-sm-2 col-form-label">Début :</label>
+                    <div class="col-sm-5 col-md-3 text-center">
+                        <input type="date" class="form-control" id="evendatebegin" placeholder="Date de début">
+                    </div>
+                </div>
+                <div class="row px-2 my-1">
+                    <label for="evendateend" class="col-sm-2 col-form-label">Fin :</label>
+                    <div class="col-sm-5 col-md-3 text-center">
+                        <input type="date" class="form-control" id="evendateend" placeholder="Date de fin">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group px-2 my-3">
+                <label for="evendescription">Description :</label>
+                <textarea class="form-control" id="evendescription" rows="4"></textarea>
+            </div>
+        </section>
+        <section class="mt-5">
+            <h5>Localisation</h5>
+            <div class="heading-divider-extent"></div>
+            <div class="form-group px-2 col-md-5">
+                <label for="evtdepartment">Département du site :</label>
+                <select class="form-control" id="evtdepartment">
+                    <option value="">Sélectionner ...</option>
+                    {% for departement in departements %}
+                        <option value="{{ departement.id }}">{{ departement.name }} ({{ departement.numdept }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group  px-2 my-3">
+                <label for="evenlocation">Localité (Ville, adresse, ...) :</label>
+                <input type="text" class="form-control" id="evenlocation" placeholder="Localité de l'évènement">
+            </div>
+        </section>
+        <section class="mt-5">
+            <h5>Informations sportives</h5>
+            <div class="heading-divider-extent"></div>
+            <div class="row px-2">
+                <div class="form-group px-2 col-md-6">
+                    <label for="evtlevel">Niveau de compétition :</label>
+                    <select class="form-control" id="evtlevel">
+                        <option value="">Sélectionner ...</option>
+                        {% for level in levels %}
+                            <option value="{{ level.id }}">{{ level.name | capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group px-2 col-md-6">
+                    <label for="evttype">Type(s) de rencontres :</label>
+                    <select class="form-control" id="evttype">
+                        <option value="">Sélectionner ...</option>
+                        {% for type in types %}
+                            <option value="{{ type.id }}">{{ type.name | capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group px-2 col-md-6">
+                    <label for="evtcategory">Catégorie autorisée :</label>
+                    <select class="form-control" id="evtcategory">
+                        <option value="">Sélectionner ...</option>
+                        {% for categorie in categories %}
+                            <option value="{{ categorie.id }}">{{ categorie.name | capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group px-2 col-md-6">
+                    <label for="evtgendermix">Mixité des compétitions :</label>
+                    <select class="form-control" id="evtgendermix">
+                        <option value="">Sélectionner ...</option>
+                        {% for gender in genders %}
+                            <option value="{{ gender.id }}">{{ gender.name | capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </section>
+        <section class="mt-5">
+            <h5>Modalités d'inscription</h5>
+            <div class="heading-divider-extent"></div>
+            <div class="row px-2 my-1">
+                <label for="evendateregister" class="col-sm-5 col-md-4 col-form-label">Date limite d'inscription
+                    :</label>
+                <div class="col-sm-6 col-md-4 text-center">
+                    <input type="date" class="form-control" id="evendateregister"
+                           placeholder="Date limite d'inscription :">
+                </div>
+            </div>
+            <div class="custom-file my-3">
+                <input type="file" class="custom-file-input" id="eventrulefile">
+                <label class="custom-file-label" for="eventrulefile">Télécharger un fichier de réglèment ...</label>
+            </div>
+        </section>
+        <section class="mt-5 text-center">
+            <button type="submit" class="btn btn-block btn-lg w-100 btn-primary ">Ajouter l'évènement</button>
+        </section>
+    </form>
+</div>
