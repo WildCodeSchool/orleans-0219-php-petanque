@@ -9,7 +9,12 @@
 
 namespace App\Controller;
 
+use App\Model\DepartementManager;
+use App\Model\EventCategoryManager;
+use App\Model\EventGenderManager;
+use App\Model\EventLevelManager;
 use App\Model\EventManager;
+use App\Model\EventTypeManager;
 
 /**
  * Class EventController
@@ -91,11 +96,34 @@ class EventController extends AbstractController
             $event = [
                 'title' => $_POST['title'],
             ];
+
+
             $id = $eventManager->insert($event);
             header('Location:/event/show/' . $id);
         }
 
-        return $this->twig->render('Event/add.html.twig');
+        $departementManager = new DepartementManager();
+        $departements = $departementManager->selectall();
+
+        $levelManager = new EventLevelManager();
+        $levels = $levelManager->selectall();
+
+        $genderManager = new EventGenderManager();
+        $genders = $genderManager->selectall();
+
+        $evtCategoryManager = new EventCategoryManager();
+        $categories = $evtCategoryManager->selectall();
+
+        $evtTypeManager = new EventTypeManager();
+        $types = $evtTypeManager->selectall();
+
+        return $this->twig->render('Event/add.html.twig', [
+            'departements' => $departements,
+            'levels' => $levels,
+            'genders'=> $genders,
+            'categories' => $categories,
+            'types' => $types,
+        ]);
     }
 
 
