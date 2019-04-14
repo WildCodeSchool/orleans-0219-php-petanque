@@ -12,7 +12,7 @@ namespace App\Controller;
 use App\Model\EventManager;
 
 /**
- * Class ItemController
+ * Class EventController
  *
  */
 class EventController extends AbstractController
@@ -35,7 +35,6 @@ class EventController extends AbstractController
         return $this->twig->render('Event/index.html.twig', ['events' => $events]);
     }
 
-
     /**
      * Display event informations specified by $id
      *
@@ -52,24 +51,6 @@ class EventController extends AbstractController
 
         return $this->twig->render('Event/show.html.twig', ['event' => $event]);
     }
-
-    /**
-     * Display all list informations
-     *
-     * @param int $id
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-    public function showall()
-    {
-        $eventManager = new EventManager();
-        $events = $eventManager->selectAll();
-
-        return $this->twig->render('Event/show.html.twig', ['events' => $events]);
-    }
-
 
     /**
      * Display event edition page specified by $id

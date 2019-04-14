@@ -100,6 +100,4 @@ ORDER BY date_begin DESC, level.id, gendermix.id;";
 
         return $statement->execute();
     }
-
-
 }
