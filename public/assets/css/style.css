@@ -487,3 +487,7 @@ p {
     pointer-events: none;
     padding-left: 2px;
 }
+
+.error-form {
+    color: red;
+}

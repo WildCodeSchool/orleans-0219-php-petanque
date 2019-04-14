@@ -7,6 +7,7 @@
             <div class="form-group col-md-12 px-2 my-3">
                 <label for="eventtitle" class="form-required">Nom de l'évènement :</label>
                 <input type="text" class="form-control" id="eventtitle" name="title" value="{{ event.title }}" maxlength="200" placeholder="Nom de l'évènement" required>
+                <div class="error-form">{{ errors.title }}</div>
             </div>
             <div class="my-3">
                 <div class="row px-2 my-1">
@@ -14,12 +15,14 @@
                     <div class="col-sm-5 col-md-3 text-center">
                         <input type="date" class="form-control" id="evendatebegin" name="date_begin" value="{{ event.date_begin }}" placeholder="Date de début" required>
                     </div>
+                    <div class="error-form">{{ errors.date_begin }}</div>
                 </div>
                 <div class="row px-2 my-1">
                     <label for="evendateend" class="col-sm-2 col-form-label">Fin :</label>
                     <div class="col-sm-5 col-md-3 text-center">
                         <input type="date" class="form-control" id="evendateend" name="date_end" value="{{ event.date_end }}" data-toggle="tooltip" data-placement="top" title="Si aucune date de fin n'est fixée, la date de début sera repris." placeholder="Date de fin">
                     </div>
+                    <div class="error-form">{{ errors.date_end }}</div>
                 </div>
             </div>
             <div class="form-group px-2 my-3">
@@ -38,6 +41,7 @@
                         <option value="{{ departement.id }}" {{ departement.id == event.departement_id ? 'selected' : '' }} >{{ departement.name }} ({{ departement.numdept }})</option>
                     {% endfor %}
                 </select>
+                <div class="error-form">{{ errors.departement_id }}</div>
             </div>
             <div class="form-group  px-2 my-3">
                 <label for="evenlocation" >Localité (Ville, adresse, ...) :</label>
@@ -56,6 +60,7 @@
                             <option value="{{ level.id }}" {{ level.id == event.level_id ? 'selected' : '' }}>{{ level.name | capitalize }}</option>
                         {% endfor %}
                     </select>
+                    <div class="error-form">{{ errors.level_id }}</div>
                 </div>
                 <div class="form-group px-2 col-md-6">
                     <label for="evttype"  class="form-required">Type(s) de rencontres :</label>
@@ -65,6 +70,7 @@
                             <option value="{{ type.id }}" {{ type.id == event.type_id ? 'selected' : '' }}>{{ type.name | capitalize }}</option>
                         {% endfor %}
                     </select>
+                    <div class="error-form">{{ errors.type_id }}</div>
                 </div>
                 <div class="form-group px-2 col-md-6">
                     <label for="evtcategory"  class="form-required">Catégorie autorisée :</label>
@@ -74,6 +80,7 @@
                             <option value="{{ categorie.id }}" {{ categorie.id == event.category_id ? 'selected' : '' }}>{{ categorie.name | capitalize }}</option>
                         {% endfor %}
                     </select>
+                    <div class="error-form">{{ errors.category_id }}</div>
                 </div>
                 <div class="form-group px-2 col-md-6">
                     <label for="evtgendermix"  class="form-required">Mixité des compétitions :</label>
@@ -83,6 +90,7 @@
                             <option value="{{ gender.id }}" {{ gender.id == event.gendermix_id ? 'selected' : '' }}>{{ gender.name | capitalize }}</option>
                         {% endfor %}
                     </select>
+                    <div class="error-form">{{ errors.gendermix_id }}</div>
                 </div>
             </div>
         </section>
@@ -96,11 +104,13 @@
                     <input type="date" class="form-control" id="evendateregister" name="date_register"
                            placeholder="Date limite d'inscription :">
                 </div>
+                <div class="error-form">{{ errors.date_register }}</div>
             </div>
             <div class="custom-file my-3">
                 <input type="file" class="custom-file-input" id="eventrulefile" name="rulesfile_id" >
                 <label class="custom-file-label" for="eventrulefile">Télécharger un fichier de réglèment ...</label>
             </div>
+            <input type="hidden" value="-1" name="article_id">
         </section>
         <section class="mt-5 text-center">
             <button type="submit" class="btn btn-block btn-lg w-100 btn-primary">Ajouter l'évènement</input>

@@ -99,6 +99,7 @@ class EventController extends AbstractController
             $postdata =new PostData($_POST);
             $eventdatas=$postdata->cleanValues();
             $erroreventdatas = $this->checkErrorsPostData($eventdatas);
+
             $eventManager = new EventManager();
 
             if (empty($erroreventdatas)) {
@@ -220,11 +221,10 @@ class EventController extends AbstractController
         };
 
         $genderManager = new EventGenderManager();
-        $genders = $genderManager->selectall();
         if (empty($postDatas['gendermix_id'])) {
-            $errors['level_id'] = "Un type de mixité de compétition est requis.";
+            $errors['gendermix_id'] = "Un type de mixité de compétition est requis.";
         } elseif (empty($evtCategoryManager->selectOneById($postDatas['gendermix_id']))) {
-            $errors['level_id'] = "Un type de mixité valide est requis.";
+            $errors['gendermix_id'] = "Un type de mixité valide est requis.";
         };
 
         if (empty($postDatas['date_register'])) {

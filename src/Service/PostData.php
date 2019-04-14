@@ -1,9 +1,11 @@
 <?php
+namespace App\Service ;
 
-
-namespace App\Service;
-
-
+/**
+ * Generic class of postdata controlling
+ * Class PostData
+ * @package App\Service
+ */
 class PostData
 {
     private $postDatas;
