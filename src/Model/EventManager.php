@@ -52,7 +52,8 @@ SELECT evenement.id,
 INNER JOIN departement ON evenement.departement_id = departement.id
 INNER JOIN level ON evenement.level_id = level.id
 INNER JOIN gendermix ON evenement.gendermix_id = gendermix.id
-ORDER BY date_begin DESC, level.id, gendermix.id;";
+WHERE date_begin >= NOW()
+ORDER BY evenement.date_begin ASC, level.id, gendermix.id;";
 
         return $this->pdo->query($selectStatement . $this->table)->fetchAll();
     }
