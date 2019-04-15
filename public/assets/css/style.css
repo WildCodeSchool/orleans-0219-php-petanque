@@ -31,6 +31,8 @@ h2 {
     text-transform: uppercase;
     font-size: 2.0rem;
     color: #d3aa4e;
+    padding-top: 60px;
+    padding-bottom: 30px;
 }
 
 .h2_colored_section {
@@ -61,6 +63,66 @@ p {
     font-size: 14px;
     color: #333333;
 }
+
+
+/* ---- h2 separator ---- */
+
+.h2_separator{
+    display: inline-block;
+    width: 80px;
+    height: 3px;
+    margin: 2% 0 10% 0;
+    background-color: #d3aa4e;
+}
+
+
+/* ---- Button styles ---- */
+
+.btn{
+    border-radius: 0px;
+}
+
+.btn_item{
+    text-decoration: none;
+    padding: 13px 35px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    background-image: none;
+    background-color: #3e3631;
+}
+
+.btn_item:hover{
+    color: #d3aa4e;
+    background-color: transparent;
+    text-decoration: none;
+    border: solid 1px #d3aa4e;
+}
+
+
+/* ---- Styles section Vos Envies ---- */
+
+.card_vosenvies {
+    border: none;
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card_title_footer{
+    background-color: transparent;
+    border: none;
+}
+
+.card_img_vosenvies{
+    border-radius: 15px;
+}
+
+.card_margin_vosenvies{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 /*-------------------------------------------------------------------------------*/
 
 
