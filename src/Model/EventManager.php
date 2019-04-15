@@ -62,5 +62,4 @@ class EventManager extends AbstractManager
 
         return $this->pdo->query($statement)->fetchAll();
     }
-
 }
