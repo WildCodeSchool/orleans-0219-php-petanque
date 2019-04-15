@@ -1,3 +1,55 @@
+.colored_background{
+    background-color: #e2d3ba;
+    padding-bottom: 5%;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 2.0rem;
+    color: #d3aa4e;
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
+
+.h2_colored_section {
+    color: #333333;
+}
+
+.h2_separator_dark{
+    display: inline-block;
+    width: 80px;
+    height: 3px;
+    margin: 2% 0 10% 0;
+    background-color: #3E3631;
+}
+
+/* ---- Styles Section Horaires ---- */
+
+.table_horaire{
+    background-color: rgba(211,170,78,0.2);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.table_horaire thead th{
+    border: 1px solid #3E3631;
+    background-color: #d3aa4e;
+    color: #3E3631;
+}
+
+.table_horaire tbody td{
+    border: 1px solid #3E3631;
+}
+
+.table_horaire tbody th{
+    border: 1px solid #3E3631;
+}
+
+.table_horaire tbody tr:hover{
+    background-color: #3E3631;
+    color: #d3aa4e;
+}
+
 .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover
 {
     color: white;
