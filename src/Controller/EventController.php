@@ -9,6 +9,7 @@
 
 namespace App\Controller;
 
+
 use App\Model\DepartementManager;
 use App\Model\EventCategoryManager;
 use App\Model\EventGenderManager;
@@ -25,8 +26,27 @@ use Nette\Utils\DateTime;
 class EventController extends AbstractController
 {
 
+     /**
+     *Display event listing
+     *
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+   public function index()
+   {
+        $eventManager = new EventManager();
+        $events = $eventManager->selectEventsToCome();
 
-    /**
+        return $this->twig->render('Event/index.html.twig', [
+            'events' => $events,
+            'mainTitle' => 'Vie du club',
+            'mainSubTitle' => 'Evènements sportifs à venir',
+            ]);
+    }
+   
+     /**
      * Display event creation page
      *
      * @return string
