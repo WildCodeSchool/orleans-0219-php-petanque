@@ -1,5 +1,68 @@
 {% extends 'sublayout_visitor.html.twig' %}
 
 {% block content %}
+
+    <!-- ============== Début section Horaires ============= -->
+
+    <section id="horaires">
+        <h2>Horaires</h2>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">Jour</th>
+                            <th scope="col">Matin</th>
+                            <th scope="col">Après-midi</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Lundi</th>
+                            <td>Fermé</td>
+                            <td>14h00 -> 19h30</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mardi</th>
+                            <td>8h00 -> 12h00</td>
+                            <td>14h00 -> 19h30</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mercredi</th>
+                            <td colspan="2">Ouvert toute la journée, de 8h00 à 20h00</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Jeudi</th>
+                            <td>8h00 -> 12h00</td>
+                            <td>14h00 -> 18h00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Vendredi</th>
+                            <td>8h00 -> 12h00</td>
+                            <td>14h00 -> 21h00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Samedi</th>
+                            <td>8h00 -> 12h00</td>
+                            <td>14h00 -> 21h00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Dimanche</th>
+                            <td colspan="2">Ouvert toute la journée, de 8h00 à 20h00</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
 {% endblock %}
 
