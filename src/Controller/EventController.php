@@ -47,12 +47,12 @@ class EventController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index_admin()
+    public function eventsadmin()
     {
         $eventManager = new EventManager();
         $events = $eventManager->selectEventsToCome();
 
-        return $this->twig->render('Event/index_admin.html.twig', [
+        return $this->twig->render('Event/eventsadmin.html.twig', [
             'events' => $events,
             'mainTitle' => 'Gestion des évènements sportifs',
             'mainSubTitle' => 'Liste des évènements',
