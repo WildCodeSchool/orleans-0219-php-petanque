@@ -55,7 +55,7 @@ class EventManager extends AbstractManager
     public function selectAll(): array
     {
 
-        return $this->pdo->query($this->view)->fetchAll();
+        return $this->pdo->query(self::VIEW)->fetchAll();
     }
 
 

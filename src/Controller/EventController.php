@@ -71,7 +71,11 @@ class EventController extends AbstractController
             $eventManager->update($event);
         }
 
-        return $this->twig->render('Event/edit.html.twig', ['event' => $event]);
+        return $this->twig->render('Event/edit.html.twig', [
+            'event' => $event,
+            'mainTitle' => 'Vie du club',
+            'mainSubTitle' => 'Evènements sportifs à venir',
+        ]);
     }
 
 
