@@ -32,7 +32,11 @@ class EventController extends AbstractController
         $eventManager = new EventManager();
         $events = $eventManager->selectAll();
 
-        return $this->twig->render('Event/index.html.twig', ['events' => $events]);
+        return $this->twig->render('Event/index.html.twig', [
+            'events' => $events,
+            'mainTitle' => 'Vie du club',
+            'mainSubTitle' => 'Evènements sportifs à venir',
+            ]);
     }
 
     /**
@@ -72,9 +76,7 @@ class EventController extends AbstractController
         }
 
         return $this->twig->render('Event/edit.html.twig', [
-            'event' => $event,
-            'mainTitle' => 'Vie du club',
-            'mainSubTitle' => 'Evènements sportifs à venir',
+            'event' => $event
         ]);
     }
 
