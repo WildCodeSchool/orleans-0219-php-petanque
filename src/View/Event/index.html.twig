@@ -13,8 +13,10 @@
                     <th scope="col">Nom</th>
                     <th scope="col">Date de début</th>
                     <th scope="col">Date de fin</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Mixité</th>
                     <th scope="col">Département</th>
-                    <th scope="col">Localité</th>
                     <th scope="col">Informations</th>
                 </tr>
                 </thead>
@@ -25,9 +27,11 @@
                         <td data-title="Nom">{{ event.title | capitalize }}</td>
                         <td data-title="Date de début">{{ event.date_begin }}</td>
                         <td data-title="Date de fin">{{ event.date_end }}</td>
+                        <td data-title="Catégorie">{{ event.category | capitalize  }}</td>
+                        <td data-title="Type">{{ event.type | capitalize  }}</td>
+                        <td data-title="Mixité">{{ event.gendermix | capitalize  }}</td>
                         <td data-title="Departement">{{ event.dept_name }} ({{ event.dept_num }})</td>
-                        <td data-title="Localité">{{ event.location}}</td>
-                        <td><a class="btn comp-button-moreinfo w-100" href="#" role="button">En savoir plus</a></td>
+                        <td><a class="btn comp-button-moreinfo w-100" href="show/{{ event.id }}" role="button">En savoir plus</a></td>
                     </tr>
                 {% endfor %}
 
