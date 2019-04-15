@@ -43,13 +43,24 @@
 
 .h1-centered
 {
+    margin: auto;
+    font-size: 5vw;
+}
+
+.h2-centered
+{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2.5vw;
+}
+
+.title-wrapper{
     color: white;
     position: absolute;
     left: 0;
     right: 0;
-    top: 15%;
-    margin: auto;
-    font-size: 5vw;
+    top: 12%;
 }
 
 .logo-nav
