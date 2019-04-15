@@ -137,33 +137,7 @@ p {
 }
 
 /* ---- Styles Section Horaires ---- */
-/*
-#horaires .table{
-    background-color: rgba(211,170,78,0.2);
-    margin-right: auto;
-    margin-left: auto;
-}
 
-#horaires thead th{
-    border: 1px solid #3E3631;
-    background-color: #d3aa4e;
-    color: #3E3631;
-}
-
-#horaires tbody td{
-    border: 1px solid #3E3631;
-}
-
-#horaires tbody th{
-    border: 1px solid #3E3631;
-}
-
-#horaires tbody tr:hover{
-    background-color: #3E3631;
-    color: #d3aa4e;
-}
-*/
-/*
 .table_horaire{
     background-color: rgba(211,170,78,0.2);
     margin-right: auto;
@@ -188,7 +162,8 @@ p {
     background-color: #3E3631;
     color: #d3aa4e;
 }
-*/
+  
+
 /*-------------------------------------------------------------------------------*/
 
 
