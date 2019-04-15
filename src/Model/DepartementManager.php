@@ -27,47 +27,4 @@ class DepartementManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-
-    /**
-     * @param array $item
-     * @return int
-     */
-    public function insert(array $item): int
-    {
-        // prepared request
-        $statement = $this->pdo->prepare("INSERT INTO $this->table (`name`,`numdept`) VALUES (:name,:numdept)");
-        $statement->bindValue('name', $item['name'], \PDO::PARAM_STR);
-        $statement->bindValue('numdept', $item['numdept'], \PDO::PARAM_STR);
-        if ($statement->execute()) {
-            return (int)$this->pdo->lastInsertId();
-        }
-    }
-
-
-    /**
-     * @param int $id
-     */
-    public function delete(int $id): void
-    {
-        // prepared request
-        $statement = $this->pdo->prepare("DELETE FROM $this->table WHERE id=:id");
-        $statement->bindValue('id', $id, \PDO::PARAM_INT);
-        $statement->execute();
-    }
-
-
-    /**
-     * @param array $item
-     * @return bool
-     */
-    public function update(array $item):bool
-    {
-
-        // prepared request
-        $statement = $this->pdo->prepare("UPDATE $this->table SET `name` = :name ,`numdept` = :numdept WHERE id=:id");
-        $statement->bindValue('id', $item['id'], \PDO::PARAM_INT);
-        $statement->bindValue('name', $item['name'], \PDO::PARAM_STR);
-        $statement->bindValue('numdept', $item['numdept'], \PDO::PARAM_STR);
-        return $statement->execute();
-    }
 }
