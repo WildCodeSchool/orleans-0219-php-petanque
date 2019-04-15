@@ -31,6 +31,8 @@ h2 {
     text-transform: uppercase;
     font-size: 2.0rem;
     color: #d3aa4e;
+    padding-top: 60px;
+    padding-bottom: 30px;
 }
 
 .h2_colored_section {
@@ -61,6 +63,66 @@ p {
     font-size: 14px;
     color: #333333;
 }
+
+
+/* ---- h2 separator ---- */
+
+.h2_separator{
+    display: inline-block;
+    width: 80px;
+    height: 3px;
+    margin: 2% 0 10% 0;
+    background-color: #d3aa4e;
+}
+
+
+/* ---- Button styles ---- */
+
+.btn{
+    border-radius: 0px;
+}
+
+.btn_item{
+    text-decoration: none;
+    padding: 13px 35px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    background-image: none;
+    background-color: #3e3631;
+}
+
+.btn_item:hover{
+    color: #d3aa4e;
+    background-color: transparent;
+    text-decoration: none;
+    border: solid 1px #d3aa4e;
+}
+
+
+/* ---- Styles section Vos Envies ---- */
+
+.card_vosenvies {
+    border: none;
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card_title_footer{
+    background-color: transparent;
+    border: none;
+}
+
+.card_img_vosenvies{
+    border-radius: 15px;
+}
+
+.card_margin_vosenvies{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 /*-------------------------------------------------------------------------------*/
 
 
@@ -350,102 +412,4 @@ p {
     background-color: rgba(211, 211, 211, 0.8);
     padding: 3px;
     margin-bottom: 0px;
-}
-=======
-/****  NAVBAR ********/
-.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover
-{
-    color: white;
-}
-
-.dropdown-menu
-{
-    background-color: #3E3631;
-    border: none;
-}
-
-.navbar-light .navbar-nav .show > .nav-link
-{
-    color: white;
-}
-
-.dropdown-menu > a
-{
-    color: white;
-    transition: 0.15s ease-in-out;
-}
-
-.dropdown-menu > a:hover{
-    transition: 0.15s ease-in-out;
-}
-
-.navbar-colored
-{
-    padding-top: 0%;
-    padding-bottom: 0%;
-    background-color: #3E3631;
-    transition: 0.3s ease-in-out;
-}
-
-.navbar-transp
-{
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
-    background-color: rgba(0,0,0,0);
-    transition: 0.2s ease-in-out;
-}
-
-
-.h1-centered
-{
-    color: white;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 15%;
-    margin: auto;
-    font-size: 5vw;
-}
-
-.logo-nav
-{
-    width: 60px;
-}
-
-.img-wrap-header
-{
-    width: 100%;
-}
-
-.custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-.custom-toggler.navbar-toggler {
-    border-color: rgb(255,255,255);
-}
-
-/*link navbar animation*/
-
-.nav-item-underline > a {
-    position: relative;
-    color: #fff;
-    text-decoration: none;
-}
-
-.nav-item-underline > a:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    bottom: 2px;
-    left: 0;
-    background-color: #000;
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out 0s;
-}
-
-.nav-item-underline > a:hover:before {
-    visibility: visible;
-    transform: scaleX(1);
 }
