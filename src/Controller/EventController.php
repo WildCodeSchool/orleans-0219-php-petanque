@@ -27,62 +27,6 @@ class EventController extends AbstractController
 
 
     /**
-     * Display event listing
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-    public function index()
-    {
-        $eventManager = new EventManager();
-        $events = $eventManager->selectAll();
-
-        return $this->twig->render('Event/index.html.twig', ['events' => $events]);
-    }
-
-    /**
-     * Display event informations specified by $id
-     *
-     * @param int $id
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-    public function show(int $id)
-    {
-        $eventManager = new EventManager();
-        $event = $eventManager->selectOneById($id);
-
-        return $this->twig->render('Event/show.html.twig', ['event' => $event]);
-    }
-
-    /**
-     * Display event edition page specified by $id
-     *
-     * @param int $id
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-    public function edit(int $id): string
-    {
-        $eventManager = new EventManager();
-        $event= $eventManager->selectOneById($id);
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $event['title'] = $_POST['title'];
-            $eventManager->update($event);
-        }
-
-        return $this->twig->render('Event/edit.html.twig', ['event' => $event]);
-    }
-
-
-    /**
      * Display event creation page
      *
      * @return string
@@ -103,7 +47,7 @@ class EventController extends AbstractController
             $eventManager = new EventManager();
 
             if (empty($erroreventdatas)) {
-                $id = $eventManager->insert($eventdatas);
+                $id = $eventManager->insertEvent($eventdatas);
                 header('Location:/event/show/' . $id);
             }
             $eventdatas = $_POST;
@@ -135,26 +79,6 @@ class EventController extends AbstractController
         ]);
     }
 
-    /**
-     * Handle event deletion
-     *
-     * @param int $id
-     */
-    public function delete(int $id)
-    {
-        $eventManager = new EventManager();
-        $eventManager->delete($id);
-        header('Location:/event/index');
-    }
-
-    /**
-     * Check errors from postdata array and return an errors array
-     * Before add or update event
-     *
-     * @param array $postDatas
-     * @return array
-     * @throws \Exception
-     */
     private function checkErrorsPostData(array &$postDatas) : array
     {
         $errors=[];
