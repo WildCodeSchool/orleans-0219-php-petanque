@@ -76,6 +76,8 @@ class EventController extends AbstractController
             'genders'=> $genders,
             'categories' => $categories,
             'types' => $types,
+            'mainTitle' => "Gestion des évènements sportifs",
+            'mainSubTitle' => "Ajout d'un évènement",
         ]);
     }
 
