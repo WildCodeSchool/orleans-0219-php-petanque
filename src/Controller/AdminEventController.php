@@ -19,11 +19,30 @@ use App\Service\PostDatum;
 use Nette\Utils\DateTime;
 
 /**
- * Class EventController
+ * Class EventAdminController
  *
  */
 class AdminEventController extends AbstractController
 {
+
+    /**
+     * Display event listing admin
+     *
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function index()
+    {
+        $eventManager = new EventManager();
+        $events = $eventManager->selectAllEvents();
+
+        return $this->twig->render('Event/indexadmin.html.twig', [
+            'events' => $events,
+        ]);
+    }
+  
 
      /**
      * Display event creation page
