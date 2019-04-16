@@ -35,18 +35,18 @@ class EventController extends AbstractController
      */
     public function add()
     {
-        $erroreventdata=[];
-        $eventdata=[];
+        $errorEventData=[];
+        $eventData=[];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $postdatum =new PostDatum($_POST);
-            $eventdata=$postdatum->cleanValues();
-            $erroreventdata = $this->checkErrorsPostData($eventdata);
+            $postDatum =new PostDatum($_POST);
+            $eventData=$postDatum->cleanValues();
+            $errorEventData = $this->checkErrorsPostData($eventData);
 
             $eventManager = new EventManager();
 
-            if (empty($erroreventdata)) {
-                $id = $eventManager->insertEvent($eventdata);
+            if (empty($errorEventData)) {
+                $id = $eventManager->insertEvent($eventData);
                 header('Location:/event/show/' . $id);
             }
         }
@@ -67,8 +67,8 @@ class EventController extends AbstractController
         $types = $evtTypeManager->selectall();
 
         return $this->twig->render('Event/add.html.twig', [
-            'event' => $eventdata,
-            'errors' => $erroreventdata,
+            'event' => $eventData,
+            'errors' => $errorEventData,
             'departements' => $departements,
             'levels' => $levels,
             'genders'=> $genders,
