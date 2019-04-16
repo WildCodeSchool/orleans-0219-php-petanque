@@ -26,14 +26,21 @@ class ScheduleController extends AbstractController
         $schedules = $scheduleManager->selectAll();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $schedules['day'] = $_POST['day'];
-            $schedules['morning_schedule'] = $_POST['morning_schedule'];
-            $schedules['evening_schedule'] = $_POST['evening_schedule'];
-            $scheduleManager->update($schedules);
+            //   $schedules['morning'] = $_POST['morning'];
+            //   $schedules['afternoon'] = $_POST['afternoon'];
+
+            foreach ($schedules as $key => $schedule) {
+                $scheduleToInsert['id'] = $schedule['id'];
+                $scheduleToInsert['morning'] = $_POST['morning' . $schedule['id']];
+                $scheduleToInsert['afternoon'] = $_POST['afternoon' . $schedule['id']];
+
+                $scheduleManager->update($scheduleToInsert);
+                print_r($scheduleToInsert);
+            }
         }
 
         return $this->twig->render('Schedule/edit.html.twig', [
-            'schedule' => $schedules,
+            'schedules' => $schedules,
         ]);
     }
 }

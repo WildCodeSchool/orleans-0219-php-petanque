@@ -2,6 +2,37 @@
 
 {% block content %}
 
-    <p>Ici du texte</p>
+    <div class="container-fluid ">
+        <h2 class="text-center">Evènements sportifs à venir</h2>
+
+        <form method="post">
+            <div class="table-responsive-vertical mx-5">
+                <!-- Table starts here -->
+                <table class="table table-hover table-striped table-bordered">
+                    <thead class="comp-thead-color">
+                    <tr>
+                        <th scope="col">Jour</th>
+                        <th scope="col">Matin</th>
+                        <th scope="col">Après-midi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for schedule in schedules %}
+                        <tr>
+                            <td>{{ schedule.day }}</td>
+                            <td data-title="Matin :">
+                                <input id="morning{{ schedule.id }}" name="morning{{ schedule.id }}" type="text" value="{{ schedule.morning }}">
+                            </td>
+                            <td data-title="Date de début">
+                                <input id="afternoon{{ schedule.id }}" name="afternoon{{ schedule.id }}" type="text" value="{{ schedule.afternoon }}">
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <button class="btn btn_item" type="submit">modifier</button>
+                </table>
+            </div>
+        </form>
+    </div>
 
 {% endblock %}
