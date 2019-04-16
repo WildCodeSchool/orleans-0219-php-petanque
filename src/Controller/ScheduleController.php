@@ -35,7 +35,6 @@ class ScheduleController extends AbstractController
                 $scheduleToInsert['afternoon'] = $_POST['afternoon' . $schedule['id']];
 
                 $scheduleManager->update($scheduleToInsert);
-                print_r($scheduleToInsert);
             }
         }
 

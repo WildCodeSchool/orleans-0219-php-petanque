@@ -40,8 +40,9 @@ class ScheduleManager extends AbstractManager
         $statement = $this->pdo->prepare("UPDATE $this->table
                                                     SET `morning` = :morning, `afternoon` = :afternoon
                                                     WHERE id=:id");
+
         $statement->bindValue('id', $schedule['id'], \PDO::PARAM_INT);
-        $statement->bindValue('morning', $schedule['morning'], \PDO::PARAM_INT);
+        $statement->bindValue('morning', $schedule['morning'], \PDO::PARAM_STR);
         $statement->bindValue('afternoon', $schedule['afternoon'], \PDO::PARAM_STR);
 
         return $statement->execute();
