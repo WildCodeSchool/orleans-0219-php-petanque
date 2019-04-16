@@ -12,7 +12,7 @@ namespace App\Controller;
 use App\Model\EventManager;
 
 /**
- * Class EventController
+ * Class EventAdminController
  *
  */
 class AdminEventController extends AbstractController
@@ -26,7 +26,7 @@ class AdminEventController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function eventsadmin()
+    public function index()
     {
         $eventManager = new EventManager();
         $events = $eventManager->selectAllEvents();
