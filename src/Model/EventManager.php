@@ -102,7 +102,7 @@ class EventManager extends AbstractManager
     }
 
     /**
-     * Get all row from database - Event Coming soon
+     * Get all row from database - Event pasts 
      *
      * @return array
      */
@@ -123,7 +123,7 @@ class EventManager extends AbstractManager
                 gendermix.name as gendermix,
                 evtcategory.name as category,
                 evttype.name as type
-             FROM evenement
+            FROM evenement
             INNER JOIN departement ON evenement.departement_id = departement.id
             INNER JOIN level ON evenement.level_id = level.id
             INNER JOIN gendermix ON evenement.gendermix_id = gendermix.id
