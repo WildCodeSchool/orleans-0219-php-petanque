@@ -26,13 +26,16 @@ class ScheduleController extends AbstractController
         $schedules = $scheduleManager->selectAll();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            //   $schedules['morning'] = $_POST['morning'];
-            //   $schedules['afternoon'] = $_POST['afternoon'];
+            $cleanData = [];
+
+            foreach($_POST as $key => $cleanDatum){
+                $cleanData[$key] = trim($cleanDatum);
+            }
 
             foreach ($schedules as $key => $schedule) {
                 $scheduleToInsert['id'] = $schedule['id'];
-                $scheduleToInsert['morning'] = $_POST['morning' . $schedule['id']];
-                $scheduleToInsert['afternoon'] = $_POST['afternoon' . $schedule['id']];
+                $scheduleToInsert['morning'] = $cleanData['morning' . $schedule['id']];
+                $scheduleToInsert['afternoon'] = $cleanData['afternoon' . $schedule['id']];
 
                 $scheduleManager->update($scheduleToInsert);
             }
