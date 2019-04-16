@@ -1,7 +1,0 @@
-parameters:
-	featureToggles:
-		deadCatchesRule: true
-		missingReturnRule: true
-		noopRule: true
-		unreachableStatement: true
-		yieldRules: true
