@@ -21,35 +21,33 @@ use App\Model\EventManager;
 */
 class EventController extends AbstractController
 {
-  /**
-   * Display event listing
-   * @return string
-   * @throws \Twig\Error\LoaderError
-   * @throws \Twig\Error\RuntimeError
-   * @throws \Twig\Error\SyntaxError
-   */
-   public function index()
+    /**
+    * Display event listing
+    * @return string
+    * @throws \Twig\Error\LoaderError
+    * @throws \Twig\Error\RuntimeError
+    * @throws \Twig\Error\SyntaxError
+    */
+    public function index()
     {
         $eventManager = new EventManager();
         $events = $eventManager->selectEventsToCome();
 
         return $this->twig->render('Event/index.html.twig', [
             'events' => $events,
-            'mainTitle' => 'Vie du club',
-            'mainSubTitle' => 'Evènements sportifs à venir',
             ]);
     }
 
-  /**
-   * Display event informations specified by $id
-   *
-   * @param int $id
-   *
-   * @return string
-   * @throws \Twig\Error\LoaderError
-   * @throws \Twig\Error\RuntimeError
-   * @throws \Twig\Error\SyntaxError
-   */
+    /**
+    * Display event informations specified by $id
+    *
+    * @param int $id
+    *
+    * @return string
+    * @throws \Twig\Error\LoaderError
+    * @throws \Twig\Error\RuntimeError
+    * @throws \Twig\Error\SyntaxError
+    */
     public function show(int $id)
     {
         $eventManager = new EventManager();
@@ -59,5 +57,4 @@ class EventController extends AbstractController
             'event' => $event,
             ]);
     }
-   
 }

@@ -32,7 +32,7 @@ class EventManager extends AbstractManager
      *
      * @param  int $id
      *
-     * @return array     
+     * @return array
      */
     public function selectOneEventToComeById(int $id):array
     {
