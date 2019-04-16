@@ -69,7 +69,7 @@ class EventManager extends AbstractManager
      /**
      * Insert an event in database
      *
-     * @return array
+     * @return int
      */
     public function insertEvent(array $events): int
     {
