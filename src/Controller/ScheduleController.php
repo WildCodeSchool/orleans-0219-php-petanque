@@ -28,7 +28,7 @@ class ScheduleController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cleanData = [];
 
-            foreach($_POST as $key => $cleanDatum){
+            foreach ($_POST as $key => $cleanDatum) {
                 $cleanData[$key] = trim($cleanDatum);
             }
 
