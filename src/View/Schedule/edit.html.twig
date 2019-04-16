@@ -28,11 +28,11 @@
                             <td class="text-center">{{ schedule.day }} :</td>
                             <td class="text-center" data-title="Matin :">
                                 <input id="morning{{ schedule.id }}" name="morning{{ schedule.id }}" type="text"
-                                       class="input_schedule" value="{{ schedule.morning }}">
+                                       class="input_schedule" value="{{ schedule.morning }}" required>
                             </td>
                             <td class="text-center" data-title="Après-midi :">
                                 <input id="afternoon{{ schedule.id }}" name="afternoon{{ schedule.id }}" type="text"
-                                       class="input_schedule" value="{{ schedule.afternoon }}">
+                                       class="input_schedule" value="{{ schedule.afternoon }}" required>
                             </td>
                         </tr>
                     {% endfor %}
