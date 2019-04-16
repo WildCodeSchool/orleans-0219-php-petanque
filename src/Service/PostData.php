@@ -46,9 +46,6 @@ class PostData
         foreach ($this->postDatas as $keyArray => $valueArray) {
             $data= $valueArray;
             $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            $data = strip_tags($data);
 
             $dataArray[$keyArray] = $data;
         }
