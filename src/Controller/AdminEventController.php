@@ -15,25 +15,24 @@ use App\Model\EventManager;
  * Class EventController
  *
  */
-class EventController extends AbstractController
+class AdminEventController extends AbstractController
 {
 
-
     /**
-     * Display event listing
+     * Display event listing admin
      *
      * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index()
+    public function eventsadmin()
     {
         $eventManager = new EventManager();
-        $events = $eventManager->selectEventsToCome();
+        $events = $eventManager->selectAllEvents();
 
-        return $this->twig->render('Event/index.html.twig', [
+        return $this->twig->render('Event/eventsadmin.html.twig', [
             'events' => $events,
-            ]);
+        ]);
     }
 }
