@@ -57,4 +57,21 @@ class EventController extends AbstractController
             'event' => $event,
             ]);
     }
+
+    /**
+     * Display past events listing
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function indexresults()
+    {
+        $eventManager = new EventManager();
+        $events = $eventManager->selectEventsPasts();
+
+        return $this->twig->render('Event/indexresults.html.twig', [
+            'events' => $events,
+        ]);
+    }
 }
