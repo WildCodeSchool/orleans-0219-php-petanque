@@ -15,7 +15,7 @@ use App\Model\EventGenderManager;
 use App\Model\EventLevelManager;
 use App\Model\EventManager;
 use App\Model\EventTypeManager;
-use App\Service\PostData;
+use App\Service\PostDatum;
 use Nette\Utils\DateTime;
 
 /**
@@ -39,8 +39,8 @@ class EventController extends AbstractController
         $eventdata=[];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $postdata =new PostData($_POST);
-            $eventdata=$postdata->cleanValues();
+            $postdatum =new PostDatum($_POST);
+            $eventdata=$postdatum->cleanValues();
             $erroreventdata = $this->checkErrorsPostData($eventdata);
 
             $eventManager = new EventManager();
@@ -49,7 +49,6 @@ class EventController extends AbstractController
                 $id = $eventManager->insertEvent($eventdata);
                 header('Location:/event/show/' . $id);
             }
-            $eventdata = $_POST;
         }
 
         $departementManager = new DepartementManager();

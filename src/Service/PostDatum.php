@@ -6,33 +6,33 @@ namespace App\Service ;
  * Class PostData
  * @package App\Service
  */
-class PostData
+class PostDatum
 {
-    private $postDatas;
+    private $postData;
 
     /**
-     * PostData constructor.
-     * @param array $datas
+     * PostDatum constructor.
+     * @param array $data
      */
-    public function __construct(array $datas)
+    public function __construct(array $data)
     {
-        $this->postDatas = $datas;
+        $this->postData = $data;
     }
 
     /**
      * @return array
      */
-    public function getPostDatas(): array
+    public function getPostData(): array
     {
-        return $this->postDatas;
+        return $this->postData;
     }
 
     /**
-     * @param array $postDatas
+     * @param array $postData
      */
-    public function setPostDatas(array $postDatas): void
+    public function setPostData(array $postData): void
     {
-        $this->postDatas = $postDatas;
+        $this->postData = $postData;
     }
 
     /**
@@ -43,7 +43,7 @@ class PostData
     public function cleanValues(): array
     {
         $dataArray=[];
-        foreach ($this->postDatas as $keyArray => $valueArray) {
+        foreach ($this->postData as $keyArray => $valueArray) {
             $data= $valueArray;
             $data = trim($data);
 
