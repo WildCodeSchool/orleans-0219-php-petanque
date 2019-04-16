@@ -157,7 +157,7 @@ p {
 .heading-divider::after {
     content: '';
     top: 0;
-    left: 0;index
+    left: 0;
     position: absolute;
     width: 50px;
     border-top: 1px solid #d3aa4e;

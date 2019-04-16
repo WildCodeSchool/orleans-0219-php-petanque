@@ -29,7 +29,7 @@ class EventManager extends AbstractManager
     }
 
     /**
-     * Get one row from database by ID. Override Abstract Method
+     * Get one row from database by ID.
      *
      * @param  int $id
      *
@@ -59,21 +59,19 @@ class EventManager extends AbstractManager
         LEFT JOIN evtcategory ON evenement.category_id = evtcategory.id
         LEFT JOIN evttype ON evenement.type_id = evttype.id
         WHERE evenement.id=:id";
-
         // prepared request
         $statement = $this->pdo->prepare($statement);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-
         return $statement->fetch();
     }
-  
-    /**
-     * Get all row from database - Event Coming soon
+
+     /**
+     * Insert an event in database
      *
      * @return array
      */
-    public function selectEventsToCome(): array
+    public function insertEvent(array $events): int
     {
         // prepared request
         $statement = $this->pdo->prepare("INSERT INTO $this->table 
