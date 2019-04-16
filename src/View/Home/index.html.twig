@@ -12,16 +12,16 @@
                             <div class="info_article_big">
                                 <ul>
                                     <li>
-                                        <i class="fas fa-calendar-alt"><span> 10-04-2019</span></i>
+                                        <i class="fas fa-calendar-alt"><span>{{ article[0].date }}</span></i>
                                     </li>
                                     <li>
-                                        <i class="fas fa-user"><span> Jean</span></i>
+                                        <i class="fas fa-user"><span>{{ article[0].author }}</span></i>
                                     </li>
                                 </ul>
                                 <div class="article_tag_and_title_big">
-                                    <button class="button_tag btn">info</button>
-                                    <h4 class="title_article_big">On prend l'apéro à 18h</h4>
-                                    <p class="hover_content_big_article no_display">{{ (article|length > 50 ? article|slice(0, 50) ~ '…' : article) |nl2br }}</p>
+                                    <button class="button_tag btn">{{ article[0].tag }}</button>
+                                    <h4 class="title_article_big">{{ article[0].title }}</h4>
+                                    <p class="hover_content_big_article no_display">{{ (article[0].desc|length > 200 ? article[0].desc|slice(0, 200) ~ '…' : article[0].desc) |nl2br }}</p>
                                 </div>
                             </div>
                             <img class="rounded big_club_img bloc" src="https://via.placeholder.com/150">
@@ -33,16 +33,15 @@
                         <div class="card card_small_article mx-auto">
                             <div class="info_article_small">
                                 <div class="article_tag_small">
-                                    <button class="button_tag btn">article</button>
+                                    <button class="button_tag btn">{{ article[1].tag }}</button>
                                 </div>
                             </div>
                             <img class="card-img-top card_img_small" src="https://via.placeholder.com/150"
                                  alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                                <i class="fas fa-calendar-alt mt-5"><span> 10-04-2019</span></i>
+                                <h5 class="card-title">{{ article[1].title }}</h5>
+                                <p class="card-text">{{ (article[1].desc|length > 100 ? article[1].desc|slice(0, 100) ~ '…' : article[1].desc) |nl2br }}</p>
+                                <i class="fas fa-calendar-alt mt-5"><span>{{ article[1].date }}</span></i>
                             </div>
                         </div>
                     </a>
@@ -52,16 +51,15 @@
                         <div class="card card_small_article mx-auto">
                             <div class="info_article_small">
                                 <div class="article_tag_small">
-                                    <button class="button_tag btn">évènement</button>
+                                    <button class="button_tag btn">{{ article[2].tag }}</button>
                                 </div>
                             </div>
                             <img class="card-img-top card_img_small" src="https://via.placeholder.com/150"
                                  alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                                <i class="fas fa-calendar-alt mt-5"><span> 10-04-2019</span></i>
+                                <h5 class="card-title">{{ article[2].title }}</h5>
+                                <p class="card-text">{{ (article[2].desc|length > 100 ? article[2].desc|slice(0, 100) ~ '…' : article[2].desc) |nl2br }}</p>
+                                <i class="fas fa-calendar-alt mt-5"><span>{{ article[2].date }}</span></i>
                             </div>
                         </div>
                     </a>
