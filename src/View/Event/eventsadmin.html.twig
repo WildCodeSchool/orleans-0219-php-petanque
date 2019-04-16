@@ -4,7 +4,10 @@
 {% block headerSubTitle %}Liste des évènements{% endblock %}
 {% block content %}
 
-<div class="container-fluid ">
+    <div class="container-fluid ">
+        <div class="col-md-4 mx-auto py-2 justify-content-center">
+            <a class="btn btn-success w-100" href="add/" role="button">Ajouter un évènement ...</a>
+        </div>
         <div class="table-responsive-vertical mx-5">
             <!-- Table starts here -->
             <table id="table" class="table table-hover table-striped table-bordered">
@@ -25,20 +28,21 @@
                 <tbody>
                 {% for event in events %}
                     <tr>
-                        <td data-title="Niveau">{{ event.level | capitalize  }}</td>
+                        <td data-title="Niveau">{{ event.level | capitalize }}</td>
                         <td data-title="Nom">{{ event.title | capitalize }}</td>
                         <td data-title="Date de début">{{ event.date_begin }}</td>
                         <td data-title="Date de fin">{{ event.date_end }}</td>
-                        <td data-title="Catégorie">{{ event.category | capitalize  }}</td>
-                        <td data-title="Type">{{ event.type | capitalize  }}</td>
-                        <td data-title="Mixité">{{ event.gendermix | capitalize  }}</td>
+                        <td data-title="Catégorie">{{ event.category | capitalize }}</td>
+                        <td data-title="Type">{{ event.type | capitalize }}</td>
+                        <td data-title="Mixité">{{ event.gendermix | capitalize }}</td>
                         <td data-title="Departement">{{ event.dept_name }} ({{ event.dept_num }})</td>
-                        <td><a class="btn btn-warning w-100" href="edit/{{ event.id }}" role="button">Editer ...</a></td>
+                        <td><a class="btn btn-warning w-100" href="edit/{{ event.id }}" role="button">Editer ...</a>
+                        </td>
                         <td><a class="btn btn-danger w-100" href="delete/{{ event.id }}" role="button">Enlever</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
-</div>
+    </div>
 {% endblock %}
