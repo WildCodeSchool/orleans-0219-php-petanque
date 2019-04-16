@@ -213,4 +213,136 @@ p {
     padding-bottom: 50px;
 }
 
+.big_club_article{
+    min-height: 300px;
+    max-height: 400px;
+    overflow:hidden;
+    position: relative;
+}
 
+.small_club_article{
+    min-height: 300px;
+    max-height: 400px;
+    overflow:hidden;
+    position: relative;
+}
+
+.big_club_img
+{
+    object-fit:cover;
+    width: 600px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.info_article_big:hover + .big_club_img
+{
+
+    filter: brightness(80%);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.small_club_img
+{
+    object-fit:cover;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.info_article_big
+{
+    z-index: 1;
+    background-color: transparent;
+    width: 560px;
+    height: 280px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.info_article_small
+{
+    z-index: 1;
+    background-color: transparent;
+    width: 560px;
+    height: 270px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.info_article_big > ul{
+    padding: 0;
+}
+
+.info_article_big > ul > li{
+    display: inline;
+    list-style: none;
+    padding-left: 10px;
+    color: white;
+}
+
+.info_article_big{
+    font-size: 80%;
+}
+
+.article_tag_and_title{
+    position: absolute;
+    bottom:0;
+}
+
+.button_tag {
+    color: #fff;
+    background-color:#3E3631;
+    padding: .180rem .50rem;
+}
+
+.button_tag:hover, .button_tag:focus {
+    background-color: #bf9b30;
+}
+
+.title_article_big{
+    padding-top: 20px;
+    color: white;
+}
+
+.hover_content_big_article{
+    overflow:hidden;
+    opacity: 0.9;
+    position: absolute;
+    bottom: -45px;
+    padding: 5px;
+}
+
+.no_display{
+    display:none;
+}
+
+.darken_image{
+
+}
+
+/*
+@media (max-width: 1200px) {
+    .bloc {
+        padding:50px;
+    }
+}*/
