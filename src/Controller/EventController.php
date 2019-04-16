@@ -25,8 +25,7 @@ use Nette\Utils\DateTime;
 class EventController extends AbstractController
 {
 
-
-    /**
+     /**
      * Display event creation page
      *
      * @return string

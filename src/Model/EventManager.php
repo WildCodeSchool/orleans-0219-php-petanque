@@ -11,6 +11,7 @@ namespace App\Model;
 
 /**
  *Sport event manager
+ *
  */
 class EventManager extends AbstractManager
 {
@@ -27,8 +28,8 @@ class EventManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-
     /**
+     * Insert an Event
      * @param array $events
      * @return int
      */

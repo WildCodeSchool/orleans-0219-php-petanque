@@ -1,0 +1,41 @@
+{% extends 'sublayout_visitor.html.twig' %}
+
+{% block content %}
+
+<div class="container-fluid ">
+    <h2 class ="text-center">Evènements sportifs à venir</h2>
+        <div class="table-responsive-vertical mx-5">
+            <!-- Table starts here -->
+            <table id="table" class="table table-hover table-striped table-bordered">
+                <thead class="comp-thead-color">
+                <tr>
+                    <th scope="col">Niveau</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Date de début</th>
+                    <th scope="col">Date de fin</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Mixité</th>
+                    <th scope="col">Département</th>
+                    <th scope="col">Informations</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td data-title="Niveau">{{ event.level | capitalize  }}</td>
+                        <td data-title="Nom">{{ event.title | capitalize }}</td>
+                        <td data-title="Date de début">{{ event.date_begin }}</td>
+                        <td data-title="Date de fin">{{ event.date_end }}</td>
+                        <td data-title="Catégorie">{{ event.category | capitalize  }}</td>
+                        <td data-title="Type">{{ event.type | capitalize  }}</td>
+                        <td data-title="Mixité">{{ event.gendermix | capitalize  }}</td>
+                        <td data-title="Departement">{{ event.dept_name }} ({{ event.dept_num }})</td>
+                        <td><a class="btn comp-button-moreinfo w-100" href="show/{{ event.id }}" role="button">En savoir plus</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+</div>
+{% endblock %}
