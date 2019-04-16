@@ -35,8 +35,6 @@ class EventController extends AbstractController
 
         return $this->twig->render('Event/show.html.twig', [
             'event' => $event,
-            'mainTitle' => 'Vie du club',
-            'mainSubTitle' => 'Détails de l\'évènement sportif',
             ]);
     }
 }
