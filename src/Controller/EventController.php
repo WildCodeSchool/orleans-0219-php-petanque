@@ -149,7 +149,9 @@ class EventController extends AbstractController
             $errors['gendermix_id'] = "Un type de mixité valide est requis.";
         };
 
-        if (!empty($postData['date_register'])) {
+        if (empty($postData['date_register'])) {
+            $errors['date_register'] = "Une date d'inscription à l'évènement est requis.";
+        } elseif ($postData['date_begin']) {
             $dateBegin = DateTime::createFromFormat('Y-m-d', $postData['date_begin']);
             $dateRegister = DateTime::createFromFormat('Y-m-d', $postData['date_register']);
             if ($dateRegister && $dateRegister->format('Y-m-d') !==  $postData['date_register']) {

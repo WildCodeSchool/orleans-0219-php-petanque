@@ -52,9 +52,7 @@ class EventManager extends AbstractManager
         $statement->bindValue('date_register', $events['date_register'], \PDO::PARAM_STR);
         $statement->bindValue('rulesfile_id', $events['rulesfile_id'], \PDO::PARAM_INT);
         $statement->bindValue('article_id', $events['article_id'], \PDO::PARAM_INT);
-        echo "<br>";
-        $statement->debugDumpParams();
-        echo "<br>";
+
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
         }
