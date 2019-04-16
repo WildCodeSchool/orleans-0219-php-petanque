@@ -11,16 +11,16 @@
             </div>
             <div class="my-3">
                 <div class="row px-2 my-1">
-                    <label for="evendatebegin" class="col-sm-2 col-form-label form-required">Début :</label>
+                    <label for="evendatebegin" class="col-sm-2 col-form-label form-required">Date de début :</label>
                     <div class="col-sm-5 col-md-3 text-center">
                         <input type="date" class="form-control" id="evendatebegin" name="date_begin" value="{{ event.date_begin }}" placeholder="Date de début" required>
                     </div>
                     <div class="error-form">{{ errors.date_begin }}</div>
                 </div>
                 <div class="row px-2 my-1">
-                    <label for="evendateend" class="col-sm-2 col-form-label">Fin :</label>
+                    <label for="evendateend" class="col-sm-2 col-form-label form-required">Date de fin :</label>
                     <div class="col-sm-5 col-md-3 text-center">
-                        <input type="date" class="form-control" id="evendateend" name="date_end" value="{{ event.date_end }}" data-toggle="tooltip" data-placement="top" title="Si aucune date de fin n'est fixée, la date de début sera repris." placeholder="Date de fin">
+                        <input type="date" class="form-control" id="evendateend" name="date_end" value="{{ event.date_end }}" data-toggle="tooltip" data-placement="top" title="Remettre la date de début si il ne s'agit que d'une journée" placeholder="Date de fin" required>
                     </div>
                     <div class="error-form">{{ errors.date_end }}</div>
                 </div>
@@ -98,11 +98,11 @@
             <h5>Modalités d'inscription</h5>
             <div class="heading-divider-extent"></div>
             <div class="row px-2 my-1">
-                <label for="evendateregister" class="col-sm-5 col-md-4 col-form-label">Date limite d'inscription
+                <label for="evendateregister" class="col-sm-5 col-md-4 col-form-label form-required">Date limite d'inscription
                     :</label>
                 <div class="col-sm-6 col-md-4 text-center">
-                    <input type="date" class="form-control" id="evendateregister" name="date_register"
-                           placeholder="Date limite d'inscription :">
+                    <input type="date" class="form-control" id="evendateregister" name="date_register" value="{{ event.date_end }}"
+                           placeholder="Date limite d'inscription :" required>
                 </div>
                 <div class="error-form">{{ errors.date_register }}</div>
             </div>
@@ -113,7 +113,7 @@
             <input type="hidden" value="-1" name="article_id">
         </section>
         <section class="mt-5 text-center">
-            <button type="submit" class="btn btn-block btn-lg w-100 btn-primary">Ajouter l'évènement</input>
+            <button type="submit" class="btn btn-block btn-lg w-100 btn-primary">Ajouter l'évènement</button>
         </section>
     </form>
 </div>
