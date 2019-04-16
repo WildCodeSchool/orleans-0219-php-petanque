@@ -2,10 +2,12 @@
 
 {% block content %}
 
-    <section id="Hpartenaires">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-6">
+    <section id="HarticleClub">
+        <div class="container-fluid">
+            <div class="text-center"><h2>Actualité du club</h2></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="#">
                         <div class="big_club_article">
                             <div class="info_article_big">
                                 <ul>
@@ -16,77 +18,57 @@
                                         <i class="fas fa-user"><span> Jean</span></i>
                                     </li>
                                 </ul>
-                                <div class="article_tag_and_title">
-                                    <button class="button_tag btn">news</button>
+                                <div class="article_tag_and_title_big">
+                                    <button class="button_tag btn">info</button>
                                     <h4 class="title_article_big">On prend l'apéro à 18h</h4>
-                                    <p class="hover_content_big_article no_display">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <p class="hover_content_big_article no_display">{{ (article|length > 50 ? article|slice(0, 50) ~ '…' : article) |nl2br }}</p>
                                 </div>
                             </div>
                             <img class="rounded big_club_img bloc" src="https://via.placeholder.com/150">
                         </div>
-                    </div>
-                    <div class="col-xl-3">
-                        <div class="small_club_article">
-                            <img class="rounded small_club_img" src="https://via.placeholder.com/150">
-                        </div>
-                    </div>
-                    <div class="col-xl-3">
-                        <div class="small_club_article">
-                            <img class="rounded small_club_img" src="https://via.placeholder.com/150">
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
-    </section>
-
-    <section id="Hpartenaires">
-        <div class="mx-5">
-            <h3 class="text-center">Ils nous font confiance</h3>
-            <div class="row text-center pt-4">
-                <div class="col-xl-2">
-                    <div class="portrait_wrapper pt-3">
-                        <div class="portrait pr-4">
-                            <img src="http://via.placeholder.com/150x150" class="rounded" alt="Cinque Terre">
+                <div class="col-md-3">
+                    <a href="#">
+                        <div class="card card_small_article mx-auto">
+                            <div class="info_article_small">
+                                <div class="article_tag_small">
+                                    <button class="button_tag btn">article</button>
+                                </div>
+                            </div>
+                            <img class="card-img-top card_img_small" src="https://via.placeholder.com/150"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                                <i class="fas fa-calendar-alt mt-5"><span> 10-04-2019</span></i>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
-                <div class="col-xl-2">
-                    <div class="portrait-wrapper pt-3">
-                        <div class="portrait pr-4">
-                            <img src="http://via.placeholder.com/150x150" class="rounded" alt="Cinque Terre">
+                <div class="col-md-3">
+                    <a href="#">
+                        <div class="card card_small_article mx-auto">
+                            <div class="info_article_small">
+                                <div class="article_tag_small">
+                                    <button class="button_tag btn">évènement</button>
+                                </div>
+                            </div>
+                            <img class="card-img-top card_img_small" src="https://via.placeholder.com/150"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                                <i class="fas fa-calendar-alt mt-5"><span> 10-04-2019</span></i>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xl-2">
-                    <div class="portrait-wrapper pt-3">
-                        <div class="portrait pr-4">
-                            <img src="http://via.placeholder.com/150x150" class="rounded" alt="Cinque Terre">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2">
-                    <div class="portrait-wrapper pt-3">
-                        <div class="portrait pr-4">
-                            <img src="http://via.placeholder.com/150x150" class="rounded" alt="Cinque Terre">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2">
-                    <div class="portrait-wrapper pt-3">
-                        <div class="portrait pr-4">
-                            <img src="http://via.placeholder.com/150x150" class="rounded" alt="Cinque Terre">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2">
-                    <div class="portrait-wrapper pt-3">
-                        <div class="portrait pr-4">
-                            <img src="http://via.placeholder.com/150x150" class="rounded" alt="Cinque Terre">
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
 
 {% endblock %}
