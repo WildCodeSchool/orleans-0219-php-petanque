@@ -93,51 +93,24 @@
             </div>
 
             <div class="row">
-                <div class="col mx-auto">
-                    <div class="table-responsive-vertical">
+                <div class="col">
+                    <div class="table-responsive-vertical mx-auto w-75">
                         <table class="table table-hover table_striped table-bordered">
                             <thead class="comp-thead-color">
                             <tr>
-                                <th scope="col">Jour</th>
-                                <th scope="col">Matin</th>
-                                <th scope="col">Après-midi</th>
+                                <th class="text-center" scope="col">Jour</th>
+                                <th class="text-center" scope="col">Matin</th>
+                                <th class="text-center" scope="col">Après-midi</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="text-left" scope="row">Lundi</td>
-                                <td data-title="Matin :">Fermé</td>
-                                <td data-title="Après-midi :">De 14h00 à 19h30</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left" scope="row">Mardi</td>
-                                <td data-title="Matin :">De 8h00 à 12h00</td>
-                                <td data-title="Après-midi :">De 14h00 à 19h30</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left" scope="row">Mercredi</td>
-                                <td colspan="2">Ouvert toute la journée, de 8h00 à 20h00</td>
-
-                            </tr>
-                            <tr>
-                                <td class="text-left" scope="row">Jeudi</td>
-                                <td data-title="Matin :">De 8h00 à 12h00</td>
-                                <td data-title="Après-midi :">De 14h00 à 18h00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left" scope="row">Vendredi</td>
-                                <td data-title="Matin :">De 8h00 à 12h00</td>
-                                <td data-title="Après-midi :">De 14h00 à 21h00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left" scope="row">Samedi</td>
-                                <td data-title="Matin :">De 8h00 à 12h00</td>
-                                <td data-title="Après-midi :">De 14h00 à 21h00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left" scope="row">Dimanche</td>
-                                <td colspan="2">Ouvert toute la journée, de 8h00 à 20h00</td>
-                            </tr>
+                            {% for schedule in schedules %}
+                                <tr>
+                                    <td class="text-center">{{ schedule.day }} :</td>
+                                    <td class="text-center" data-title="Matin :">{{ schedule.morning }}</td>
+                                    <td class="text-center" data-title="Après-midi :">{{ schedule.afternoon }}</td>
+                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
