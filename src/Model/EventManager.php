@@ -138,7 +138,7 @@ class EventManager extends AbstractManager
     /**
      * Get all Eventts from database
      *
-     * @param  int $id
+     *
      *
      * @return array
      */
