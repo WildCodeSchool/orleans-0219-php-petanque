@@ -447,7 +447,6 @@ p {
 
 }
 
-
 /******************* EVENEMENT SPORTIF CARTE ****************************************************/
 /*-------------------------------------------------------------------------------------------------*/
 .card-evt {
@@ -588,3 +587,27 @@ p {
     visibility: visible;
     transform: scaleX(1);
 }
+
+/* ================================= Début Styles Admin ================================== */
+
+/* Styles Admin Horaires */
+
+.btn_schedule{
+    padding-bottom: 10%;
+}
+
+.input_schedule{
+    background-color: transparent;
+    border: 0.5px solid #3a332d;
+    border-radius: 10px;
+    padding: 2% 0;
+    text-align: center;
+}
+
+.input_schedule:hover{
+    background-color: #f5f5f5;
+}
+
+/* ================================= Fin Styles Admin ================================== */
+
+
