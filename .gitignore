@@ -1,4 +1,5 @@
 /vendor/
+/public/assets/images/members
 /temp/*
 .phpcs-cache
 *.cache
