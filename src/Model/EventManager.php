@@ -33,7 +33,6 @@ class EventManager extends AbstractManager
      *
      * @return array
      */
-
     public function selectEventsToCome(): array
     {
         $statement = "
