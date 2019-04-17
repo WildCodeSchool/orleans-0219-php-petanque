@@ -63,6 +63,11 @@ class EventManager extends AbstractManager
         return $this->pdo->query($statement)->fetchAll();
     }
 
+    /**
+     * Get all row from database
+     *
+     * @return array
+     */
     public function selectAllEvents(): array
     {
         $statement = "
