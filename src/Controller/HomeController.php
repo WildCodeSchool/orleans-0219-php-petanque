@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use App\Model\MemberManager;
+
 class HomeController extends AbstractController
 {
 
@@ -21,6 +23,10 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Home/index.html.twig');
+        $membersManager = new MemberManager();
+        $members = $membersManager->getTopMembers();
+        return $this->twig->render('Home/index.html.twig', [
+            'members' => $members,
+        ]);
     }
 }

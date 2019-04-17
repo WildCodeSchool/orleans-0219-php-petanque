@@ -4,23 +4,23 @@
     <section id="HquiSommesNous">
         <div class="mx-5">
             <div class="row text-center">
-                {% for i in 0..2 %}
-                <div class="col-xl-4">
-                    <div class="portrait_wrapper pt-3">
-                        <div class="portrait float-left pr-4">
-                            <img src="http://via.placeholder.com/150x150" class="rounded-circle" alt="Cinque Terre">
-                        </div>
-                        <div class="qui_title_wrap text-left">
-                            <p>{{ members[0].lastname~' '~membres[0].firstname }}</p>
-                        </div>
-                        <div class="qui_role_wrap text-left">
-                            <p>{{ members[0].role }}</p>
-                        </div>
-                        <div class="qui_desc_wrap text-left">
-                            <p>{{ members[0].desc }}</p>
+                {% for member in members %}
+                    <div class="col-xl-4">
+                        <div class="portrait_wrapper pt-3">
+                            <div class="portrait float-left pr-4">
+                                <img src={{ base_path~directory }}/{{ (member.picture is null) ? 'assets/images/members/placeholder.jpg' : member.picture}} class="rounded-circle home_members_picture" alt="Cinque Terre">
+                            </div>
+                            <div class="qui_title_wrap text-left">
+                                <p>{{ member.lastname | capitalize}}  {{ member.firstname }}</p>
+                            </div>
+                            <div class="qui_role_wrap text-left">
+                                <p>{{ member.role }}</p>
+                            </div>
+                            <div class="qui_desc_wrap text-left">
+                                <p>{{ member.description }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
             </div>
         </div>
