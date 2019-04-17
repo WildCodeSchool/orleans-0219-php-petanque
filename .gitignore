@@ -1,5 +1,5 @@
 /vendor/
-/public/assets/images/members
+/public/assets/images/members/*.jpg
 /temp/*
 .phpcs-cache
 *.cache
