@@ -35,11 +35,10 @@ class ScheduleManager extends AbstractManager
      */
     public function update(array $schedule): bool
     {
-
         // prepared request
-        $statement = $this->pdo->prepare("UPDATE $this->table
-                                                    SET `morning` = :morning, `afternoon` = :afternoon
-                                                    WHERE id=:id");
+        $query = "UPDATE $this->table SET `morning` = :morning, `afternoon` = :afternoon WHERE id=:id";
+
+        $statement = $this->pdo->prepare($query);
 
         $statement->bindValue('id', $schedule['id'], \PDO::PARAM_INT);
         $statement->bindValue('morning', $schedule['morning'], \PDO::PARAM_STR);
