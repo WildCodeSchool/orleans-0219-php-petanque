@@ -36,7 +36,7 @@
                         <td data-title="Type">{{ event.type | capitalize }}</td>
                         <td data-title="Mixité">{{ event.gendermix | capitalize }}</td>
                         <td data-title="Departement">{{ event.dept_name }} ({{ event.dept_num }})</td>
-                        <td><a class="btn btn-warning w-100" href="edit/{{ event.id }}" role="button">Editer ...</a>
+                        <td><a class="btn btn-warning w-100" href="{{ base_path ~ directory }}/AdminEvent/edit/{{ event.id }}" role="button">Editer ...</a>
                         </td>
                         <td><a class="btn btn-danger w-100" href="delete/{{ event.id }}" role="button">Enlever</a></td>
                     </tr>
