@@ -209,18 +209,18 @@ class EventManager extends AbstractManager
         // prepared request
         $statement = $this->pdo->prepare(
             "UPDATE $this->table SET 
-            `title` = :title 
-            `descr` = :descr 
-            `date_begin` = :date_begin 
-            `date_end` = :date_end 
-            `departement_id` = :departement_id 
-            `location` = :location 
-            `level_id` = :level_id 
-            `category_id` = :category_id 
-            `type_id` = :type_id 
-            `gendermix_id` = :gendermix_id 
-            `date_register` = :date_register 
-            `rulesfile_id` = :rulesfile_id 
+            `title` = :title,
+            `descr` = :descr,
+            `date_begin` = :date_begin,
+            `date_end` = :date_end,
+            `departement_id` = :departement_id,
+            `location` = :location,
+            `level_id` = :level_id,
+            `category_id` = :category_id,
+            `type_id` = :type_id,
+            `gendermix_id` = :gendermix_id,
+            `date_register` = :date_register,
+            `rulesfile_id` = :rulesfile_id,
             `article_id` = :article_id             
             WHERE id=:id"
         );
@@ -238,6 +238,7 @@ class EventManager extends AbstractManager
         $statement->bindValue('rulesfile_id', $event['rulesfile_id'], \PDO::PARAM_INT);
         $statement->bindValue('article_id', $event['article_id'], \PDO::PARAM_INT);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        var_dump($event);
         return $statement->execute();
     }
 }
