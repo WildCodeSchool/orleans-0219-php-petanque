@@ -96,6 +96,65 @@ class AdminEventController extends AbstractController
         ]);
     }
 
+    /**
+     * UPDATE event informations
+     *
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function update(int $id)
+    {
+        $errorEventData=[];
+        $eventData=[];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $postDatum = new PostDatum($_POST);
+            $eventData=$postDatum->cleanValues();
+            $errorEventData = $this->checkErrorsPostData($eventData);
+
+            if (empty($id) || $id < 0) {
+                $errorEventData['id'] = "Un problème est survenu lors de la mise à jour de l'évènement.";
+            }
+
+            $eventManager = new EventManager();
+            if (empty($errorEventData)) {
+                $id = $eventManager->updateEvent($eventData, $id);
+                header('Location:/event/show/' . $id);
+            }
+        } else {
+            $eventManager = new EventManager();
+            $eventData = $eventManager->selectOneById($id);
+        }
+
+        $departementManager = new DepartementManager();
+        $departements = $departementManager->selectall();
+
+        $levelManager = new EventLevelManager();
+        $levels = $levelManager->selectall();
+
+        $genderManager = new EventGenderManager();
+        $genders = $genderManager->selectall();
+
+        $evtCategoryManager = new EventCategoryManager();
+        $categories = $evtCategoryManager->selectall();
+
+        $evtTypeManager = new EventTypeManager();
+        $types = $evtTypeManager->selectall();
+
+        return $this->twig->render('Event/edit.html.twig', [
+            'event' => $eventData,
+            'errors' => $errorEventData,
+            'departements' => $departements,
+            'levels' => $levels,
+            'genders'=> $genders,
+            'categories' => $categories,
+            'types' => $types,
+        ]);
+    }
+
     private function checkErrorsPostData(array $postData) : array
     {
         $errors=[];
