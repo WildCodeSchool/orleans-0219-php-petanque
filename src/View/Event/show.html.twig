@@ -4,6 +4,27 @@
 {% block headerSubTitle %}Détails de l'évènement sportif{% endblock %}
 {% block content %}
     <div class="container-fluid justify-content-center text-center p-0">
+        {% if statusAlert == true %}
+            <div class="alert alert-success  alert-dismissible fade show col-md-6 text-center mx-auto py-2 "
+                 role="alert">
+                L'évènement a été correctement ajouté.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+        <div class="row justify-content-center w-100 m-3">
+            <div>
+                {% if adminStatus == true %}
+                    <a class="btn comp-button-moreinfo " href="{{ base_path ~ directory }}/AdminEvent/index"
+                       role="button">Retour
+                        ver la liste d'évènements d'administration</a>
+                {% else %}
+                    <a class="btn comp-button-moreinfo " href="{{ base_path ~ directory }}/Event/index" role="button">Retour
+                        ver la liste d'évènements</a>
+                {% endif %}
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="card rounded-0 col-sm-12 col-md-4 p-0">
                 <div class="card-body rounded-0 card-body-evt-left p-0">

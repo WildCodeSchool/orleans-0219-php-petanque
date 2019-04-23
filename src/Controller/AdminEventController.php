@@ -109,7 +109,6 @@ class AdminEventController extends AbstractController
     {
         $errorEventData=[];
         $eventData=[];
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $postDatum = new PostDatum($_POST);
             $eventData=$postDatum->cleanValues();
@@ -123,10 +122,7 @@ class AdminEventController extends AbstractController
             if (empty($errorEventData)) {
                 $eventManager->updateEvent($eventData, $id);
                 $events=$eventManager->selectAllEvents();
-                return $this->twig->render('Event/indexadmin.html.twig', [
-                    'events' => $events,
-                    'editsuccess' =>true,
-                ]);
+                header('Location:/event/show/' . $id . '/?status=success&&type=admin');
             }
         } else {
             $eventManager = new EventManager();
