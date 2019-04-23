@@ -15,7 +15,7 @@ function checkWindowSize(){
     let width = $(window).width()
     let scrollPos = $(window).scrollTop()
     let widthBreakpoint = 975
-    let scrollTrigger = 50
+    let scrollTrigger = 100
 
     if(width >= widthBreakpoint && scrollPos <= scrollTrigger){
         $('#navbarNav > ul > li').addClass('nav-item-underline')
