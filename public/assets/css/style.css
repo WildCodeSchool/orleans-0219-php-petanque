@@ -608,6 +608,11 @@ p {
     background-color: #f5f5f5;
 }
 
+.card_img_member{
+    width: 250px;
+    height: 300px;
+}
+
 /* ================================= Fin Styles Admin ================================== */
 
 
