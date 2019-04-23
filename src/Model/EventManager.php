@@ -238,7 +238,6 @@ class EventManager extends AbstractManager
         $statement->bindValue('rulesfile_id', $event['rulesfile_id'], \PDO::PARAM_INT);
         $statement->bindValue('article_id', $event['article_id'], \PDO::PARAM_INT);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
-        var_dump($event);
         return $statement->execute();
     }
 }

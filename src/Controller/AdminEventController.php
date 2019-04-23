@@ -121,8 +121,12 @@ class AdminEventController extends AbstractController
 
             $eventManager = new EventManager();
             if (empty($errorEventData)) {
-                $id = $eventManager->updateEvent($eventData, $id);
-                header('Location:/event/show/' . $id);
+                $eventManager->updateEvent($eventData, $id);
+                $events=$eventManager->selectAllEvents();
+                return $this->twig->render('Event/indexadmin.html.twig', [
+                    'events' => $events,
+                    'editsuccess' =>true,
+                ]);
             }
         } else {
             $eventManager = new EventManager();
