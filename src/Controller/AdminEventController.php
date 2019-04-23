@@ -114,11 +114,13 @@ class AdminEventController extends AbstractController
             $eventData=$postDatum->cleanValues();
             $errorEventData = $this->checkErrorsPostData($eventData);
 
-            if (empty($id) || $id < 0) {
+            $eventManager = new EventManager();
+            if (empty($id)) {
                 $errorEventData['id'] = "Un problème est survenu lors de la mise à jour de l'évènement.";
+            } elseif (empty($eventManager->selectOneById($id))) {
+                $errorEventData['id'] = "L'identifiant demandé de l'évènement n'existe pas dans la base de données";
             }
 
-            $eventManager = new EventManager();
             if (empty($errorEventData)) {
                 $eventManager->updateEvent($eventData, $id);
                 $events=$eventManager->selectAllEvents();
