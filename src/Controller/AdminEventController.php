@@ -105,7 +105,7 @@ class AdminEventController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function update(int $id)
+    public function edit(int $id)
     {
         $errorEventData=[];
         $eventData=[];
