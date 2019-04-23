@@ -64,8 +64,21 @@ p {
     color: #333333;
 }
 
+.colored_background{
+    background-color: #e2d3ba;
+    padding-bottom: 5%;
+}
+
 
 /* ---- h2 separator ---- */
+
+.h2_separator_dark{
+    display: inline-block;
+    width: 80px;
+    height: 3px;
+    margin: 2% 0 10% 0;
+    background-color: #3E3631;
+}
 
 .h2_separator{
     display: inline-block;
@@ -79,7 +92,7 @@ p {
 /* ---- Button styles ---- */
 
 .btn{
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .btn_item{
@@ -102,7 +115,7 @@ p {
 
 /* ---- Styles section Vos Envies ---- */
 
-.card_vosenvies {
+.card_yourwishes {
     border: none;
     max-width: 75%;
     margin-left: auto;
@@ -114,14 +127,42 @@ p {
     border: none;
 }
 
-.card_img_vosenvies{
+.card_img_yourwishes{
     border-radius: 15px;
 }
 
-.card_margin_vosenvies{
+.card_margin_yourwishes{
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
+/* ---- Styles Section Horaires ---- */
+
+.table_schedule{
+    background-color: rgba(211,170,78,0.2);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.table_schedule thead th{
+    border: 1px solid #3E3631;
+    background-color: #d3aa4e;
+    color: #3E3631;
+}
+
+.table_schedule tbody td{
+    border: 1px solid #3E3631;
+}
+
+.table_schedule tbody th{
+    border: 1px solid #3E3631;
+}
+
+.table_schedule tbody tr:hover{
+    background-color: #3E3631;
+    color: #d3aa4e;
+}
+  
 
 /*-------------------------------------------------------------------------------*/
 
@@ -147,6 +188,7 @@ p {
     margin-top: 20px;
     font-size: 0;
 }
+
 .heading-divider::before {
     content: '';
     display: inline-block;
@@ -159,6 +201,29 @@ p {
     left: 0;
     position: absolute;
     width: 50px;
+    border-top: 1px solid #d3aa4e;
+}
+
+.heading-divider-extent {
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 0;
+}
+
+.heading-divider-extent::before {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    border-top: 1px solid rgba(221, 221, 221, 0.5);
+}
+.heading-divider-extent::after {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 35%;
     border-top: 1px solid #d3aa4e;
 }
 
@@ -252,7 +317,6 @@ p {
     color:#f58320;
 }
 
-/******************************************************************************/
 .comp-thead-color{
     background-color: rgba(58, 51, 45,1);
 }
@@ -260,13 +324,14 @@ p {
 .comp-button-moreinfo {
     color: #fff;
     background-color:rgba(58, 51, 45,1);
-    border-color: rgba(43, 37, 33,1)
+    border-color: rgba(43, 37, 33,1);
+    transition: .25s ease-out all;
 }
 
-.comp-button-moreinfo:hover, .comp-button-moreinfo:focus {
-    box-shadow: 0 0 0 .2rem rgba(58, 51, 45,1);
-    background-color:rgba(58, 51, 45,0.5);
-    color: lightgray;
+.comp-button-moreinfo:hover {
+    transition: .25s ease-out all;
+    box-shadow: 0 .5rem .5rem rgba(83, 83, 83, 0.2);
+    color: #d3aa4e;
 }
 
 .table {
@@ -299,6 +364,7 @@ p {
 .table > tbody + tbody {
     border-top: 1px solid rgba(0,0,0,0.12);
 }
+
 .table .table {
     background-color: #fff;
 }
@@ -381,7 +447,148 @@ p {
 
 }
 
-/* ================================= Styles Admin ================================== */
+/******************* EVENEMENT SPORTIF CARTE ****************************************************/
+/*-------------------------------------------------------------------------------------------------*/
+.card-evt {
+
+    max-width: 800px;
+    min-height: 300px;
+    cursor: pointer;
+    box-shadow: 0 1rem 1rem rgba(83, 83, 83, 0.2);
+    border: 2px solid rgba(211, 170, 78, 1);
+}
+.card-img_event {
+    object-fit: cover;
+    height: 100%;
+    max-height: 100%;
+    display:block;
+    margin:auto;
+    filter: blur(0px) opacity(50%);
+    transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);
+
+}
+.card-title-evt {
+    background-color: rgba(211, 170, 78, 0.8);
+    padding: 5px;
+    margin-top: 0px;
+}
+.card-title-evt-date {
+    background-color: rgba(211, 211, 211, 0.8);
+    padding: 3px;
+    margin-bottom: 0px;
+}
+
+/***********************Formulaire Global ********************************************/
+.form-required::after{
+    color: red;
+    content: '*';
+    pointer-events: none;
+    padding-left: 2px;
+}
+
+.error-form {
+    color: red;
+}
+
+/****  NAVBAR ********/
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover
+{
+    color: white;
+}
+
+.dropdown-menu
+{
+    background-color: #3E3631;
+    border: none;
+}
+
+.navbar-light .navbar-nav .show > .nav-link
+{
+    color: white;
+}
+
+.dropdown-menu > a
+{
+    color: white;
+    transition: 0.15s ease-in-out;
+}
+
+.dropdown-menu > a:hover{
+    transition: 0.15s ease-in-out;
+}
+
+.navbar-colored
+{
+    padding-top: 0%;
+    padding-bottom: 0%;
+    background-color: #3E3631;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar-transp
+{
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    background-color: rgba(0,0,0,0);
+    transition: 0.2s ease-in-out;
+}
+
+
+.h1-centered
+{
+    color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15%;
+    margin: auto;
+    font-size: 5vw;
+}
+
+.logo-nav
+{
+    width: 60px;
+}
+
+.img-wrap-header
+{
+    width: 100%;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.custom-toggler.navbar-toggler {
+    border-color: rgb(255,255,255);
+}
+
+/*link navbar animation*/
+
+.nav-item-underline > a {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-item-underline > a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 2px;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.nav-item-underline > a:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+/* ================================= Début Styles Admin ================================== */
 
 /* Styles Admin Horaires */
 
@@ -400,3 +607,7 @@ p {
 .input_schedule:hover{
     background-color: #f5f5f5;
 }
+
+/* ================================= Fin Styles Admin ================================== */
+
+
