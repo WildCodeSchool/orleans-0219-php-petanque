@@ -35,14 +35,25 @@ class AdminEventController extends AbstractController
      */
     public function index()
     {
+        $alertResult=false;
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $postDatum =new PostDatum($_GET);
+            $getData=$postDatum->cleanValues();
+            if (!empty($getData['status'])) {
+                if ($getData['status'] == 'success') {
+                    $alertResult= true;
+                }
+            }
+        }
         $eventManager = new EventManager();
         $events = $eventManager->selectAllEvents();
 
         return $this->twig->render('Event/indexadmin.html.twig', [
             'events' => $events,
+            'statusAlert' => $alertResult,
         ]);
     }
-  
+
 
      /**
      * Display event creation page
@@ -186,22 +197,23 @@ class AdminEventController extends AbstractController
 
     /**
      * Delete an event
-     * @param int $id
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
      */
-    public function delete(int $id)
+    public function delete()
     {
         $eventManager = new EventManager();
-        $eventManager->delete($id);
-        $eventManager = new EventManager();
-        $events = $eventManager->selectEventsToCome();
-
-        return $this->twig->render('Event/index.html.twig', [
-            'events' => $events,
-            'deletesuccess' =>true,
-        ]);
+        $errors=[];
+        $id=0;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            if (empty($id)) {
+                $errors[] = 'L évènement n existe pas';
+            } elseif (empty($eventManager->selectOneById($id))) {
+                $errors[] = 'L évènement n existe pas dans la base de données';
+            }
+        }
+        if (empty($errors)) {
+            $eventManager->delete($id);
+            header('Location:/adminEvent/index/?status=success');
+        }
     }
 }
