@@ -5,6 +5,11 @@
 {% block content %}
 
     <div class="container-fluid ">
+        {% if deletesuccess == true %}
+            <div class="alert alert-success" role="alert">
+                L'évènement a été correctement supprimé.
+            </div>
+        {% endif %}
         <div class="col-md-4 mx-auto py-2 justify-content-center">
             <a class="btn btn-success w-100" href="add/" role="button">Ajouter un évènement ...</a>
         </div>

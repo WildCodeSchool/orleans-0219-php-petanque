@@ -81,25 +81,4 @@ class EventController extends AbstractController
             'events' => $events,
         ]);
     }
-
-    /**
-     * Delete an event
-     * @param int $id
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-    public function deleteEvent(int $id)
-    {
-        $eventManager = new EventManager();
-        $eventManager->delete($id);
-        $eventManager = new EventManager();
-        $events = $eventManager->selectEventsToCome();
-
-        return $this->twig->render('Event/index.html.twig', [
-            'events' => $events,
-            'deletesuccess' =>true,
-        ]);
-    }
 }
