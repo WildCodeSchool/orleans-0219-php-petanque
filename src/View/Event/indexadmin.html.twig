@@ -5,6 +5,14 @@
 {% block content %}
 
     <div class="container-fluid ">
+        {% if updatesuccess == true %}
+            <div class="alert alert-success  alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
+                L'évènement a été correctement mis à jour.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
         <div class="col-md-4 mx-auto py-2 justify-content-center">
             <a class="btn btn-success w-100" href="add/" role="button">Ajouter un évènement ...</a>
         </div>
