@@ -66,7 +66,7 @@ class AdminEventController extends AbstractController
 
             if (empty($errorEventData)) {
                 $id = $eventManager->insertEvent($eventData);
-                header('Location:/event/show/' . $id);
+                header('Location:/event/show/' . $id . '/?status=success&&type=admin');
             }
         }
 
