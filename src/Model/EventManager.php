@@ -198,4 +198,46 @@ class EventManager extends AbstractManager
 
         return $this->pdo->query($statement)->fetchAll();
     }
+
+    /**
+     * @param array $event
+     * @param int $id
+     * @return bool
+     */
+    public function updateEvent(array $event, int $id)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare(
+            "UPDATE $this->table SET 
+            `title` = :title 
+            `descr` = :descr 
+            `date_begin` = :date_begin 
+            `date_end` = :date_end 
+            `departement_id` = :departement_id 
+            `location` = :location 
+            `level_id` = :level_id 
+            `category_id` = :category_id 
+            `type_id` = :type_id 
+            `gendermix_id` = :gendermix_id 
+            `date_register` = :date_register 
+            `rulesfile_id` = :rulesfile_id 
+            `article_id` = :article_id             
+            WHERE id=:id"
+        );
+        $statement->bindValue('title', $event['title'], \PDO::PARAM_STR);
+        $statement->bindValue('descr', $event['descr'], \PDO::PARAM_STR);
+        $statement->bindValue('date_begin', $event['date_begin'], \PDO::PARAM_STR);
+        $statement->bindValue('date_end', $event['date_end'], \PDO::PARAM_STR);
+        $statement->bindValue('departement_id', $event['departement_id'], \PDO::PARAM_INT);
+        $statement->bindValue('location', $event['location'], \PDO::PARAM_STR);
+        $statement->bindValue('level_id', $event['level_id'], \PDO::PARAM_INT);
+        $statement->bindValue('category_id', $event['category_id'], \PDO::PARAM_INT);
+        $statement->bindValue('type_id', $event['type_id'], \PDO::PARAM_INT);
+        $statement->bindValue('gendermix_id', $event['gendermix_id'], \PDO::PARAM_INT);
+        $statement->bindValue('date_register', $event['date_register'], \PDO::PARAM_STR);
+        $statement->bindValue('rulesfile_id', $event['rulesfile_id'], \PDO::PARAM_INT);
+        $statement->bindValue('article_id', $event['article_id'], \PDO::PARAM_INT);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        return $statement->execute();
+    }
 }
