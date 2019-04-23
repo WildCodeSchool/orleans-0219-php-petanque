@@ -199,7 +199,7 @@ class AdminEventController extends AbstractController
         $eventManager = new EventManager();
         $events = $eventManager->selectEventsToCome();
 
-        return $this->twig->render('Event/index.html.twig', [
+        return $this->twig->render('Event/indexadmin.html.twig', [
             'events' => $events,
             'deletesuccess' =>true,
         ]);
