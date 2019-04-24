@@ -1,11 +1,10 @@
 /vendor/
 /temp/*
+/public/assets/images/members/
+/public/assets/images/sponsors/
 .phpcs-cache
 *.cache
 db.php
 .idea
-<<<<<<< HEAD
 /sql/
-=======
-/sql/
->>>>>>> dev
+
