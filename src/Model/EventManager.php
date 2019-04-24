@@ -171,7 +171,7 @@ class EventManager extends AbstractManager
      * @param int $limitResults
      * @return array
      */
-    public function selectAllEvents(int $limitResults = -1): array
+    public function selectAllEvents(int $limitResults = 0): array
     {
         $statement = "
         SELECT evenement.id, 
