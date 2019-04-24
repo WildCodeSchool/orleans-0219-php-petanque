@@ -59,30 +59,15 @@ class EventController extends AbstractController
     {
         $eventManager = new EventManager();
         $event = $eventManager->selectOneEventToComeById($id);
-
-        $alertResult=false;
-        $adminStatus=false;
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $postDatum =new PostDatum($_GET);
-            $getData=$postDatum->cleanValues();
-            if (!empty($getData['status'])) {
-                if ($getData['status'] == 'success') {
-                    $alertResult= true;
-                }
-            }
-            if (!empty($getData['type'])) {
-                if ($getData['type'] == 'admin') {
-                    $adminStatus= true;
-                }
-            }
-        }
-
+        $alertResult = isset($_GET['status']);
+        $adminStatus = isset($_GET['type']);
         return $this->twig->render('Event/show.html.twig', [
             'event' => $event,
-            'statusAlert' => $alertResult,
+        'statusAlert' => $alertResult,
             'adminStatus' => $adminStatus,
         ]);
     }
+
 
     /**
      * Display past events listing
