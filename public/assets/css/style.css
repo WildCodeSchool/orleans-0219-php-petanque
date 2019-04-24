@@ -135,6 +135,11 @@ p {
     margin-bottom: 15px;
 }
 
+.card_body_yourwishes{
+    margin-top: 20px;
+    height: 150px;
+}
+
 /* ---- Styles Section Horaires ---- */
 
 .table_schedule{
