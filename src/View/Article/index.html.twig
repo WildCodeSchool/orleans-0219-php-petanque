@@ -1,0 +1,45 @@
+{% extends 'sublayout_visitor.html.twig' %}
+
+{% block content %}
+
+    <div class="container">
+        <h2 class="text-center">Les dernières brèves</h2>
+        {% for article in articles %}
+            <div class="row my-2">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header text-right">
+                            Posté le {{ article.date_publicated }}
+                        </div>
+                        <div class="row card-body">
+                            {% if loop.index is odd %}
+                                <img class="p-1 rounded-0 article-small text-center mx-auto"
+                                     src="{{ base_path ~ directory }}/{{ article.picture }}"
+                                     alt="{{ 'image de ' ~ article.title }}">
+                            {% endif %}
+
+                            <div class="col-sm-6">
+                                <h3 class="card-title text-center ">{{ article.title }}</h3>
+                                <div class="heading-divider-extent"></div>
+                                <p class="card-text text-justify"> {{ article.description|striptags|length > 500 ? article.description|striptags|slice(0, 500) ~ ' [...]' : article.description|striptags }}</p>
+                            </div>
+                            {% if loop.index is even %}
+                                <img class="p-1 rounded-0 article-small text-center mx-auto"
+                                     src="{{ base_path ~ directory }}/{{ article.picture }}"
+                                     alt="{{ 'image de ' ~ article.title }}">
+                            {% endif %}
+                        </div>
+                        <div class="card-footer text-muted">
+                            <div class="p-3 text-center">
+                                <a class="btn comp-button-moreinfo w-50" href="Article/show/{{ article.id }}"
+                                   role="button">En
+                                    savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
