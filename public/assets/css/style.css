@@ -622,7 +622,6 @@ p {
     margin-right: auto;
 }
 .card-article{
-    width: 75%;
     max-width: 800px;
     min-height: 300px;
     cursor: pointer;
