@@ -35,16 +35,7 @@ class AdminEventController extends AbstractController
      */
     public function index()
     {
-        $alertResult=false;
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $postDatum =new PostDatum($_GET);
-            $getData=$postDatum->cleanValues();
-            if (!empty($getData['status'])) {
-                if ($getData['status'] == 'success') {
-                    $alertResult= true;
-                }
-            }
-        }
+        $alertResult = isset($_GET['status']) ? true : false ;
         $eventManager = new EventManager();
         $events = $eventManager->selectAllEvents();
 
@@ -204,7 +195,7 @@ class AdminEventController extends AbstractController
         $errors=[];
         $id=0;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $postDatum =new PostDatum($_GET);
+            $postDatum =new PostDatum($_POST);
             $postData=$postDatum->cleanValues();
             $id = $postData['id'];
             if (empty($id)) {
@@ -216,6 +207,7 @@ class AdminEventController extends AbstractController
         if (empty($errors)) {
             $eventManager->delete($id);
             header('Location:/adminEvent/index/?status=success');
+            exit();
         }
     }
 }
