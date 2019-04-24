@@ -204,7 +204,9 @@ class AdminEventController extends AbstractController
         $errors=[];
         $id=0;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = $_POST['id'];
+            $postDatum =new PostDatum($_GET);
+            $postData=$postDatum->cleanValues();
+            $id = $postData['id'];
             if (empty($id)) {
                 $errors[] = 'L évènement n existe pas';
             } elseif (empty($eventManager->selectOneById($id))) {
