@@ -1,10 +1,14 @@
 <div class="header-wrap">
     <div class="img-header text-center">
         <div class="title-wrapper">
-            <h1 class="h1-centered">{% block headerMainTitle %}{% endblock %}</h1>
-            <h2 class="h2-centered">{% block headerSubTitle %}{% endblock %}</h2>
+            <h1 class="h1-centered">{{ headerMainTitle }}</h1>
+            <h2 class="h2-centered">{{ headerSubTitle }}</h2>
         </div>
-        <img class="img-wrap-header" src="{{ base_path ~ directory }}/assets/images/img_couv_decoupe.jpg" alt="header-image">
+        {% if smallHeader %}
+            <img class="img-wrap-header" src="{{ base_path ~ directory }}/assets/images/common/img_header_small.jpg" alt="header-image">
+        {% else %}
+            <img class="img-wrap-header" src="{{ base_path ~ directory }}/assets/images/common/img_header_big.jpg" alt="header-image">
+        {% endif %}
     </div>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-transp" id="navbarMain">
         <a class="navbar-brand" href="#"><img class="logo-nav" src="{{ base_path ~ directory }}/assets/images/logo_upa.png" alt="logo-img"></a>
@@ -14,28 +18,28 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto main-nav-ul-color">
                 <li class="nav-item pr-4 nav-item-underline">
-                    <a class="nav-link" href="#">Vos Envies</a>
+                    <a class="nav-link" href="{{ base_path ~ directory }}/wishes/index">Vos Envies</a>
                 </li>
                 <li class="nav-item pr-4 nav-item-underline">
-                    <a class="nav-link" href="#">Vie du club</a>
+                    <a class="nav-link" href="{{ base_path ~ directory }}/article/index">Vie du club</a>
                 </li>
                 <li class="nav-item dropdown pr-4 nav-item-underline">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Vie sportive
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="event/index">Evènements à venir</a>
-                        <a class="dropdown-item" href="#">Résultats</a>
+                        <a class="dropdown-item" href="{{ base_path ~ directory }}/event/index">Evènements à venir</a>
+                        <a class="dropdown-item" href="{{ base_path ~ directory }}/event/indexresults">Résultats</a>
                     </div>
                 </li>
                 <li class="nav-item pr-4 nav-item-underline">
-                    <a class="nav-link" href="#">Qui sommes nous</a>
+                    <a class="nav-link" href="{{ base_path ~ directory }}/member/index">Qui sommes nous</a>
                 </li>
                 <li class="nav-item pr-4 nav-item-underline">
-                    <a class="nav-link" href="#">Horaires</a>
+                    <a class="nav-link" href="{{ base_path ~ directory }}/home/index#horaires">Horaires</a>
                 </li>
                 <li class="nav-item pr-4 nav-item-underline">
-                    <a class="nav-link" href="#">Partenaires</a>
+                    <a class="nav-link" href="{{ base_path ~ directory }}/member/index#sponsors">Partenaires</a>
                 </li>
             </ul>
         </div>
