@@ -2,15 +2,16 @@
 
 {% block content %}
 
-    <div class="container ">
+    <div class="container">
         <h2 class="text-center">Les dernières brèves</h2>
         {% for article in articles %}
-            <div class="row my-2">
+            <div class="row row_article">
                 <div class="col-sm-12">
-                    <div class="card card-evt">
-                        <div class="card-header text-left">
-                            <div><h4><span class="badge badge-info">#{{ article.category | capitalize }}</span></h4></div>
-                            Posté le {{ article.date_publicated }}
+                    <div class="card card-article card_evt_article">
+                        <div class="card-header text-left card-header_article">
+                            <div><h4><span class="badge badge-info">#{{ article.category | capitalize }}</span></h4>
+                            </div>
+                            <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ article.date_publicated }}
                         </div>
                         <div class="row card-body">
                             {% if loop.index is odd %}
@@ -19,20 +20,20 @@
                                      alt="{{ 'image de ' ~ article.title }}">
                             {% endif %}
 
-                            <div class="col-sm-6">
-                                <h3 class="card-title text-center ">{{ article.title }}</h3>
+                            <div class="col-sm-12 col-md-6">
+                                <h4 class="card-title text-center">{{ article.title }}</h4>
                                 <div class="heading-divider-extent"></div>
                                 <p class="card-text text-justify"> {{ article.description|striptags|length > 500 ? article.description|striptags|slice(0, 500) ~ ' [...]' : article.description|striptags }}</p>
                             </div>
                             {% if loop.index is even %}
-                                <img class="p-1 rounded-0 article-small text-center mx-auto"
+                                <img class="col-sm-12 col-md-6 rounded-0 article-small text-center mx-auto"
                                      src="{{ base_path ~ directory }}/{{ article.picture }}"
                                      alt="{{ 'image de ' ~ article.title }}">
                             {% endif %}
                         </div>
-                        <div class="card-footer text-muted">
+                        <div class="card-footer card-footer_article">
                             <div class="p-3 text-center">
-                                <a class="btn comp-button-moreinfo w-50" href="Article/show/{{ article.id }}"
+                                <a class="btn btn_item" href="Article/show/{{ article.id }}"
                                    role="button">En
                                     savoir plus</a>
                             </div>
