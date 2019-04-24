@@ -76,7 +76,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 2% 0 10% 0;
+    margin: 1% 0 2% 0;
     background-color: #3E3631;
 }
 
@@ -84,7 +84,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 2% 0 10% 0;
+    margin: 1% 0 2% 0;
     background-color: #d3aa4e;
 }
 
@@ -457,16 +457,28 @@ p {
     box-shadow: 0 1rem 1rem rgba(83, 83, 83, 0.2);
     border: 2px solid rgba(211, 170, 78, 1);
 }
+
+.card-body-evt-small {
+    max-width: 400px;
+    min-height: 100px;
+    cursor: pointer;
+    box-shadow: 0 1rem 1rem rgba(83, 83, 83, 0.2);
+    border: 2px solid rgba(211, 170, 78, 1);
+}
 .card-img_event {
     object-fit: cover;
     height: 100%;
     max-height: 100%;
-    display:block;
-    margin:auto;
+    display: block;
+    margin: auto;
     filter: blur(0px) opacity(50%);
-    transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);
-
+    transition: filter 0.5s cubic-bezier(.43, .41, .22, .91);
 }
+
+.img-event-small {
+    width:100%;
+}
+
 .card-title-evt {
     background-color: rgba(211, 170, 78, 0.8);
     padding: 5px;

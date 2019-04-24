@@ -196,7 +196,7 @@ class EventManager extends AbstractManager
         LEFT JOIN evttype ON evenement.type_id = evttype.id
         ORDER BY evenement.date_begin DESC, level.id, gendermix.id";
         if ($limitResults > 0) {
-            $statement .= "LIMIT $limitResults";
+            $statement .= " LIMIT $limitResults";
         }
         $statement .= ";";
 
