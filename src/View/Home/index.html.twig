@@ -121,27 +121,27 @@
     <!-- ==================== Fin section Horaires ========================== -->
 
     <!-- ============== Début section Vie sportive ============= -->
-    <section id="viesportive" class="colored_background">
-        <div class="container-fluid">
+    <section id="viesportive">
+        <div class="container">
             <div class="col-lg-12 text-center">
-                <h2 class="h2_colored_section">Vie sportive</h2>
-                <div class="h2_separator_dark"></div>
+                <h2>Vie sportive</h2>
+                <div class="h2_separator"></div>
             </div>
 
-            <div class="row justify-content-center">
+            <div class="row justify-content-around">
                 {% for event in events %}
-                <div class="card rounded-0 col-sm-12 col-md-3 p-1 m-2">
+                <div class="card rounded-0 col-sm-12 col-lg-3 p-1 card-evt">
                     <div class="text-center m-2" >
                     <h5 class="card-title-evt-date">
                         {% if event.date_begin > event.date_end %}
                             Du {{ event.date_begin }} au {{ event.date_end }}
                         {% else %}
-                            {{ event.date_begin }}
+                           Le {{ event.date_begin }}
                         {% endif %}
                     </h5>
-                    <h4 class="card-title-evt ">{{ event.level | capitalize }}</h4>
+                    <h5 class="card-title-evt text-center p-2">{{ event.level | capitalize }}</h5>
                     </div>
-                    <div class="card-body rounded-0 card-body-evt  text-center mx-auto p-0">
+                    <div class="card-body rounded-0 text-center mx-auto p-0">
                         <img class="card-img-top img-event-small p-3 textrounded-0"
                                 {% if event.gendermix|lower == 'homme' %}
                              src="{{ base_path ~ directory }}/assets/images/compet/evt_homm2.jpg"
@@ -152,35 +152,35 @@
                             src="{{ base_path ~ directory }}/assets/images/compet/evt_mixte.jpg" alt="compétition mixte">
                         {% endif %}
                     </div>
-                    <div class="card-body ">
-                        <h3 class="card-title text-center ">{{ event.title }}</h3>
-                        <p class="card-text text-justify">{{ event.descr }}</p>
+                    <div class="card-body card_body_evt">
+                        <h5 class="card-title text-center h5_evt">{{ event.title }}</h5>
+                        <p class="card-text text-justify card_text_evt">{{ event.descr }}</p>
                     <div class="heading-divider-extent"></div>
                         <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item p-0">{{ event.dept_name }} ( {{ event.dept_num }})</li>
+                            <li class="list-group-item p-0 border-0">{{ event.dept_name }} ( {{ event.dept_num }})</li>
                         </ul>
                     <div class="heading-divider-extent"></div>
                         <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item p-0">Catégorie : {{ event.category | capitalize }}</li>
-                            <li class="list-group-item p-0">Type : {{ event.type | capitalize }}</li>
-                            <li class="list-group-item p-0">Mixité : {{ event.gendermix | capitalize }}</li>
+                            <li class="list-group-item p-0 border-0">Catégorie : {{ event.category | capitalize }}</li>
+                            <li class="list-group-item p-0 border-0">Type : {{ event.type | capitalize }}</li>
+                            <li class="list-group-item p-0 border-0">Mixité : {{ event.gendermix | capitalize }}</li>
                         </ul>
                     <div class="heading-divider-extent"></div>
                         <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item p-0">Date limite d'inscription : {{ event.date_register | capitalize }}</li>
+                            <li class="list-group-item p-0 border-0">Date limite d'inscription : {{ event.date_register | capitalize }}</li>
                         </ul>
                     </div>
-                    <div class="p-3 text-center">
-                        <a class="btn comp-button-moreinfo w-50" href="Event/show/{{ event.id }}" role="button">En savoir plus</a>
+                    <div class="text-center">
+                        <a class="btn btn_item mb-2" href="Event/show/{{ event.id }}" role="button">En savoir plus</a>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            <div class="my-1 p-1 text-center">
-                <a class="btn comp-button-moreinfo w-50" href="Event/index" role="button">Voir tous les évènements à venir</a>
-            </div>
-            <div class="my-1 p-1 text-center">
-                <a class="btn comp-button-moreinfo w-50" href="Event/indexresults" role="button">Voir tous les résultats</a>
+            <div class="row my-3 mx-3 p-5 text-center justify-content-between">
+                <a class="btn btn_item_invert" href="Event/index" role="button">Voir tous les évènements à venir</a>
+
+
+                <a class="btn btn_item_invert" href="Event/indexresults" role="button">Voir tous les résultats</a>
             </div>
         </div>
     </section>
