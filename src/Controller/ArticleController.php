@@ -28,7 +28,7 @@ class ArticleController extends AbstractController
     public function index()
     {
         $articleManager = new ArticleManager();
-        $articles = $articleManager->selectAll();
+        $articles = $articleManager->selectAllArticles();
 
         return $this->twig->render('Article/index.html.twig', [
             'articles' => $articles
