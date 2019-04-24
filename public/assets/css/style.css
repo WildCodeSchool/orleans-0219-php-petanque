@@ -608,11 +608,47 @@ p {
     background-color: #f5f5f5;
 }
 
-.card_img_member{
-    width: 250px;
-    height: 300px;
-}
-
 /* ================================= Fin Styles Admin ================================== */
 
+.card_img_member{
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.min_width_card_members{
+    min-width: 300px;
+}
+
+.card_header_member_bg{
+
+}
+
+.card_body_member_bg{
+
+}
+
+.sponsor_wrapper{
+    max-width: 200px;
+}
+
+.img_sponsor{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.sponsor_background{
+    width: 100%;
+    background-color: #d3aa4e;
+}
+
+.btn_toggle_member{
+    background-color: #d3aa4e;
+}
+
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+    box-shadow: none;
+    outline: none;
+    background-color: #737273;
+}
 

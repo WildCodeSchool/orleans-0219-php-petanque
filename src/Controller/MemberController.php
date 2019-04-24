@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\MemberManager;
+use App\Model\SponsorrManager;
 
 class MemberController extends AbstractController
 {
@@ -25,9 +26,12 @@ class MemberController extends AbstractController
     {
         $memberManager = new MemberManager();
         $member = $memberManager->selectAll();
+        $sponsorManager = new SponsorrManager();
+        $sponsors = $sponsorManager->selectAll();
 
         return $this->twig->render('Member/index.html.twig', [
             'members' => $member,
+            'sponsors' => $sponsors,
         ]);
     }
 }

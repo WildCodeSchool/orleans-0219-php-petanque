@@ -1,4 +1,6 @@
 /vendor/
+/public/assets/images/sponsors
+/public/assets/images/members
 /temp/*
 .phpcs-cache
 *.cache
