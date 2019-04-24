@@ -2,13 +2,14 @@
 
 {% block content %}
 
-    <div class="container">
+    <div class="container ">
         <h2 class="text-center">Les dernières brèves</h2>
         {% for article in articles %}
             <div class="row my-2">
                 <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-header text-right">
+                    <div class="card card-evt">
+                        <div class="card-header text-left">
+                            <div><h4><span class="badge badge-info">#{{ article.category | capitalize }}</span></h4></div>
                             Posté le {{ article.date_publicated }}
                         </div>
                         <div class="row card-body">
