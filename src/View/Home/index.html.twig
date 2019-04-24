@@ -154,7 +154,7 @@
                     </div>
                     <div class="card-body card_body_evt">
                         <h5 class="card-title text-center h5_evt">{{ event.title }}</h5>
-                        <p class="card-text text-justify card_text_evt">{{ event.descr }}</p>
+                        <p class="card-text text-justify card_text_evt">{{ event.descr|striptags|length > 270 ? event.descr|striptags|slice(0, 270) ~ ' [...]' : event.descr|striptags }}</p>
                     <div class="heading-divider-extent"></div>
                         <ul class="list-group list-group-flush text-center">
                             <li class="list-group-item p-0 border-0">{{ event.dept_name }} ( {{ event.dept_num }})</li>
@@ -171,7 +171,7 @@
                         </ul>
                     </div>
                     <div class="text-center">
-                        <a class="btn btn_item mb-2" href="Event/show/{{ event.id }}" role="button">En savoir plus</a>
+                        <a class="btn btn_item mb-3" href="Event/show/{{ event.id }}" role="button">En savoir plus</a>
                     </div>
                 </div>
                 {% endfor %}

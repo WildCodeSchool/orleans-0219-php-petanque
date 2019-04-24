@@ -13,6 +13,10 @@ use App\Model\ScheduleManager;
 
 class HomeController extends AbstractController
 {
+    /**
+     *
+     */
+    const LIMITLASTEVENTS = 3;
 
     /**
      * Display home page
@@ -28,7 +32,7 @@ class HomeController extends AbstractController
         $schedules = $scheduleManager->selectAll();
 
         $eventManager = new EventManager();
-        $topEvents = $eventManager->selectAllEvents(3);
+        $topEvents = $eventManager->selectAllEvents(self::LIMITLASTEVENTS);
         return $this->twig->render('Home/index.html.twig', [
             'schedules' => $schedules,
             'events' => $topEvents,
