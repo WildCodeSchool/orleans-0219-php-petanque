@@ -35,7 +35,7 @@ class AdminEventController extends AbstractController
      */
     public function index()
     {
-        $alertResult = isset($_GET['status']) ? true : false ;
+        $alertResult = isset($_GET['status']);
         $eventManager = new EventManager();
         $events = $eventManager->selectAllEvents();
 
