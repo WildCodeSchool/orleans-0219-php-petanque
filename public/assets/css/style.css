@@ -65,7 +65,6 @@ p {
 
 .colored_background{
     background-color: #e2d3ba;
-    padding-bottom: 5%;
 }
 
 
@@ -75,7 +74,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 2% 0 10% 0;
+    margin-bottom: 3%;
     background-color: #3E3631;
 }
 
