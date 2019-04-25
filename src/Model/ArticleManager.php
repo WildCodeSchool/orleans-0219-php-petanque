@@ -8,7 +8,7 @@
  */
 
 namespace App\Model;
-
+use Nette\Utils\DateTime;
 /**
  *
  */
@@ -51,4 +51,27 @@ class ArticleManager extends AbstractManager
 
         return $this->pdo->query($statement)->fetchAll();
     }
+
+    /**
+     * Insert an article in database
+     * @param array $articles
+     * @return int
+     * @throws \Exception
+     */
+    public function insertArticle(array $articles): int
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("INSERT INTO $this->table 
+        VALUES (NULL, :title, :description, :articlecategory_id, :picture, :date_publicated)");
+        $statement->bindValue('title', $articles['title'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $articles['description'], \PDO::PARAM_STR);
+        $statement->bindValue('articlecategory_id', $articles['articlecategory_id'], \PDO::PARAM_INT);
+        $statement->bindValue('picture', $articles['picture'], \PDO::PARAM_STR);
+        $statement->bindValue('date_publicated', new DateTime(), \PDO::PARAM_INT);
+
+        if ($statement->execute()) {
+            return (int)$this->pdo->lastInsertId();
+        }
+    }
+
 }
