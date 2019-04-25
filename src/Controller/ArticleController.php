@@ -16,5 +16,23 @@ use App\Model\ArticleManager;
  */
 class ArticleController extends AbstractController
 {
+    /**
+     * Display article informations specified by $id
+     *
+     * @param int $id
+     *
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function show(int $id)
+    {
+        $articleManager = new ArticleManager();
+        $article = $articleManager->selectOneArticleById($id);
 
+        return $this->twig->render('Article/show.html.twig', [
+            'article' => $article,
+        ]);
+    }
 }
