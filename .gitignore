@@ -4,4 +4,5 @@
 *.cache
 db.php
 .idea
+/sql/
 /public/assets/images/article/
