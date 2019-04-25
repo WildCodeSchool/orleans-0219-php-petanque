@@ -118,26 +118,28 @@
             </div>
         </div>
     </section>
-
     <section id="Hpartenaires">
             <div class="mx-5">
-                <h3 class="text-center">Partenaires</h3>
-                <div class="row text-center pt-4 align-items-center row-no-padding">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="h2_colored_section">Partenaires</h2>
+                        <div class="h2_separator_dark"></div>
+                    </div>
+                </div>
+                <div class="row text-center align-items-center row-no-padding">
                     {% for partner in partners %}
                         <div class="col-xl-2 p-0">
-                            <div class="sponsor_wrapper pt-3">
-                                <div class="sponsor">
+                            <div class="sponsor_wrapper pt-3 pb-3">
                                     <a href="{{ partner.url }}">
                                         <img src="{{ base_path ~ directory }}/{{ partner.picture }}"
                                              class="rounded partner_img" alt="{{ partner.name }}">
                                     </a>
-                                </div>
                             </div>
                         </div>
                     {% endfor %}
                 </div>
-                <div class="w-100 text-center mt-5">
-                    <button class="btn comp-button-moreinfo">Ils nous font confiance</button>
+                <div class="w-100 text-center mt-4">
+                    <button class="btn comp-button-moreinfo mb-5">Ils nous font confiance</button>
                 </div>
             </div>
     </section>
