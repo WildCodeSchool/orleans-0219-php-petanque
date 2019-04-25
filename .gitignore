@@ -4,8 +4,4 @@
 *.cache
 db.php
 .idea
-<<<<<<< HEAD
 /sql/
-=======
-/sql/
->>>>>>> dev
