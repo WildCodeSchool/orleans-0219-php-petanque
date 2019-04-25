@@ -35,14 +35,16 @@ class AdminEventController extends AbstractController
      */
     public function index()
     {
+        $alertResult = isset($_GET['status']);
         $eventManager = new EventManager();
         $events = $eventManager->selectAllEvents();
 
         return $this->twig->render('Event/indexadmin.html.twig', [
             'events' => $events,
+            'statusAlert' => $alertResult,
         ]);
     }
-  
+
 
      /**
      * Display event creation page
@@ -244,5 +246,30 @@ class AdminEventController extends AbstractController
         }
 
         return $errors;
+    }
+
+    /**
+     * Delete an event
+     */
+    public function delete()
+    {
+        $eventManager = new EventManager();
+        $errors=[];
+        $id=0;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $postDatum =new PostDatum($_POST);
+            $postData=$postDatum->cleanValues();
+            $id = $postData['id'];
+            if (empty($id)) {
+                $errors[] = 'L évènement n existe pas';
+            } elseif (empty($eventManager->selectOneById($id))) {
+                $errors[] = 'L évènement n existe pas dans la base de données';
+            }
+        }
+        if (empty($errors)) {
+            $eventManager->delete($id);
+            header('Location:/adminEvent/index/?status=success');
+            exit();
+        }
     }
 }

@@ -6,9 +6,8 @@
 
     <div class="container-fluid ">
         {% if statusAlert == true %}
-            <div class="alert alert-success  alert-dismissible fade show col-md-6 text-center mx-auto py-2 "
-                 role="alert">
-                L'évènement a été correctement ajouté.
+            <div class="alert alert-danger alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
+                L'évènement a été correctement supprimé.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -47,7 +46,10 @@
                         <td data-title="Departement">{{ event.dept_name }} ({{ event.dept_num }})</td>
                         <td><a class="btn btn-warning w-100" href="{{ base_path ~ directory }}/AdminEvent/edit/{{ event.id }}" role="button">Editer ...</a>
                         </td>
-                        <td><a class="btn btn-danger w-100" href="delete/{{ event.id }}" role="button">Enlever</a></td>
+                        <td><form method="post" action="{{ base_path ~ directory }}/AdminEvent/delete/?status=success">
+                                <button type="submit" class="btn btn-danger w-100" name="id" value="{{ event.id }}">Enlever</button>
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
