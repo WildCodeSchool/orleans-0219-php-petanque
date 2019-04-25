@@ -459,7 +459,7 @@ p {
     min-height: 300px;
     cursor: pointer;
     box-shadow: 0 1rem 1rem rgba(83, 83, 83, 0.2);
-    border: 2px solid rgba(211, 170, 78, 1);
+    border: 1px solid rgba(211, 170, 78, 1);
 }
 .card-img_event {
     object-fit: cover;
@@ -701,4 +701,4 @@ p {
     border: none;
     background-color: transparent;
 }
-/*******************************************************************************************/
+

@@ -6,6 +6,7 @@
  * Time: 16:07
  * PHP version 7
  */
+
 namespace App\Controller;
 
 use App\Model\ArticleManager;
@@ -17,10 +18,26 @@ use App\Model\ArticleManager;
 class ArticleController extends AbstractController
 {
     /**
+     * Display article listing
+     *
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function index()
+    {
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->selectAllArticles();
+
+        return $this->twig->render('Article/index.html.twig', [
+            'articles' => $articles
+        ]);
+    }
+
+    /**
      * Display article informations specified by $id
-     *
      * @param int $id
-     *
      * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
