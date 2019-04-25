@@ -24,8 +24,8 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $membersManager = new MemberManager();
-        $members = $membersManager->getTopMembers();
+        $memberManager = new MemberManager();
+        $members = $memberManager->getTopMembers();
         $scheduleManager = new ScheduleManager();
         $schedules = $scheduleManager->selectAll();
 
