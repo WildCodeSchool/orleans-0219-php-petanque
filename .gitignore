@@ -1,11 +1,12 @@
 /vendor/
-/public/assets/images/members/*.jpg
-/public/assets/images/sponsors/*.jpg
 /temp/*
 .phpcs-cache
 *.cache
 db.php
 .idea
 /sql/
+public/assets/images/article/
+/public/assets/images/members/*.jpg
+/public/assets/images/sponsors/*.jpg
 
 
