@@ -8,10 +8,8 @@
 
 namespace App\Controller;
 
-
 use App\Model\MemberManager;
 use App\Model\ScheduleManager;
-
 
 class HomeController extends AbstractController
 {
