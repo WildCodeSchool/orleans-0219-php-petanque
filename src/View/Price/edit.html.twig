@@ -1,0 +1,54 @@
+{% extends 'sublayout_visitor.html.twig' %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Gestion des tarifs</h2>
+                <div class="h2_separator"></div>
+            </div>
+        </div>
+
+        <form method="post">
+            <div class="table-responsive-vertical mx-5">
+                {% if editsuccess == true %}
+                    <div class="alert alert-success  alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
+                        L'évènement a été correctement mis à jour.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+                <!-- Table starts here -->
+                <table class="table table-hover table-striped table-bordered">
+                    <thead class="comp-thead-color">
+                    <tr>
+                        <th class="text-center" scope="col">Catégories</th>
+                        <th class="text-center" scope="col">Prix (en euros)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for price in prices %}
+                        <tr>
+                            <td class="text-center">{{ price.categories }} :</td>
+                            <td class="text-center" data-title="Prix :">
+                                <input id="prices{{ price.id }}" name="prices{{ price.id }}" type="text"
+                                       class="input_schedule" value="{{ price.prices }}" required>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="text-right">
+                    {{ errors['prices'] }}
+                </div>
+                <div class="text-right btn_schedule">
+                    <button class="btn btn_item" type="submit">modifier</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
