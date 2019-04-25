@@ -1,76 +1,35 @@
 {% extends 'sublayout_visitor.html.twig' %}
 
-{% block headerMainTitle %}Vie du club{% endblock %}
-{% block headerSubTitle %}Détails de l'évènement sportif{% endblock %}
+{% block title %}UPA - Actualité{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'Vie du club'  %}
+    {%  set headerSubTitle = 'Actualité'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
 {% block content %}
-    <div class="container-fluid justify-content-center text-center p-0">
-        <div class="row justify-content-center">
-            <div class="card rounded-0 col-sm-12 col-md-4 p-0">
-                <div class="card-body rounded-0 card-body-evt-left p-0">
-                    <img class="card-img-top rounded-0 card-img_event"
-                            {% if event.gendermix|lower == 'homme' %}
-                         src="{{ base_path ~ directory }}/assets/images/compet/evt_homm2.jpg" alt="compétition homme">
-                    {% elseif event.gendermix|lower == 'femme' %}
-                        src="{{ base_path ~ directory }}/assets/images/compet/evt_femme.jpg" alt="compétition femme">
-                    {% else %}
-                        src="{{ base_path ~ directory }}/assets/images/compet/evt_mixte.jpg" alt="compétition mixte">
-                    {% endif %}
-                </div>
-                <div class="card-img-overlay">
-                    <h5 class="card-title-evt-date ">
-                        {% if event.date_begin > event.date_end %}
-                            Du {{ event.date_begin }} au {{ event.date_end }}
-                        {% else %}
-                            {{ event.date_begin }}
-                        {% endif %}
-                    </h5>
-                    <h4 class="card-title-evt ">{{ event.level | capitalize }}</h4>
-                </div>
-            </div>
-            <div class="card rounded-0 card-evt col-sm-12  col-md-6 p-0">
-                <div class="card-body">
-                    <h3 class="card-title">{{ event.title }}</h3>
-                    <p class="card-text text-justify">{{ event.descr }}</p>
-                </div>
-                <div class="heading-divider-extent"></div>
-                <h5>Informations générales</h5>
-                <div class="card-body pt-0">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{ event.dept_name }} ( {{ event.dept_num }})</li>
-                        <li class="list-group-item"> {{ event.location | capitalize }}</li>
-                        <li class="list-group-item">
-                            {% if event.date_begin > event.date_end %}
-                                Du {{ event.date_begin }} au {{ event.date_end }}
-                            {% else %}
-                                Le {{ event.date_begin }}
-                            {% endif %}</li>
-                        <li class="list-group-item">
-                            <a class="btn comp-button-moreinfo w-100"
-                               href="https://www.google.fr/maps/place/{{ event.dept_name }}+{{ event.location | capitalize }}"
-                               target="_blank" role="button">Localiser ...</a></li>
-                    </ul>
-                </div>
-                <div class="heading-divider-extent"></div>
-                <h5>Informations sportives</h5>
-                <div class="card-body pt-0">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Niveau : {{ event.level | capitalize }}</li>
-                        <li class="list-group-item">Catégorie : {{ event.category | capitalize }}</li>
-                        <li class="list-group-item">Type : {{ event.type | capitalize }}</li>
-                        <li class="list-group-item">Mixité : {{ event.gendermix | capitalize }}</li>
-                    </ul>
-                </div>
-                <div class="heading-divider-extent"></div>
-                <h5>Modalités d'inscription</h5>
-                <div class="card-body pt-0">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Date limite : {{ event.date_register | capitalize }}</li>
-                        <li class="list-group-item">Fiche d'inscription :
-                            <a class="btn comp-button-moreinfo w-100" href="#" target="_blank" role="button">Voir ...</a>
-                        </li>
-                    </ul>
+    <div class="container">
+            <div class="row row_article">
+                <div class="col-sm-12">
+                    <div class="card card-article card_evt_article">
+                        <div class="card-header text-left card-header_article">
+                            <div><h4><span class="badge badge-info">#{{ article.category | capitalize }}</span></h4>
+                            </div>
+                            <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ article.date_publicated }}
+                        </div>
+                        <div class="row card-body">
+                                <img class="p-1 rounded-0 article-small text-center mx-auto"
+                                     src="/{{ article.picture }}"
+                                     alt="{{ 'image de ' ~ article.title }}">
+                            <div class="col-sm-12 col-md-6">
+                                <h4 class="card-title text-center">{{ article.title }}</h4>
+                                <div class="heading-divider-extent"></div>
+                                <p class="card-text text-justify"> {{ article.description }}</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
     </div>
 {% endblock %}

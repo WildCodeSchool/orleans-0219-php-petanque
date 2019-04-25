@@ -75,7 +75,7 @@ class ArticleManager extends AbstractManager
         FROM db_upa.article as a 
         LEFT JOIN db_upa.articlecategory AS c 
         ON a.articlecategory_id = c.id
-        WHERE evenement.id=:id;";
+        WHERE a.id=:id;";
 
         // prepared request
         $statement = $this->pdo->prepare($statement);
