@@ -39,7 +39,7 @@ class AdminArticleController extends AbstractController
             $articleManager = new ArticleManager();
 
             if (empty($errorArticleData)) {
-                $id = $articleManager->insertEvent($articleData);
+                $id = $articleManager->insertArticle($articleData);
                 header('Location:/event/show/' . $id);
             }
         }
@@ -47,7 +47,7 @@ class AdminArticleController extends AbstractController
         $articleCategoryManager = new ArticleCategoryManager();
         $categories = $articleCategoryManager->selectall();
 
-        return $this->twig->render('Event/add.html.twig', [
+        return $this->twig->render('Article/add.html.twig', [
             'article' => $articleData,
             'categories' => $categories,
         ]);
@@ -89,5 +89,4 @@ class AdminArticleController extends AbstractController
 
         return $errors;
     }
-
 }
