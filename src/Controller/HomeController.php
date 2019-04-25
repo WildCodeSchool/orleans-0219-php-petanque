@@ -8,7 +8,10 @@
 
 namespace App\Controller;
 
+
 use App\Model\MemberManager;
+use App\Model\ScheduleManager;
+
 
 class HomeController extends AbstractController
 {
@@ -25,7 +28,11 @@ class HomeController extends AbstractController
     {
         $membersManager = new MemberManager();
         $members = $membersManager->getTopMembers();
+        $scheduleManager = new ScheduleManager();
+        $schedules = $scheduleManager->selectAll();
+
         return $this->twig->render('Home/index.html.twig', [
+            'schedules' => $schedules,
             'members' => $members,
         ]);
     }
