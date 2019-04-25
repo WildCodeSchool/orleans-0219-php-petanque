@@ -7,7 +7,9 @@
  * PHP version 7
  */
 namespace App\Controller;
+
 use App\Model\ArticleManager;
+
 /**
  * Class ItemController
  *
