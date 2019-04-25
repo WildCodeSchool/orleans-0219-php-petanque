@@ -16,7 +16,7 @@ class HomeController extends AbstractController
     /**
      *
      */
-    const LIMITLASTEVENTS = 3;
+    const LIMIT_LAST_EVENTS = 3;
 
     /**
      * Display home page
@@ -32,7 +32,7 @@ class HomeController extends AbstractController
         $schedules = $scheduleManager->selectAll();
 
         $eventManager = new EventManager();
-        $topEvents = $eventManager->selectAllEvents(self::LIMITLASTEVENTS);
+        $topEvents = $eventManager->selectAllEvents(self::LIMIT_LAST_EVENTS);
         return $this->twig->render('Home/index.html.twig', [
             'schedules' => $schedules,
             'events' => $topEvents,
