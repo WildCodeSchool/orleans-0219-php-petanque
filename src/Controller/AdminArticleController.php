@@ -31,8 +31,9 @@ class AdminArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectAllArticles();
 
+        var_dump($articles);
         return $this->twig->render('Article/indexadmin.html.twig', [
-            'events' => $articles,
+            'articles' => $articles,
             'statusAlert' => $alertResult,
         ]);
     }
