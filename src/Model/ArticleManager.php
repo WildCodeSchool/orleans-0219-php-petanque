@@ -8,7 +8,9 @@
  */
 
 namespace App\Model;
+
 use Nette\Utils\DateTime;
+
 /**
  *
  */
@@ -73,5 +75,4 @@ class ArticleManager extends AbstractManager
             return (int)$this->pdo->lastInsertId();
         }
     }
-
 }
