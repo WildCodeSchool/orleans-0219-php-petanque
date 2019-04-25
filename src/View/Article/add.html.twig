@@ -1,0 +1,13 @@
+{% extends 'sublayout_visitor.html.twig' %}
+
+{% block title %}UPA - Vie du club{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'VIE DU CLUB'  %}
+    {%  set headerSubTitle = 'Ajout d\'un actualité'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    {% include 'Article/_form.html.twig' %}
+{% endblock %}
