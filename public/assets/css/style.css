@@ -459,7 +459,7 @@ p {
     min-height: 300px;
     cursor: pointer;
     box-shadow: 0 1rem 1rem rgba(83, 83, 83, 0.2);
-    border: 2px solid rgba(211, 170, 78, 1);
+    border: 1px solid rgba(211, 170, 78, 1);
 }
 .card-img_event {
     object-fit: cover;
@@ -683,3 +683,28 @@ p {
 }
 
 
+/******************* ARTICLE SPORTIF CARTE ****************************************************/
+/*-------------------------------------------------------------------------------------------------*/
+.article-small {
+    width:50%;
+}
+
+.card_evt_article{
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-article{
+    max-width: 800px;
+    min-height: 300px;
+    cursor: pointer;
+    border: 1px solid rgba(211, 170, 78, 1);
+}
+
+.row_article{
+    margin: 80px;
+}
+
+.card-header_article, .card-footer_article{
+    border: none;
+    background-color: transparent;
+}
