@@ -12,7 +12,7 @@
                         <option value="{{ category.id }}" {{ category.id == article.articlecategory_id ? 'selected' : '' }}>{{ category.name | capitalize }}</option>
                     {% endfor %}
                 </select>
-                <div class="error-form">{{ errors.level_id }}</div>
+                <div class="error-form">{{ errors.articlecategory_id }}</div>
             </div>
             <div class="form-group col-md-12 px-2 my-3">
                 <label for="articletitle" class="form-required">Titre de l'article :</label>
@@ -22,10 +22,12 @@
             <div class="form-group px-2 my-3">
                 <label for="articledescription">Description :</label>
                 <textarea class="form-control" id="articledescription" name="description" value="{{ article.description }}" rows="15" required>{{ article.description }}</textarea>
+                <div class="error-form">{{ errors.description }}</div>
             </div>
             <div class="custom-file my-3">
                 <input type="file" class="custom-file-input" id="picturetitle" name="picture">
                 <label class="custom-file-label" for="picturetitle">Télécharger une image de couverture...</label>
+                <div class="error-form">{{ errors.picture }}</div>
             </div>
         </section>
         <section class="mt-5 text-center">

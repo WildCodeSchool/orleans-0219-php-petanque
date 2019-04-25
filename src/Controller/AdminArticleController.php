@@ -32,6 +32,7 @@ class AdminArticleController extends AbstractController
         $articleData = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            var_dump($_POST);
             $postDatum = new PostDatum($_POST);
             $articleData = $postDatum->cleanValues();
             $errorArticleData = $this->checkErrorsPostData($articleData);
@@ -40,16 +41,17 @@ class AdminArticleController extends AbstractController
 
             if (empty($errorArticleData)) {
                 $id = $articleManager->insertArticle($articleData);
-                header('Location:/event/show/' . $id);
+                header('Location:/article/show/' . $id);
             }
         }
 
         $articleCategoryManager = new ArticleCategoryManager();
         $categories = $articleCategoryManager->selectall();
-
+        var_dump($errorArticleData);
         return $this->twig->render('Article/add.html.twig', [
             'article' => $articleData,
             'categories' => $categories,
+            'errors' => $errorArticleData,
         ]);
     }
 
@@ -77,14 +79,10 @@ class AdminArticleController extends AbstractController
         };
 
         $articleCategoryManager = new ArticleCategoryManager();
-        if (empty($postData['category_id'])) {
-            $errors['category_id'] = "Une catégorie pour l'article est requis.";
+        if (empty($postData['articlecategory_id'])) {
+            $errors['articlecategory_id'] = "Une catégorie pour l'article est requis.";
         } elseif (empty($articleCategoryManager->selectOneById($postData['articlecategory_id']))) {
-            $errors['category_id'] = "Une catégorie valide pour l'article est requis.";
-        };
-
-        if (empty($postData['picture'])) {
-            $errors['picture'] = "Une image pour l'article est requis.";
+            $errors['articlecategory_id'] = "Une catégorie valide pour l'article est requis.";
         };
 
         return $errors;
