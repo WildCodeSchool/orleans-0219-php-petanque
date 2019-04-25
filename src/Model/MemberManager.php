@@ -17,6 +17,7 @@ class MemberManager extends AbstractManager
      *
      */
     const TABLE = 'member';
+    const MEMBERLIMIT = 3;
 
     /**
      *  Initializes this class.
@@ -33,7 +34,7 @@ class MemberManager extends AbstractManager
      */
     public function getTopMembers(): array
     {
-        $statement = "SELECT * FROM " . $this->table . " ORDER BY id LIMIT 3";
+        $statement = "SELECT * FROM " . $this->table . " ORDER BY id LIMIT ".self::MEMBERLIMIT;
         return $this->pdo->query($statement)->fetchAll();
     }
 }
