@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Montserrat');
-
 /*-------------------------------------------------------------------------------*/
 /* Titres de bases*/
 body {
@@ -134,6 +133,11 @@ p {
 .card_margin_yourwishes{
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+.card_body_yourwishes{
+    margin-top: 20px;
+    height: 150px;
 }
 
 /* ---- Styles Section Horaires ---- */
@@ -536,6 +540,19 @@ p {
 
 .h1-centered
 {
+    margin: auto;
+    font-size: 5vw;
+}
+
+.h2-centered
+{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2.5vw;
+}
+
+.title-wrapper{
     color: white;
     position: absolute;
     left: 0;
@@ -555,6 +572,19 @@ p {
     width: 100%;
 }
 
+
+.custom-toggler .navbar-toggler-icon
+{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler
+{
+    border-color: rgb(255,255,255);
+}
+
+
+
 .custom-toggler .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
@@ -565,10 +595,13 @@ p {
 /*link navbar animation*/
 
 .nav-item-underline > a {
+
     position: relative;
     color: #fff;
     text-decoration: none;
 }
+
+
 
 .nav-item-underline > a:before {
     content: "";
@@ -577,15 +610,46 @@ p {
     height: 3px;
     bottom: 2px;
     left: 0;
-    background-color: #000;
+    background-color: #fff;
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out 0s;
 }
 
+
+
 .nav-item-underline > a:hover:before {
     visibility: visible;
     transform: scaleX(1);
+}
+
+
+#HquiSommesNous
+{
+    background-color: #e3d3ba;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.qui_title_wrap, .qui_role_wrap, .qui_desc_wrap{
+    overflow: hidden;
+    max-width: 500px;
+}
+
+.qui_title_wrap > p, .qui_role_wrap > p{
+    margin-bottom: 0.5rem;
+}
+
+.qui_title_wrap > p{
+    font-size: 125%;
+}
+
+.qui_role_wrap > p{
+    font-size: 80%;
+}
+
+.box_shadow_toggle{
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.50);
 }
 
 /* ================================= Début Styles Admin ================================== */
