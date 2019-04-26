@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-sm-12 my-2">
+                <div class="col-xl-6 col-sm-12 my-2">
                     <div class="card card-article card_evt_article big_club_article">
                         <div class="card-header text-left card-header_article">
                             <div><h4><span class="badge badge-info">#{{ articles[0].category | capitalize }}</span></h4>
@@ -101,7 +101,7 @@
                             <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ articles[0].date_publicated }}
                         </div>
                         <div class="card-body">
-                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small"
+                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover"
                                  src="{{ articles[0].picture }}"
                                  alt="{{ 'image de ' ~ articles[0].title }}">
                             <div>
@@ -113,7 +113,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer card-footer_article">
-                                    <div class="p-3 text-center">
+                                    <div class="p-3 text-center button-container">
                                         <a class="btn btn_item" href="/Article/show/{{ articles[0].id }}"
                                            role="button">En
                                             savoir plus</a>
@@ -124,7 +124,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-12 my-2">
+                <div class="col-xl-3 col-sm-12 my-2">
                     <div class="card card-article card_evt_article">
                         <div class="card-header text-left card-header_article">
                             <div><h4><span class="badge badge-info">#{{ articles[1].category | capitalize }}</span></h4>
@@ -132,7 +132,7 @@
                             <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ articles[1].date_publicated }}
                         </div>
                         <div class="card-body">
-                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small"
+                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover"
                                  src="{{ articles[1].picture }}"
                                  alt="{{ 'image de ' ~ articles[1].title }}">
                             <div>
@@ -144,7 +144,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer card-footer_article">
-                                    <div class="p-3 text-center">
+                                    <div class="p-3 text-center button-container">
                                         <a class="btn btn_item" href="/Article/show/{{ articles[1].id }}"
                                            role="button">En
                                             savoir plus</a>
@@ -154,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-12 my-2">
+                <div class="col-xl-3 col-sm-12 my-2">
                     <div class="card card-article card_evt_article">
                         <div class="card-header text-left card-header_article">
                             <div><h4><span class="badge badge-info">#{{ articles[2].category | capitalize }}</span></h4>
@@ -162,7 +162,7 @@
                             <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ articles[2].date_publicated }}
                         </div>
                         <div class="card-body">
-                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small"
+                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover"
                                  src="{{ articles[2].picture }}"
                                  alt="{{ 'image de ' ~ articles[2].title }}">
                             <div>
@@ -174,7 +174,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer card-footer_article">
-                                    <div class="p-3 text-center">
+                                    <div class="p-3 text-center button-container">
                                         <a class="btn btn_item" href="/Article/show/{{ articles[2].id }}"
                                            role="button">En
                                             savoir plus</a>
@@ -184,8 +184,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mx-auto text-center mt-4">
-                    <a class="btn btn_item w-50" href="/Article/index" role="button">Voir toutes les actualités</a>
+                <div class="col-md-6 mx-auto text-center mt-4 mb-5">
+                    <a class="btn btn_item w-50 mt-2" href="/Article/index" role="button">Voir toutes les actualités</a>
                 </div>
             </div>
     </section>

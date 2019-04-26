@@ -695,7 +695,7 @@ p {
 }
 .card-article{
     max-width: 800px;
-    min-height: 300px;
+    height:100%;
     cursor: pointer;
     border: 1px solid rgba(211, 170, 78, 1);
 }
@@ -709,6 +709,10 @@ p {
     background-color: transparent;
 }
 
+.card-footer{
+    margin-top: 90px;
+}
+
 
 /*************************** ARTICLE HOME SECTION *************************************/
 
@@ -718,10 +722,7 @@ p {
 }
 
 .big_club_article{
-    height: 500px;
-    overflow:hidden;
-    position: relative;
-    margin-top: 50px;
+    height:100%;
 }
 
 
@@ -849,3 +850,17 @@ p {
     margin-top: 50px;
 }
 /****************************************************************************************/
+
+.img_cover{
+    object-fit:cover;
+}
+
+.button-container{
+    position:absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    bottom:0px;
+}
