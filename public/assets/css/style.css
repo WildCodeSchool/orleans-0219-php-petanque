@@ -65,7 +65,7 @@ p {
 
 .colored_background{
     background-color: #e2d3ba;
-    padding-bottom: 5%;
+    padding-bottom: 3%;
 }
 
 
@@ -721,11 +721,38 @@ p {
 
 /* ================================= Fin Styles Admin ================================== */
 
-/* ================================= Début Styles Card Compet Home ================================== */
+
+#Hpartenaires{
+    background-color: #e2d3ba;
+}
+
+.partner_img{
+    width: 150px;
+}
 
 
+/******************* ARTICLE SPORTIF CARTE ****************************************************/
+/*-------------------------------------------------------------------------------------------------*/
+.article-small {
+    width:50%;
+}
 
-/* ================================= Fin Styles Card Compet Home  ================================== */
+.card_evt_article{
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-article{
+    max-width: 800px;
+    min-height: 300px;
+    cursor: pointer;
+    border: 1px solid rgba(211, 170, 78, 1);
+}
 
+.row_article{
+    margin: 80px;
+}
 
-
+.card-header_article, .card-footer_article{
+    border: none;
+    background-color: transparent;
+}
