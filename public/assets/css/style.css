@@ -140,6 +140,10 @@ p {
     height: 150px;
 }
 
+.img_secWishes{
+    max-width: 300px;
+}
+
 /* ---- Styles Section Horaires ---- */
 
 .table_schedule{
