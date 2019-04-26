@@ -8,11 +8,16 @@
 
 namespace App\Controller;
 
+use App\Model\EventManager;
 use App\Model\ScheduleManager;
 use App\Model\PartnerManager;
 
 class HomeController extends AbstractController
 {
+    /**
+     *
+     */
+    const LIMIT_LAST_EVENTS = 3;
 
     /**
      * Display home page
@@ -29,9 +34,11 @@ class HomeController extends AbstractController
         $partnerManager = new PartnerManager();
         $partners = $partnerManager->getPartners();
 
-
+        $eventManager = new EventManager();
+        $topEvents = $eventManager->selectAllEvents(self::LIMIT_LAST_EVENTS);
         return $this->twig->render('Home/index.html.twig', [
             'schedules' => $schedules,
+            'events' => $topEvents,
             'partners' => $partners,
         ]);
     }
