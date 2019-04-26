@@ -1,5 +1,9 @@
 {% extends 'sublayout_visitor.html.twig' %}
-
+{% block title %}UPA - Accueil{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'Union Pétanque Argonnaise'  %}
+    {{ parent() }}
+{% endblock %}
 {% block content %}
 
     <!-- ==================== Début Section "Vos envies" ==================== -->
@@ -17,7 +21,7 @@
             <div class="col-sm_12 col-lg-4 mx-auto card_margin card_margin_yourwishes">
                 <div class="card card_yourwishes">
                     <img class="card-img-top card_img_yourwishes"
-                         src="{{ base_path ~ directory }}/assets/images/vosenvies_decouvrir.jpg"
+                         src="/assets/images/vosenvies_decouvrir.jpg"
                          alt="Photo découverte pétanque">
 
                     <div class="card-body card_body_yourwishes">
@@ -37,7 +41,7 @@
             <div class="col-sm_12 col-lg-4 mx-auto card_margin card_margin_yourwishes">
                 <div class="card card_yourwishes">
                     <img class="card-img-top card_img_yourwishes"
-                         src="{{ base_path ~ directory }}/assets/images/vosenvies_entrainement.jpg"
+                         src="/assets/images/vosenvies_entrainement.jpg"
                          alt="Photo entraînement pétanque">
 
                     <div class="card-body card_body_yourwishes">
@@ -57,7 +61,7 @@
             <div class="col-sm_12 col-lg-4 mx-auto card_margin card_margin_yourwishes">
                 <div class="card card_yourwishes">
                     <img class="card-img-top card_img_yourwishes"
-                         src="{{ base_path ~ directory }}/assets/images/vosenvies_competition.jpg"
+                         src="/assets/images/vosenvies_competition.jpg"
                          alt="Photo compétition pétanque">
 
                     <div class="card-body card_body_yourwishes">
@@ -118,6 +122,32 @@
             </div>
         </div>
     </section>
+    <section id="Hpartenaires">
+            <div class="mx-5">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="h2_colored_section">Partenaires</h2>
+                        <div class="h2_separator_dark"></div>
+                    </div>
+                </div>
+                <div class="row text-center align-items-center row-no-padding">
+                    {% for partner in partners %}
+                        <div class="col-xl-2 p-0">
+                            <div class="sponsor_wrapper pt-3 pb-3">
+                                    <a href="{{ partner.url }}">
+                                        <img src="{{ base_path ~ directory }}/{{ partner.picture }}"
+                                             class="rounded partner_img" alt="{{ partner.name }}">
+                                    </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="w-100 text-center mt-4">
+                    <button class="btn comp-button-moreinfo mb-5">Ils nous font confiance</button>
+                </div>
+            </div>
+    </section>
+
     <!-- ==================== Fin section Horaires ========================== -->
 
 {% endblock %}
