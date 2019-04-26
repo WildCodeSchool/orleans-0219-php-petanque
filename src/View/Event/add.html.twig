@@ -1,7 +1,12 @@
 {% extends 'sublayout_visitor.html.twig' %}
 
-{% block headerMainTitle %}Gestion des évènements sportifs{% endblock %}
-{% block headerSubTitle %}Ajout d'un évènement{% endblock %}
+{% block title %}UPA - Vie sportive - Administration{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'VIE SPORTIVE'  %}
+    {%  set headerSubTitle = 'Administration d\'un évènement'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
 
 {% block content %}
     {%  set buttonSubmitTitle = "Ajouter l'évènement" %}

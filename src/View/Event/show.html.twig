@@ -1,7 +1,12 @@
 {% extends 'sublayout_visitor.html.twig' %}
 
-{% block headerMainTitle %}Vie du club{% endblock %}
-{% block headerSubTitle %}Détails de l'évènement sportif{% endblock %}
+{% block title %}Vie sportive - Evènement{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'Vie sportive'  %}
+    {%  set headerSubTitle = 'Détails de l\'évènement sportif'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
 {% block content %}
     <div class="container-fluid justify-content-center text-center p-0">
         {% if statusAlert == true %}
@@ -39,7 +44,7 @@
                 </div>
                 <div class="card-img-overlay">
                     <h5 class="card-title-evt-date ">
-                        {% if event.date_begin > event.date_end %}
+                        {% if event.date_begin < event.date_end %}
                             Du {{ event.date_begin }} au {{ event.date_end }}
                         {% else %}
                             {{ event.date_begin }}
