@@ -36,7 +36,12 @@ class ArticleManager extends AbstractManager
     public function selectAllArticles():array
     {
         $statement = "
-        SELECT a.*, 
+        SELECT a.id as id,
+        a.title as title,
+        a.description as description,
+        a.articlecategory_id as articlecategory_id,
+        a.picture as picture,
+        DATE_FORMAT(a.date_publicated,'%d/%m/%Y') as date_publicated, 
         c.name as category,
         c.descr as category_description 
         FROM db_upa.article as a 
