@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\ScheduleManager;
+use App\Model\PartnerManager;
 
 class HomeController extends AbstractController
 {
@@ -25,10 +26,13 @@ class HomeController extends AbstractController
     {
         $scheduleManager = new ScheduleManager();
         $schedules = $scheduleManager->selectAll();
+        $partnerManager = new PartnerManager();
+        $partners = $partnerManager->getPartners();
 
 
         return $this->twig->render('Home/index.html.twig', [
             'schedules' => $schedules,
+            'partners' => $partners,
         ]);
     }
 }
