@@ -1,4 +1,5 @@
 $(document).ready(() => {
+    $('#commButton').addClass('btn_toggle_member_dark').removeClass('btn_toggle_member');
     sortMembers();
     checkButton();
 })
@@ -8,14 +9,23 @@ let state  = 'commission';
 function checkButton(){
     $('#commButton').on('click', () => {
         state = 'commission';
+        $('#commButton').addClass('btn_toggle_member_dark').removeClass('btn_toggle_member');
+        $('#salaButton').removeClass('btn_toggle_member_dark').addClass('btn_toggle_member');
+        $('#comiteButton').removeClass('btn_toggle_member_dark').addClass('btn_toggle_member');
         sortMembers();
     })
     $('#salaButton').on('click', () => {
         state = 'salaried';
+        $('#salaButton').addClass('btn_toggle_member_dark').removeClass('btn_toggle_member');
+        $('#commButton').removeClass('btn_toggle_member_dark').addClass('btn_toggle_member');
+        $('#comiteButton').removeClass('btn_toggle_member_dark').addClass('btn_toggle_member');
         sortMembers();
     })
     $('#comiteButton').on('click', () => {
         state = 'committee';
+        $('#comiteButton').addClass('btn_toggle_member_dark').removeClass('btn_toggle_member');
+        $('#salaButton').removeClass('btn_toggle_member_dark').addClass('btn_toggle_member');
+        $('#commButton').removeClass('btn_toggle_member_dark').addClass('btn_toggle_member');
         sortMembers();
     })
 }
@@ -48,5 +58,6 @@ function sortMembers(){
                 $(v).hide();
             }
         }
+
     })
 }

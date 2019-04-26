@@ -612,16 +612,17 @@ p {
 
 .card_img_member{
     max-width: 250px;
-    max-height: 250px;
+    max-height: 200px;
     object-fit: cover;
 }
 
-.min_width_card_members{
+.card_members{
     min-width: 300px;
+    border: 1px solid rgb(115, 114, 115);
 }
 
-.card_header_member_bg{
-
+.card_header_member{
+    height: 225px;
 }
 
 .card_body_member_bg{
@@ -644,6 +645,10 @@ p {
 
 .btn_toggle_member{
     background-color: #d3aa4e;
+}
+
+.btn_toggle_member_dark{
+    background-color: rgb(115, 114, 115);
 }
 
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {

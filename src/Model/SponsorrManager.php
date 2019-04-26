@@ -10,7 +10,7 @@ class SponsorrManager extends AbstractManager
     /**
      *
      */
-    const TABLE = 'sponsor';
+    const TABLE = 'partner';
 
     /**
      *  Initializes this class.

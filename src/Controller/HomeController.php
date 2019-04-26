@@ -26,7 +26,6 @@ class HomeController extends AbstractController
         $scheduleManager = new ScheduleManager();
         $schedules = $scheduleManager->selectAll();
 
-
         return $this->twig->render('Home/index.html.twig', [
             'schedules' => $schedules,
         ]);

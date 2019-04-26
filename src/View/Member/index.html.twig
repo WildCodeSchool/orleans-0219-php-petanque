@@ -13,7 +13,7 @@
 
                 <div class="card col-md-6 col-lg-3 p-0 m-3 min_width_card_members" data-commission="{{ member.isCommission }}"
                     data-salaried="{{ member.isSalaried }}" data-committee="{{ member.isComiteDirecteur }}">
-                    <div class="card-header img_cover_member card_header_member_bg">
+                    <div class="card-header img_cover_member card_header_member_bg card_header_member">
                         <img class="card_img_member rounded-0" src="{{ base_path ~ directory }}/{{ member.picture }}"
                              alt="{{ member.lastname }} {{ member.firstname }}">
                     </div>
@@ -21,10 +21,12 @@
                         <p class="card_member_name">{{ member.lastname }} {{ member.firstname }}</p>
                         <p class="card_member_role">{{ member.role }}</p>
                         <p class="card-text">{{ member.desc }}</p>
+                        <p class="card-text">{{ member.commissions }}</p>
                     </div>
                 </div>
 
             {% endfor %}
+
         </div>
     </div>
     <h2 class="mb-3 text-center">Nos partenaires</h2>
