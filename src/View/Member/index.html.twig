@@ -11,17 +11,17 @@
 
             {% for member in members %}
 
-                <div class="card col-md-6 col-lg-3 p-0 m-3 min_width_card_members" data-commission="{{ member.isCommission }}"
+                <div class="card col-md-6 col-lg-3 p-0 m-3 min_width_card_members card_member" data-commission="{{ member.isCommission }}"
                     data-salaried="{{ member.isSalaried }}" data-committee="{{ member.isComiteDirecteur }}">
                     <div class="card-header img_cover_member card_header_member_bg card_header_member">
                         <img class="card_img_member rounded-0" src="{{ base_path ~ directory }}/{{ member.picture }}"
                              alt="{{ member.lastname }} {{ member.firstname }}">
                     </div>
                     <div class="card-body p-3 text-left card_body_member_bg">
-                        <p class="card_member_name">{{ member.lastname }} {{ member.firstname }}</p>
-                        <p class="card_member_role">{{ member.role }}</p>
-                        <p class="card-text">{{ member.desc }}</p>
-                        <p class="card-text">{{ member.commissions }}</p>
+                        <p class="card_member_name card_member">Nom : {{ member.lastname }} {{ member.firstname }}</p>
+                        <p class="card_member_role card_member">Role : {{ member.role }}</p>
+                        <p class="card_member_desc card_member">{{ member.desc }}</p>
+                        <p class="card_member_comm card_member">{{ member.commissions }}</p>
                     </div>
                 </div>
 

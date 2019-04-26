@@ -625,10 +625,6 @@ p {
     height: 225px;
 }
 
-.card_body_member_bg{
-
-}
-
 .sponsor_wrapper{
     max-width: 200px;
 }
@@ -655,5 +651,15 @@ p {
     box-shadow: none;
     outline: none;
     background-color: #737273;
+}
+
+.card_member:not(p){
+    border: 1px solid rgb(115, 114, 115);
+    border-radius: 0px;
+}
+
+.card_member_text{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
