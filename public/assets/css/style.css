@@ -7,6 +7,7 @@ body {
     font-weight: 400;
     line-height: 1.5;
     color: #737273;
+    background-color: rgba(0,0,0,0.05);
 }
 
 h1,h2 {
