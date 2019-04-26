@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Model\WishesManager;
+use App\Model\PriceManager;
 
 class WishesController extends AbstractController
 {
@@ -24,8 +25,11 @@ class WishesController extends AbstractController
     public function index()
     {
 
+        $priceManager = new PriceManager();
+        $prices = $priceManager->selectAll();
 
-
-        return $this->twig->render('Wishes/index.html.twig');
+        return $this->twig->render('Wishes/index.html.twig', [
+            'prices' => $prices,
+        ]);
     }
 }

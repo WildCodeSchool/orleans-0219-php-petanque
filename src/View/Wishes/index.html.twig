@@ -12,19 +12,18 @@
 
     <section id="#">
         <div class="container">
-            <div class="col-lg-12 text-center">
-                <h2>Vos envies...</h2>
-                <div class="h2_separator"></div>
-            </div>
 
-
-            <div class="text-center">
+            <div class="text-center pt-5">
                 <h3>Découvrir</h3>
             </div>
-            <div>
-                <p>Venez découvrir les joies de la pétanque sur notre boulodrôme et ses plus de cent terrains couverts
+            <div class="text-center py-5">
+                <img src="/assets/images/decouvrir.jpg" class="img_secWishes">
+            </div>
+            <div class="w-75 mx-auto">
+                <p>Venez découvrir les joies de la pétanque sur notre boulodrôme et ses plus de
+                    cent terrains couverts
                     et extérieurs.<br/>
-                    Ouvert à tous et à tous les âges au sein d'un club actif et structuré venez participer à une
+                    Ouvert à tous et à tous les âges, au sein d'un club actif et structuré, venez participer à une
                     pratique sportive qualitative et sécurisée.<br/>
                     L'Union Pétanque Argonnaise est fière de vous offrir une grande variété de services qui vous
                     garantiront une expérience unique et qui vous feront revenir et rester au sein de notre club.<br/>
@@ -34,38 +33,74 @@
                     expérience inoubliable.</p>
             </div>
 
-            <div class="text-center">
+            <div class="text-center pt-5">
                 <h3>Entraînements</h3>
             </div>
-            <div>
-                <p>Notre équipe d'instructeurs professionnelle à ce qu'il faut pour apprendre à tous et à tout les âges
-                    comment jouer à la pétanque.<br/>
+            <div class="text-center py-5">
+                <img src="/assets/images/entrainement.jpg" class="img_secWishes">
+            </div>
+            <div class="w-75 mx-auto">
+                <p>Notre équipe d'instructeurs professionnelle à ce qu'il faut pour apprendre à
+                    tous et à tous les âges comment jouer à la pétanque.<br/>
                     Que vous soyez débutants ou joueurs confirmés, les entraînements de pétanque vous permettront
                     d'atteindre l'"Obut".<br/>
                     Nos entraineurs qualifiés prendront le temps de créer, pour vous, un calendrier d'entraînement
-                    personnalisé qui corresondra à vos besoins et à vos attentes.<br/>
+                    personnalisé qui correspondra à vos besoins et à vos attentes.<br/>
                     Nos leçons, qu'elles soient privées ou en groupe, sont développées pour s'accorder à votre style de
                     jeu et à vos préférences personnelles.<br/>
-                    Peut importe votre âge, nous vous apprendrons comment vous améliorez et tirer profit de vos
+                    Peu importe votre âge, nous vous apprendrons comment vous améliorer et tirer profit de vos
                     nouvelles compétences.<br/>
                     Avec nous, vous serez prêts pour votre premier tournoi !</p>
             </div>
 
-            <div class="text-center">
+            <div class="text-center pt-5">
                 <h3>Compétitions</h3>
             </div>
-            <div>
-                <p>En tant que principalclub de pétanque dans la région, nous participons et organisons des championnats
-                    et des tournois réguliers pour les débutants, les enthousiastes et les joueurs professionnels<br/>
+            <div class="text-center py-5">
+                <img src="/assets/images/competition.jpg" class="img_secWishes">
+            </div>
+            <div class="w-75 mx-auto">
+                <p>En tant que principal club de pétanque dans la région, nous participons et
+                    organisons des championnats
+                    et des tournois réguliers pour les débutants, les enthousiastes et les joueurs
+                    professionnels.<br/>
                     Vous pourrez, lors de ces événements, appréciez votre technique et votre niveau de jeu et vous
                     comparer aux autres boulistes français et internationaux.<br/>
-                    Il existe une grande variété de championnats, de tournois ou d'événements de pétanque accessible à
+                    Il existe une grande variété de championnats, de tournois ou d'événements de pétanque accessible
+                    à
                     tous les membres du club et aux joueurs professionnels.<br/>
                     Que vous vouliez tester votre niveau ou simplement participer à un événement, il y a toujours
                     quelque chose pour vous !</p>
             </div>
 
+            <div class="text-center pt-5">
+                <h3>Licences</h3>
+            </div>
+            <div class="w-75 mx-auto">
+                <p>Tous les boulistes qui souhaitent participer aux championnats; aux tournois ou aux événements doivent
+                    détenir une licence.<br/>
+                </p>
+            </div>
 
+            <div class="table-responsive-vertical mx-5 w-50 mx-auto">
+                <!-- Table starts here -->
+                <table class="table table-hover table-striped table-bordered">
+                    <thead class="comp-thead-color">
+                    <tr>
+                        <th class="text-center" scope="col">Catégories</th>
+                        <th class="text-center" scope="col">Prix</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for price in prices %}
+                        <tr>
+                            <td class="text-center">{{ price.categories }} :</td>
+                            <td class="text-center" data-title="Prix :">{{ price.prices }} euros</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </section>
