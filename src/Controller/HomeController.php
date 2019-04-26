@@ -10,9 +10,12 @@ namespace App\Controller;
 
 use App\Model\ScheduleManager;
 use App\Model\PartnerManager;
+use App\Model\ArticleManager;
 
 class HomeController extends AbstractController
 {
+
+    const LIMIT_LAST_ARTICLES = 3;
 
     /**
      * Display home page
@@ -28,11 +31,14 @@ class HomeController extends AbstractController
         $schedules = $scheduleManager->selectAll();
         $partnerManager = new PartnerManager();
         $partners = $partnerManager->getPartners();
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->selectAllArticles(self::LIMIT_LAST_ARTICLES);
 
 
         return $this->twig->render('Home/index.html.twig', [
             'schedules' => $schedules,
             'partners' => $partners,
+            'articles' => $articles,
         ]);
     }
 }
