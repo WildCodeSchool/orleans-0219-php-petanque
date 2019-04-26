@@ -1,5 +1,13 @@
 {% extends 'sublayout_visitor.html.twig' %}
 
+{% block title %}UPA - Vos Envies{% endblock %}
+{% block headercontent %}
+    {% set headerMainTitle = 'Vos envies...' %}
+    {% set headerSubTitle = '' %}
+    {% set smallHeader = true %}
+    {{ parent() }}
+{% endblock %}
+
 {% block content %}
 
     <section id="#">
@@ -10,15 +18,52 @@
             </div>
 
 
-                <div class="text-center">
-                    <h3>Découvrir</h3>
-                </div>
-                <div>
-                    <p>Venez découvrir les joies de la pétanque sur notre boulodrôme et ses plus de cent terrains couverts
-                        et extérieurs.<br/>
-                    Ouvert à tous et à tous les âges au sein d'un club actif, structuré et inscrit dans sa ville et sa
-                        région, venez participer à une pratique sportive qualitative et sécurisée.</p>
-                </div>
+            <div class="text-center">
+                <h3>Découvrir</h3>
+            </div>
+            <div>
+                <p>Venez découvrir les joies de la pétanque sur notre boulodrôme et ses plus de cent terrains couverts
+                    et extérieurs.<br/>
+                    Ouvert à tous et à tous les âges au sein d'un club actif et structuré venez participer à une
+                    pratique sportive qualitative et sécurisée.<br/>
+                    L'Union Pétanque Argonnaise est fière de vous offrir une grande variété de services qui vous
+                    garantiront une expérience unique et qui vous feront revenir et rester au sein de notre club.<br/>
+                    Depuis notre création en 1999, nous avons amélioré le jeu et l'expérience ludique pour les joueurs
+                    en apportant de meilleurs et de nombreux services.<br/>
+                    La qualité et la variété de nos installations et des services apportés vous assureront une
+                    expérience inoubliable.</p>
+            </div>
+
+            <div class="text-center">
+                <h3>Entraînements</h3>
+            </div>
+            <div>
+                <p>Notre équipe d'instructeurs professionnelle à ce qu'il faut pour apprendre à tous et à tout les âges
+                    comment jouer à la pétanque.<br/>
+                    Que vous soyez débutants ou joueurs confirmés, les entraînements de pétanque vous permettront
+                    d'atteindre l'"Obut".<br/>
+                    Nos entraineurs qualifiés prendront le temps de créer, pour vous, un calendrier d'entraînement
+                    personnalisé qui corresondra à vos besoins et à vos attentes.<br/>
+                    Nos leçons, qu'elles soient privées ou en groupe, sont développées pour s'accorder à votre style de
+                    jeu et à vos préférences personnelles.<br/>
+                    Peut importe votre âge, nous vous apprendrons comment vous améliorez et tirer profit de vos
+                    nouvelles compétences.<br/>
+                    Avec nous, vous serez prêts pour votre premier tournoi !</p>
+            </div>
+
+            <div class="text-center">
+                <h3>Compétitions</h3>
+            </div>
+            <div>
+                <p>En tant que principalclub de pétanque dans la région, nous participons et organisons des championnats
+                    et des tournois réguliers pour les débutants, les enthousiastes et les joueurs professionnels<br/>
+                    Vous pourrez, lors de ces événements, appréciez votre technique et votre niveau de jeu et vous
+                    comparer aux autres boulistes français et internationaux.<br/>
+                    Il existe une grande variété de championnats, de tournois ou d'événements de pétanque accessible à
+                    tous les membres du club et aux joueurs professionnels.<br/>
+                    Que vous vouliez tester votre niveau ou simplement participer à un événement, il y a toujours
+                    quelque chose pour vous !</p>
+            </div>
 
 
         </div>
