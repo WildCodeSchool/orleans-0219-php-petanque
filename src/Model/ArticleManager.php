@@ -30,10 +30,10 @@ class ArticleManager extends AbstractManager
      * Get all articles from database
      *
      *
-     *
+     * @param int $limitResults
      * @return array
      */
-    public function selectAllArticles():array
+    public function selectAllArticles(int $limitResults = 0):array
     {
         $statement = "
         SELECT a.id as id,
@@ -47,7 +47,11 @@ class ArticleManager extends AbstractManager
         FROM db_upa.article as a 
         LEFT JOIN db_upa.articlecategory AS c 
         ON a.articlecategory_id = c.id
-        ORDER BY a.date_publicated DESC;";
+        ORDER BY a.date_publicated DESC";
+        if ($limitResults > 0) {
+            $statement .= " LIMIT $limitResults";
+        }
+/*        $statement .= ";";*/
 
         return $this->pdo->query($statement)->fetchAll();
     }
