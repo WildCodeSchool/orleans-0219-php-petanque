@@ -69,7 +69,7 @@ p {
 
 .colored_background{
     background-color: #e2d3ba;
-    padding-bottom: 5%;
+    padding-bottom: 3%;
 }
 
 
@@ -79,7 +79,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 2% 0 10% 0;
+    margin-bottom:3%;
     background-color: #3E3631;
 }
 
@@ -463,7 +463,7 @@ p {
     min-height: 300px;
     cursor: pointer;
     box-shadow: 0 1rem 1rem rgba(83, 83, 83, 0.2);
-    border: 2px solid rgba(211, 170, 78, 1);
+    border: 1px solid rgba(211, 170, 78, 1);
 }
 .card-img_event {
     object-fit: cover;
@@ -682,4 +682,37 @@ p {
 
 /* ================================= Fin Styles Admin ================================== */
 
+#Hpartenaires{
+    background-color: #e2d3ba;
+}
 
+.partner_img{
+    width: 150px;
+}
+
+
+/******************* ARTICLE SPORTIF CARTE ****************************************************/
+/*-------------------------------------------------------------------------------------------------*/
+.article-small {
+    width:50%;
+}
+
+.card_evt_article{
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-article{
+    max-width: 800px;
+    min-height: 300px;
+    cursor: pointer;
+    border: 1px solid rgba(211, 170, 78, 1);
+}
+
+.row_article{
+    margin: 80px;
+}
+
+.card-header_article, .card-footer_article{
+    border: none;
+    background-color: transparent;
+}
