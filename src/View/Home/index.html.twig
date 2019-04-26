@@ -1,7 +1,7 @@
 {% extends 'sublayout_visitor.html.twig' %}
 {% block title %}UPA - Accueil{% endblock %}
 {% block headercontent %}
-    {%  set headerMainTitle = 'Union Pétanque Argonnaise'  %}
+    {% set headerMainTitle = 'Union Pétanque Argonnaise' %}
     {{ parent() }}
 {% endblock %}
 {% block content %}
@@ -82,7 +82,7 @@
 
     <!-- ==================== Fin Section "Vos envies" ==================== -->
 
-<!-- ==================== Début Section "Vos envies" ==================== -->
+    <!-- ==================== Début Section "Vos envies" ==================== -->
 
     <section id="HarticleClub">
         <div class="container-fluid">
@@ -93,66 +93,101 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <a href="#">
-                        <div class="big_club_article mt-0">
-                            <div class="info_article_big">
-                                <ul>
-                                    <li>
-                                        <i class="fas fa-calendar-alt"><span>{{ lastThreeEvents[0].date }}</span></i>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-user"><span>{{ lastThreeEvents[0].author }}</span></i>
-                                    </li>
-                                </ul>
-                                <div class="article_tag_and_title_big">
-                                    <button class="button_tag btn">{{ lastThreeEvents[0].tag }}</button>
-                                    <h4 class="title_article_big">{{ lastThreeEvents[0].title }}</h4>
-                                    <p class="hover_content_big_article no_display">{{ (lastThreeEvents[0].descr|length > 200 ? lastThreeEvents[0].desc|slice(0, 200) ~ '…' : lastThreeEvents[0].desc) |nl2br }}</p>
+                <div class="col-md-6 col-sm-12 my-2">
+                    <div class="card card-article card_evt_article big_club_article">
+                        <div class="card-header text-left card-header_article">
+                            <div><h4><span class="badge badge-info">#{{ articles[0].category | capitalize }}</span></h4>
+                            </div>
+                            <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ articles[0].date_publicated }}
+                        </div>
+                        <div class="card-body">
+                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small"
+                                 src="{{ articles[0].picture }}"
+                                 alt="{{ 'image de ' ~ articles[0].title }}">
+                            <div>
+                                <div class="row card-body">
+                                    <div class="col-sm-12">
+                                        <h4 class="card-title text-center">{{ articles[0].title }}</h4>
+                                        <div class="heading-divider-extent"></div>
+                                        <p class="card-text text-justify"> {{ articles[0].description|striptags|length > 200 ? articles[0].description|striptags|slice(0, 200) ~ ' [...]' : articles[0].description|striptags }}</p>
+                                    </div>
+                                </div>
+                                <div class="card-footer card-footer_article">
+                                    <div class="p-3 text-center">
+                                        <a class="btn btn_item" href="/Article/show/{{ articles[0].id }}"
+                                           role="button">En
+                                            savoir plus</a>
+                                    </div>
                                 </div>
                             </div>
-                            <img class="rounded big_club_img bloc" src="https://via.placeholder.com/150">
                         </div>
-                    </a>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card card_small_article mx-auto mt-0">
-                            <div class="info_article_small">
-                                <div class="article_tag_small">
-                                    <button class="button_tag btn">{{ article[1].tag }}</button>
+
+                <div class="col-md-3 col-sm-12 my-2">
+                    <div class="card card-article card_evt_article">
+                        <div class="card-header text-left card-header_article">
+                            <div><h4><span class="badge badge-info">#{{ articles[1].category | capitalize }}</span></h4>
+                            </div>
+                            <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ articles[1].date_publicated }}
+                        </div>
+                        <div class="card-body">
+                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small"
+                                 src="{{ articles[1].picture }}"
+                                 alt="{{ 'image de ' ~ articles[1].title }}">
+                            <div>
+                                <div class="row card-body">
+                                    <div class="col-sm-12">
+                                        <h4 class="card-title text-center">{{ articles[1].title }}</h4>
+                                        <div class="heading-divider-extent"></div>
+                                        <p class="card-text text-justify"> {{ articles[1].description|striptags|length > 200 ? articles[1].description|striptags|slice(0, 200) ~ ' [...]' : articles[1].description|striptags }}</p>
+                                    </div>
+                                </div>
+                                <div class="card-footer card-footer_article">
+                                    <div class="p-3 text-center">
+                                        <a class="btn btn_item" href="/Article/show/{{ articles[1].id }}"
+                                           role="button">En
+                                            savoir plus</a>
+                                    </div>
                                 </div>
                             </div>
-                            <img class="card-img-top card_img_small" src="https://via.placeholder.com/150"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ article[1].title }}</h5>
-                                <p class="card-text">{{ (article[1].desc|length > 100 ? article[1].desc|slice(0, 100) ~ '…' : article[1].desc) |nl2br }}</p>
-                                <i class="fas fa-calendar-alt mt-5"><span>{{ article[1].date }}</span></i>
-                            </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card card_small_article mx-auto mt-0">
-                            <div class="info_article_small">
-                                <div class="article_tag_small">
-                                    <button class="button_tag btn">{{ article[2].tag }}</button>
+                <div class="col-md-3 col-sm-12 my-2">
+                    <div class="card card-article card_evt_article">
+                        <div class="card-header text-left card-header_article">
+                            <div><h4><span class="badge badge-info">#{{ articles[2].category | capitalize }}</span></h4>
+                            </div>
+                            <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ articles[2].date_publicated }}
+                        </div>
+                        <div class="card-body">
+                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small"
+                                 src="{{ articles[2].picture }}"
+                                 alt="{{ 'image de ' ~ articles[2].title }}">
+                            <div>
+                                <div class="row card-body">
+                                    <div class="col-sm-12">
+                                        <h4 class="card-title text-center">{{ articles[2].title }}</h4>
+                                        <div class="heading-divider-extent"></div>
+                                        <p class="card-text text-justify"> {{ articles[2].description|striptags|length > 200 ? articles[2].description|striptags|slice(0, 200) ~ ' [...]' : articles[2].description|striptags }}</p>
+                                    </div>
+                                </div>
+                                <div class="card-footer card-footer_article">
+                                    <div class="p-3 text-center">
+                                        <a class="btn btn_item" href="/Article/show/{{ articles[2].id }}"
+                                           role="button">En
+                                            savoir plus</a>
+                                    </div>
                                 </div>
                             </div>
-                            <img class="card-img-top card_img_small" src="https://via.placeholder.com/150"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ article[2].title }}</h5>
-                                <p class="card-text">{{ (article[2].desc|length > 100 ? article[2].desc|slice(0, 100) ~ '…' : article[2].desc) |nl2br }}</p>
-                                <i class="fas fa-calendar-alt mt-5"><span>{{ article[2].date }}</span></i>
-                            </div>
                         </div>
-                    </a>
+                    </div>
+                </div>
+                <div class="col-md-6 mx-auto text-center mt-4">
+                    <a class="btn btn_item w-50" href="/Article/index" role="button">Voir toutes les actualités</a>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- ============== Début section Horaires ============= -->
@@ -194,29 +229,29 @@
         </div>
     </section>
     <section id="Hpartenaires">
-            <div class="mx-5">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="h2_colored_section">Partenaires</h2>
-                        <div class="h2_separator_dark"></div>
-                    </div>
-                </div>
-                <div class="row text-center align-items-center row-no-padding">
-                    {% for partner in partners %}
-                        <div class="col-xl-2 p-0">
-                            <div class="sponsor_wrapper pt-3 pb-3">
-                                    <a href="{{ partner.url }}">
-                                        <img src="/{{ partner.picture }}"
-                                             class="rounded partner_img" alt="{{ partner.picture }}">
-                                    </a>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="w-100 text-center mt-4">
-                    <button class="btn comp-button-moreinfo mb-5">Ils nous font confiance</button>
+        <div class="mx-5">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="h2_colored_section">Partenaires</h2>
+                    <div class="h2_separator_dark"></div>
                 </div>
             </div>
+            <div class="row text-center align-items-center row-no-padding">
+                {% for partner in partners %}
+                    <div class="col-xl-2 p-0">
+                        <div class="sponsor_wrapper pt-3 pb-3">
+                            <a href="{{ partner.url }}">
+                                <img src="/{{ partner.picture }}"
+                                     class="rounded partner_img" alt="{{ partner.picture }}">
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="w-100 text-center mt-4">
+                <button class="btn comp-button-moreinfo mb-5">Ils nous font confiance</button>
+            </div>
+        </div>
     </section>
 
     <!-- ==================== Fin section Horaires ========================== -->

@@ -34,7 +34,6 @@ class HomeController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectAllArticles(self::LIMIT_LAST_ARTICLES);
 
-
         return $this->twig->render('Home/index.html.twig', [
             'schedules' => $schedules,
             'partners' => $partners,
