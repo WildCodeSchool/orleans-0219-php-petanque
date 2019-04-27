@@ -761,3 +761,16 @@ p {
 #panelfilter{
     cursor:pointer;
 }
+
+#iconfilter{
+    font-size: 24px;
+    color: rgba(58, 51, 45,1);
+}
+
+#panelfilter .rotate{
+    transition: all .4s linear;
+}
+
+#panelfilter .rotate.down{
+    transform:rotate(90deg);
+}
