@@ -835,9 +835,6 @@ p {
     z-index: 10;
     content: "";
     display: block;
-    -moz-transform: scale(0.5);
-    -ms-transform: scale(0.5);
-    -webkit-transform: scale(0.5);
     transform: scale(0.5);
     transition: all .35s;
 }
@@ -845,4 +842,15 @@ p {
     opacity: 1;
     transform: scale(1);
 }
+
+.btn:focus, .btn:active, button:focus, button:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#image-gallery .modal-footer{
+    display: block;
+}
+
+
 /****************************************************************************************************/
