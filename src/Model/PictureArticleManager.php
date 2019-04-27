@@ -35,7 +35,7 @@ class PictureArticleManager extends AbstractManager
      */
     public function selectPicturesFromArticleById(int $id) :array
     {
-        $statement = "SELECT * FROM $this->table WHERE article.id=:id";
+        $statement = "SELECT * FROM $this->table WHERE article_id=:id";
 
         // prepared request
         $statement = $this->pdo->prepare($statement);
