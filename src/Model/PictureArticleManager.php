@@ -29,10 +29,11 @@ class PictureArticleManager extends AbstractManager
 
     /**
      * Retrieve all pictures from one article
-     * @param $id
+     *
+     * @param int $id
      * @return array
      */
-    public function selectPicturesFromArticleById($id) :array
+    public function selectPicturesFromArticleById(int $id) :array
     {
         $statement = "SELECT * FROM $this->table WHERE article.id=:id";
 
@@ -41,7 +42,5 @@ class PictureArticleManager extends AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll();
-
     }
-
 }
