@@ -1,0 +1,36 @@
+{% extends 'sublayout_visitor.html.twig' %}
+
+{% block title %}UPA - Actualité{% endblock %}
+{% block headercontent %}
+    {% set headerMainTitle = 'Vie du club' %}
+    {% set headerSubTitle = 'Actualité' %}
+    {% set smallHeader = true %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    {% if pictures %}
+        <section class="colored_background">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="h2_colored_section">Nos Souvenirs</h2>
+                        <div class="h2_separator_dark"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for picture in pictures %}
+                        <div class="col-md-3 col-sm-3 fg-img-card">
+                            <div class="feature-gallery">
+                                <img class="thumb img-gallery" src="/{{ picture.picture }}"
+                                     alt="image {{ picture.picture }}" title="">
+                                <div class="fg-overlay">
+                                    <p>{{ picture.legend }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}
