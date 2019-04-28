@@ -75,7 +75,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 1% 0 2% 0;
+    margin: 1% 0 1% 0;
     background-color: #3E3631;
 }
 
@@ -83,7 +83,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 1% 0 2% 0;
+    margin: 1% 0 1% 0;
     background-color: #d3aa4e;
 }
 
@@ -95,6 +95,7 @@ p {
 }
 
 .btn_item{
+    margin-top: 20px;
     text-decoration: none;
     padding: 13px 35px;
     color: white;
@@ -105,22 +106,22 @@ p {
 }
 
 .btn_item:hover{
-    color: #d3aa4e;
-    background-color: transparent;
+    color: black;
+    background-color: #d3aa4e;
     text-decoration: none;
-    border: solid 1px #d3aa4e;
+    border: solid 1px #3e3631;
 }
 
 .btn_item_invert{
     width: 400px;
     text-decoration: none;
     padding: 13px 35px;
-    color: #d3aa4e;
+    color: black;
     font-size: 14px;
     font-weight: 700;
     background-image: none;
-    background-color: transparent;
-    border: solid 1px #d3aa4e;
+    background-color: #d3aa4e;
+    border: solid 1px #3e3631;
 }
 
 .btn_item_invert:hover{
@@ -136,6 +137,7 @@ p {
 .card_yourwishes {
     border: none;
     max-width: 75%;
+    height:100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -146,7 +148,10 @@ p {
 }
 
 .card_img_yourwishes{
-    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    max-width: 300px;
 }
 
 .card_margin_yourwishes{
@@ -155,8 +160,11 @@ p {
 }
 
 .card_body_yourwishes{
-    margin-top: 20px;
-    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    max-width: 300px;
+    padding:0;
 }
 
 /* ---- Styles Section Horaires ---- */
@@ -473,7 +481,7 @@ p {
 /******************* EVENEMENT SPORTIF CARTE ****************************************************/
 /*-------------------------------------------------------------------------------------------------*/
 .card-evt {
-    max-width: 800px;
+    max-width: 475px;
     min-height: 300px;
     cursor: pointer;
     box-shadow: 0 1rem 1rem rgba(83, 83, 83, 0.2);
@@ -518,14 +526,15 @@ p {
 }
 
 .card_body_evt{
-    height: 600px;
+
 }
 
 .card_text_evt{
-    height: 200px;
+
 }
 
 .h5_evt{
+    margin-bottom:25px;
     height: 50px;
 }
 
