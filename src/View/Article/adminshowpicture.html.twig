@@ -17,10 +17,10 @@
                 <form enctype="multipart/form-data" method="post">
                     <div class="text-info">
                         <div>
-                            <label for='upload'>Sélectionner des fichiers images :</label>
+                            <label class="display-5" for='upload'>Sélectionner des images à uploader (PNG, JPG, GIF) :</label>
                         </div>
                         <div>
-                            <input id='upload' name="upload[]" type="file" multiple="multiple"/>
+                            <input id='upload' name="upload[]" type="file" multiple="multiple" accept="image/gif,image/jpg,image/png"/>
                         </div>
                     </div>
                     <div class="my-3">
@@ -33,10 +33,10 @@
         </div>
 
         {% set countFileUploaded=0 %}
-        {% for file in files %}
-            {% if not file.uploaded %}
+        {% for uploadedfile in uploadedfiles %}
+            {% if not uploadedfile.uploaded %}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>{{ file.fileName }}</strong> non mis en ligne : {{ file.uploadederror }}
+                    <strong>{{ uploadedfile.fileName }}</strong> non mis en ligne : {{ uploadedfile.uploadederror }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
