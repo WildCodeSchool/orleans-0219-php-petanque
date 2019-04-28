@@ -75,7 +75,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 1% 0 2% 0;
+    margin-bottom: 3%;
     background-color: #3E3631;
 }
 
@@ -631,7 +631,6 @@ p {
 }
 
 
-
 .custom-toggler .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
@@ -649,7 +648,6 @@ p {
 }
 
 
-
 .nav-item-underline > a:before {
     content: "";
     position: absolute;
@@ -664,7 +662,6 @@ p {
 }
 
 
-
 .nav-item-underline > a:hover:before {
     visibility: visible;
     transform: scaleX(1);
@@ -673,7 +670,7 @@ p {
 
 #HquiSommesNous
 {
-    background-color: #e3d3ba;
+    background-color: #fff;
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -693,6 +690,13 @@ p {
 
 .qui_role_wrap > p{
     font-size: 80%;
+}
+
+
+.home_members_picture{
+    width: 150px;
+    height: 150px;
+    object-fit:cover;
 }
 
 .box_shadow_toggle{
