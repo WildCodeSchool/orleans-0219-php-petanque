@@ -37,7 +37,7 @@ class AdminPictureArticleController extends AbstractController
         }
         if (isset($_POST['submit'])) {
             $uploadDir = 'assets/images/article/';
-            $allowedFormats = ['image/gif', 'image/jpg', 'image/png',];
+            $allowedFormats = ['image/gif', 'image/jpeg', 'image/png',];
             $maxSize = 1000000;
             if (!empty($_FILES['upload'])) {
                 //Loop through each file
