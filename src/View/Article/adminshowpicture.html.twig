@@ -32,26 +32,28 @@
             </div>
         </div>
 
-        {% set countFileUploaded=0 %}
-        {% for uploadedfile in uploadedfiles %}
-            {% if not uploadedfile.uploaded %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>{{ uploadedfile.fileName }}</strong> non mis en ligne : {{ uploadedfile.uploadederror }}
+        {% if not uploadedfiles is empty %}
+            {% set countFileUploaded=0 %}
+            {% for uploadedfile in uploadedfiles %}
+                {% if not uploadedfile.uploaded %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{ uploadedfile.fileName }}</strong> non mis en ligne : {{ uploadedfile.uploadederror }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% else %}
+                    {% set countFileUploaded = countFileUploaded + 1 %}
+                {% endif %}
+            {% endfor %}
+            {% if countFileUploaded > 0 %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{ countFileUploaded }}</strong> fichier(s) correctement mis en ligne.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            {% else %}
-                {% set countFileUploaded = countFileUploaded + 1 %}
             {% endif %}
-        {% endfor %}
-        {% if countFileUploaded > 0 %}
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>{{ countFileUploaded }}</strong> fichier(s) correctement mis en ligne.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
         {% endif %}
 
         <div class="row justify-content-center">
