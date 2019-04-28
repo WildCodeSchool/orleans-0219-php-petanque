@@ -80,6 +80,12 @@ class AdminPictureArticleController extends AbstractController
                                     'fileType' => $_FILES['upload']['type'][$i],
                                     'uploaded' => true,
                                 ];
+                                $pictureToInsert = [
+                                    'picture' => $uploadDir. $uploadFileName,
+                                    'article_id' => $id,
+                                ];
+                                $pictureArticle = new PictureArticleManager();
+                                $pictureArticle->insert( $pictureToInsert);
                             }
                         }
                     }
