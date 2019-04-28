@@ -611,8 +611,10 @@ p {
 /* ================================= Fin Styles Admin ================================== */
 
 .card_img_member{
-    max-width: 250px;
-    max-height: 200px;
+    width: 400px;
+    max-height:300px;
+   /* max-width: 250px;
+    max-height: 200px;*/
     object-fit: cover;
 }
 
@@ -622,7 +624,7 @@ p {
 }
 
 .card_header_member{
-    height: 225px;
+    border: 0px;
 }
 
 .sponsor_wrapper{
@@ -653,9 +655,8 @@ p {
     background-color: #737273;
 }
 
-.card_member:not(p){
-    border: 1px solid rgb(115, 114, 115);
-    border-radius: 0px;
+.card_member{
+    border: 0px;
 }
 
 .card_member_text{
@@ -663,3 +664,31 @@ p {
     padding-bottom: 10px;
 }
 
+.card-header{
+    background-color: unset;
+}
+
+.name_rol_member_card{
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.border_bottom_member_card{
+    margin: auto;
+    padding-bottom: 15px;
+    width: 95%;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.desc_member_card{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    width: 95%
+}
+
+@media screen and (max-width: 1600px) {
+    .card_img_member {
+        width: 300px;
+    }
+}
