@@ -35,57 +35,58 @@ class AdminPictureArticleController extends AbstractController
             $uploadedFiles=$_SESSION['uploadfiles'];
             $_SESSION['uploadfiles'] = [];
         }
-
         if (isset($_POST['submit'])) {
             $uploadDir = 'assets/images/article/';
             $allowedFormats = ['image/gif', 'image/jpg', 'image/png',];
             $maxSize = 1000000;
-            if (count($_FILES['upload']['name']) > 0) {
+            if (!empty($_FILES['upload'])) {
                 //Loop through each file
                 for ($i = 0; $i < count($_FILES['upload']['name']); $i++) {
                     $shortNameFile = $_FILES['upload']['name'][$i];
-                    if (!in_array($_FILES['upload']['type'][$i], $allowedFormats)) {
-                        $files[] = [
-                            'fileName' => $shortNameFile,
-                            'fileSize' => $_FILES['upload']['size'][$i],
-                            'fileType' => $_FILES['upload']['type'][$i],
-                            'uploaded' => false,
-                            'uploadederror' => 'Format non supporté.',
-                        ];
-                    } elseif ($_FILES['upload']['size'][$i] > $maxSize) {
-                        $files[] = [
-                            'fileName' => $shortNameFile,
-                            'fileSize' => $_FILES['upload']['size'][$i],
-                            'fileType' => $_FILES['upload']['type'][$i],
-                            'uploaded' => false,
-                            'uploadederror' => 'Taille de fichier > à 1Mo.',
-                        ];
-                    } else {
-                        //Get the temp file path
-                        $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
-                        //Make sure we have a filepath
-                        if (!empty($tmpFilePath)) {
-                            $extension = pathinfo($shortNameFile, PATHINFO_EXTENSION);
-                            $uploadFileName = 'picture' . uniqid();
-                            if (!empty($extension)) {
-                                $uploadFileName .= '.' . $extension;
-                            }
-                            //save the url and the file
-                            $uploadFile = $uploadDir . $uploadFileName;
-                            //Upload the file into the temp dir
-                            if (move_uploaded_file($tmpFilePath, $uploadFile)) {
-                                $files[] = [
-                                    'fileName' => $shortNameFile,
-                                    'fileSize' => $_FILES['upload']['size'][$i],
-                                    'fileType' => $_FILES['upload']['type'][$i],
-                                    'uploaded' => true,
-                                ];
-                                $pictureToInsert = [
-                                    'picture' => $uploadDir. $uploadFileName,
-                                    'article_id' => $id,
-                                ];
-                                $pictureArticle = new PictureArticleManager();
-                                $pictureArticle->insert($pictureToInsert);
+                    if (!empty($_FILES['upload']['name'][$i])) {
+                        if (!in_array($_FILES['upload']['type'][$i], $allowedFormats)) {
+                            $files[] = [
+                                'fileName' => $shortNameFile,
+                                'fileSize' => $_FILES['upload']['size'][$i],
+                                'fileType' => $_FILES['upload']['type'][$i],
+                                'uploaded' => false,
+                                'uploadederror' => 'Format non supporté.',
+                            ];
+                        } elseif ($_FILES['upload']['size'][$i] > $maxSize) {
+                            $files[] = [
+                                'fileName' => $shortNameFile,
+                                'fileSize' => $_FILES['upload']['size'][$i],
+                                'fileType' => $_FILES['upload']['type'][$i],
+                                'uploaded' => false,
+                                'uploadederror' => 'Taille de fichier > à 1Mo.',
+                            ];
+                        } else {
+                            //Get the temp file path
+                            $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+                            //Make sure we have a filepath
+                            if (!empty($tmpFilePath)) {
+                                $extension = pathinfo($shortNameFile, PATHINFO_EXTENSION);
+                                $uploadFileName = 'picture' . uniqid();
+                                if (!empty($extension)) {
+                                    $uploadFileName .= '.' . $extension;
+                                }
+                                //save the url and the file
+                                $uploadFile = $uploadDir . $uploadFileName;
+                                //Upload the file into the temp dir
+                                if (move_uploaded_file($tmpFilePath, $uploadFile)) {
+                                    $files[] = [
+                                        'fileName' => $shortNameFile,
+                                        'fileSize' => $_FILES['upload']['size'][$i],
+                                        'fileType' => $_FILES['upload']['type'][$i],
+                                        'uploaded' => true,
+                                    ];
+                                    $pictureToInsert = [
+                                        'picture' => $uploadDir . $uploadFileName,
+                                        'article_id' => $id,
+                                    ];
+                                    $pictureArticle = new PictureArticleManager();
+                                    $pictureArticle->insert($pictureToInsert);
+                                }
                             }
                         }
                     }
