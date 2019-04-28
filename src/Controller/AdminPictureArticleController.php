@@ -28,7 +28,14 @@ class AdminPictureArticleController extends AbstractController
      */
     public function showpicture(int $id)
     {
+        session_start();
         $files = [];
+        $uploadedFiles=[];
+        if (isset($_SESSION['uploadfiles'])) {
+            $uploadedFiles=$_SESSION['uploadfiles'];
+            $_SESSION['uploadfiles'] = [];
+        }
+
         if (isset($_POST['submit'])) {
             $uploadDir = 'assets/images/article/';
             $allowedFormats = ['image/gif', 'image/jpg', 'image/png',];
@@ -77,6 +84,9 @@ class AdminPictureArticleController extends AbstractController
                         }
                     }
                 }
+                $_SESSION['uploadfiles'] = $files;
+                header('Location:/AdminPictureArticle/showpicture/' .$id);
+                exit();
             }
         }
 
@@ -86,7 +96,7 @@ class AdminPictureArticleController extends AbstractController
         return $this->twig->render('Article/adminshowpicture.html.twig', [
             'pictures' => $pictures,
             'article' => $article,
-            'files' => $files,
+            'uploadedfiles' => $uploadedFiles,
         ]);
     }
 }
