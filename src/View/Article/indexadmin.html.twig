@@ -29,6 +29,7 @@
                     <th scope="col">Date publication</th>
                     <th scope="col">Titre</th>
                     <th scope="col">Catégorie</th>
+                    <th scope="col">Galerie photos</th>
                     <th scope="col">Modification</th>
                     <th scope="col">Suppression</th>
                 </tr>
@@ -39,6 +40,8 @@
                         <td data-title="Date publication">{{ article.date_publicated }}</td>
                         <td data-title="Titre">{{ article.title | capitalize }}</td>
                         <td data-title="Catégorie">{{ article.category | capitalize }}</td>
+                        <td><a class="btn btn-info w-100" href="/AdminPictureArticle/index/{{ article.id }}" role="button">Gérer ...</a>
+                        </td>
                         <td><a class="btn btn-warning w-100" href="edit/{{ article.id }}" role="button">Editer ...</a>
                         </td>
                         <td><form method="post" action="/AdminArticle/delete/?status=success">
