@@ -26,15 +26,67 @@ class AdminPictureArticleController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function show(int $id)
+    public function showpicture(int $id)
     {
-        $alertResult = isset($_GET['status']);
+        $files = [];
+        if (isset($_POST['submit'])) {
+            $uploadDir = 'assets/images/article/';
+            $allowedFormats = ['image/gif', 'image/jpg', 'image/png',];
+            $maxSize = 1000000;
+            if (count($_FILES['upload']['name']) > 0) {
+                //Loop through each file
+                for ($i = 0; $i < count($_FILES['upload']['name']); $i++) {
+                    $shortNameFile = $_FILES['upload']['name'][$i];
+                    if (!in_array($_FILES['upload']['type'][$i], $allowedFormats)) {
+                        $files[] = [
+                            'fileName' => $shortNameFile,
+                            'fileSize' => $_FILES['upload']['size'][$i],
+                            'fileType' => $_FILES['upload']['type'][$i],
+                            'uploaded' => false,
+                            'uploadederror' => 'Format non supporté.',
+                        ];
+                    } elseif ($_FILES['upload']['size'][$i] > $maxSize) {
+                        $files[] = [
+                            'fileName' => $shortNameFile,
+                            'fileSize' => $_FILES['upload']['size'][$i],
+                            'fileType' => $_FILES['upload']['type'][$i],
+                            'uploaded' => false,
+                            'uploadederror' => 'Taille de fichier > à 1Mo.',
+                        ];
+                    } else {
+                        //Get the temp file path
+                        $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+                        //Make sure we have a filepath
+                        if (!empty($tmpFilePath)) {
+                            $extension = pathinfo($shortNameFile, PATHINFO_EXTENSION);
+                            $uploadFileName = 'picture' . uniqid();
+                            if (!empty($extension)) {
+                                $uploadFileName .= '.' . $extension;
+                            }
+                            //save the url and the file
+                            $uploadFile = $uploadDir . $uploadFileName;
+                            //Upload the file into the temp dir
+                            if (move_uploaded_file($tmpFilePath, $uploadFile)) {
+                                $files[] = [
+                                    'fileName' => $shortNameFile,
+                                    'fileSize' => $_FILES['upload']['size'][$i],
+                                    'fileType' => $_FILES['upload']['type'][$i],
+                                    'uploaded' => true,
+                                ];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         $pictureArticleManager = new PictureArticleManager();
         $pictures = $pictureArticleManager->selectPicturesFromArticleById($id);
-
-        return $this->twig->render('Picture/show.html.twig', [
+        $article['id'] = $id;
+        return $this->twig->render('Article/adminshowpicture.html.twig', [
             'pictures' => $pictures,
-            'statusAlert' => $alertResult,
+            'article' => $article,
+            'files' => $files,
         ]);
     }
 }
