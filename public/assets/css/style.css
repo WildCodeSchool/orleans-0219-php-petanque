@@ -701,6 +701,25 @@ p {
 
 /* ================================= Début Styles Admin ================================== */
 
+/* Styles Admin Accueil */
+
+.icon_admin{
+    font-size: 100px;
+    margin: 20px;
+}
+
+.row_adminIndex{
+    margin: 80px;
+}
+
+.card_adminIndex_margin{
+    margin-top: 40px;
+}
+
+.card_body_adminIndex{
+    height: 100px;
+}
+
 /* Styles Admin Horaires */
 
 .btn_schedule{
