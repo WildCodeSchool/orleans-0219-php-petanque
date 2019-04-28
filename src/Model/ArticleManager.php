@@ -64,8 +64,8 @@ class ArticleManager extends AbstractManager
         $statement = $this->pdo->prepare("INSERT INTO $this->table 
         VALUES (NULL, :title, :description, :articlecategory_id, NULL, NOW())");
         $statement->bindValue('title', $articleData['title'], \PDO::PARAM_STR);
-        $statement->bindValue('descr', $articleData['description'], \PDO::PARAM_STR);
-        $statement->bindValue('date_begin', $articleData['articlecategory_id'], \PDO::PARAM_INT);
+        $statement->bindValue('description', $articleData['description'], \PDO::PARAM_STR);
+        $statement->bindValue('articlecategory_id', $articleData['articlecategory_id'], \PDO::PARAM_INT);
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
         }

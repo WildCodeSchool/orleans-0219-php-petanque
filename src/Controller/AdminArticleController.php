@@ -39,6 +39,7 @@ class AdminArticleController extends AbstractController
             $articleManager = new ArticleManager();
 
             if (empty($errorArticleData)) {
+                var_dump($articleData);
                 $id = $articleManager->insertArticle($articleData);
                 header('Location:/AdminArticle/show/' . $id);
             }
