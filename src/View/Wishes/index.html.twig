@@ -72,34 +72,34 @@
                 </div>
             </div>
 
-            <div class="text-center pt-5">
-                <h3>Licences</h3>
-            </div>
-            <div class="w-75 mx-auto">
-                <p>Tous les boulistes qui souhaitent participer aux championnats; aux tournois ou aux événements doivent
-                    détenir une licence.<br/>
-                </p>
+            <div class="card w-75 mx-auto card_evt_article rounded-0 border-0 row_article">
+                <div class="card-header text-center">
+                    <h3>Licences</h3>
+                </div>
+
+                <div class="card-body table-responsive-vertical mx-auto">
+                    <!-- Table starts here -->
+                    <table class="table table-hover table-striped table-bordered">
+                        <thead class="comp-thead-color">
+                        <tr>
+                            <th class="text-center" scope="col">Catégories</th>
+                            <th class="text-center" scope="col">Prix</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for price in prices %}
+                            <tr>
+                                <td class="text-center">{{ price.categories }} :</td>
+                                <td class="text-center" data-title="Prix :">{{ price.prices }} euros</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
 
-            <div class="table-responsive-vertical mx-5 w-50 mx-auto">
-                <!-- Table starts here -->
-                <table class="table table-hover table-striped table-bordered">
-                    <thead class="comp-thead-color">
-                    <tr>
-                        <th class="text-center" scope="col">Catégories</th>
-                        <th class="text-center" scope="col">Prix</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for price in prices %}
-                        <tr>
-                            <td class="text-center">{{ price.categories }} :</td>
-                            <td class="text-center" data-title="Prix :">{{ price.prices }} euros</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+
         </div>
 
     </section>
