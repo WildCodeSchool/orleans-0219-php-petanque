@@ -85,7 +85,7 @@ class AdminPictureArticleController extends AbstractController
                                     'article_id' => $id,
                                 ];
                                 $pictureArticle = new PictureArticleManager();
-                                $pictureArticle->insert( $pictureToInsert);
+                                $pictureArticle->insert($pictureToInsert);
                             }
                         }
                     }
