@@ -1,9 +1,17 @@
 {% extends 'sublayout_visitor.html.twig' %}
 
+{% block title %}UPA - Vie sportive{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'VIE SPORTIVE'  %}
+    {%  set headerSubTitle = 'Evènements sportifs à venir'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
+
+
 {% block content %}
 
 <div class="container-fluid ">
-    <h2 class ="text-center">Evènements sportifs à venir</h2>
         <div class="table-responsive-vertical mx-5">
             <!-- Table starts here -->
             <table id="table" class="table table-hover table-striped table-bordered">

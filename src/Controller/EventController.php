@@ -59,7 +59,6 @@ class EventController extends AbstractController
     {
         $eventManager = new EventManager();
         $event = $eventManager->selectOneEventToComeById($id);
-
         $alertResult = isset($_GET['status']);
         $adminStatus = isset($_GET['type']);
 
@@ -69,6 +68,7 @@ class EventController extends AbstractController
             'adminStatus' => $adminStatus,
         ]);
     }
+
 
     /**
      * Display past events listing

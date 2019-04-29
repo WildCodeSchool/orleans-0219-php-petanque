@@ -61,15 +61,15 @@ class EventManager extends AbstractManager
 
         return $this->pdo->query($statement)->fetchAll();
     }
-        
+
     /**
      * Get one row from database by ID.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return array
      */
-    public function selectOneEventToComeById(int $id):array
+    public function selectOneEventToComeById(int $id): array
     {
         $statement = "
         SELECT evenement.id, 
@@ -100,7 +100,7 @@ class EventManager extends AbstractManager
         return $statement->fetch();
     }
 
-     /**
+    /**
      * Insert an event in database
      *
      * @return int
@@ -165,13 +165,13 @@ class EventManager extends AbstractManager
     }
 
     /**
-     * Get all Eventts from database
+     * Get all Eventts from database (with possibility to define a limit Results)
      *
      *
-     *
+     * @param int $limitResults
      * @return array
      */
-    public function selectAllEvents():array
+    public function selectAllEvents(int $limitResults = 0): array
     {
         $statement = "
         SELECT evenement.id, 
@@ -194,7 +194,11 @@ class EventManager extends AbstractManager
         LEFT JOIN gendermix ON evenement.gendermix_id = gendermix.id
         LEFT JOIN evtcategory ON evenement.category_id = evtcategory.id
         LEFT JOIN evttype ON evenement.type_id = evttype.id
-        ORDER BY evenement.date_begin DESC, level.id, gendermix.id;";
+        ORDER BY evenement.date_begin DESC, level.id, gendermix.id";
+        if ($limitResults > 0) {
+            $statement .= " LIMIT $limitResults";
+        }
+        $statement .= ";";
 
         return $this->pdo->query($statement)->fetchAll();
     }

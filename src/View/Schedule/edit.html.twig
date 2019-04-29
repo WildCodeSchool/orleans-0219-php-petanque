@@ -1,15 +1,16 @@
 {% extends 'sublayout_visitor.html.twig' %}
 
+{% block title %}UPA - Horaires - Administration{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'Horaires du club'  %}
+    {%  set headerSubTitle = 'Gestion des horaires'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
+
 {% block content %}
 
     <div class="container">
-
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2>Gestion des horaires</h2>
-                <div class="h2_separator"></div>
-            </div>
-        </div>
 
         <form method="post">
             <div class="table-responsive-vertical mx-5">
