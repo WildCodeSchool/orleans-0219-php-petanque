@@ -1,7 +1,4 @@
 /vendor/
-/public/assets/images/sponsors
-/public/assets/images/members
-/public/assets/images/article
 /temp/*
 .phpcs-cache
 *.cache

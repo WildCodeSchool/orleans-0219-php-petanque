@@ -829,6 +829,10 @@ p {
     width: 95%
 }
 
+.img_partner{
+    width: 220px;
+}
+
 @media screen and (max-width: 1600px) {
     .card_img_member {
         width: 300px;
@@ -868,4 +872,6 @@ p {
     border: none;
     background-color: transparent;
 }
+
+
 
