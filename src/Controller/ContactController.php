@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Service\PostDatum;
@@ -16,11 +17,11 @@ class ContactController extends AbstractController
      */
     public function index()
     {
-        $errorContactData=[];
-        $contactData=[];
+        $errorContactData = [];
+        $contactData = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $postDatum =new PostDatum($_POST);
-            $contactData=$postDatum->cleanValues();
+            $postDatum = new PostDatum($_POST);
+            $contactData = $postDatum->cleanValues();
             $errorContactData = $this->checkErrorsPostData($contactData);
 
             if (empty($errorContactData)) {
@@ -29,14 +30,14 @@ class ContactController extends AbstractController
         }
 
         return $this->twig->render('Contact/index.html.twig', [
-                'errors' => $errorContactData,
-                'contact' => $contactData,
-            ]);
+            'errors' => $errorContactData,
+            'contact' => $contactData,
+        ]);
     }
 
-    private function checkErrorsPostData($data) :array
+    private function checkErrorsPostData($data): array
     {
-        $errors=[];
+        $errors = [];
         if (empty($data["firstname"])) {
             $errors["firstname"] = "Ce champ ne peut etre vide";
         }
