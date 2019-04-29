@@ -163,6 +163,10 @@ p {
     height: 150px;
 }
 
+.img_secWishes{
+    max-width: 300px;
+}
+
 /* ---- Styles Section Horaires ---- */
 
 .table_schedule{
@@ -787,3 +791,20 @@ p {
     background-color: transparent;
 }
 
+/* ===================== Style Page Vos Envies... ================== */
+
+.section_wishes_card{
+    margin: 80px;
+    border-radius:0px;
+}
+
+.section_wishes_body{
+    background-color: transparent;
+    border: none;
+}
+
+.section_wishes_colored{
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background-color: #e2d3ba;
+}
