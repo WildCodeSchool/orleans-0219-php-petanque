@@ -1,9 +1,15 @@
 {% extends 'sublayout_visitor.html.twig' %}
 
+{% block title %}UPA - Vie du club{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'VIE DU CLUB'  %}
+    {%  set headerSubTitle = 'Les dernières actualités'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
 {% block content %}
 
     <div class="container">
-        <h2 class="text-center">Les dernières brèves</h2>
         {% for article in articles %}
             <div class="row row_article">
                 <div class="col-sm-12">
