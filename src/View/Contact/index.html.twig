@@ -3,12 +3,7 @@
 {% block content %}
 
 
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-
-    <h1>Nous contacter</h1>
+    <h1 class="d-flex justify-content-center">Nous contacter</h1>
 
 
     <div class="container-fluid">
@@ -16,14 +11,13 @@
             <div class="col-5 offset-1">
                 <h3>Contactez-nous</h3>
                 <div class="heading-divider-extent"></div>
-                <form method="post" novalidate>
+                <form method="post" action="" novalidate>
 
                     <div class="firstname">
                         <label class="form-required" for="firstname"> Entrez votre prénom :</label>
                         <input type="text" class="form-control" placeholder="Prénom">
                         <div class="error-form">{{ errors.firstname }}</div>
                     </div>
-
 
                     <div class="lastname">
                         <label class="form-required" for="lastname">Entrez votre nom :</label>
@@ -54,10 +48,10 @@
                         <div class="error-form">{{ errors.message }}</div>
                     </div>
                     <div class="row my-3 mx-auto p-3 text-center justify-content-between">
-                        <a class="btn btn_item w-100" name="submit" role="submit">Envoyer</a>
+                        <a class="btn btn_item w-100" href="#" name="submit" role="submit">Envoyer</a>
                     </div>
-            </div>
                 </form>
+            </div>
 
             <div class="col-4 offset-1">
                 <h3>Adresse</h3>
@@ -96,6 +90,7 @@
             </div>
         </div>
     </div>
+
     <div class="d-flex justify-content-center">
         <h2>NOUS SOMMES ICI</h2>
     </div>
