@@ -1,0 +1,116 @@
+{% extends 'sublayout_visitor.html.twig' %}
+
+{% block title %}UPA - Vos Envies{% endblock %}
+{% block headercontent %}
+    {% set headerMainTitle = 'Vos envies...' %}
+    {% set headerSubTitle = '' %}
+    {% set smallHeader = true %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <section id="discover">
+        <div class="container-fluid">
+            <div class="card w-50 mx-auto card-evt section_wishes_card">
+                <div class="card-header text-center section_wishes_body">
+                    <h3>Découvrir</h3>
+                </div>
+                <img class="card-img-top rounded-0 w-50 mx-auto" src="/assets/images/decouvrir.jpg">
+                <div class="card-body">
+                    <p>Venez découvrir les joies de la pétanque sur notre boulodrôme et ses plus de
+                        cent terrains couverts et extérieurs.<br/>
+                        Ouvert à tous et à tous les âges, au sein d'un club actif et structuré, venez participer à une
+                        pratique sportive qualitative et sécurisée.<br/>
+                        L'Union Pétanque Argonnaise est fière de vous offrir une grande variété de services qui vous
+                        garantiront une expérience unique et qui vous feront revenir et rester au sein de notre
+                        club.<br/>
+                        Depuis notre création en 1999, nous avons amélioré le jeu et l'expérience ludique pour les
+                        joueurs en apportant de meilleurs et de nombreux services.<br/>
+                        La qualité et la variété de nos installations et des services apportés vous assureront une
+                        expérience inoubliable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="training">
+        <div class="container-fluid section_wishes_colored">
+            <div class="card w-50 mx-auto card-evt section_wishes_card">
+                <div class="card-header text-center section_wishes_body">
+                    <h3>Entraînements</h3>
+                </div>
+                <img class="card-img-top rounded-0 w-50 mx-auto" src="/assets/images/entrainement.jpg">
+                <div class="card-body">
+                    <p>Notre équipe d'instructeurs professionnelle à ce qu'il faut pour apprendre à
+                        tous et à tous les âges comment jouer à la pétanque.<br/>
+                        Que vous soyez débutants ou joueurs confirmés, les entraînements de pétanque vous
+                        permettront
+                        d'atteindre l'"Obut".<br/>
+                        Nos entraineurs qualifiés prendront le temps de créer, pour vous, un calendrier
+                        d'entraînement
+                        personnalisé qui correspondra à vos besoins et à vos attentes.<br/>
+                        Nos leçons, qu'elles soient privées ou en groupe, sont développées pour s'accorder à votre
+                        style
+                        de jeu et à vos préférences personnelles.<br/>
+                        Peu importe votre âge, nous vous apprendrons comment vous améliorer et tirer profit de vos
+                        nouvelles compétences.<br/>
+                        Avec nous, vous serez prêts pour votre premier tournoi !</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="competition">
+        <div class="container-fluid">
+            <div class="card w-50 mx-auto card-evt section_wishes_card">
+                <div class="card-header text-center section_wishes_body">
+                    <h3>Compétition</h3>
+                </div>
+                <img class="card-img-top rounded-0 w-50 mx-auto" src="/assets/images/competition.jpg">
+                <div class="card-body">
+                    <p>En tant que principal club de pétanque dans la région, nous participons et
+                        organisons des championnats
+                        et des tournois réguliers pour les débutants, les enthousiastes et les joueurs
+                        professionnels.<br/>
+                        Vous pourrez, lors de ces événements, appréciez votre technique et votre niveau de jeu et vous
+                        comparer aux autres boulistes français et internationaux.<br/>
+                        Il existe une grande variété de championnats, de tournois ou d'événements de pétanque accessible
+                        à tous les membres du club et aux joueurs professionnels.<br/>
+                        Que vous vouliez tester votre niveau ou simplement participer à un événement, il y a toujours
+                        quelque chose pour vous !</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-fluid section_wishes_colored">
+            <div class="card w-50 mx-auto card-evt section_wishes_card">
+                <div class="card-header text-center section_wishes_body">
+                    <h3>Licences</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Table starts here -->
+                    <table class="table table-hover table-striped table-bordered">
+                        <thead class="comp-thead-color">
+                        <tr>
+                            <th class="text-center" scope="col">Catégories</th>
+                            <th class="text-center" scope="col">Prix</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for price in prices %}
+                            <tr>
+                                <td class="text-center">{{ price.categories }} :</td>
+                                <td class="text-center" data-title="Prix :">{{ price.prices }} euros</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
