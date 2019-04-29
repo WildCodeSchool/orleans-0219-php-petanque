@@ -54,7 +54,7 @@ class EventManager extends AbstractManager
             INNER JOIN level ON evenement.level_id = level.id
             INNER JOIN gendermix ON evenement.gendermix_id = gendermix.id
             INNER JOIN evtcategory ON evenement.category_id = evtcategory.id
-            INNER JOIN evttype ON evenement.gendermix_id = evttype.id
+            INNER JOIN evttype ON evenement.type_id = evttype.id
             WHERE date_begin >= NOW() ";
         foreach ($filters as $keyfilter => $filter) {
             if (!empty($filter)) {

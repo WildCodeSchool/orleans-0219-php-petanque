@@ -52,7 +52,7 @@ class EventController extends AbstractController
                 $eventFilters['gendermix_id'] =  $_GET['gendermix_id'];
             }
             if (isset($_GET['departement_id'])) {
-                $eventFilters['departement_id'] =  $_GET['f_dept'];
+                $eventFilters['departement_id'] =  $_GET['departement_id'];
             }
         }
 
