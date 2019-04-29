@@ -124,6 +124,7 @@
 
     <!-- ==================== Fin section Horaires ========================== -->
 
+
     <!-- ============== Début section Vie sportive ============= -->
     <section id="viesportive">
         <div class="container-fluid">
@@ -185,6 +186,41 @@
     </section>
 
     <!-- ============== Fin section Vie sportive ============= -->
+
+    <!-- ==================== Début section Qui Sommes Nous ========================== -->
+    <section id="HquiSommesNous">
+        <div class="mx-5">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="h2_colored_section">Membres du club</h2>
+                    <div class="h2_separator_dark"></div>
+                </div>
+            </div>
+            <div class="row text-center">
+                {% for member in members %}
+                    <div class="col-xl-4">
+                        <div class="portrait_wrapper pt-3">
+                            <div class="portrait float-left pr-4">
+                                <img src={{ base_path~directory }}/{{ (member.picture is null) ? 'assets/images/members/placeholder.jpg' : member.picture}} class="rounded-circle home_members_picture" alt="Cinque Terre">
+                            </div>
+                            <div class="qui_title_wrap text-left">
+                                <p>{{ member.lastname | capitalize}}  {{ member.firstname }}</p>
+                            </div>
+                            <div class="qui_role_wrap text-left">
+                                <p>{{ member.role }}</p>
+                            </div>
+                            <div class="qui_desc_wrap text-left">
+                                <p>{{ member.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Fin section Qui Sommes Nous ========================== -->
+
 
     <!-- ============== Debut section Partenaires ============= -->
     <section id="Hpartenaires">
