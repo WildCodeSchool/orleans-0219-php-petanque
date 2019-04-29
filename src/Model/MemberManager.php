@@ -40,5 +40,4 @@ class MemberManager extends AbstractManager
         $statement = "SELECT * FROM " . $this->table . " ORDER BY id LIMIT ".self::MEMBERLIMIT;
         return $this->pdo->query($statement)->fetchAll();
     }
-
 }
