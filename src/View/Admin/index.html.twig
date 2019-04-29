@@ -1,0 +1,71 @@
+{% extends 'sublayout_visitor.html.twig' %}
+
+{% block title %}UPA Administration{% endblock %}
+
+{% block headercontent %}
+    {% set headerMainTitle = 'Administration' %}
+    {% set headerSubTitle = 'La vie de bouliste' %}
+    {% set smallHeader = true %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <section id="Admin">
+        <div class="container-fluid">
+            <div class="row row_adminIndex">
+
+                <div class="col-sm-12 col-md-6 col-lg-3 card_adminIndex_margin">
+                    <div class="card card-evt text-center">
+                        <i class="fas fa-calendar-alt icon_admin"></i>
+                        <div class="card-body card_body_adminIndex">
+                            <h5 class="card-title">Gérez les activités</h5>
+                        </div>
+                        <div class="card-footer card_title_footer">
+                            <a href="/adminArticle/index" class="btn btn_item">Gestion</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-3 card_adminIndex_margin">
+                    <div class="card card-evt text-center">
+                        <i class="fas fa-running icon_admin"></i>
+                        <div class="card-body card_body_adminIndex">
+                            <h5 class="card-title">Gérez les événements</h5>
+                        </div>
+                        <div class="card-footer card_title_footer">
+                            <a href="/adminEvent/index" class="btn btn_item">Gestion</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-3 card_adminIndex_margin">
+                    <div class="card card-evt text-center">
+                        <i class="fas fa-clock icon_admin"></i>
+                        <div class="card-body card_body_adminIndex">
+                            <h5 class="card-title">Gérez les horaires</h5>
+                        </div>
+                        <div class="card-footer card_title_footer">
+                            <a href="/Schedule/edit" class="btn btn_item">Gestion</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-3 card_adminIndex_margin">
+                    <div class="card card-evt text-center">
+                        <i class="fas fa-money-bill-alt icon_admin"></i>
+                        <div class="card-body card_body_adminIndex">
+                            <h5 class="card-title">Gérez les tarifs</h5>
+                        </div>
+                        <div class="card-footer card_title_footer">
+                            <a href="/Price/edit" class="btn btn_item">Gestion</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}
