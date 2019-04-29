@@ -35,14 +35,16 @@ class AdminEventController extends AbstractController
      */
     public function index()
     {
+        $alertResult = isset($_GET['status']);
         $eventManager = new EventManager();
         $events = $eventManager->selectAllEvents();
 
         return $this->twig->render('Event/indexadmin.html.twig', [
             'events' => $events,
+            'statusAlert' => $alertResult,
         ]);
     }
-  
+
 
      /**
      * Display event creation page
@@ -66,7 +68,8 @@ class AdminEventController extends AbstractController
 
             if (empty($errorEventData)) {
                 $id = $eventManager->insertEvent($eventData);
-                header('Location:/event/show/' . $id);
+                header('Location:/event/show/' . $id . '/?status=success&type=admin');
+                exit();
             }
         }
 
@@ -86,6 +89,65 @@ class AdminEventController extends AbstractController
         $types = $evtTypeManager->selectall();
 
         return $this->twig->render('Event/add.html.twig', [
+            'event' => $eventData,
+            'errors' => $errorEventData,
+            'departements' => $departements,
+            'levels' => $levels,
+            'genders'=> $genders,
+            'categories' => $categories,
+            'types' => $types,
+        ]);
+    }
+
+    /**
+     * UPDATE event informations
+     *
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function edit(int $id)
+    {
+        $errorEventData=[];
+        $eventManager = new EventManager();
+        $eventData = $eventManager->selectOneById($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $postDatum = new PostDatum($_POST);
+            $eventData=$postDatum->cleanValues();
+            $errorEventData = $this->checkErrorsPostData($eventData);
+
+            if (empty($id)) {
+                $errorEventData['id'] = "Un problème est survenu lors de la mise à jour de l'évènement.";
+            } elseif (empty($eventManager->selectOneById($id))) {
+                $errorEventData['id'] = "L'identifiant demandé de l'évènement n'existe pas dans la base de données";
+            }
+
+            if (empty($errorEventData)) {
+                $eventManager->updateEvent($eventData, $id);
+                $events=$eventManager->selectAllEvents();
+                header('Location:/event/show/' . $id . '/?status=success&type=admin');
+                exit();
+            }
+        }
+
+        $departementManager = new DepartementManager();
+        $departements = $departementManager->selectall();
+
+        $levelManager = new EventLevelManager();
+        $levels = $levelManager->selectall();
+
+        $genderManager = new EventGenderManager();
+        $genders = $genderManager->selectall();
+
+        $evtCategoryManager = new EventCategoryManager();
+        $categories = $evtCategoryManager->selectall();
+
+        $evtTypeManager = new EventTypeManager();
+        $types = $evtTypeManager->selectall();
+
+        return $this->twig->render('Event/edit.html.twig', [
             'event' => $eventData,
             'errors' => $errorEventData,
             'departements' => $departements,
@@ -182,5 +244,30 @@ class AdminEventController extends AbstractController
         }
 
         return $errors;
+    }
+
+    /**
+     * Delete an event
+     */
+    public function delete()
+    {
+        $eventManager = new EventManager();
+        $errors=[];
+        $id=0;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $postDatum =new PostDatum($_POST);
+            $postData=$postDatum->cleanValues();
+            $id = $postData['id'];
+            if (empty($id)) {
+                $errors[] = 'L évènement n existe pas';
+            } elseif (empty($eventManager->selectOneById($id))) {
+                $errors[] = 'L évènement n existe pas dans la base de données';
+            }
+        }
+        if (empty($errors)) {
+            $eventManager->delete($id);
+            header('Location:/adminEvent/index/?status=success');
+            exit();
+        }
     }
 }

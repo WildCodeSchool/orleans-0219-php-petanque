@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: sylvain
@@ -13,13 +12,13 @@ namespace App\Model;
 /**
  *
  */
-class MemberManager extends AbstractManager
+class PartnerManager extends AbstractManager
 {
     /**
      *
      */
-    const TABLE = 'member';
-    const MEMBERLIMIT = 3;
+    const TABLE = 'partner';
+    const LIMITPARTNER = '6';
 
     /**
      *  Initializes this class.
@@ -29,16 +28,9 @@ class MemberManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-
-    /**
-     * Get all row from database - Override abstract Method
-     *
-     * @return array
-     */
-    public function getTopMembers(): array
+    public function getPartners(): array
     {
-        $statement = "SELECT * FROM " . $this->table . " ORDER BY id LIMIT ".self::MEMBERLIMIT;
+        $statement = "SELECT * FROM " . $this->table . " LIMIT " . self::LIMITPARTNER;
         return $this->pdo->query($statement)->fetchAll();
     }
-
 }

@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Montserrat');
-
 /*-------------------------------------------------------------------------------*/
 /* Titres de bases*/
 body {
@@ -8,6 +7,10 @@ body {
     font-weight: 400;
     line-height: 1.5;
     color: #737273;
+}
+
+header {
+    box-shadow: 0 .5rem 1rem rgba(83, 83, 83, 0.5);
 }
 
 h1,h2 {
@@ -66,7 +69,7 @@ p {
 
 .colored_background{
     background-color: #e2d3ba;
-    padding-bottom: 5%;
+    padding-bottom: 3%;
 }
 
 
@@ -76,7 +79,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 2% 0 10% 0;
+    margin-bottom: 3%;
     background-color: #3E3631;
 }
 
@@ -84,7 +87,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 2% 0 10% 0;
+    margin: 1% 0 2% 0;
     background-color: #d3aa4e;
 }
 
@@ -112,6 +115,25 @@ p {
     border: solid 1px #d3aa4e;
 }
 
+.btn_item_invert{
+    width: 400px;
+    text-decoration: none;
+    padding: 13px 35px;
+    color: #d3aa4e;
+    font-size: 14px;
+    font-weight: 700;
+    background-image: none;
+    background-color: transparent;
+    border: solid 1px #d3aa4e;
+}
+
+.btn_item_invert:hover{
+    color: white;
+    background-color: #3E3631;
+    text-decoration: none;
+    border: solid 1px #3E3631;
+}
+
 
 /* ---- Styles section Vos Envies ---- */
 
@@ -134,6 +156,11 @@ p {
 .card_margin_yourwishes{
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+.card_body_yourwishes{
+    margin-top: 20px;
+    height: 150px;
 }
 
 /* ---- Styles Section Horaires ---- */
@@ -450,9 +477,16 @@ p {
 /******************* EVENEMENT SPORTIF CARTE ****************************************************/
 /*-------------------------------------------------------------------------------------------------*/
 .card-evt {
-
     max-width: 800px;
     min-height: 300px;
+    cursor: pointer;
+    box-shadow: 0 1rem 1rem rgba(83, 83, 83, 0.2);
+    border: 1px solid rgba(211, 170, 78, 1);
+}
+
+.card-body-evt-small {
+    max-width: 400px;
+    min-height: 100px;
     cursor: pointer;
     box-shadow: 0 1rem 1rem rgba(83, 83, 83, 0.2);
     border: 2px solid rgba(211, 170, 78, 1);
@@ -461,21 +495,42 @@ p {
     object-fit: cover;
     height: 100%;
     max-height: 100%;
-    display:block;
-    margin:auto;
+    display: block;
+    margin: auto;
     filter: blur(0px) opacity(50%);
-    transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);
-
+    transition: filter 0.5s cubic-bezier(.43, .41, .22, .91);
 }
+
+.img-event-small {
+    width:100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .card-title-evt {
     background-color: rgba(211, 170, 78, 0.8);
-    padding: 5px;
+    padding: 5px 0;
     margin-top: 0px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .card-title-evt-date {
-    background-color: rgba(211, 211, 211, 0.8);
-    padding: 3px;
-    margin-bottom: 0px;
+    height: 45px;
+    padding: 2px;
+    margin-bottom: 2%;
+}
+
+.card_body_evt{
+    height: 600px;
+}
+
+.card_text_evt{
+    height: 200px;
+}
+
+.h5_evt{
+    height: 50px;
 }
 
 /***********************Formulaire Global ********************************************/
@@ -494,6 +549,7 @@ p {
 .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover
 {
     color: white;
+    font-size : 18px;
 }
 
 .dropdown-menu
@@ -536,6 +592,22 @@ p {
 
 .h1-centered
 {
+    color: #fff;
+    margin: auto;
+    font-size: 5vw;
+}
+
+.h2-centered
+{
+    color: #fff;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2.5vw;
+    padding-top: 20px;
+}
+
+.title-wrapper{
     color: white;
     position: absolute;
     left: 0;
@@ -555,6 +627,18 @@ p {
     width: 100%;
 }
 
+
+.custom-toggler .navbar-toggler-icon
+{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler
+{
+    border-color: rgb(255,255,255);
+}
+
+
 .custom-toggler .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
@@ -565,10 +649,12 @@ p {
 /*link navbar animation*/
 
 .nav-item-underline > a {
+
     position: relative;
     color: #fff;
     text-decoration: none;
 }
+
 
 .nav-item-underline > a:before {
     content: "";
@@ -577,18 +663,74 @@ p {
     height: 3px;
     bottom: 2px;
     left: 0;
-    background-color: #000;
+    background-color: #fff;
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out 0s;
 }
+
 
 .nav-item-underline > a:hover:before {
     visibility: visible;
     transform: scaleX(1);
 }
 
+
+#HquiSommesNous
+{
+    background-color: #fff;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.qui_title_wrap, .qui_role_wrap, .qui_desc_wrap{
+    overflow: hidden;
+    max-width: 500px;
+}
+
+.qui_title_wrap > p, .qui_role_wrap > p{
+    margin-bottom: 0.5rem;
+}
+
+.qui_title_wrap > p{
+    font-size: 125%;
+}
+
+.qui_role_wrap > p{
+    font-size: 80%;
+}
+
+
+.home_members_picture{
+    width: 150px;
+    height: 150px;
+    object-fit:cover;
+}
+
+.box_shadow_toggle{
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.50);
+}
+
 /* ================================= Début Styles Admin ================================== */
+
+/* Styles Admin Accueil */
+
+.icon_admin{
+    font-size: 100px;
+    margin: 20px;
+}
+
+.row_adminIndex{
+    margin: 80px;
+}
+
+.card_adminIndex_margin{
+    margin-top: 40px;
+}
+
+.card_body_adminIndex{
+    height: 100px;
+}
 
 /* Styles Admin Horaires */
 
@@ -692,3 +834,38 @@ p {
         width: 300px;
     }
 }
+
+#Hpartenaires{
+    background-color: #e2d3ba;
+}
+
+.partner_img{
+    width: 150px;
+}
+
+/******************* ARTICLE SPORTIF CARTE ****************************************************/
+/*-------------------------------------------------------------------------------------------------*/
+.article-small {
+    width:50%;
+}
+
+.card_evt_article{
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-article{
+    max-width: 800px;
+    min-height: 300px;
+    cursor: pointer;
+    border: 1px solid rgba(211, 170, 78, 1);
+}
+
+.row_article{
+    margin: 80px;
+}
+
+.card-header_article, .card-footer_article{
+    border: none;
+    background-color: transparent;
+}
+
