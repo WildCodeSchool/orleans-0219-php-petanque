@@ -61,9 +61,10 @@ class EventController extends AbstractController
         $event = $eventManager->selectOneEventToComeById($id);
         $alertResult = isset($_GET['status']);
         $adminStatus = isset($_GET['type']);
+
         return $this->twig->render('Event/show.html.twig', [
             'event' => $event,
-        'statusAlert' => $alertResult,
+            'statusAlert' => $alertResult,
             'adminStatus' => $adminStatus,
         ]);
     }
