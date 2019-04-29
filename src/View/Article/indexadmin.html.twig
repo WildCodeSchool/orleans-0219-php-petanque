@@ -1,0 +1,57 @@
+{% extends 'sublayout_visitor.html.twig' %}
+
+{% block title %}UPA - Vie du club{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'VIE DU CLUB'  %}
+    {%  set headerSubTitle = 'Administration des actualités'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid ">
+        {% if statusAlert == true %}
+            <div class="alert alert-danger alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
+                L'article a été correctement supprimé.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+        <div class="col-md-4 mx-auto py-2 justify-content-center">
+            <a class="btn btn-success w-100" href="add/" role="button">Ajouter un article ...</a>
+        </div>
+        <div class="table-responsive-vertical mx-5">
+            <!-- Table starts here -->
+            <table id="table" class="table table-hover table-striped table-bordered">
+                <thead class="comp-thead-color">
+                <tr>
+                    <th scope="col">Date publication</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Galerie photos</th>
+                    <th scope="col">Modification</th>
+                    <th scope="col">Suppression</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                    <tr>
+                        <td data-title="Date">{{ article.date_publicated }}</td>
+                        <td data-title="Titre">{{ article.title | capitalize }}</td>
+                        <td data-title="Catégorie">{{ article.category | capitalize }}</td>
+                        <td><a class="btn btn-info w-100" href="/AdminPictureArticle/index/{{ article.id }}" role="button">Gérer ...</a>
+                        </td>
+                        <td><a class="btn btn-warning w-100" href="/AdminArticle/edit/{{ article.id }}" role="button">Editer ...</a>
+                        </td>
+                        <td><form method="post" action="/AdminArticle/delete/?status=success">
+                                <button type="submit" class="btn btn-danger w-100" name="id" value="{{ article.id }}">Enlever</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

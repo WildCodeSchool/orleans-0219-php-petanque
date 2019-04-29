@@ -2,7 +2,7 @@
 
 {#Insertion des fichiers du header#}
 {% block headercontent %}
-    {% include 'Common/_header.html.twig' %}
+    {% include 'Common/_header.html.twig' with {headerMainTitle: headerMainTitle, headerSubTitle: headerSubTitle, smallHeader:  smallHeader} %}
 {% endblock %}
 
 {% block stylesheet %}
@@ -17,5 +17,6 @@
     <script src="/assets/js/navbar.js"></script>
     <script src="/assets/js/bigArticle.js"></script>
 {% endblock %}
+
 
 
