@@ -16,7 +16,7 @@
         </div>
         <div class="row justify-content-center mt-3">
 
-            {% for member in members %}
+            {% for key, member in members %}
 
                 <div class="card col-lg-6 col-xl-3 p-0 m-3 min_width_card_members card_member" data-commission="{{ member.isCommission }}"
                     data-salaried="{{ member.isSalaried }}" data-committee="{{ member.isComiteDirecteur }}">
@@ -32,9 +32,7 @@
                         </div>
                         <div class="desc_member_card">
                             <p class="text-left">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.
+                                {{ randomDescription[key] }}
                             </p>
                         </div>
                     </div>

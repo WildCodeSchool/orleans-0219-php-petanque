@@ -9,7 +9,7 @@
 namespace App\Controller;
 
 use App\Model\MemberManager;
-use App\Model\SponsorrManager;
+use App\Model\PartnerManager;
 
 class MemberController extends AbstractController
 {
@@ -26,12 +26,18 @@ class MemberController extends AbstractController
     {
         $memberManager = new MemberManager();
         $member = $memberManager->selectAll();
-        $sponsorManager = new SponsorrManager();
-        $sponsors = $sponsorManager->selectAll();
+        $partnerManager = new PartnerManager();
+        $partner = $partnerManager->selectAll();
+        $randomDescription = [];
+
+        for ($x=0; $x<count($member); $x++) {
+            $randomDescription[] = $memberManager->getRandomDescription();
+        }
 
         return $this->twig->render('Member/index.html.twig', [
             'members' => $member,
-            'sponsors' => $sponsors,
+            'partners' => $partner,
+            'randomDescription' => $randomDescription,
         ]);
     }
 }

@@ -40,4 +40,14 @@ class MemberManager extends AbstractManager
         $statement = "SELECT * FROM " . $this->table . " ORDER BY id LIMIT ".self::MEMBERLIMIT;
         return $this->pdo->query($statement)->fetchAll();
     }
+
+    public function getRandomDescription(): string
+    {
+        $queryResult = $this->getTopMembers();
+        $descriptions = array_map(function ($m) {
+            return $m['description'];
+        }, $queryResult);
+
+        return $descriptions[rand(0, count($descriptions) - 1)];
+    }
 }
