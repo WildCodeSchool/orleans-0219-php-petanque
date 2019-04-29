@@ -1,5 +1,11 @@
 {% extends 'sublayout_visitor.html.twig' %}
-
+{% block title %}UPA - Accueil{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'Union Pétanque Argonnaise'  %}
+    {%  set headerSubTitle = 'La vie de bouliste'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
 {% block content %}
 
     <!-- ==================== Début Section "Vos envies" ==================== -->
