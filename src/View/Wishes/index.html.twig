@@ -10,15 +10,14 @@
 
 {% block content %}
 
-    <section id="#">
-        <div class="container">
-
-            <div class="card w-75 mx-auto card_evt_article rounded-0 border-0 row_article">
-                <img class="card-img-top text-center rounded-0" src="/assets/images/decouvrir.jpg">
-                <div class="card-header text-center">
+    <section id="discover">
+        <div class="container-fluid">
+            <div class="card w-50 mx-auto card-evt section_wishes_card">
+                <div class="card-header text-center section_wishes_body">
                     <h3>Découvrir</h3>
                 </div>
-                <div class="card-body mx-auto">
+                <img class="card-img-top rounded-0 w-50 mx-auto" src="/assets/images/decouvrir.jpg">
+                <div class="card-body">
                     <p>Venez découvrir les joies de la pétanque sur notre boulodrôme et ses plus de
                         cent terrains couverts et extérieurs.<br/>
                         Ouvert à tous et à tous les âges, au sein d'un club actif et structuré, venez participer à une
@@ -32,33 +31,44 @@
                         expérience inoubliable.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="card w-75 mx-auto card_evt_article rounded-0 border-0 row_article">
-                <img class="card-img-top text-center rounded-0" src="/assets/images/entrainement.jpg">
-                <div class="card-header text-center">
+    <section id="training">
+        <div class="container-fluid section_wishes_colored">
+            <div class="card w-50 mx-auto card-evt section_wishes_card">
+                <div class="card-header text-center section_wishes_body">
                     <h3>Entraînements</h3>
                 </div>
-                <div class="card-body mx-auto">
+                <img class="card-img-top rounded-0 w-50 mx-auto" src="/assets/images/entrainement.jpg">
+                <div class="card-body">
                     <p>Notre équipe d'instructeurs professionnelle à ce qu'il faut pour apprendre à
                         tous et à tous les âges comment jouer à la pétanque.<br/>
-                        Que vous soyez débutants ou joueurs confirmés, les entraînements de pétanque vous permettront
+                        Que vous soyez débutants ou joueurs confirmés, les entraînements de pétanque vous
+                        permettront
                         d'atteindre l'"Obut".<br/>
-                        Nos entraineurs qualifiés prendront le temps de créer, pour vous, un calendrier d'entraînement
+                        Nos entraineurs qualifiés prendront le temps de créer, pour vous, un calendrier
+                        d'entraînement
                         personnalisé qui correspondra à vos besoins et à vos attentes.<br/>
-                        Nos leçons, qu'elles soient privées ou en groupe, sont développées pour s'accorder à votre style
+                        Nos leçons, qu'elles soient privées ou en groupe, sont développées pour s'accorder à votre
+                        style
                         de jeu et à vos préférences personnelles.<br/>
                         Peu importe votre âge, nous vous apprendrons comment vous améliorer et tirer profit de vos
                         nouvelles compétences.<br/>
                         Avec nous, vous serez prêts pour votre premier tournoi !</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="card w-75 mx-auto card_evt_article rounded-0 border-0 row_article">
-                <img class="card-img-top text-center rounded-0" src="/assets/images/competition.jpg">
-                <div class="card-header text-center">
+    <section id="competition">
+        <div class="container-fluid">
+            <div class="card w-50 mx-auto card-evt section_wishes_card">
+                <div class="card-header text-center section_wishes_body">
                     <h3>Compétition</h3>
                 </div>
-                <div class="card-body mx-auto">
+                <img class="card-img-top rounded-0 w-50 mx-auto" src="/assets/images/competition.jpg">
+                <div class="card-body">
                     <p>En tant que principal club de pétanque dans la région, nous participons et
                         organisons des championnats
                         et des tournois réguliers pour les débutants, les enthousiastes et les joueurs
@@ -71,13 +81,16 @@
                         quelque chose pour vous !</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="card w-75 mx-auto card_evt_article rounded-0 border-0 row_article">
-                <div class="card-header text-center">
+    <section>
+        <div class="container-fluid section_wishes_colored">
+            <div class="card w-50 mx-auto card-evt section_wishes_card">
+                <div class="card-header text-center section_wishes_body">
                     <h3>Licences</h3>
                 </div>
-
-                <div class="card-body table-responsive-vertical mx-auto">
+                <div class="card-body">
                     <!-- Table starts here -->
                     <table class="table table-hover table-striped table-bordered">
                         <thead class="comp-thead-color">
@@ -96,12 +109,8 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
-
-
         </div>
-
     </section>
 
 {% endblock %}

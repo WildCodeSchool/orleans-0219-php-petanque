@@ -7,7 +7,6 @@ body {
     font-weight: 400;
     line-height: 1.5;
     color: #737273;
-    background-color: rgba(0,0,0,0.05);
 }
 
 h1,h2 {
@@ -712,4 +711,22 @@ p {
 .card-header_article, .card-footer_article{
     border: none;
     background-color: transparent;
+}
+
+/* ===================== Style Page Vos Envies... ================== */
+
+.section_wishes_card{
+    margin: 80px;
+    border-radius:0px;
+}
+
+.section_wishes_body{
+    background-color: transparent;
+    border: none;
+}
+
+.section_wishes_colored{
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background-color: #e2d3ba;
 }
