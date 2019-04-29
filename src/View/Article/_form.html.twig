@@ -20,8 +20,8 @@
                 <div class="error-form">{{ errors.articlecategory_id }}</div>
             </div>
             <div class="form-group px-2 my-3">
-                <label for="articledescription">Votre article :</label>
-                <textarea class="form-control form-required" id="articledescription" name="description" value="{{ article.description }}" rows="15"required></textarea>
+                <label for="articledescription" class="form-required">Votre article :</label>
+                <textarea class="form-control" id="articledescription" name="description" value="{{ article.description }}" rows="15"required></textarea>
                 <div class="error-form">{{ errors.description }}</div>
             </div>
         </section>
