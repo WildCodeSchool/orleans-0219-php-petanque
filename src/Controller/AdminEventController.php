@@ -110,13 +110,13 @@ class AdminEventController extends AbstractController
     public function edit(int $id)
     {
         $errorEventData=[];
-        $eventData=[];
+        $eventManager = new EventManager();
+        $eventData = $eventManager->selectOneById($id);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $postDatum = new PostDatum($_POST);
             $eventData=$postDatum->cleanValues();
             $errorEventData = $this->checkErrorsPostData($eventData);
 
-            $eventManager = new EventManager();
             if (empty($id)) {
                 $errorEventData['id'] = "Un problème est survenu lors de la mise à jour de l'évènement.";
             } elseif (empty($eventManager->selectOneById($id))) {
@@ -129,9 +129,6 @@ class AdminEventController extends AbstractController
                 header('Location:/event/show/' . $id . '/?status=success&type=admin');
                 exit();
             }
-        } else {
-            $eventManager = new EventManager();
-            $eventData = $eventManager->selectOneById($id);
         }
 
         $departementManager = new DepartementManager();
