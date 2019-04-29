@@ -93,11 +93,11 @@ class AdminArticleController extends AbstractController
         };
 
         if (empty($postData['description'])) {
-            $errors['description'] = "Une description de l'article est requis.";
+            $errors['description'] = "Une description de l'article est requise.";
         };
 
         if (empty($postData['articlecategory_id'])) {
-            $errors['articlecategory_id'] = "Une catégorie pour l'article est requis.";
+            $errors['articlecategory_id'] = "Une catégorie pour l'article est requise.";
         };
 
         return $errors;
