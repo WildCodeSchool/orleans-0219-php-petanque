@@ -2,12 +2,36 @@
 
 {% block title %}UPA - Actualité{% endblock %}
 {% block headercontent %}
-    {% set headerMainTitle = 'Vie du club' %}
-    {% set headerSubTitle = 'Actualité' %}
-    {% set smallHeader = true %}
+    {%  set headerMainTitle = 'Vie du club'  %}
+    {%  set headerSubTitle = 'Actualité'  %}
+    {%  set smallHeader = true  %}
     {{ parent() }}
 {% endblock %}
 {% block content %}
+    <div class="container">
+        <div class="row row_article">
+            <div class="col-sm-12">
+                <div class="card card-article card_evt_article">
+                    <div class="card-header text-left card-header_article">
+                        <div><h4><span class="badge badge-info">#{{ article.category | capitalize }}</span></h4>
+                        </div>
+                        <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ article.date_publicated }}
+                    </div>
+                    <div class="row card-body">
+                        <img class="p-1 rounded-0 article-small text-center mx-auto"
+                             src="/{{ article.picture }}"
+                             alt="{{ 'image de ' ~ article.title }}">
+                        <div class="col-sm-12 col-md-6">
+                            <h4 class="card-title text-center">{{ article.title }}</h4>
+                            <div class="heading-divider-extent"></div>
+                            <p class="card-text text-justify"> {{ article.description }}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     {% if pictures %}
         <section class="colored_background">
             <div class="container-fluid">
@@ -57,6 +81,6 @@
                 </div>
             </div>
         </div>
-
     {% endif %}
 {% endblock %}
+

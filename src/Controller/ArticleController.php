@@ -49,7 +49,11 @@ class ArticleController extends AbstractController
         $pictureArticleManager = new PictureArticleManager();
         $pictures = $pictureArticleManager->selectPicturesFromArticleById($id);
 
+        $articleManager = new ArticleManager();
+        $article = $articleManager->selectOneArticleById($id);
+
         return $this->twig->render('Article/show.html.twig', [
+            'article' => $article,
             'pictures' =>$pictures,
         ]);
     }

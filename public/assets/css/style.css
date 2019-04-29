@@ -9,6 +9,10 @@ body {
     color: #737273;
 }
 
+header {
+    box-shadow: 0 .5rem 1rem rgba(83, 83, 83, 0.5);
+}
+
 h1,h2 {
     font-family: ‘Montserrat’, sans-serif;
     font-weight: 700;
@@ -75,7 +79,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 1% 0 2% 0;
+    margin-bottom: 3%;
     background-color: #3E3631;
 }
 
@@ -157,6 +161,10 @@ p {
 .card_body_yourwishes{
     margin-top: 20px;
     height: 150px;
+}
+
+.img_secWishes{
+    max-width: 300px;
 }
 
 /* ---- Styles Section Horaires ---- */
@@ -545,6 +553,7 @@ p {
 .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover
 {
     color: white;
+    font-size : 18px;
 }
 
 .dropdown-menu
@@ -587,16 +596,19 @@ p {
 
 .h1-centered
 {
+    color: #fff;
     margin: auto;
     font-size: 5vw;
 }
 
 .h2-centered
 {
+    color: #fff;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     font-size: 2.5vw;
+    padding-top: 20px;
 }
 
 .title-wrapper{
@@ -631,7 +643,6 @@ p {
 }
 
 
-
 .custom-toggler .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
@@ -649,7 +660,6 @@ p {
 }
 
 
-
 .nav-item-underline > a:before {
     content: "";
     position: absolute;
@@ -664,7 +674,6 @@ p {
 }
 
 
-
 .nav-item-underline > a:hover:before {
     visibility: visible;
     transform: scaleX(1);
@@ -673,7 +682,7 @@ p {
 
 #HquiSommesNous
 {
-    background-color: #e3d3ba;
+    background-color: #fff;
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -695,11 +704,37 @@ p {
     font-size: 80%;
 }
 
+
+.home_members_picture{
+    width: 150px;
+    height: 150px;
+    object-fit:cover;
+}
+
 .box_shadow_toggle{
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.50);
 }
 
 /* ================================= Début Styles Admin ================================== */
+
+/* Styles Admin Accueil */
+
+.icon_admin{
+    font-size: 100px;
+    margin: 20px;
+}
+
+.row_adminIndex{
+    margin: 80px;
+}
+
+.card_adminIndex_margin{
+    margin-top: 40px;
+}
+
+.card_body_adminIndex{
+    height: 100px;
+}
 
 /* Styles Admin Horaires */
 
@@ -730,7 +765,6 @@ p {
     width: 150px;
 }
 
-
 /******************* ARTICLE SPORTIF CARTE ****************************************************/
 /*-------------------------------------------------------------------------------------------------*/
 .article-small {
@@ -756,7 +790,6 @@ p {
     border: none;
     background-color: transparent;
 }
-
 
 
 /********************GALLERY *************************************************************************/
@@ -854,3 +887,21 @@ p {
 
 
 /****************************************************************************************************/
+
+/* ===================== Style Page Vos Envies... ================== */
+
+.section_wishes_card{
+    margin: 80px;
+    border-radius:0px;
+}
+
+.section_wishes_body{
+    background-color: transparent;
+    border: none;
+}
+
+.section_wishes_colored{
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background-color: #e2d3ba;
+}
