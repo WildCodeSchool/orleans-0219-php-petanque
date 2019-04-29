@@ -39,9 +39,9 @@ class AdminArticleController extends AbstractController
             $articleManager = new ArticleManager();
 
             if (empty($errorArticleData)) {
-                var_dump($articleData);
                 $id = $articleManager->insertArticle($articleData);
                 header('Location:/AdminArticle/index/?status=success');
+                exit();
             }
         }
 
@@ -63,10 +63,11 @@ class AdminArticleController extends AbstractController
     private function checkErrorsPostData(array $postData) : array
     {
         $errors=[];
+        $maxCharTitle = 100;
         if (empty($postData['title'])) {
             $errors['title'] = "Un titre d'article est requis.";
-        } elseif (strlen(($postData['title'])) > 100) {
-            $errors['title'] = "Le titre ne doit pas avoir plus de 100 car.";
+        } elseif (strlen(($postData['title'])) > $maxCharTitle) {
+            $errors['title'] = "Le titre ne doit pas avoir plus de $maxCharTitle caractères.";
         };
 
         if (empty($postData['description'])) {
