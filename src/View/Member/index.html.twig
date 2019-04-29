@@ -1,6 +1,13 @@
 {% extends 'sublayout_visitor.html.twig' %}
-
+{% block title %}UPA - Accueil{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'Union Pétanque Argonnaise'  %}
+    {%  set headerSubTitle = 'Qui sommes nous ?'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
 {% block content %}
+
     <div class="container-fluid justify-content-center text-center p-4">
         <div class="btn-group mt-5 mb-3" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-secondary btn_toggle_member" id="commButton">Commission</button>
