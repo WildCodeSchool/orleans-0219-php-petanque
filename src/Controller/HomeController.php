@@ -12,6 +12,7 @@ use App\Model\MemberManager;
 use App\Model\EventManager;
 use App\Model\ScheduleManager;
 use App\Model\PartnerManager;
+use App\Model\ArticleManager;
 
 class HomeController extends AbstractController
 {
@@ -19,6 +20,8 @@ class HomeController extends AbstractController
      *
      */
     const LIMIT_LAST_EVENTS = 3;
+
+    const LIMIT_LAST_ARTICLES = 3;
 
     /**
      * Display home page
@@ -36,6 +39,10 @@ class HomeController extends AbstractController
         $schedules = $scheduleManager->selectAll();
         $partnerManager = new PartnerManager();
         $partners = $partnerManager->getPartners();
+
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->selectAllArticles(self::LIMIT_LAST_ARTICLES);
+
         $eventManager = new EventManager();
         $topEvents = $eventManager->selectAllEvents(self::LIMIT_LAST_EVENTS);
 
@@ -43,6 +50,7 @@ class HomeController extends AbstractController
             'schedules' => $schedules,
             'events' => $topEvents,
             'partners' => $partners,
+            'articles' => $articles,
             'members' => $members,
         ]);
     }
