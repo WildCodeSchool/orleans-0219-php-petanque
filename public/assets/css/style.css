@@ -806,6 +806,24 @@ p {
     margin-top: 90px;
 }
 
+#panelfilter{
+    cursor:pointer;
+}
+
+#iconfilter{
+    font-size: 24px;
+    color: rgba(58, 51, 45,1);
+}
+
+#panelfilter .rotate{
+    transition: all .4s linear;
+}
+
+#panelfilter .rotate.down {
+    transform: rotate(90deg);
+}
+
+
 
 /*************************** ARTICLE HOME SECTION *************************************/
 
@@ -831,7 +849,6 @@ p {
 
 .info_article_big:hover + .big_club_img
 {
-
     filter: brightness(80%);
     transition: all 0.3s ease-in-out 0s;
 }

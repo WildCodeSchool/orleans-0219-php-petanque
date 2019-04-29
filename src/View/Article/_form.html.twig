@@ -1,0 +1,32 @@
+<div class="container justify-content-center my-3">
+    <form method="post" novalidate>
+        <input type="hidden" value="{{ article.id }}" name="id">
+        <section>
+            <h5>Informations</h5>
+            <div class="heading-divider-extent"></div>
+            <div class="form-group col-md-12 px-2 my-3">
+                <label for="articletitle" class="form-required">Titre de l'article :</label>
+                <input type="text" class="form-control" id="articletitle" name="title" value="{{ article.title }}" maxlength="100" placeholder="Titre de l'article" required>
+                <div class="error-form">{{ errors.title }}</div>
+            </div>
+            <div class="form-group px-2 col-md-6">
+                <label for="articlecategory"  class="form-required" >Catégorie :</label>
+                <select class="form-control" id="articlecategory" name="articlecategory_id" required>
+                    <option value="">Sélectionner ...</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}" {{ category.id == article.articlecategory_id ? 'selected' : '' }}>{{ category.name | capitalize }}</option>
+                    {% endfor %}
+                </select>
+                <div class="error-form">{{ errors.articlecategory_id }}</div>
+            </div>
+            <div class="form-group px-2 my-3">
+                <label for="articledescription" class="form-required">Votre article :</label>
+                <textarea class="form-control" id="articledescription" name="description" value="{{ article.description }}" rows="15"required></textarea>
+                <div class="error-form">{{ errors.description }}</div>
+            </div>
+        </section>
+        <section class="mt-5 text-center">
+            <button type="submit" class="btn btn-block btn-lg w-100 btn-primary">Ajouter l'article</button>
+        </section>
+    </form>
+</div>
