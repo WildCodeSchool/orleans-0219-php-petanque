@@ -26,7 +26,9 @@ class ArticleManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
-    /**
+
+
+      /**
      * Get all articles from database
      *
      *
@@ -52,7 +54,6 @@ class ArticleManager extends AbstractManager
         return $this->pdo->query($statement)->fetchAll();
     }
 
-
     /**
      * Insert an article in database
      *
@@ -69,5 +70,36 @@ class ArticleManager extends AbstractManager
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
         }
+    }
+
+    /**
+     * Get one Article from database by ID.
+     *
+     * @param  int $id
+     *
+     * @return array
+     */
+    public function selectOneArticleById(int $id):array
+    {
+        $statement = "
+        SELECT a.id as id,
+        a.title as title,
+        a.description as description,
+        a.articlecategory_id as articlecategory_id,
+        a.picture as picture,
+        DATE_FORMAT(a.date_publicated,'%d/%m/%Y') as date_publicated, 
+        c.name as category,
+        c.descr as category_description 
+        FROM db_upa.article as a 
+        LEFT JOIN db_upa.articlecategory AS c 
+        ON a.articlecategory_id = c.id
+        WHERE a.id=:id;";
+
+        // prepared request
+        $statement = $this->pdo->prepare($statement);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
     }
 }
