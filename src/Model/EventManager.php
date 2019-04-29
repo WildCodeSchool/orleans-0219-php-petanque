@@ -61,15 +61,15 @@ class EventManager extends AbstractManager
 
         return $this->pdo->query($statement)->fetchAll();
     }
-        
+
     /**
      * Get one row from database by ID.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return array
      */
-    public function selectOneEventToComeById(int $id):array
+    public function selectOneEventToComeById(int $id): array
     {
         $statement = "
         SELECT evenement.id, 
@@ -100,7 +100,7 @@ class EventManager extends AbstractManager
         return $statement->fetch();
     }
 
-     /**
+    /**
      * Insert an event in database
      *
      * @return int
@@ -165,13 +165,13 @@ class EventManager extends AbstractManager
     }
 
     /**
-     * Get all Eventts from database
+     * Get all Eventts from database (with possibility to define a limit Results)
      *
      *
-     *
+     * @param int $limitResults
      * @return array
      */
-    public function selectAllEvents():array
+    public function selectAllEvents(int $limitResults = 0): array
     {
         $statement = "
         SELECT evenement.id, 
@@ -194,12 +194,58 @@ class EventManager extends AbstractManager
         LEFT JOIN gendermix ON evenement.gendermix_id = gendermix.id
         LEFT JOIN evtcategory ON evenement.category_id = evtcategory.id
         LEFT JOIN evttype ON evenement.type_id = evttype.id
-        ORDER BY evenement.date_begin DESC, level.id, gendermix.id;";
+        ORDER BY evenement.date_begin DESC, level.id, gendermix.id";
+        if ($limitResults > 0) {
+            $statement .= " LIMIT $limitResults";
+        }
+        $statement .= ";";
 
         return $this->pdo->query($statement)->fetchAll();
     }
 
     /**
+     * @param array $event
+     * @param int $id
+     * @return bool
+     */
+    public function updateEvent(array $event, int $id)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare(
+            "UPDATE $this->table SET 
+            `title` = :title,
+            `descr` = :descr,
+            `date_begin` = :date_begin,
+            `date_end` = :date_end,
+            `departement_id` = :departement_id,
+            `location` = :location,
+            `level_id` = :level_id,
+            `category_id` = :category_id,
+            `type_id` = :type_id,
+            `gendermix_id` = :gendermix_id,
+            `date_register` = :date_register,
+            `rulesfile_id` = :rulesfile_id,
+            `article_id` = :article_id             
+            WHERE id=:id"
+        );
+        $statement->bindValue('title', $event['title'], \PDO::PARAM_STR);
+        $statement->bindValue('descr', $event['descr'], \PDO::PARAM_STR);
+        $statement->bindValue('date_begin', $event['date_begin'], \PDO::PARAM_STR);
+        $statement->bindValue('date_end', $event['date_end'], \PDO::PARAM_STR);
+        $statement->bindValue('departement_id', $event['departement_id'], \PDO::PARAM_INT);
+        $statement->bindValue('location', $event['location'], \PDO::PARAM_STR);
+        $statement->bindValue('level_id', $event['level_id'], \PDO::PARAM_INT);
+        $statement->bindValue('category_id', $event['category_id'], \PDO::PARAM_INT);
+        $statement->bindValue('type_id', $event['type_id'], \PDO::PARAM_INT);
+        $statement->bindValue('gendermix_id', $event['gendermix_id'], \PDO::PARAM_INT);
+        $statement->bindValue('date_register', $event['date_register'], \PDO::PARAM_STR);
+        $statement->bindValue('rulesfile_id', $event['rulesfile_id'], \PDO::PARAM_INT);
+        $statement->bindValue('article_id', $event['article_id'], \PDO::PARAM_INT);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        return $statement->execute();
+    }
+  
+      /**
      * @param int $id
      */
     public function delete(int $id): void

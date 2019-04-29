@@ -1,24 +1,50 @@
 {% extends 'sublayout_visitor.html.twig' %}
 
-{% block headerMainTitle %}Vie du club{% endblock %}
-{% block headerSubTitle %}Détails de l'évènement sportif{% endblock %}
+{% block title %}Vie sportive - Evènement{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'Vie sportive'  %}
+    {%  set headerSubTitle = 'Détails de l\'évènement sportif'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
 {% block content %}
     <div class="container-fluid justify-content-center text-center p-0">
+        {% if statusAlert == true %}
+            <div class="alert alert-success  alert-dismissible fade show col-md-6 text-center mx-auto py-2 "
+                 role="alert">
+                L'évènement a été correctement ajouté.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+        <div class="row justify-content-center w-100 m-3">
+            <div>
+                {% if adminStatus == true %}
+                    <a class="btn comp-button-moreinfo " href="/AdminEvent/index"
+                       role="button">Retour
+                        ver la liste d'évènements d'administration</a>
+                {% else %}
+                    <a class="btn comp-button-moreinfo " href="/Event/index" role="button">Retour
+                        ver la liste d'évènements</a>
+                {% endif %}
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="card rounded-0 col-sm-12 col-md-4 p-0">
                 <div class="card-body rounded-0 card-body-evt-left p-0">
                     <img class="card-img-top rounded-0 card-img_event"
                             {% if event.gendermix|lower == 'homme' %}
-                                 src="{{ base_path ~ directory }}/assets/images/compet/evt_homm2.jpg" alt="compétition homme">
-                            {% elseif event.gendermix|lower == 'femme' %}
-                                src="{{ base_path ~ directory }}/assets/images/compet/evt_femme.jpg" alt="compétition femme">
-                            {% else %}
-                                src="{{ base_path ~ directory }}/assets/images/compet/evt_mixte.jpg" alt="compétition mixte">
-                            {% endif %}
+                         src="{{ base_path ~ directory }}/assets/images/compet/evt_homm2.jpg" alt="compétition homme">
+                    {% elseif event.gendermix|lower == 'femme' %}
+                        src="{{ base_path ~ directory }}/assets/images/compet/evt_femme.jpg" alt="compétition femme">
+                    {% else %}
+                        src="{{ base_path ~ directory }}/assets/images/compet/evt_mixte.jpg" alt="compétition mixte">
+                    {% endif %}
                 </div>
                 <div class="card-img-overlay">
                     <h5 class="card-title-evt-date ">
-                        {% if event.date_begin > event.date_end %}
+                        {% if event.date_begin < event.date_end %}
                             Du {{ event.date_begin }} au {{ event.date_end }}
                         {% else %}
                             {{ event.date_begin }}
@@ -66,11 +92,13 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Date limite : {{ event.date_register | capitalize }}</li>
                         <li class="list-group-item">Fiche d'inscription :
-                            <a class="btn comp-button-moreinfo w-100" href="#" target="_blank" role="button">Voir ...</a>
+                            <a class="btn comp-button-moreinfo w-100" href="#" target="_blank" role="button">Voir
+                                ...</a>
                         </li>
                     </ul>
                 </div>
             </div>
+
         </div>
     </div>
 {% endblock %}

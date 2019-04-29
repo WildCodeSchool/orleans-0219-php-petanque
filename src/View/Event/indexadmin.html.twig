@@ -1,7 +1,12 @@
 {% extends 'sublayout_visitor.html.twig' %}
 
-{% block headerMainTitle %}Gestion des évènements sportifs{% endblock %}
-{% block headerSubTitle %}Liste des évènements{% endblock %}
+{% block title %}UPA - Vie sportive - Administration{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'VIE SPORTIVE'  %}
+    {%  set headerSubTitle = 'Administration des évènements'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
 {% block content %}
 
     <div class="container-fluid ">
@@ -44,7 +49,7 @@
                         <td data-title="Type">{{ event.type | capitalize }}</td>
                         <td data-title="Mixité">{{ event.gendermix | capitalize }}</td>
                         <td data-title="Departement">{{ event.dept_name }} ({{ event.dept_num }})</td>
-                        <td><a class="btn btn-warning w-100" href="edit/{{ event.id }}" role="button">Editer ...</a>
+                        <td><a class="btn btn-warning w-100" href="{{ base_path ~ directory }}/AdminEvent/edit/{{ event.id }}" role="button">Editer ...</a>
                         </td>
                         <td><form method="post" action="{{ base_path ~ directory }}/AdminEvent/delete/?status=success">
                                 <button type="submit" class="btn btn-danger w-100" name="id" value="{{ event.id }}">Enlever</button>
