@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * This file define SWIFMAILER access infos.
+ *
+ * PHP version 7
+ *
+ * @category  PHP
+ * @package   PHP_SimpleMVC
+ * @author    WCS <contact@wildcodeschool.fr>
+ * @license  --
+ * @link     https://github.com/WildCodeSchool/simple-mvc
+ *
+ */
+
+define('APP_SW_HOST', 'host.com');
+define('APP_SW_PORT', portnumber);
+define('APP_SW_ENCRYPTION', 'encryption");
+define('APP_SW_USERNAME', 'username');
+define('APP_SW_PASSWORD', 'password');
