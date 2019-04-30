@@ -759,8 +759,6 @@ p {
 .card_img_member{
     width: 400px;
     max-height:300px;
-   /* max-width: 250px;
-    max-height: 200px;*/
     object-fit: cover;
 }
 

@@ -21,7 +21,7 @@
                 <div class="card col-lg-6 col-xl-3 p-0 m-3 min_width_card_members card_member" data-commission="{{ member.isCommission }}"
                     data-salaried="{{ member.isSalaried }}" data-committee="{{ member.isComiteDirecteur }}">
                     <div class="card-header img_cover_member card_header_member_bg card_header_member">
-                        <img class="card_img_member rounded" src="{{ base_path ~ directory }}/{{ member.picture }}"
+                        <img class="card_img_member rounded" src="/{{ member.picture }}"
                              alt="{{ member.lastname }} {{ member.firstname }}">
                     </div>
                     <div class="card-body pt-0 pl-3 text-left card_body_member_bg">
@@ -52,7 +52,7 @@
 
                 <div class="col-md-6 col-lg-2 p-0 m-3 my-auto py-3">
                     <div class="sponsors_wrapper mx-auto">
-                        <img class="img_partner" src="{{ base_path ~ directory }}/{{ partner.picture }}"
+                        <img class="img_partner" src="/{{ partner.picture }}"
                              alt="{{ partner.lastname }} {{ partner.firstname }}">
                     </div>
                 </div>
