@@ -69,7 +69,7 @@ class ContactController extends AbstractController
             $errors["message"] = "Ce champ ne peut être vide";
         }
         if (empty($data['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $errors['email'] = "Ce champ ne peut etre vide";
+            $errors['email'] = "Ce champ ne peut être vide";
         }
 
         return $errors;
