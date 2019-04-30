@@ -25,18 +25,18 @@ class MemberController extends AbstractController
     public function index()
     {
         $memberManager = new MemberManager();
-        $member = $memberManager->selectAll();
+        $members = $memberManager->selectAll();
         $partnerManager = new PartnerManager();
-        $partner = $partnerManager->selectAll();
+        $partners = $partnerManager->selectAll();
         $randomDescription = [];
 
-        for ($x=0; $x<count($member); $x++) {
+        foreach ($members as $member) {
             $randomDescription[] = $memberManager->getRandomDescription();
         }
 
         return $this->twig->render('Member/index.html.twig', [
-            'members' => $member,
-            'partners' => $partner,
+            'members' => $members,
+            'partners' => $partners,
             'randomDescription' => $randomDescription,
         ]);
     }

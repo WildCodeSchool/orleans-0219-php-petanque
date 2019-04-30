@@ -43,10 +43,10 @@ class MemberManager extends AbstractManager
 
     public function getRandomDescription(): string
     {
-        $queryResult = $this->getTopMembers();
-        $descriptions = array_map(function ($m) {
-            return $m['description'];
-        }, $queryResult);
+        $topMembers = $this->getTopMembers();
+        $descriptions = array_map(function ($value) {
+            return $value['description'];
+        }, $topMembers);
 
         return $descriptions[rand(0, count($descriptions) - 1)];
     }
