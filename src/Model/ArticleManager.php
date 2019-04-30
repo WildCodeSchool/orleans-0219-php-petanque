@@ -32,10 +32,10 @@ class ArticleManager extends AbstractManager
      * Get all articles from database
      *
      *
-     *
+     * @param int $limitResults
      * @return array
      */
-    public function selectAllArticles():array
+    public function selectAllArticles(int $limitResults = 0):array
     {
         $statement = "
         SELECT a.id as id,
@@ -49,9 +49,31 @@ class ArticleManager extends AbstractManager
         FROM db_upa.article as a 
         LEFT JOIN db_upa.articlecategory AS c 
         ON a.articlecategory_id = c.id
-        ORDER BY a.date_publicated DESC;";
+        ORDER BY a.date_publicated DESC";
+        if ($limitResults > 0) {
+            $statement .= " LIMIT $limitResults";
+        }
+/*        $statement .= ";";*/
 
         return $this->pdo->query($statement)->fetchAll();
+    }
+
+    /**
+     * Insert an article in database
+     *
+     * @return int
+     */
+    public function insertArticle(array $articleData): int
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("INSERT INTO $this->table 
+        VALUES (NULL, :title, :description, :articlecategory_id, NULL, NOW())");
+        $statement->bindValue('title', $articleData['title'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $articleData['description'], \PDO::PARAM_STR);
+        $statement->bindValue('articlecategory_id', $articleData['articlecategory_id'], \PDO::PARAM_INT);
+        if ($statement->execute()) {
+            return (int)$this->pdo->lastInsertId();
+        }
     }
 
     /**
