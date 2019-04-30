@@ -106,4 +106,28 @@ class ArticleManager extends AbstractManager
 
         return $statement->fetch();
     }
+
+    /**
+     * Update an article in database
+     *
+     * @return int
+     */
+    public function updateArticle(array $articleData, int $id): int
+    {
+        // prepared request
+        // prepared request
+        $statement = $this->pdo->prepare(
+            "UPDATE $this->table SET 
+            `title` = :title,
+            `description` = :description,
+            `articlecategory_id` = :articlecategory_id           
+            WHERE id=:id"
+        );
+        $statement->bindValue('title', $articleData['title'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $articleData['description'], \PDO::PARAM_STR);
+        $statement->bindValue('articlecategory_id', $articleData['articlecategory_id'], \PDO::PARAM_INT);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
 }
