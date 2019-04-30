@@ -165,7 +165,7 @@ p {
 .card_img_yourwishes{
     margin-left: auto;
     margin-right: auto;
-    border-radius: 10px;
+    border-radius: 0px;
     max-width: 300px;
 }
 
@@ -696,7 +696,7 @@ p {
 
 #HquiSommesNous
 {
-    background-color: #fff;
+    background-color: #e2d3ba;
     padding-top: 50px;
     padding-bottom: 50px;
 }
