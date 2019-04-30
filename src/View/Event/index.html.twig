@@ -8,58 +8,147 @@
     {{ parent() }}
 {% endblock %}
 
-
 {% block content %}
+    <<<<<<< HEAD
 
-    <div class="container-fluid">
-        <div class="row justify-content-center mb_5">
-            {% for event in events %}
-                <div class="card rounded-0 col-sm-12 col-lg-3 card-evt m-3 p-2">
-                    <div class="text-center m-2">
-                        <h5 class="card-title-evt-date">
-                            {% if event.date_begin < event.date_end %}
-                                Du {{ event.date_begin }} au {{ event.date_end }}
-                            {% else %}
-                                Le {{ event.date_begin }}
-                            {% endif %}
-                        </h5>
-                        <h5 class="card-title-evt text-center p-2">{{ event.level | capitalize }}</h5>
-                    </div>
-                    <div class="card-body rounded-0 text-center mx-auto p-0">
-                        <img class="card-img-top img-event-small p-3 textrounded-0"
-                                {% if event.gendermix|lower == 'homme' %}
-                             src="/assets/images/compet/evt_homm2.jpg"
-                             alt="compétition homme">
-                        {% elseif event.gendermix|lower == 'femme' %}
-                            src="/assets/images/compet/evt_femme.jpg" alt="compétition femme">
-                        {% else %}
-                            src="/assets/images/compet/evt_mixte.jpg" alt="compétition mixte">
-                        {% endif %}
-                    </div>
-                    <div class="card-body card_body_evt">
-                        <h5 class="card-title text-center h5_evt">{{ event.title }}</h5>
-                        <p class="card-text text-justify card_text_evt">{{ event.descr|striptags|length > 270 ? event.descr|striptags|slice(0, 270) ~ ' [...]' : event.descr|striptags }}</p>
-                        <div class="heading-divider-extent"></div>
-                        <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item p-0 border-0">{{ event.dept_name }} ( {{ event.dept_num }})</li>
-                        </ul>
-                        <div class="heading-divider-extent"></div>
-                        <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item p-0 border-0">Catégorie : {{ event.category | capitalize }}</li>
-                            <li class="list-group-item p-0 border-0">Type : {{ event.type | capitalize }}</li>
-                            <li class="list-group-item p-0 border-0">Mixité : {{ event.gendermix | capitalize }}</li>
-                        </ul>
-                        <div class="heading-divider-extent"></div>
-                        <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item p-0 border-0">Date limite d'inscription
-                                : {{ event.date_register | capitalize }}</li>
-                        </ul>
-                    </div>
-                    <div class="text-center">
-                        <a class="btn btn_item mb-3" href="Event/show/{{ event.id }}" role="button">En savoir plus</a>
+
+    =======
+    <div class="container-fluid p-0">
+        <section class="colored_background p-2">
+            <div id="panelfilter">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h5>Filtrer des évènements</h5>
+                        <div><span id="iconfilter" class="fa fa-arrow-circle-right rotate"></span></div>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+            <form id="formfilter" method="get" action="/event/index/">
+                <section>
+                    <div class="row px-2">
+                        <div class="form-group px-2 col-md-3">
+                            <label for="evtlevel">Niveau de compétition :</label>
+                            <select class="form-control" id="evtlevel" name="level_id">
+                                <option value="">Tous</option>
+                                {% for level in levels %}
+                                    <option value="{{ level.id }}" {{ level.id == eventsfilters.level_id ? 'selected' : '' }}>{{ level.name | capitalize }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group px-2 col-md-3">
+                            <label for="evttype">Type(s) de rencontres :</label>
+                            <select class="form-control" id="evttype" name="type_id">
+                                <option value="">Tous</option>
+                                {% for type in types %}
+                                    <option value="{{ type.id }}" {{ type.id == eventsfilters.type_id ? 'selected' : '' }}>{{ type.name | capitalize }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group px-2 col-md-3">
+                            <label for="evtcategory">Catégorie :</label>
+                            <select class="form-control" id="evtcategory" name="category_id">
+                                <option value="">Toutes</option>
+                                {% for categorie in categories %}
+                                    <option value="{{ categorie.id }}" {{ categorie.id == eventsfilters.category_id ? 'selected' : '' }}>{{ categorie.name | capitalize }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group px-2 col-md-3">
+                            <label for="evtgendermix">Mixité,:</label>
+                            <select class="form-control" id="evtgendermix" name="gendermix_id">
+                                <option value="">Toutes</option>
+                                {% for gender in genders %}
+                                    <option value="{{ gender.id }}" {{ gender.id == eventsfilters.gendermix_id ? 'selected' : '' }}>{{ gender.name | capitalize }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="form-group px-2 col-md-3">
+                        <label for="evtdepartment">Département du site :</label>
+                        <select class="form-control" id="evtdepartment" name="departement_id">
+                            <option value="">Tous</option>
+                            {% for departement in departements %}
+                                <option value="{{ departement.id }}" {{ departement.id == eventsfilters.departement_id ? 'selected' : '' }} >{{ departement.name }}
+                                    ({{ departement.numdept }})
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </section>
+                <div class="mt-5 text-center">
+                    <a class="btn btn_item" href="/event/index/reset=true" role="button">Réinitialiser les
+                        filtres...</a>
+                    <button type="submit" class="btn btn_item">Rechercher ...</button>
+                </div>
+            </form>
+        </section>
+        <section class="mt-3">
+            <div class="container-fluid">
+                <div class="row justify-content-center mb_5">
+                    {% if not events is empty %}
+                    {% for event in events %}
+                        <div class="card rounded-0 col-sm-12 col-lg-3 card-evt m-3 p-2">
+                            <div class="text-center m-2">
+                                <h5 class="card-title-evt-date">
+                                    {% if event.date_begin < event.date_end %}
+                                        Du {{ event.date_begin }} au {{ event.date_end }}
+                                    {% else %}
+                                        Le {{ event.date_begin }}
+                                    {% endif %}
+                                </h5>
+                                <h5 class="card-title-evt text-center p-2">{{ event.level | capitalize }}</h5>
+                            </div>
+                            <div class="card-body rounded-0 text-center mx-auto p-0">
+                                <img class="card-img-top img-event-small p-3 textrounded-0"
+                                        {% if event.gendermix|lower == 'homme' %}
+                                     src="/assets/images/compet/evt_homm2.jpg"
+                                     alt="compétition homme">
+                                {% elseif event.gendermix|lower == 'femme' %}
+                                    src="/assets/images/compet/evt_femme.jpg" alt="compétition femme">
+                                {% else %}
+                                    src="/assets/images/compet/evt_mixte.jpg" alt="compétition mixte">
+                                {% endif %}
+                            </div>
+                            <div class="card-body card_body_evt">
+                                <h5 class="card-title text-center h5_evt">{{ event.title }}</h5>
+                                <p class="card-text text-justify card_text_evt">{{ event.descr|striptags|length > 270 ? event.descr|striptags|slice(0, 270) ~ ' [...]' : event.descr|striptags }}</p>
+                                <div class="heading-divider-extent"></div>
+                                <ul class="list-group list-group-flush text-center">
+                                    <li class="list-group-item p-0 border-0">{{ event.dept_name }}
+                                        ( {{ event.dept_num }})
+                                    </li>
+                                </ul>
+                                <div class="heading-divider-extent"></div>
+                                <ul class="list-group list-group-flush text-center">
+                                    <li class="list-group-item p-0 border-0">Catégorie
+                                        : {{ event.category | capitalize }}</li>
+                                    <li class="list-group-item p-0 border-0">Type : {{ event.type | capitalize }}</li>
+                                    <li class="list-group-item p-0 border-0">Mixité
+                                        : {{ event.gendermix | capitalize }}</li>
+                                </ul>
+                                <div class="heading-divider-extent"></div>
+                                <ul class="list-group list-group-flush text-center">
+                                    <li class="list-group-item p-0 border-0">Date limite d'inscription
+                                        : {{ event.date_register | capitalize }}</li>
+                                </ul>
+                            </div>
+                            <div class="text-center">
+                                <a class="btn btn_item mb-3" href="Event/show/{{ event.id }}" role="button">En savoir
+                                    plus</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    <div class="row m-5">
+                        <div class="col-md-8 mx-auto text-center">
+                            <h3>Désolé, mais aucun évènement sportif n'est prévu</h3>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </section>
     </div>
 {% endblock %}
