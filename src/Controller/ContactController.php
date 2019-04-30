@@ -2,12 +2,11 @@
 
 namespace App\Controller;
 
-use Swift_Mailer;
 use App\Service\PostDatum;
-
 
 class ContactController extends AbstractController
 {
+
 
     /**
      * Display home page
@@ -21,33 +20,39 @@ class ContactController extends AbstractController
     {
         $errorContactData = [];
         $contactData = [];
+        $status = $_GET['status'];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $postDatum = new PostDatum($_POST);
             $contactData = $postDatum->cleanValues();
             $errorContactData = $this->checkErrorsPostData($contactData);
 
             if (empty($errorContactData)) {
-                $transport = (new Swift_SmtpTransport('localhost', 25));
+                $transport = new \Swift_SmtpTransport(APP_SW_HOST, APP_SW_PORT, APP_SW_ENCRYPTION);
+                $transport->setUsername(APP_SW_USERNAME);
+                $transport->setPassword(APP_SW_PASSWORD);
 
-// Create the Mailer using your created Transport
-                $mailer = new Swift_Mailer($transport);
+                $mailer = new \Swift_Mailer($transport);
+                $message = new \Swift_Message('Demande d\'informations');
+                $userFrom=[$contactData['email'] => $contactData['firstname'] . ' ' . $contactData['lastname']];
+                $message->setFrom($userFrom);
+                $message->setTo(array(APP_SW_USERNAME));
 
-// Create a message
-                $message = (new Swift_Message('Wonderful Subject'))
-                    ->setFrom(['john@doe.com' => 'John Doe'])
-                    ->setTo(['Dart_dev45@outlook.fr'])
-                    ->setBody('Here is the message itself');
+                $bodyMessage =$contactData['message'];
+                $bodyMessage .= "\n" . $contactData['firstname'] . ' ' . $contactData['lastname'];
+                $bodyMessage .= "\n" . $contactData['phone'];
+                $message->setBody($bodyMessage);
 
-// Send the message
-                $result = $mailer->send($message);
-
-                echo "EMAIL ENVOYE";
+                $mailer->send($message);
+                header('Location:/Contact/index/?status=success');
+                exit();
             }
         }
 
         return $this->twig->render('Contact/index.html.twig', [
             'errors' => $errorContactData,
             'contact' => $contactData,
+            'statusAlert' => $status,
         ]);
     }
 
@@ -59,9 +64,6 @@ class ContactController extends AbstractController
         }
         if (empty($data["lastname"])) {
             $errors["lastname"] = "Ce champ ne peut etre vide";
-        }
-        if (empty($data["phone"])) {
-            $errors["phone"] = "Ce champ ne peut etre vide";
         }
         if (empty($data["message"])) {
             $errors["message"] = "Ce champ ne peut etre vide";
