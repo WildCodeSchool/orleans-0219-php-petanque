@@ -38,10 +38,10 @@ class ContactController extends AbstractController
                 $message->setFrom($userFrom);
                 $message->setTo(array(APP_SW_USERNAME));
 
-                $bodyMessage =$contactData['message'];
-                $bodyMessage .= "\n" . $contactData['firstname'] . ' ' . $contactData['lastname'];
-                $bodyMessage .= "\n" . $contactData['phone'];
-                $message->setBody($bodyMessage);
+                $bodyMessage = $this->twig->render('/Contact/bodymail.html.twig', [
+                    'contactData' => $contactData,
+                ]);
+                $message->setBody($bodyMessage, 'text/html');
 
                 $mailer->send($message);
                 header('Location:/Contact/index/?status=success');
