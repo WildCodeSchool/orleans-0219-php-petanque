@@ -113,9 +113,9 @@ class AdminPictureArticleController extends AbstractController
             $id = $postData['id'];
             $article_id = $postData['article_id'];
             if (empty($id)) {
-                $errors[] = 'L\'image n existe pas';
+                $errors[] = 'L\'image n\'existe pas';
             } elseif (empty($pictureArticleManager->selectOneById($id))) {
-                $errors[] = 'L image n\'existe pas dans la base de données';
+                $errors[] = 'L\'image n\'existe pas dans la base de données';
             }
         }
         if (empty($errors)) {
