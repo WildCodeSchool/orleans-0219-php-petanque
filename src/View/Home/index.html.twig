@@ -1,7 +1,9 @@
 {% extends 'sublayout_visitor.html.twig' %}
 {% block title %}UPA - Accueil{% endblock %}
 {% block headercontent %}
-    {% set headerMainTitle = 'Union Pétanque Argonnaise' %}
+    {%  set headerMainTitle = 'Union Pétanque Argonnaise'  %}
+    {%  set headerSubTitle = 'La vie de bouliste'  %}
+    {%  set smallHeader = true  %}
     {{ parent() }}
 {% endblock %}
 {% block content %}
@@ -9,7 +11,6 @@
     <!-- ==================== Début Section "Vos envies" ==================== -->
 
     <section id="vos_envies" class="container-fluid">
-
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>Vos envies...</h2>
@@ -18,7 +19,7 @@
         </div>
 
         <div class="row mb-5 justify-content-center">
-            <div class="col-sm_12 col-lg-3 card_margin card_margin_yourwishes">
+            <div class="col-sm-12 col-lg-3 card_margin card_margin_yourwishes">
                 <div class="card card_yourwishes">
                     <img class="card-img-top card_img_yourwishes"
                          src="/assets/images/vosenvies_decouvrir.jpg"
@@ -37,12 +38,11 @@
                 </div>
             </div>
 
-            <div class="col-sm_12 col-lg-3 card_margin card_margin_yourwishes">
+            <div class="col-sm-12 col-lg-3 card_margin card_margin_yourwishes">
                 <div class="card card_yourwishes">
                     <img class="card-img-top card_img_yourwishes"
                          src="/assets/images/vosenvies_entrainement.jpg"
                          alt="Photo entraînement pétanque">
-
                     <div class="card-body card_body_yourwishes">
                         <h5 class="card-title text-center">Entraînement</h5>
                         <p class="card-text">Améliorez votre technique en participant à nos entraînements
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="col-sm_12 col-lg-3 card_margin card_margin_yourwishes">
+            <div class="col-sm-12 col-lg-3 card_margin card_margin_yourwishes">
                 <div class="card card_yourwishes">
                     <img class="card-img-top card_img_yourwishes"
                          src="/assets/images/vosenvies_competition.jpg"
