@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block content %}
+   
     <div class="container-fluid p-0">
         <section class="colored_background p-2">
             <div id="panelfilter">
@@ -81,51 +82,70 @@
             </form>
         </section>
         <section class="mt-3">
-            {% if not events is empty %}
-            <div class="table-responsive-vertical mx-5">
-                <!-- Table starts here -->
-                <table id="table" class="table table-hover table-striped table-bordered">
-                    <thead class="comp-thead-color">
-                    <tr>
-                        <th scope="col">Niveau</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Date de début</th>
-                        <th scope="col">Date de fin</th>
-                        <th scope="col">Catégorie</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Mixité</th>
-                        <th scope="col">Département</th>
-                        <th scope="col">Informations</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+            <div class="container-fluid">
+                <div class="row justify-content-center mb_5">
+                    {% if not events is empty %}
                     {% for event in events %}
-                        <tr>
-                            <td data-title="Niveau">{{ event.level | capitalize }}</td>
-                            <td data-title="Nom">{{ event.title | capitalize }}</td>
-                            <td data-title="Date de début">{{ event.date_begin }}</td>
-                            <td data-title="Date de fin">{{ event.date_end }}</td>
-                            <td data-title="Catégorie">{{ event.category | capitalize }}</td>
-                            <td data-title="Type">{{ event.type | capitalize }}</td>
-                            <td data-title="Mixité">{{ event.gendermix | capitalize }}</td>
-                            <td data-title="Departement">{{ event.dept_name }} ({{ event.dept_num }})</td>
-                            <td><a class="btn comp-button-moreinfo w-100" href="/event/show/{{ event.id }}"
-                                   role="button">En
-                                    savoir
-                                    plus</a></td>
-                        </tr>
+                        <div class="card rounded-0 col-sm-12 col-lg-3 card-evt m-3 p-2">
+                            <div class="text-center m-2">
+                                <h5 class="card-title-evt-date">
+                                    {% if event.date_begin < event.date_end %}
+                                        Du {{ event.date_begin }} au {{ event.date_end }}
+                                    {% else %}
+                                        Le {{ event.date_begin }}
+                                    {% endif %}
+                                </h5>
+                                <h5 class="card-title-evt text-center p-2">{{ event.level | capitalize }}</h5>
+                            </div>
+                            <div class="card-body rounded-0 text-center mx-auto p-0">
+                                <img class="card-img-top img-event-small p-3 textrounded-0"
+                                        {% if event.gendermix|lower == 'homme' %}
+                                     src="/assets/images/compet/evt_homm2.jpg"
+                                     alt="compétition homme">
+                                {% elseif event.gendermix|lower == 'femme' %}
+                                    src="/assets/images/compet/evt_femme.jpg" alt="compétition femme">
+                                {% else %}
+                                    src="/assets/images/compet/evt_mixte.jpg" alt="compétition mixte">
+                                {% endif %}
+                            </div>
+                            <div class="card-body card_body_evt">
+                                <h5 class="card-title text-center h5_evt">{{ event.title }}</h5>
+                                <p class="card-text text-justify card_text_evt">{{ event.descr|striptags|length > 270 ? event.descr|striptags|slice(0, 270) ~ ' [...]' : event.descr|striptags }}</p>
+                                <div class="heading-divider-extent"></div>
+                                <ul class="list-group list-group-flush text-center">
+                                    <li class="list-group-item p-0 border-0">{{ event.dept_name }}
+                                        ( {{ event.dept_num }})
+                                    </li>
+                                </ul>
+                                <div class="heading-divider-extent"></div>
+                                <ul class="list-group list-group-flush text-center">
+                                    <li class="list-group-item p-0 border-0">Catégorie
+                                        : {{ event.category | capitalize }}</li>
+                                    <li class="list-group-item p-0 border-0">Type : {{ event.type | capitalize }}</li>
+                                    <li class="list-group-item p-0 border-0">Mixité
+                                        : {{ event.gendermix | capitalize }}</li>
+                                </ul>
+                                <div class="heading-divider-extent"></div>
+                                <ul class="list-group list-group-flush text-center">
+                                    <li class="list-group-item p-0 border-0">Date limite d'inscription
+                                        : {{ event.date_register | capitalize }}</li>
+                                </ul>
+                            </div>
+                            <div class="text-center">
+                                <a class="btn btn_item mb-3" href="Event/show/{{ event.id }}" role="button">En savoir
+                                    plus</a>
+                            </div>
+                        </div>
                     {% endfor %}
-                    </tbody>
-                </table>
+                </div>
                 {% else %}
                     <div class="row m-5">
-                    <div class="col-md-6 mx-auto text-center">
-                        <h3>Désolé, mais aucun évènement sportif n'est prévu</h3>
-                    </div>
+                        <div class="col-md-8 mx-auto text-center">
+                            <h3>Désolé, mais aucun évènement sportif n'est prévu</h3>
+                        </div>
                     </div>
                 {% endif %}
             </div>
         </section>
     </div>
-
 {% endblock %}

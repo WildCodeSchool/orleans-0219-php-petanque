@@ -6,6 +6,7 @@
  * Time: 18:20
  * PHP version 7
  */
+
 namespace App\Model;
 
 /**
@@ -17,6 +18,7 @@ class PictureArticleManager extends AbstractManager
      *
      */
     const TABLE = 'picture';
+
     /**
      *  Initializes this class.
      */
@@ -24,6 +26,7 @@ class PictureArticleManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
+
     /**
      * Retrieve all pictures from one article
      *
@@ -33,7 +36,7 @@ class PictureArticleManager extends AbstractManager
     public function selectPicturesFromArticleById(int $id) :array
     {
         $statement = "SELECT * FROM $this->table WHERE article_id=:id";
-        // prepared request
+
         $statement = $this->pdo->prepare($statement);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
