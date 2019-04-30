@@ -19,12 +19,13 @@
 
         <div class="row mb-5 justify-content-center">
             <div class="col-sm-12 col-lg-3 card_margin card_margin_yourwishes">
-                <div class="card card_yourwishes">
-                    <img class="card-img-top card_img_yourwishes"
+                <div class="card card_yourwishes card-evt rounded-0">
+                    <img class="card-img-top rounded-0"
                          src="/assets/images/vosenvies_decouvrir.jpg"
                          alt="Photo découverte pétanque">
                     <div class="card-body card_body_yourwishes">
                         <h5 class="card-title text-center">Découverte</h5>
+                        <div class="heading-divider-extent"></div>
                         <p class="card-text">Vous souhaitez découvrir l'univers de la pétanque ? Des terrains et des
                             ateliers sont à votre disposition.</p>
                     </div>
@@ -36,12 +37,13 @@
             </div>
 
             <div class="col-sm-12 col-lg-3 card_margin card_margin_yourwishes">
-                <div class="card card_yourwishes">
-                    <img class="card-img-top card_img_yourwishes"
+                <div class="card card_yourwishes card-evt rounded-0">
+                    <img class="card-img-top rounded-0"
                          src="/assets/images/vosenvies_entrainement.jpg"
                          alt="Photo entraînement pétanque">
                     <div class="card-body card_body_yourwishes">
                         <h5 class="card-title text-center">Entraînement</h5>
+                        <div class="heading-divider-extent"></div>
                         <p class="card-text">Améliorez votre technique en participant à nos entraînements
                             semi-professionnels.</p>
                     </div>
@@ -53,13 +55,14 @@
             </div>
 
             <div class="col-sm-12 col-lg-3 card_margin card_margin_yourwishes">
-                <div class="card card_yourwishes">
-                    <img class="card-img-top card_img_yourwishes"
+                <div class="card card_yourwishes card-evt rounded-0">
+                    <img class="card-img-top rounded-0"
                          src="/assets/images/vosenvies_competition.jpg"
                          alt="Photo compétition pétanque">
 
                     <div class="card-body card_body_yourwishes">
                         <h5 class="card-title text-center">Compétition</h5>
+                        <div class="heading-divider-extent"></div>
                         <p class="card-text">Allez plus loin et participez aux compétitions partout en France et à
                             l'International</p>
                     </div>
@@ -75,7 +78,7 @@
     <!-- ==================== Fin Section "Vos envies" ==================== -->
 
     <!-- ==================== Début section Qui Sommes Nous ========================== -->
-    <section id="HquiSommesNous">
+    <section id="HquiSommesNous" class="p-0">
         <div class="mx-5">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -103,6 +106,9 @@
                     </div>
                 {% endfor %}
             </div>
+            <div class="w-100 text-center mt-4">
+                <button class="btn btn_item mb-5" href="Member/index/#members">Ils nous font confiance</button>
+            </div>
         </div>
     </section>
 
@@ -120,7 +126,7 @@
             </div>
             <div class="row">
                 <div class="col-xl-6 col-sm-12 my-2">
-                    <div class="card card-article card_evt_article big_club_article">
+                    <div class="card card-article card_evt_article big_club_article rounded-0">
                         <div class="card-header text-left card-header_article">
                             <div><h4><span class="badge badge-info">#{{ articles[0].category | capitalize }}</span></h4>
                             </div>
@@ -151,7 +157,7 @@
                 </div>
 
                 <div class="col-xl-3 col-sm-12 my-2">
-                    <div class="card card-article card_evt_article">
+                    <div class="card card-article card_evt_article rounded-0">
                         <div class="card-header text-left card-header_article">
                             <div><h4><span class="badge badge-info">#{{ articles[1].category | capitalize }}</span></h4>
                             </div>
@@ -181,7 +187,7 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-12 my-2">
-                    <div class="card card-article card_evt_article">
+                    <div class="card card-article card_evt_article rounded-0">
                         <div class="card-header text-left card-header_article">
                             <div><h4><span class="badge badge-info">#{{ articles[2].category | capitalize }}</span></h4>
                             </div>
@@ -345,7 +351,7 @@
                 {% endfor %}
             </div>
             <div class="w-100 text-center mt-4">
-                <button class="btn comp-button-moreinfo mb-5">Ils nous font confiance</button>
+                <button class="btn btn_item mb-5" href="Member/index/#sponsors">Ils nous font confiance</button>
             </div>
         </div>
     </section>
