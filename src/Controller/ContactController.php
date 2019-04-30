@@ -7,7 +7,6 @@ use App\Service\PostDatum;
 class ContactController extends AbstractController
 {
 
-
     /**
      * Display home page
      *
@@ -18,9 +17,12 @@ class ContactController extends AbstractController
      */
     public function index()
     {
+        $status = "";
         $errorContactData = [];
         $contactData = [];
-        $status = $_GET['status'];
+        if (isset($_GET['status'])) {
+            $status = $_GET['status'];
+        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $postDatum = new PostDatum($_POST);
