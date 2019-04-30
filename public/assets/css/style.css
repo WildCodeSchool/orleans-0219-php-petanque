@@ -777,6 +777,7 @@ p {
 }
 
 .card_members{
+    font-size: 18px;
     min-width: 300px;
     border: 1px solid rgb(115, 114, 115);
 }
@@ -1180,4 +1181,8 @@ p {
     padding-top: 3%;
     padding-bottom: 3%;
     background-color: #e2d3ba;
+}
+
+.font_title_partner{
+    font-size:220%;
 }
