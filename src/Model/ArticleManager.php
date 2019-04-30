@@ -110,9 +110,9 @@ class ArticleManager extends AbstractManager
     /**
      * Update an article in database
      *
-     * @return int
+     * @return bool
      */
-    public function updateArticle(array $articleData, int $id): int
+    public function updateArticle(array $articleData, int $id) :bool
     {
         // prepared request
         // prepared request
