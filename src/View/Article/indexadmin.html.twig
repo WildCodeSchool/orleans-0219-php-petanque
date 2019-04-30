@@ -10,6 +10,9 @@
 
 {% block content %}
     <div class="container-fluid ">
+        {% if statusAlert == 'deletesuccess' %}
+            <div class="alert alert-danger alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
+                L'article a été correctement supprimé.
         {% if statusAlert == 'addsuccess' %}
             <div class="alert alert-success alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
                 L'article a été correctement ajouté.
