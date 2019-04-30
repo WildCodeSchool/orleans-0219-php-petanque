@@ -82,7 +82,7 @@ class AdminPictureArticleController extends AbstractController
                             $pictureArticle->insert($pictureToInsert);
                         }
                     }
-                    header('Location:/AdminPictureArticle/showpicture/' . $id);
+                    header('Location:/AdminPictureArticle/showpicture/' . $id . "?status=success");
                     exit();
                 }
             }
@@ -106,10 +106,12 @@ class AdminPictureArticleController extends AbstractController
         $pictureArticleManager = new PictureArticleManager();
         $errors=[];
         $id=0;
+        $article_id=0;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $postDatum =new PostDatum($_POST);
             $postData=$postDatum->cleanValues();
             $id = $postData['id'];
+            $article_id = $postData['article_id'];
             if (empty($id)) {
                 $errors[] = 'L\'image n existe pas';
             } elseif (empty($pictureArticleManager->selectOneById($id))) {
@@ -118,7 +120,7 @@ class AdminPictureArticleController extends AbstractController
         }
         if (empty($errors)) {
             $pictureArticleManager->delete($id);
-            header('Location:/AdminPictureArticle/showpicture/' . $id.'?status=deletesuccess');
+            header('Location:/AdminPictureArticle/showpicture/' . $article_id. '?status=deletesuccess');
             exit();
         }
     }
