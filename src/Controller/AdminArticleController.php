@@ -119,9 +119,9 @@ class AdminArticleController extends AbstractController
             $postData=$postDatum->cleanValues();
             $id = $postData['id'];
             if (empty($id)) {
-                $errors[] = 'L article n existe pas';
+                $errors[] = 'L\'article n\'existe pas';
             } elseif (empty($articleManager->selectOneById($id))) {
-                $errors[] = 'L article n\'existe pas dans la base de données';
+                $errors[] = 'L\'article n\'existe pas dans la base de données';
             }
         }
         if (empty($errors)) {
