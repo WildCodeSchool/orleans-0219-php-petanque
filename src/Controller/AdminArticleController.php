@@ -30,7 +30,11 @@ class AdminArticleController extends AbstractController
      */
     public function index()
     {
-        $alertResult = $_GET['status'];
+        $alertResult='';
+        if (isset($_GET['status'])) {
+            $alertResult = $_GET['status'];
+        }
+
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectAllArticles();
 
