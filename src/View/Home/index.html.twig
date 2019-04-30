@@ -1,15 +1,16 @@
 {% extends 'sublayout_visitor.html.twig' %}
 {% block title %}UPA - Accueil{% endblock %}
 {% block headercontent %}
-    {% set headerMainTitle = 'Union Pétanque Argonnaise' %}
+    {%  set headerMainTitle = 'Union Pétanque Argonnaise'  %}
+    {%  set headerSubTitle = 'La vie de bouliste'  %}
+    {%  set smallHeader = true  %}
     {{ parent() }}
 {% endblock %}
 {% block content %}
 
     <!-- ==================== Début Section "Vos envies" ==================== -->
 
-    <section id="vos_envies" class="container">
-
+    <section id="vos_envies" class="container-fluid">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>Vos envies...</h2>
@@ -17,13 +18,12 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm_12 col-lg-4 mx-auto card_margin card_margin_yourwishes">
+        <div class="row mb-5 justify-content-center">
+            <div class="col-sm-12 col-lg-3 card_margin card_margin_yourwishes">
                 <div class="card card_yourwishes">
                     <img class="card-img-top card_img_yourwishes"
                          src="/assets/images/vosenvies_decouvrir.jpg"
                          alt="Photo découverte pétanque">
-
                     <div class="card-body card_body_yourwishes">
                         <h5 class="card-title text-center">Découverte</h5>
                         <p class="card-text">Vous souhaitez découvrir l'univers de la pétanque ? Des terrains et des
@@ -38,12 +38,11 @@
                 </div>
             </div>
 
-            <div class="col-sm_12 col-lg-4 mx-auto card_margin card_margin_yourwishes">
+            <div class="col-sm-12 col-lg-3 card_margin card_margin_yourwishes">
                 <div class="card card_yourwishes">
                     <img class="card-img-top card_img_yourwishes"
                          src="/assets/images/vosenvies_entrainement.jpg"
                          alt="Photo entraînement pétanque">
-
                     <div class="card-body card_body_yourwishes">
                         <h5 class="card-title text-center">Entraînement</h5>
                         <p class="card-text">Améliorez votre technique en participant à nos entraînements
@@ -58,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="col-sm_12 col-lg-4 mx-auto card_margin card_margin_yourwishes">
+            <div class="col-sm-12 col-lg-3 card_margin card_margin_yourwishes">
                 <div class="card card_yourwishes">
                     <img class="card-img-top card_img_yourwishes"
                          src="/assets/images/vosenvies_competition.jpg"
@@ -188,6 +187,7 @@
                     <a class="btn btn_item w-50 mt-2" href="/Article/index" role="button">Voir toutes les actualités</a>
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- ============== Début section Horaires ============= -->
@@ -228,6 +228,7 @@
             </div>
         </div>
     </section>
+
     <section id="Hpartenaires">
         <div class="mx-5">
             <div class="row">
@@ -259,27 +260,21 @@
 
     <!-- ============== Début section Vie sportive ============= -->
     <section id="viesportive">
-        <div class="container">
+        <div class="container-fluid">
             <div class="col-lg-12 text-center">
                 <h2>Vie sportive</h2>
                 <div class="h2_separator"></div>
             </div>
 
-            <div class="row justify-content-around">
+            <div class="row justify-content-around mx-5">
                 {% for event in events %}
-                <div class="card rounded-0 col-sm-12 col-lg-3 p-1 card-evt">
+                <div class="card rounded-0 px-5 col-lg-12 col-xl-4 mt-5 card-evt">
                     <div class="text-center m-2" >
-                    <h5 class="card-title-evt-date">
-                        {% if event.date_begin < event.date_end %}
-                            Du {{ event.date_begin }} au {{ event.date_end }}
-                        {% else %}
-                           Le {{ event.date_begin }}
-                        {% endif %}
-                    </h5>
-                    <h5 class="card-title-evt text-center p-2">{{ event.level | capitalize }}</h5>
+                    <h5 class="card-title-evt text-center p-2 mt-3">{{ event.level | capitalize }}</h5>
                     </div>
-                    <div class="card-body rounded-0 text-center mx-auto p-0">
-                        <img class="card-img-top img-event-small p-3 textrounded-0"
+                    <div class="card-body rounded-0 text-center mx-auto mx-3 p-0">
+                        <div class="img_wrapper_viesportive">
+                        <img class="card-img-top img-event-small p-2 textrounded-0 mb-5"
                                 {% if event.gendermix|lower == 'homme' %}
                              src="/assets/images/compet/evt_homm2.jpg"
                              alt="compétition homme">
@@ -288,10 +283,9 @@
                         {% else %}
                             src="/assets/images/compet/evt_mixte.jpg" alt="compétition mixte">
                         {% endif %}
+                        </div>
                     </div>
-                    <div class="card-body card_body_evt">
-                        <h5 class="card-title text-center h5_evt">{{ event.title }}</h5>
-                        <p class="card-text text-justify card_text_evt">{{ event.descr|striptags|length > 270 ? event.descr|striptags|slice(0, 270) ~ ' [...]' : event.descr|striptags }}</p>
+                    <div class="card-body card_body_evt pt-0">
                     <div class="heading-divider-extent"></div>
                         <ul class="list-group list-group-flush text-center">
                             <li class="list-group-item p-0 border-0">{{ event.dept_name }} ( {{ event.dept_num }})</li>
@@ -303,9 +297,13 @@
                             <li class="list-group-item p-0 border-0">Mixité : {{ event.gendermix | capitalize }}</li>
                         </ul>
                     <div class="heading-divider-extent"></div>
-                        <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item p-0 border-0">Date limite d'inscription : {{ event.date_register | capitalize }}</li>
-                        </ul>
+                        <li class="list-group-item p-0 border-0 text-center">
+                            {% if event.date_begin < event.date_end %}
+                                Du {{ event.date_begin }} au {{ event.date_end }}
+                            {% else %}
+                                Le {{ event.date_begin }}
+                            {% endif %}
+                        </li>
                     </div>
                     <div class="text-center">
                         <a class="btn btn_item mb-3" href="Event/show/{{ event.id }}" role="button">En savoir plus</a>
@@ -313,11 +311,9 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="row my-3 mx-3 p-5 text-center justify-content-between">
-                <a class="btn btn_item_invert" href="Event/index" role="button">Voir tous les évènements à venir</a>
-
-
-                <a class="btn btn_item_invert" href="Event/indexresults" role="button">Voir tous les résultats</a>
+            <div class="row my-3 mx-3 p-5 text-center justify-content-center">
+                <a class="btn btn_item_invert mr-5" href="Event/index" role="button">Voir tous les évènements à venir</a>
+                <a class="btn btn_item_invert ml-5" href="Event/indexresults" role="button">Voir tous les résultats</a>
             </div>
         </div>
     </section>
@@ -358,6 +354,35 @@
 
     <!-- ==================== Fin section Qui Sommes Nous ========================== -->
 
+
+    <!-- ============== Debut section Partenaires ============= -->
+    <section id="Hpartenaires">
+        <div class="mx-5">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="h2_colored_section">Partenaires</h2>
+                    <div class="h2_separator_dark">
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center align-items-center row-no-padding">
+                {% for partner in partners %}
+                    <div class="col-xl-2 p-0">
+                        <div class="sponsor_wrapper pt-3 pb-3">
+                            <a href="{{ partner.url }}">
+                                <img src="{{ base_path ~ directory }}/{{ partner.picture }}"
+                                     class="rounded partner_img" alt="{{ partner.name }}">
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="w-100 text-center mt-4">
+                <button class="btn comp-button-moreinfo mb-5">Ils nous font confiance</button>
+            </div>
+        </div>
+    </section>
+    <!-- ============== Fin section Partenaires ============= -->
 
 {% endblock %}
 
