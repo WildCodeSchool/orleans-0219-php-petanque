@@ -770,6 +770,90 @@ p {
 
 /* ================================= Fin Styles Admin ================================== */
 
+.card_img_member{
+    width: 400px;
+    max-height:300px;
+    object-fit: cover;
+}
+
+.card_members{
+    min-width: 300px;
+    border: 1px solid rgb(115, 114, 115);
+}
+
+.card_header_member{
+    border: 0px;
+}
+
+.sponsor_wrapper{
+    max-width: 200px;
+}
+
+.img_sponsor{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.sponsor_background{
+    width: 100%;
+    background-color: #d3aa4e;
+}
+
+.btn_toggle_member{
+    background-color: #d3aa4e;
+}
+
+.btn_toggle_member_dark{
+    background-color: rgb(115, 114, 115);
+}
+
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+    box-shadow: none;
+    outline: none;
+    background-color: #737273;
+}
+
+.card_member{
+    border: 0px;
+}
+
+.card_member_text{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.card-header{
+    background-color: unset;
+}
+
+.name_rol_member_card{
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.border_bottom_member_card{
+    margin: auto;
+    padding-bottom: 15px;
+    width: 95%;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.desc_member_card{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    width: 95%
+}
+
+.img_partner{
+    width: 220px;
+}
+
+@media screen and (max-width: 1600px) {
+    .card_img_member {
+        width: 300px;
+    }
+}
 
 #Hpartenaires{
     background-color: #e2d3ba;
@@ -1080,7 +1164,6 @@ p {
     width: 300px;
     bottom: 0px;
 }
-
 /* ===================== Style Page Vos Envies... ================== */
 
 .section_wishes_card{
