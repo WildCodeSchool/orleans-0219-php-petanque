@@ -1,0 +1,103 @@
+{% extends 'sublayout_visitor.html.twig' %}
+{% block title %}UPA - Contact{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'Contactez-nous'  %}
+    {%  set headerSubTitle = '' %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid my-5">
+        {% if statusAlert == true %}
+            <div class="alert alert-success alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
+                Votre message a été correctement envoyé. Nous reprendrons contact avec vous dans les plus brefs délais.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-5 mx-auto">
+                <h3>Contactez-nous</h3>
+                <div class="heading-divider-extent"></div>
+                <form method="post" action="" >
+                    <div class="firstname my-2">
+                        <label class="form-required" for="firstname"> Entrez votre prénom :</label>
+                        <input type="text" class="form-control" name="firstname" placeholder="Prénom">
+                        <div class="error-form">{{ errors.firstname }}</div>
+                    </div>
+                    <div class="lastname my-2">
+                        <label class="form-required" for="lastname">Entrez votre nom :</label>
+                        <input type="text" class="form-control" name="lastname"  placeholder="Nom">
+                        <div class="error-form">{{ errors.lastname }}</div>
+                    </div>
+                    <div class="form-group my-2">
+                        <label class="form-required" for="emaillabel">Entrez votre adresse mail :</label>
+                        <input type="email" class="form-control" id="emaillabel" name="email"
+                               aria-describedby="emailHelp" value="{{ contact.email }}"
+                               placeholder="xyz@domain.com" required>
+                        <div class="error-form">{{ errors.email }}</div>
+                    </div>
+                    <div class="phone my-2">
+                        <label for="phone">Entrez votre numéro:</label><br>
+                        <input type="tel" id="phone" name="phone" placeholder="">
+                        <div class="error-form">{{ errors.phone }}</div>
+                    </div>
+                    <div class="form-group my-2">
+                        <label class="form-required" for="messagelabel">Votre message :</label>
+                        <textarea class="form-control textarea-contact" id="messagelabel"  rows="8" name="message" value={{ contact.message }}
+                                  required></textarea>
+                        <div class="error-form">{{ errors.message }}</div>
+                    </div>
+                    <div class="row my-3 mx-auto p-3 text-center justify-content-between">
+                        <button type="submit" class="btn btn btn_item w-100">Envoyer</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-5 mx-auto">
+                <h3>Adresse</h3>
+                <div class="heading-divider-extent"></div>
+                <address class="mb-5">
+                    <p>Boulodrome Couvert de la Plaine de Jeux du Belneuf</p>
+                    <p>BP 3025</p>
+                    <p>45030 ORLEANS CEDEX 1</p>
+                </address>
+                <h4>Coordonnées de contact</h4>
+                <div class="heading-divider-extent"></div>
+                <div class="mb-2">
+                    <div class="container row ">
+                        <i class="fas fa-phone mr-2"></i>
+                        <p>Tel: 02 38 84 25 62</p>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="container row">
+                        <i class="fas fa-mobile-alt mr-2"></i>
+                        <p>Portable PRO : 07 86 38 52 25</p>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="container row">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <p>Mail: petanque.argonnaise@orange.fr</p>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="container row">
+                        <i class="fas fa-globe mr-2"></i>
+                        <p>Site : www.union-petanque-argonnaise.fr</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 text-center">
+        <h2>NOUS SOMMES ICI</h2>
+        <div class="h2_separator"></div>
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2673.977062459373!2d1.9420827515372299!3d47.91748127910442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4fb585999c3a5%3A0xc4dcba89b04a5029!2sUnion+P%C3%A9tanque+Argonnaise!5e0!3m2!1sfr!2sfr!4v1556012167047!5m2!1sfr!2sfr"
+            width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+{% endblock %}

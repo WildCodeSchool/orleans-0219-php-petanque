@@ -10,16 +10,28 @@
 
 {% block content %}
     <div class="container-fluid ">
-        {% if statusAlert == true %}
+        {% if statusAlert == 'deletesuccess' %}
             <div class="alert alert-danger alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
                 L'article a été correctement supprimé.
+        {% endif %}
+        {% if statusAlert == 'addsuccess' %}
+            <div class="alert alert-success alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
+                L'article a été correctement ajouté.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+        {% if statusAlert == 'editsuccess' %}
+            <div class="alert alert-success alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
+                L'article a été correctement modifié.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         {% endif %}
         <div class="col-md-4 mx-auto py-2 justify-content-center">
-            <a class="btn btn-success w-100" href="add/" role="button">Ajouter un article ...</a>
+            <a class="btn btn-success w-100" href="/AdminPictureArticle/add/" role="button">Ajouter un article ...</a>
         </div>
         <div class="table-responsive-vertical mx-5">
             <!-- Table starts here -->
@@ -40,7 +52,7 @@
                         <td data-title="Date">{{ article.date_publicated }}</td>
                         <td data-title="Titre">{{ article.title | capitalize }}</td>
                         <td data-title="Catégorie">{{ article.category | capitalize }}</td>
-                        <td><a class="btn btn-info w-100" href="/AdminPictureArticle/index/{{ article.id }}" role="button">Gérer ...</a>
+                        <td><a class="btn btn-info w-100" href="/AdminPictureArticle/showpicture/{{ article.id }}" role="button">Gérer ...</a>
                         </td>
                         <td><a class="btn btn-warning w-100" href="/AdminArticle/edit/{{ article.id }}" role="button">Editer ...</a>
                         </td>
