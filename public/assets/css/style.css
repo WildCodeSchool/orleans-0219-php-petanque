@@ -703,6 +703,14 @@ p {
     transform: scaleX(1);
 }
 
+.nav_item_cursor_pointer{
+    cursor: pointer;
+}
+
+.feature-gallery_header {
+    filter:sepia(.8);
+    z-index: -10;
+}
 
 #HquiSommesNous
 {
@@ -1196,3 +1204,4 @@ p {
 .font_title_partner{
     font-size:220%;
 }
+
