@@ -53,7 +53,6 @@ class ArticleManager extends AbstractManager
         if ($limitResults > 0) {
             $statement .= " LIMIT $limitResults";
         }
-/*        $statement .= ";";*/
 
         return $this->pdo->query($statement)->fetchAll();
     }
@@ -105,5 +104,39 @@ class ArticleManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    /**
+     * @param int $id
+     */
+    public function delete(int $id): void
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("DELETE FROM $this->table WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    /**
+     * Update an article in database
+     *
+     * @return bool
+     */
+    public function updateArticle(array $articleData, int $id) :bool
+    {
+        // prepared request
+        $statement = $this->pdo->prepare(
+            "UPDATE $this->table SET 
+            `title` = :title,
+            `description` = :description,
+            `articlecategory_id` = :articlecategory_id           
+            WHERE id=:id"
+        );
+        $statement->bindValue('title', $articleData['title'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $articleData['description'], \PDO::PARAM_STR);
+        $statement->bindValue('articlecategory_id', $articleData['articlecategory_id'], \PDO::PARAM_INT);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
     }
 }
