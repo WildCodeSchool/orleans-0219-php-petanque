@@ -62,7 +62,7 @@
                     </div>
                 </section>
                 <section>
-                    <div class="form-group px-2 col-md-3">
+                    <div class="form-group px-2 col-md-3 mx-auto">
                         <label for="evtdepartment">Département du site :</label>
                         <select class="form-control" id="evtdepartment" name="departement_id">
                             <option value="">Tous</option>
@@ -74,7 +74,7 @@
                         </select>
                     </div>
                 </section>
-                <div class="mt-5 text-center">
+                <div class="mt-3 mb-4 text-center">
                     <a class="btn btn_item" href="/event/index/reset=true" role="button">Réinitialiser les
                         filtres...</a>
                     <button type="submit" class="btn btn_item">Rechercher ...</button>
@@ -84,7 +84,7 @@
 
         <section class="mt-3">
             <div class="container-fluid">
-                <div class="row justify-content-around mb-5">
+                <div class="row justify-content-around mb-5 mx-5">
                     {% if not events is empty %}
                     {% for event in events %}
                         <div class="card rounded-0 px-5 col-lg-12 col-xl-4 mt-5 card-evt">
