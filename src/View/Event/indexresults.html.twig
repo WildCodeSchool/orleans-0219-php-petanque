@@ -11,6 +11,18 @@
 <div class="container-fluid ">
         <div class="table-responsive-vertical mx-5">
             <!-- Table starts here -->
+            {% for event in events %}
+            <div class="card">
+                <h5 class="card-header">Featured</h5>
+                <div class="card-body">
+
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+            {% endfor %}
+
             <table id="table" class="table table-hover table-striped table-bordered">
                 <thead class="comp-thead-color">
                 <tr>
@@ -38,7 +50,7 @@
                         <td data-title="Departement">{{ event.dept_name }} ({{ event.dept_num }})</td>
                         <td>
                             {% if event.article_id > 0 %}
-                                <a class="btn comp-button-moreinfo w-100" href="{{ base_path ~ directory }}/article/show/{{ event.article_id }}" role="button">Y accéder ...</a>
+                                <a class="btn comp-button-moreinfo w-100" href="/article/show/{{ event.article_id }}" role="button">Y accéder ...</a>
                             {% else %}
                                 <button class="btn btn-secondary w-100" disabled>Pas d'article</button>
                             {% endif %}
