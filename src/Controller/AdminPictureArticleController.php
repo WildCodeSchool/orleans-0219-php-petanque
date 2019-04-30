@@ -20,6 +20,7 @@ class AdminPictureArticleController extends AbstractController
 {
 
     const UPLOAD_DIRECTORY = 'assets/images/article/';
+
     /**
      * Display event listing admin
      *
@@ -34,9 +35,8 @@ class AdminPictureArticleController extends AbstractController
         $alertResult='';
         if (isset($_GET['status'])) {
             $alertResult = $_GET['status'];
-        }
+        };
         if (isset($_POST['submit'])) {
-
             $allowedFormats = ['image/gif', 'image/jpeg', 'image/png',];
             $maxSize = 1000000;
 
