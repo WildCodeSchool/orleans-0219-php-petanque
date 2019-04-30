@@ -3,7 +3,6 @@
 {% block headercontent %}
     {%  set headerMainTitle = 'Union Pétanque Argonnaise'  %}
     {%  set headerSubTitle = 'La vie de bouliste'  %}
-    {%  set smallHeader = true  %}
     {{ parent() }}
 {% endblock %}
 {% block content %}
@@ -30,10 +29,8 @@
                             ateliers sont à votre disposition.</p>
                     </div>
                     <div class="card-footer card_title_footer text-center">
-                        <button type="button" class="btn btn_item" data-toggle="modal"
-                                data-target="#vos_envies">
-                            Voir plus
-                        </button>
+                        <a class="btn btn_item" href="/Wishes/index/#discover"
+                           role="button">Voir plus</a>
                     </div>
                 </div>
             </div>
@@ -49,10 +46,8 @@
                             semi-professionnels.</p>
                     </div>
                     <div class="card-footer card_title_footer text-center">
-                        <button type="button" class="btn btn_item" data-toggle="modal"
-                                data-target="#vos_envies">
-                            Voir plus
-                        </button>
+                        <a class="btn btn_item" href="/Wishes/index/#training"
+                           role="button">Voir plus</a>
                     </div>
                 </div>
             </div>
@@ -69,10 +64,8 @@
                             l'International</p>
                     </div>
                     <div class="card-footer card_title_footer text-center">
-                        <button type="button" class="btn btn_item" data-toggle="modal"
-                                data-target="#vos_envies">
-                            Voir plus
-                        </button>
+                        <a class="btn btn_item" href="/Wishes/index/#competition"
+                           role="button">Voir plus</a>
                     </div>
                 </div>
             </div>
@@ -80,6 +73,40 @@
     </section>
 
     <!-- ==================== Fin Section "Vos envies" ==================== -->
+
+    <!-- ==================== Début section Qui Sommes Nous ========================== -->
+    <section id="HquiSommesNous">
+        <div class="mx-5">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="h2_colored_section">Membres du club</h2>
+                    <div class="h2_separator_dark"></div>
+                </div>
+            </div>
+            <div class="row text-center">
+                {% for member in members %}
+                    <div class="col-xl-4">
+                        <div class="portrait_wrapper pt-3">
+                            <div class="portrait float-left pr-4">
+                                <img src={{ base_path~directory }}/{{ (member.picture is null) ? 'assets/images/members/placeholder.jpg' : member.picture}} class="rounded-circle home_members_picture" alt="Cinque Terre">
+                            </div>
+                            <div class="qui_title_wrap text-left">
+                                <p>{{ member.lastname | capitalize}}  {{ member.firstname }}</p>
+                            </div>
+                            <div class="qui_role_wrap text-left">
+                                <p>{{ member.role }}</p>
+                            </div>
+                            <div class="qui_desc_wrap text-left">
+                                <p>{{ member.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Fin section Qui Sommes Nous ========================== -->
 
     <!-- ==================== Début Section "Articles" ==================== -->
 
@@ -100,15 +127,23 @@
                             <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ articles[0].date_publicated }}
                         </div>
                         <div class="card-body">
-                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover"
-                                 src="{{ articles[0].picture }}"
-                                 alt="{{ 'image de ' ~ articles[0].title }}">
+                            <div class="text-center">
+                            {% if articles[0].picture is empty %}
+                                <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover"
+                                     src="/assets/images/article-default.jpg"
+                                     alt="{{ 'image de ' ~ articles[0].title }}">
+                            {% else %}
+                                <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover"
+                                     src="/assets/images/article/{{ articles[0].picture }}"
+                                     alt="{{ 'image de ' ~ articles[0].title }}">
+                            {% endif %}
+                            </div>
                             <div>
                                 <div class="row card-body">
                                     <div class="col-sm-12">
                                         <h4 class="card-title text-center">{{ articles[0].title }}</h4>
                                         <div class="heading-divider-extent"></div>
-                                        <p class="card-text text-justify"> {{ articles[0].description|striptags|length > 200 ? articles[0].description|striptags|slice(0, 200) ~ ' [...]' : articles[0].description|striptags }}</p>
+                                        <p class="card-text text-justify"> {{ articles[0].description|striptags|length > 400 ? articles[0].description|striptags|slice(0, 400) ~ ' [...]' : articles[0].description|striptags }}</p>
                                     </div>
                                 </div>
                                 <div class="card-footer card-footer_article">
@@ -131,9 +166,17 @@
                             <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ articles[1].date_publicated }}
                         </div>
                         <div class="card-body">
-                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover"
-                                 src="{{ articles[1].picture }}"
-                                 alt="{{ 'image de ' ~ articles[1].title }}">
+                            <div class="text-center">
+                                {% if articles[1].picture is empty %}
+                                    <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover"
+                                         src="/assets/images/article-default.jpg"
+                                         alt="{{ 'image de ' ~ articles[1].title }}">
+                                {% else %}
+                                    <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover"
+                                         src="/assets/images/article/{{ articles[1].picture }}"
+                                         alt="{{ 'image de ' ~ articles[1].title }}">
+                                {% endif %}
+                            </div>
                             <div>
                                 <div class="row card-body">
                                     <div class="col-sm-12">
@@ -161,9 +204,17 @@
                             <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ articles[2].date_publicated }}
                         </div>
                         <div class="card-body">
-                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover"
-                                 src="{{ articles[2].picture }}"
-                                 alt="{{ 'image de ' ~ articles[2].title }}">
+                            <div class="text-center">
+                                {% if articles[2].picture is empty %}
+                                    <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover"
+                                         src="/assets/images/article-default.jpg"
+                                         alt="{{ 'image de ' ~ articles[2].title }}">
+                                {% else %}
+                                    <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover"
+                                         src="/assets/images/article/{{ articles[2].picture }}"
+                                         alt="{{ 'image de ' ~ articles[2].title }}">
+                                {% endif %}
+                            </div>
                             <div>
                                 <div class="row card-body">
                                     <div class="col-sm-12">
@@ -189,6 +240,8 @@
             </div>
         </div>
     </section>
+    <!-- ==================== Fin section Articles ========================== -->
+
 
     <!-- ============== Début section Horaires ============= -->
 
@@ -229,34 +282,7 @@
         </div>
     </section>
 
-    <section id="Hpartenaires">
-        <div class="mx-5">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="h2_colored_section">Partenaires</h2>
-                    <div class="h2_separator_dark"></div>
-                </div>
-            </div>
-            <div class="row text-center align-items-center row-no-padding">
-                {% for partner in partners %}
-                    <div class="col-xl-2 p-0">
-                        <div class="sponsor_wrapper pt-3 pb-3">
-                            <a href="{{ partner.url }}">
-                                <img src="/{{ partner.picture }}"
-                                     class="rounded partner_img" alt="{{ partner.picture }}">
-                            </a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="w-100 text-center mt-4">
-                <button class="btn comp-button-moreinfo mb-5">Ils nous font confiance</button>
-            </div>
-        </div>
-    </section>
-
     <!-- ==================== Fin section Horaires ========================== -->
-
 
     <!-- ============== Début section Vie sportive ============= -->
     <section id="viesportive">
@@ -268,7 +294,7 @@
 
             <div class="row justify-content-around mx-5">
                 {% for event in events %}
-                <div class="card rounded-0 px-5 col-lg-12 col-xl-4 mt-5 card-evt">
+                <div class="card rounded-0 px-5 col-lg-12 col-xl-4 card-evt">
                     <div class="text-center m-2" >
                     <h5 class="card-title-evt text-center p-2 mt-3">{{ event.level | capitalize }}</h5>
                     </div>
@@ -319,41 +345,6 @@
     </section>
 
     <!-- ============== Fin section Vie sportive ============= -->
-
-    <!-- ==================== Début section Qui Sommes Nous ========================== -->
-    <section id="HquiSommesNous">
-        <div class="mx-5">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="h2_colored_section">Membres du club</h2>
-                    <div class="h2_separator_dark"></div>
-                </div>
-            </div>
-            <div class="row text-center">
-                {% for member in members %}
-                    <div class="col-xl-4">
-                        <div class="portrait_wrapper pt-3">
-                            <div class="portrait float-left pr-4">
-                                <img src={{ base_path~directory }}/{{ (member.picture is null) ? 'assets/images/members/placeholder.jpg' : member.picture}} class="rounded-circle home_members_picture" alt="Cinque Terre">
-                            </div>
-                            <div class="qui_title_wrap text-left">
-                                <p>{{ member.lastname | capitalize}}  {{ member.firstname }}</p>
-                            </div>
-                            <div class="qui_role_wrap text-left">
-                                <p>{{ member.role }}</p>
-                            </div>
-                            <div class="qui_desc_wrap text-left">
-                                <p>{{ member.description }}</p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== Fin section Qui Sommes Nous ========================== -->
-
 
     <!-- ============== Debut section Partenaires ============= -->
     <section id="Hpartenaires">
