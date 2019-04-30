@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\PictureArticleManager;
+use App\Service\PostDatum;
 
 /**
  * Class EventAdminController
@@ -18,6 +19,7 @@ use App\Model\PictureArticleManager;
 class AdminPictureArticleController extends AbstractController
 {
 
+    const UPLOAD_DIRECTORY = 'assets/images/article/';
     /**
      * Display event listing admin
      *
@@ -29,8 +31,12 @@ class AdminPictureArticleController extends AbstractController
     public function showpicture(int $id)
     {
         $errorFiles = [];
+        $alertResult='';
+        if (isset($_GET['status'])) {
+            $alertResult = $_GET['status'];
+        }
         if (isset($_POST['submit'])) {
-            $uploadDir = 'assets/images/article/';
+
             $allowedFormats = ['image/gif', 'image/jpeg', 'image/png',];
             $maxSize = 1000000;
 
@@ -65,11 +71,11 @@ class AdminPictureArticleController extends AbstractController
                             $uploadFileName .= '.' . $extension;
                         }
                         //save the url and the file
-                        $uploadFile = $uploadDir . $uploadFileName;
+                        $uploadFile = self::UPLOAD_DIRECTORY . $uploadFileName;
                         //Upload the file into the temp dir
                         if (move_uploaded_file($tmpFilePath, $uploadFile)) {
                             $pictureToInsert = [
-                                'picture' => $uploadDir . $uploadFileName,
+                                'picture' => self::UPLOAD_DIRECTORY . $uploadFileName,
                                 'article_id' => $id,
                             ];
                             $pictureArticle = new PictureArticleManager();
@@ -88,6 +94,32 @@ class AdminPictureArticleController extends AbstractController
             'pictures' => $pictures,
             'article' => $article,
             'errors' => $errorFiles,
+            'statusAlert' => $alertResult,
         ]);
+    }
+
+    /**
+     * Delete an event
+     */
+    public function delete()
+    {
+        $pictureArticleManager = new PictureArticleManager();
+        $errors=[];
+        $id=0;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $postDatum =new PostDatum($_POST);
+            $postData=$postDatum->cleanValues();
+            $id = $postData['id'];
+            if (empty($id)) {
+                $errors[] = 'L\'image n existe pas';
+            } elseif (empty($pictureArticleManager->selectOneById($id))) {
+                $errors[] = 'L image n\'existe pas dans la base de données';
+            }
+        }
+        if (empty($errors)) {
+            $pictureArticleManager->delete($id);
+            header('Location:/AdminPictureArticle/showpicture/' . $id.'?status=deletesuccess');
+            exit();
+        }
     }
 }
