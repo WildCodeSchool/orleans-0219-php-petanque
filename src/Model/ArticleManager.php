@@ -53,7 +53,6 @@ class ArticleManager extends AbstractManager
         if ($limitResults > 0) {
             $statement .= " LIMIT $limitResults";
         }
-/*        $statement .= ";";*/
 
         return $this->pdo->query($statement)->fetchAll();
     }
@@ -114,7 +113,6 @@ class ArticleManager extends AbstractManager
      */
     public function updateArticle(array $articleData, int $id) :bool
     {
-        // prepared request
         // prepared request
         $statement = $this->pdo->prepare(
             "UPDATE $this->table SET 
