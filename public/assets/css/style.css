@@ -791,6 +791,10 @@ p {
     background-color: transparent;
 }
 
+
+/************************ GALERIE PHOTO ADMIN *****************************************/
+.thumbnail img {width:auto;height:250px; object-fit: contain;}
+/*-------------------------------------------------------------------------------------------------*/
 /********************GALLERY *************************************************************************/
 .img-gallery {
     width: 100%;
@@ -1055,9 +1059,8 @@ p {
     margin-right: auto;
     width: 300px;
     bottom: 0px;
->>>>>>> dev
 }
->>>>>>> dev
+
 /* ===================== Style Page Vos Envies... ================== */
 
 .section_wishes_card{
