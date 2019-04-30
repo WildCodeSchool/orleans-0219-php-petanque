@@ -42,13 +42,16 @@ class ArticleManager extends AbstractManager
         a.title as title,
         a.description as description,
         a.articlecategory_id as articlecategory_id,
-        a.picture as picture,
+        MIN(p.picture) as picture,
         DATE_FORMAT(a.date_publicated,'%d/%m/%Y') as date_publicated, 
         c.name as category,
         c.descr as category_description 
         FROM db_upa.article as a 
         LEFT JOIN db_upa.articlecategory AS c 
         ON a.articlecategory_id = c.id
+        LEFT JOIN picture AS p 
+        ON a.id = p.article_id 
+        GROUP BY a.id
         ORDER BY a.date_publicated DESC";
         if ($limitResults > 0) {
             $statement .= " LIMIT $limitResults";
@@ -89,14 +92,17 @@ class ArticleManager extends AbstractManager
         a.title as title,
         a.description as description,
         a.articlecategory_id as articlecategory_id,
-        a.picture as picture,
+        MIN(p.picture) as picture,
         DATE_FORMAT(a.date_publicated,'%d/%m/%Y') as date_publicated, 
         c.name as category,
         c.descr as category_description 
         FROM db_upa.article as a 
         LEFT JOIN db_upa.articlecategory AS c 
         ON a.articlecategory_id = c.id
-        WHERE a.id=:id;";
+        LEFT JOIN picture AS p 
+        ON a.id = p.article_id 
+        WHERE a.id=:id
+        GROUP BY a.id;";
 
         // prepared request
         $statement = $this->pdo->prepare($statement);
