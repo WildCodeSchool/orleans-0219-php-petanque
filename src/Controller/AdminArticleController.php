@@ -30,7 +30,10 @@ class AdminArticleController extends AbstractController
      */
     public function index()
     {
-        $alertResult = isset($_GET['status']);
+        $alertResult='';
+        if (isset($_GET['status'])) {
+            $alertResult = $_GET['status'];
+        }
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectAllArticles();
 
@@ -101,5 +104,30 @@ class AdminArticleController extends AbstractController
         };
 
         return $errors;
+    }
+
+    /**
+     * Delete an event
+     */
+    public function delete()
+    {
+        $articleManager = new ArticleManager();
+        $errors=[];
+        $id=0;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $postDatum =new PostDatum($_POST);
+            $postData=$postDatum->cleanValues();
+            $id = $postData['id'];
+            if (empty($id)) {
+                $errors[] = 'L article n existe pas';
+            } elseif (empty($articleManager->selectOneById($id))) {
+                $errors[] = 'L article n\'existe pas dans la base de données';
+            }
+        }
+        if (empty($errors)) {
+            $articleManager->delete($id);
+            header('Location:/AdminArticle/index/?status=deletesuccess');
+            exit();
+        }
     }
 }
