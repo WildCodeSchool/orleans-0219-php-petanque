@@ -1144,7 +1144,7 @@ p {
 
 .section_wishes_card{
     margin: 80px;
-    border-radius:0px;
+    border-radius:0;
 }
 
 .section_wishes_body{
@@ -1163,5 +1163,5 @@ p {
 }
 
 .sepia_filter{
-    filter: sepia(0.8);
+    filter:sepia(0.8) grayscale(40%) contrast(1.2);
 }
