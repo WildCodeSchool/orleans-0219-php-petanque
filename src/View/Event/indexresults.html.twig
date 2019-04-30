@@ -11,10 +11,6 @@
 
     <section id="viesportive">
         <div class="container-fluid mb-5">
-            <div class="col-lg-12 text-center">
-                <h2>Vie sportive</h2>
-                <div class="h2_separator"></div>
-            </div>
 
             <div class="row justify-content-around mx-5">
                 {% for event in events %}
@@ -57,7 +53,9 @@
                         </div>
                         <div class="text-center">
                             {% if event.article_id > 0 %}
-                                <a class="btn btn_item mb-3" href="/article/show/{{ event.article_id }}" role="button">Y accéder ...</a>
+                                <a class="btn btn_item mb-3" href="/article/show/{{ event.article_id }}" role="button">Voir les résultats</a>
+                                {% else %}
+                                    <button type="button" class="btn btn_item mb-3"  role="button"  disabled>Pas de résultats</button>
                             {% endif %}
                         </div>
                     </div>
