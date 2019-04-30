@@ -107,7 +107,7 @@
                 {% endfor %}
             </div>
             <div class="w-100 text-center mt-4">
-                <button class="btn btn_item mb-5" href="Member/index/#members">Ils nous font confiance</button>
+                <a role="button" class="btn btn_item mb-5" href="Member/index/#members">Ils nous font confiance</a>
             </div>
         </div>
     </section>
@@ -305,13 +305,13 @@
                             <li class="list-group-item p-0 border-0">Mixité : {{ event.gendermix | capitalize }}</li>
                         </ul>
                     <div class="heading-divider-extent"></div>
-                        <li class="list-group-item p-0 border-0 text-center">
+                        <div class="list-group-item p-0 border-0 text-center">
                             {% if event.date_begin < event.date_end %}
                                 Du {{ event.date_begin }} au {{ event.date_end }}
                             {% else %}
                                 Le {{ event.date_begin }}
                             {% endif %}
-                        </li>
+                        </div>
                     </div>
                     <div class="text-center">
                         <a class="btn btn_item mb-3" href="Event/show/{{ event.id }}" role="button">En savoir plus</a>
@@ -351,7 +351,7 @@
                 {% endfor %}
             </div>
             <div class="w-100 text-center mt-4">
-                <button class="btn btn_item mb-5" href="Member/index/#sponsors">Ils nous font confiance</button>
+                <a role="button" class="btn btn_item mb-5" href="Member/index/#sponsors">Ils nous font confiance</a>
             </div>
         </div>
     </section>
