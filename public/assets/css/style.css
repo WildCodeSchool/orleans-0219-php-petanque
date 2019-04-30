@@ -866,8 +866,11 @@ p {
 /******************* ARTICLE SPORTIF CARTE ****************************************************/
 /*-------------------------------------------------------------------------------------------------*/
 .article-small {
-    width:50%;
+    max-width:300px;
+    max-height:300px;
+    object-fit: cover;
 }
+
 
 .card_evt_article{
     margin-left: auto;
