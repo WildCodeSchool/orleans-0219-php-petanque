@@ -109,6 +109,17 @@ p {
     background-color: #3e3631;
 }
 
+.btn_item_froze{
+    margin-top: 20px;
+    text-decoration: none;
+    padding: 13px 35px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    background-image: none;
+    background-color: #3e3631;
+}
+
 .btn_item:hover{
     color: black;
     background-color: #d3aa4e;
