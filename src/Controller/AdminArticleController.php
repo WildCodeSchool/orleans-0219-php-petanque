@@ -62,7 +62,7 @@ class AdminArticleController extends AbstractController
 
             if (empty($errorArticleData)) {
                 $id = $articleManager->insertArticle($articleData);
-                header('Location:/AdminArticle/index/?status=success');
+                header('Location:/AdminArticle/index/?status=addsuccess');
                 exit();
             }
         }
@@ -106,7 +106,7 @@ class AdminArticleController extends AbstractController
 
             if (empty($errorArticleData)) {
                 $articleManager->updateArticle($articleData, $id);
-                header('Location:/adminArticle/index/?status=success');
+                header('Location:/AdminArticle/index/?status=editsuccess');
                 exit();
             }
         }
