@@ -9,9 +9,7 @@
 namespace App\Controller;
 
 use App\Model\MemberManager;
-
 use App\Model\EventManager;
-
 use App\Model\ScheduleManager;
 use App\Model\PartnerManager;
 use App\Model\ArticleManager;
