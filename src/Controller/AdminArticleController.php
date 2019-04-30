@@ -14,7 +14,7 @@ use App\Model\ArticleCategoryManager;
 use App\Service\PostDatum;
 
 /**
- * Class EventAdminController
+ * Class ArticleAdminController
  *
  */
 class AdminArticleController extends AbstractController
@@ -30,7 +30,11 @@ class AdminArticleController extends AbstractController
      */
     public function index()
     {
-        $alertResult = isset($_GET['status']);
+        $alertResult='';
+        if (isset($_GET['status'])) {
+            $alertResult = $_GET['status'];
+        }
+
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectAllArticles();
 
@@ -41,7 +45,7 @@ class AdminArticleController extends AbstractController
     }
 
     /**
-     * Display event creation page
+     * Display article creation page
      *
      * @return string
      * @throws \Twig\Error\LoaderError
@@ -62,7 +66,7 @@ class AdminArticleController extends AbstractController
 
             if (empty($errorArticleData)) {
                 $id = $articleManager->insertArticle($articleData);
-                header('Location:/AdminArticle/index/?status=success');
+                header('Location:/AdminArticle/index/?status=addsuccess');
                 exit();
             }
         }
@@ -76,6 +80,50 @@ class AdminArticleController extends AbstractController
             'categories' => $categories,
         ]);
     }
+
+
+
+    /**
+     * UPDATE article informations
+     *
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function edit(int $id)
+    {
+        $errorArticleData=[];
+        $articleManager = new ArticleManager();
+        $articleData = $articleManager->selectOneById($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $postDatum = new PostDatum($_POST);
+            $articleData=$postDatum->cleanValues();
+            $errorArticleData = $this->checkErrorsPostData($articleData);
+
+            if (empty($id)) {
+                $errorArticleData['id'] = "Un problème est survenu lors de la mise à jour de l'article.";
+            } elseif (empty($articleManager->selectOneById($id))) {
+                $errorArticleData['id'] = "L'article à modifier n'existe pas dans la base de données";
+            }
+
+            if (empty($errorArticleData)) {
+                $articleManager->updateArticle($articleData, $id);
+                header('Location:/AdminArticle/index/?status=editsuccess');
+                exit();
+            }
+        }
+        $articleCategoryManager = new ArticleCategoryManager();
+        $categories = $articleCategoryManager->selectall();
+
+        return $this->twig->render('Article/edit.html.twig', [
+            'article' => $articleData,
+            'errors' => $errorArticleData,
+            'categories' => $categories,
+        ]);
+    }
+
 
     /**
      * Check error post from user

@@ -10,9 +10,17 @@
 
 {% block content %}
     <div class="container-fluid ">
-        {% if statusAlert == true %}
-            <div class="alert alert-danger alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
-                L'article a été correctement supprimé.
+        {% if statusAlert == 'addsuccess' %}
+            <div class="alert alert-success alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
+                L'article a été correctement ajouté.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+        {% if statusAlert == 'editsuccess' %}
+            <div class="alert alert-success alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
+                L'article a été correctement modifié.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

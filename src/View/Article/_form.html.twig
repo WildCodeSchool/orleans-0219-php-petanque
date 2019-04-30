@@ -21,12 +21,12 @@
             </div>
             <div class="form-group px-2 my-3">
                 <label for="articledescription" class="form-required">Votre article :</label>
-                <textarea class="form-control" id="articledescription" name="description" value="{{ article.description }}" rows="15"required></textarea>
+                <textarea class="form-control" id="articledescription" name="description" rows="15"required>{{ article.description }}</textarea>
                 <div class="error-form">{{ errors.description }}</div>
             </div>
         </section>
         <section class="mt-5 text-center">
-            <button type="submit" class="btn btn-block btn-lg w-100 btn-primary">Ajouter l'article</button>
+            <button type="submit" class="btn btn-block btn-lg w-100 btn-primary">Confirmer</button>
         </section>
     </form>
 </div>
