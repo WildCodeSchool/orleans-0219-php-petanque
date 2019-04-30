@@ -886,9 +886,28 @@ p {
 
 
 /****************************************************************************************************/
+
 .card-footer{
     margin-top: 90px;
 }
+
+#panelfilter{
+    cursor:pointer;
+}
+
+#iconfilter{
+    font-size: 24px;
+    color: rgba(58, 51, 45,1);
+}
+
+#panelfilter .rotate{
+    transition: all .4s linear;
+}
+
+#panelfilter .rotate.down {
+    transform: rotate(90deg);
+}
+
 
 
 /*************************** ARTICLE HOME SECTION *************************************/
@@ -1036,6 +1055,7 @@ p {
     margin-right: auto;
     width: 300px;
     bottom: 0px;
+>>>>>>> dev
 }
 >>>>>>> dev
 /* ===================== Style Page Vos Envies... ================== */
