@@ -109,6 +109,17 @@ p {
     background-color: #3e3631;
 }
 
+.btn_item_froze{
+    margin-top: 20px;
+    text-decoration: none;
+    padding: 13px 35px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    background-image: none;
+    background-color: #3e3631;
+}
+
 .btn_item:hover{
     color: black;
     background-color: #d3aa4e;
@@ -154,7 +165,7 @@ p {
 .card_img_yourwishes{
     margin-left: auto;
     margin-right: auto;
-    border-radius: 10px;
+    border-radius: 0px;
     max-width: 300px;
 }
 
@@ -685,7 +696,7 @@ p {
 
 #HquiSommesNous
 {
-    background-color: #fff;
+    background-color: #e2d3ba;
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -766,6 +777,7 @@ p {
 }
 
 .card_members{
+    font-size: 18px;
     min-width: 300px;
     border: 1px solid rgb(115, 114, 115);
 }
@@ -1169,4 +1181,8 @@ p {
     padding-top: 3%;
     padding-bottom: 3%;
     background-color: #e2d3ba;
+}
+
+.font_title_partner{
+    font-size:220%;
 }
