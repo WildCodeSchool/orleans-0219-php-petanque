@@ -149,7 +149,7 @@
                                         <div class="col-sm-12">
                                             <h4 class="card-title text-center">{{ article.title }}</h4>
                                             <div class="heading-divider-extent"></div>
-                                            <p class="card-text text-justify"> {{ article.description|striptags|length > 400 ? article.description|striptags|slice(0, 400) ~ ' [...]' : article.description|striptags }}</p>
+                                            <p class="card-text text-justify card-article-text"> {{ article.description|striptags|length > 400 ? article.description|striptags|slice(0, 400) ~ ' [...]' : article.description|striptags }}</p>
                                         </div>
                                     </div>
                                     <div class="card-footer card-footer_article">

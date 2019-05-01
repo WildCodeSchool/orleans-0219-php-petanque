@@ -35,7 +35,7 @@
                             <div class="col-sm-12 col-md-6">
                                 <h4 class="card-title text-center">{{ article.title }}</h4>
                                 <div class="heading-divider-extent"></div>
-                                <p class="card-text text-justify"> {{ article.description|striptags|length > 500 ? article.description|striptags|slice(0, 500) ~ ' [...]' : article.description|striptags }}</p>
+                                <p class="card-text text-justify card-article-text"> {{ article.description|striptags|length > 500 ? article.description|striptags|slice(0, 500) ~ ' [...]' : article.description|striptags }}</p>
                             </div>
                             {% if loop.index is even %}
                                 {% if article.picture is empty %}
