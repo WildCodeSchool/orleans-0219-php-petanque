@@ -8,7 +8,7 @@
     {{ parent() }}
 {% endblock %}
 {% block content %}
-    <div class="container-fluid justify-content-center text-center p-0">
+    <div class="container-fluid justify-content-center text-center mx-auto my-4 p-0">
         {% if statusAlert == true %}
             <div class="alert alert-success  alert-dismissible fade show col-md-6 text-center mx-auto py-2 "
                  role="alert">
@@ -43,7 +43,7 @@
                     {% endif %}
                 </div>
                 <div class="card-img-overlay">
-                    <h5 class="card-title-evt-date ">
+                    <h5 class="card-title-evt-date-force  ">
                         {% if event.date_begin < event.date_end %}
                             Du {{ event.date_begin }} au {{ event.date_end }}
                         {% else %}
@@ -91,10 +91,6 @@
                 <div class="card-body pt-0">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Date limite : {{ event.date_register | capitalize }}</li>
-                        <li class="list-group-item">Fiche d'inscription :
-                            <a class="btn comp-button-moreinfo w-100" href="#" target="_blank" role="button">Voir
-                                ...</a>
-                        </li>
                     </ul>
                 </div>
             </div>
