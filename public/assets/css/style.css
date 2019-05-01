@@ -822,6 +822,26 @@ p {
     border: 1px solid rgb(115, 114, 115);
 }
 
+.btn_item_members{
+    margin-top: 20px;
+    text-decoration: none;
+    padding: 13px 35px;
+    color: #d3aa4e;
+    font-size: 14px;
+    font-weight: 700;
+    background-image: none;
+    background-color: #3e3631;
+}
+
+.btn_item_members:hover{
+    background-color: #3E3631;
+    color: #d3aa4e;
+}
+
+.card_member_text{
+    font-weight: 700;
+}
+
 .card_header_member{
     border: 0px;
 }
@@ -842,16 +862,24 @@ p {
 
 .btn_toggle_member{
     background-color: #d3aa4e;
+    color: #3E3631;
 }
 
 .btn_toggle_member_dark{
-    background-color: rgb(115, 114, 115);
+    background-color: #3E3631;
 }
 
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
     box-shadow: none;
     outline: none;
     background-color: #737273;
+}
+
+.card_member_image{
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    height: 250px;
 }
 
 .card_member{
