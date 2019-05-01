@@ -1,8 +1,8 @@
 {% extends 'sublayout_visitor.html.twig' %}
 {% block title %}UPA - Accueil{% endblock %}
 {% block headercontent %}
-    {%  set headerMainTitle = 'Union Pétanque Argonnaise'  %}
-    {%  set headerSubTitle = 'La vie de bouliste'  %}
+    {% set headerMainTitle = 'Union Pétanque Argonnaise' %}
+    {% set headerSubTitle = 'La vie de bouliste' %}
     {{ parent() }}
 {% endblock %}
 {% block content %}
@@ -91,10 +91,11 @@
                     <div class="col-xl-4">
                         <div class="portrait_wrapper pt-3">
                             <div class="portrait float-left pr-4">
-                                <img src={{ base_path~directory }}/{{ (member.picture is null) ? 'assets/images/members/placeholder.jpg' : member.picture}} class="rounded-circle home_members_picture" alt="Cinque Terre">
+                                <img src={{ base_path~directory }}/{{ (member.picture is null) ? 'assets/images/members/placeholder.jpg' : member.picture }}
+                                     class="rounded-circle home_members_picture" alt="Cinque Terre">
                             </div>
                             <div class="qui_title_wrap text-left">
-                                <p>{{ member.lastname | capitalize}}  {{ member.firstname }}</p>
+                                <p>{{ member.lastname | capitalize }}  {{ member.firstname }}</p>
                             </div>
                             <div class="qui_role_wrap text-left">
                                 <p>{{ member.role }}</p>
@@ -268,60 +269,69 @@
 
     <!-- ============== Début section Vie sportive ============= -->
     <section id="viesportive">
-        <div class="container-fluid">
+        <div class="container">
             <div class="col-lg-12 text-center">
                 <h2>Vie sportive</h2>
                 <div class="h2_separator"></div>
             </div>
 
-            <div class="row justify-content-around mx-5">
+            <div class="row mx-auto">
                 {% for event in events %}
-                <div class="card rounded-0 px-5 col-lg-12 col-xl-4 card-evt">
-                    <div class="text-center m-2" >
-                    <h5 class="card-title-evt text-center p-2 mt-3">{{ event.level | capitalize }}</h5>
-                    </div>
-                    <div class="card-body rounded-0 text-center mx-auto mx-3 p-0">
-                        <div class="img_wrapper_viesportive">
-                        <img class="card-img-top img-event-small p-2 textrounded-0 mb-5"
-                                {% if event.gendermix|lower == 'homme' %}
-                             src="/assets/images/compet/evt_homm2.jpg"
-                             alt="compétition homme">
-                        {% elseif event.gendermix|lower == 'femme' %}
-                            src="/assets/images/compet/evt_femme.jpg" alt="compétition femme">
-                        {% else %}
-                            src="/assets/images/compet/evt_mixte.jpg" alt="compétition mixte">
-                        {% endif %}
+                    <div class="col-md-4 col-sm-12 my-3">
+                        <div class="card rounded-0 ">
+                            <div class="card-header card_title_footer text-center m-2">
+                                <h5 class="card-title-evt text-center p-2 mt-3">{{ event.level | capitalize }}</h5>
+                            </div>
+                            <div class="card-body rounded-0 text-center mx-auto mx-3 p-0">
+                                <div class="img_wrapper_viesportive">
+                                    <img class="card-img-top img-event-small p-2 textrounded-0 mb-5"
+                                            {% if event.gendermix|lower == 'homme' %}
+                                         src="/assets/images/compet/evt_homm2.jpg"
+                                         alt="compétition homme">
+                                    {% elseif event.gendermix|lower == 'femme' %}
+                                        src="/assets/images/compet/evt_femme.jpg" alt="compétition femme">
+                                    {% else %}
+                                        src="/assets/images/compet/evt_mixte.jpg" alt="compétition mixte">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="heading-divider-extent"></div>
+                                <ul class="list-group list-group-flush text-center">
+                                    <li class="list-group-item p-0 border-0">{{ event.dept_name }}
+                                        ( {{ event.dept_num }})
+                                    </li>
+                                </ul>
+                                <div class="heading-divider-extent"></div>
+                                <ul class="list-group list-group-flush text-center">
+                                    <li class="list-group-item p-0 border-0">Catégorie
+                                        : {{ event.category | capitalize }}</li>
+                                    <li class="list-group-item p-0 border-0">Type : {{ event.type | capitalize }}</li>
+                                    <li class="list-group-item p-0 border-0">Mixité
+                                        : {{ event.gendermix | capitalize }}</li>
+                                </ul>
+                                <div class="heading-divider-extent"></div>
+                                <div class="list-group-item p-0 border-0 text-center">
+                                    {% if event.date_begin < event.date_end %}
+                                        Du {{ event.date_begin }} au {{ event.date_end }}
+                                    {% else %}
+                                        Le {{ event.date_begin }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="card-footer card_title_footer text-center">
+                                <a class="btn btn_item mb-3" href="Event/show/{{ event.id }}" role="button">En savoir
+                                    plus</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-body card_body_evt pt-0">
-                    <div class="heading-divider-extent"></div>
-                        <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item p-0 border-0">{{ event.dept_name }} ( {{ event.dept_num }})</li>
-                        </ul>
-                    <div class="heading-divider-extent"></div>
-                        <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item p-0 border-0">Catégorie : {{ event.category | capitalize }}</li>
-                            <li class="list-group-item p-0 border-0">Type : {{ event.type | capitalize }}</li>
-                            <li class="list-group-item p-0 border-0">Mixité : {{ event.gendermix | capitalize }}</li>
-                        </ul>
-                    <div class="heading-divider-extent"></div>
-                        <div class="list-group-item p-0 border-0 text-center">
-                            {% if event.date_begin < event.date_end %}
-                                Du {{ event.date_begin }} au {{ event.date_end }}
-                            {% else %}
-                                Le {{ event.date_begin }}
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <a class="btn btn_item mb-3" href="Event/show/{{ event.id }}" role="button">En savoir plus</a>
-                    </div>
-                </div>
                 {% endfor %}
             </div>
             <div class="row my-3 mx-3 p-5 text-center justify-content-center">
-                <a class="btn btn_item_invert mr-5" href="Event/index" role="button">Voir tous les évènements à venir</a>
-                <a class="btn btn_item_invert ml-5" href="Event/indexresults" role="button">Voir tous les résultats</a>
+                <a class="btn btn_item_invert mx-5 my-1" href="Event/index" role="button">Voir tous les évènements à
+                    venir</a>
+                <a class="btn btn_item_invert mx-5 my-1" href="Event/indexresults" role="button">Voir tous les
+                    résultats</a>
             </div>
         </div>
     </section>
@@ -330,7 +340,7 @@
 
     <!-- ============== Debut section Partenaires ============= -->
     <section id="Hpartenaires">
-        <div class="mx-5">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="h2_colored_section">Partenaires</h2>
@@ -338,10 +348,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row text-center align-items-center row-no-padding">
+            <div class="row text-center align-items-center row-no-padding mx-auto">
                 {% for partner in partners %}
-                    <div class="col-xl-2 p-0">
-                        <div class="sponsor_wrapper pt-3 pb-3">
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 p-0">
+                        <div class="sponsor_wrapper pt-3 pb-3 mx-auto">
                             <a href="{{ partner.url }}">
                                 <img src="{{ base_path ~ directory }}/{{ partner.picture }}"
                                      class="rounded partner_img" alt="{{ partner.name }}">
