@@ -900,6 +900,11 @@ p {
     height:100%;
     cursor: pointer;
     border: 1px solid rgba(211, 170, 78, 1);
+
+}
+
+.card-article-text{
+    white-space:pre-wrap;
 }
 
 .row_article{
