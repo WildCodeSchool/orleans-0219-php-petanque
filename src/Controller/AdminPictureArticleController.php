@@ -107,7 +107,6 @@ class AdminPictureArticleController extends AbstractController
         $errors=[];
         $id=0;
         $article_id=0;
-        $pictureFile = $pictureArticleManager->selectOneById($id);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $postDatum =new PostDatum($_POST);
             $postData=$postDatum->cleanValues();
@@ -121,8 +120,8 @@ class AdminPictureArticleController extends AbstractController
         }
         if (empty($errors)) {
             $pictureFile = $pictureArticleManager->selectOneById($id);
-            if (file_exists('../public/'. self::UPLOAD_DIRECTORY . $pictureFile['picture'])) {
-                unlink('../public/'. self::UPLOAD_DIRECTORY . $pictureFile['picture']);
+            if (file_exists('../public/'. $pictureFile['picture'])) {
+                unlink('../public/'.  $pictureFile['picture']);
             }
             $pictureArticleManager->delete($id);
             header('Location:/AdminPictureArticle/showpicture/' . $article_id. '/?status=deletesuccess');
