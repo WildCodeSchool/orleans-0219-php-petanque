@@ -44,8 +44,8 @@ class HomeController extends AbstractController
         $articles = $articleManager->selectAllArticles(self::LIMIT_LAST_ARTICLES);
         $eventManager = new EventManager();
         $eventFilters=[];
-        $topEvents = $eventManager->selectEventsToCome($eventFilters, self::LIMIT_LAST_EVENTS);
 
+        $topEvents = $eventManager->selectEventsToCome($eventFilters, self::LIMIT_LAST_EVENTS);
         return $this->twig->render('Home/index.html.twig', [
             'schedules' => $schedules,
             'events' => $topEvents,
