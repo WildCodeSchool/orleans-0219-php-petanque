@@ -30,9 +30,10 @@ class EventManager extends AbstractManager
 
     /**
      * @param array $filters
+     * @param int $limitResults
      * @return array
      */
-    public function selectEventsToCome(array $filters = []): array
+    public function selectEventsToCome(array $filters = [], int $limitResults = 0): array
     {
         $statement = "
             SELECT evenement.id, 
@@ -55,13 +56,17 @@ class EventManager extends AbstractManager
             INNER JOIN gendermix ON evenement.gendermix_id = gendermix.id
             INNER JOIN evtcategory ON evenement.category_id = evtcategory.id
             INNER JOIN evttype ON evenement.type_id = evttype.id
-            WHERE date_begin >= NOW() ";
+            WHERE date_begin >= NOW()";
         foreach ($filters as $keyfilter => $filter) {
             if (!empty($filter)) {
                 $statement .= " AND $keyfilter=$filter ";
             }
         }
-        $statement .= " ORDER BY evenement.date_begin ASC, level.id, gendermix.id;";
+        $statement .= " ORDER BY evenement.date_begin ASC, level.id, gendermix.id";
+        if ($limitResults > 0) {
+            $statement .= " LIMIT $limitResults";
+        }
+        $statement .= ";";
 
         return $this->pdo->query($statement)->fetchAll();
     }
@@ -163,7 +168,7 @@ class EventManager extends AbstractManager
             INNER JOIN evtcategory ON evenement.category_id = evtcategory.id
             INNER JOIN evttype ON evenement.gendermix_id = evttype.id
             WHERE date_begin < NOW()
-            ORDER BY evenement.date_begin DESC, level.id, gendermix.id;";
+            ORDER BY evenement.date_begin ASC, level.id, gendermix.id;";
 
         return $this->pdo->query($statement)->fetchAll();
     }
