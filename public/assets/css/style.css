@@ -505,6 +505,13 @@ p {
     border: none;
 }
 
+.card-evt-event {
+
+    min-height: 300px;
+    cursor: pointer;
+    border: none;
+}
+
 .card-body-evt-small {
     max-width: 400px;
     min-height: 100px;
@@ -558,6 +565,7 @@ p {
     margin-bottom:25px;
     height: 50px;
 }
+
 
 /***********************Formulaire Global ********************************************/
 .form-required::after{
@@ -894,8 +902,22 @@ p {
     margin-left: auto;
     margin-right: auto;
 }
+
 .card-article{
     max-width: 800px;
+    height:100%;
+    cursor: pointer;
+    border: none;
+}
+
+.article-small-show {
+    width:100%;
+    max-height:300px;
+    object-fit: cover;
+}
+
+.card-article-show{
+    width: 90%;
     height:100%;
     cursor: pointer;
     border: none;
@@ -916,7 +938,7 @@ p {
 
 .img_wrapper_viesportive{
     overflow: hidden;
-    width: 300px;
+    width: 100%;
     max-height: 300px;
     display: flex;
     justify-content: center;
