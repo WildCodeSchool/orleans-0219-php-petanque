@@ -185,6 +185,22 @@ p {
     max-width: 300px;
 }
 
+.img_page_wishes{
+    height:100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.p_wishes{
+    line-height: 28px;
+    font-weight: 700;
+}
+
+.p_wishes_gray{
+    line-height: 28px;
+    color: #535353;
+}
+
 /* ---- Styles Section Horaires ---- */
 
 .table_schedule{
