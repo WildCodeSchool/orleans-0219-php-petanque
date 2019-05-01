@@ -7,6 +7,7 @@ body {
     font-weight: 400;
     line-height: 1.5;
     color: #737273;
+    background-color: #ececec;
 }
 
 header {
@@ -79,7 +80,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 1% 0 1% 0;
+    margin: 1% 0 3% 0;
     background-color: #3E3631;
 }
 
@@ -87,7 +88,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 1% 0 1% 0;
+    margin: 1% 0 3% 0;
     background-color: #d3aa4e;
 }
 
@@ -124,7 +125,6 @@ p {
     color: black;
     background-color: #d3aa4e;
     text-decoration: none;
-    border: solid 1px #3e3631;
 }
 
 .btn_item_invert{
@@ -136,7 +136,6 @@ p {
     font-weight: 700;
     background-image: none;
     background-color: #d3aa4e;
-    border: solid 1px #3e3631;
 }
 
 .btn_item_invert:hover{
@@ -503,8 +502,7 @@ p {
     max-width: 475px;
     min-height: 300px;
     cursor: pointer;
-    box-shadow: 0 1rem 1rem rgba(83, 83, 83, 0.2);
-    border: 1px solid rgba(211, 170, 78, 1);
+    border: none;
 }
 
 .card-body-evt-small {
@@ -886,7 +884,7 @@ p {
 /******************* ARTICLE SPORTIF CARTE ****************************************************/
 /*-------------------------------------------------------------------------------------------------*/
 .article-small {
-    max-width:300px;
+    max-width:100%;
     max-height:300px;
     object-fit: cover;
 }
@@ -900,8 +898,7 @@ p {
     max-width: 800px;
     height:100%;
     cursor: pointer;
-    border: 1px solid rgba(211, 170, 78, 1);
-
+    border: none;
 }
 
 .card-article-text{
@@ -1025,7 +1022,7 @@ p {
 /****************************************************************************************************/
 
 .card-footer{
-    margin-top: 90px;
+    margin-top: 30px;
 }
 
 #panelfilter{
@@ -1177,6 +1174,10 @@ p {
     width: 100%;
     margin-top: 50px;
 }
+
+.badge-info{
+    background-color: #3E3631;
+}
 /****************************************************************************************/
 
 .img_cover{
@@ -1214,3 +1215,18 @@ p {
     font-size:220%;
 }
 
+/* ======== Sepia =========== */
+
+.sepia_img_cover {
+    filter:sepia(60%);
+    transform: scale(1);
+    transition: all 700ms ease;
+}
+.sepia_img_cover:hover {
+    opacity: 1;
+    filter:sepia(0%);
+    transition: all 0.35s;
+    transform: scale(1);
+    object-fit: cover;
+    overflow: hidden;
+}
