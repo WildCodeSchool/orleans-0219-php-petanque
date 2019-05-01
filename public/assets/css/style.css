@@ -885,8 +885,11 @@ p {
 /******************* ARTICLE SPORTIF CARTE ****************************************************/
 /*-------------------------------------------------------------------------------------------------*/
 .article-small {
-    width:50%;
+    max-width:300px;
+    max-height:300px;
+    object-fit: cover;
 }
+
 
 .card_evt_article{
     margin-left: auto;
@@ -897,6 +900,11 @@ p {
     height:100%;
     cursor: pointer;
     border: 1px solid rgba(211, 170, 78, 1);
+
+}
+
+.card-article-text{
+    white-space:pre-wrap;
 }
 
 .row_article{
