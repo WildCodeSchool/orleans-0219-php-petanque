@@ -80,7 +80,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 1% 0 1% 0;
+    margin: 1% 0 3% 0;
     background-color: #3E3631;
 }
 
@@ -88,7 +88,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 1% 0 1% 0;
+    margin: 1% 0 3% 0;
     background-color: #d3aa4e;
 }
 
@@ -1207,3 +1207,18 @@ p {
     font-size:220%;
 }
 
+/* ======== Sepia =========== */
+
+.sepia_img_cover {
+    filter:sepia(60%);
+    transform: scale(1);
+    transition: all 700ms ease;
+}
+.sepia_img_cover:hover {
+    opacity: 1;
+    filter:sepia(0%);
+    transition: all 0.35s;
+    transform: scale(1);
+    object-fit: cover;
+    overflow: hidden;
+}
