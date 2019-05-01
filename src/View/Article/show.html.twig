@@ -18,13 +18,19 @@
                         <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ article.date_publicated }}
                     </div>
                     <div class="row card-body">
-                        <img class="p-1 rounded-0 article-small text-center mx-auto"
-                             src="/{{ article.picture }}"
-                             alt="{{ 'image de ' ~ article.title }}">
+                        {% if article.picture is empty %}
+                            <img class="p-1 rounded-0 article-small text-center mx-auto"
+                                 src="/assets/images/article-default.jpg"
+                                 alt="{{ 'image de ' ~ article.title }}">
+                        {% else %}
+                            <img class="p-1 rounded-0 article-small text-center mx-auto"
+                                 src="/{{ article.picture }}"
+                                 alt="{{ 'image de ' ~ article.title }}">
+                        {% endif %}
                         <div class="col-sm-12 col-md-6">
                             <h4 class="card-title text-center">{{ article.title }}</h4>
                             <div class="heading-divider-extent"></div>
-                            <p class="card-text text-justify"> {{ article.description }}</p>
+                            <p class="card-text text-justify card-article-text"> {{ article.description }}</p>
                         </div>
                     </div>
 
@@ -43,7 +49,7 @@
                 </div>
                 <div class="row justify-content-center">
                     {% for picture in pictures %}
-                        <div class="col-md-3 col-sm-3 fg-img-card">
+                        <div class="col-md-3 col-sm-3 fg-img-card text-center">
                             <div class="feature-gallery">
                                 <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="{{ picture.legend }}"
                                    data-image="/{{ picture.picture }}"

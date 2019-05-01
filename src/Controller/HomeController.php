@@ -42,7 +42,6 @@ class HomeController extends AbstractController
 
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectAllArticles(self::LIMIT_LAST_ARTICLES);
-
         $eventManager = new EventManager();
         $topEvents = $eventManager->selectAllEvents(self::LIMIT_LAST_EVENTS);
 

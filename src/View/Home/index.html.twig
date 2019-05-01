@@ -118,107 +118,58 @@
     <!-- ==================== Début Section "Articles" ==================== -->
 
     <section id="HarticleClub">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>Vie du club</h2>
                     <div class="h2_separator"></div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-4">
+                {% for article in articles %}
+                {% if loop.index == 1 %}
                 <div class="col-xl-6 col-sm-12 my-2">
-                    <div class="card card-article card_evt_article big_club_article rounded-0">
-                        <div class="card-header text-left card-header_article">
-                            <div><h4><span class="badge badge-info">#{{ articles[0].category | capitalize }}</span></h4>
-                            </div>
-                            <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ articles[0].date_publicated }}
-                        </div>
-                        <div class="card-body">
-                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover sepia_img_cover"
-                                 src="{{ articles[0].picture }}"
-                                 alt="{{ 'image de ' ~ articles[0].title }}">
-                            <div>
-                                <div class="row card-body">
-                                    <div class="col-sm-12">
-                                        <h4 class="card-title text-center">{{ articles[0].title }}</h4>
-                                        <div class="heading-divider-extent"></div>
-                                        <p class="card-text text-justify"> {{ articles[0].description|striptags|length > 200 ? articles[0].description|striptags|slice(0, 200) ~ ' [...]' : articles[0].description|striptags }}</p>
-                                    </div>
+                    {% else %}
+                    <div class="col-xl-3 col-sm-12 my-2">
+                        {% endif %}
+                        <div class="card card-article card_evt_article {% if loop.index == 1 %} big_club_article {% endif %}">
+                            <div class="card-header text-left card-header_article">
+                                <div><h4><span class="badge badge-info">#{{ article.category | capitalize }}</span></h4>
                                 </div>
-                                <div class="card-footer card-footer_article">
-                                    <div class="p-3 text-center button-container">
-                                        <a class="btn btn_item" href="/Article/show/{{ articles[0].id }}"
-                                           role="button">En
-                                            savoir plus</a>
-                                    </div>
-                                </div>
+                                <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ article.date_publicated }}
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-3 col-sm-12 my-2">
-                    <div class="card card-article card_evt_article rounded-0">
-                        <div class="card-header text-left card-header_article">
-                            <div><h4><span class="badge badge-info">#{{ articles[1].category | capitalize }}</span></h4>
-                            </div>
-                            <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ articles[1].date_publicated }}
-                        </div>
-                        <div class="card-body">
-                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover sepia_img_cover"
-                                 src="{{ articles[1].picture }}"
-                                 alt="{{ 'image de ' ~ articles[1].title }}">
-                            <div>
-                                <div class="row card-body">
-                                    <div class="col-sm-12">
-                                        <h4 class="card-title text-center">{{ articles[1].title }}</h4>
-                                        <div class="heading-divider-extent"></div>
-                                        <p class="card-text text-justify"> {{ articles[1].description|striptags|length > 200 ? articles[1].description|striptags|slice(0, 200) ~ ' [...]' : articles[1].description|striptags }}</p>
-                                    </div>
+                            <div class="card-body">
+                                <div class="text-center">
+                                    {% if article.picture is empty %}
+                                        <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover sepia_img_cover"
+                                             src="/assets/images/article-default.jpg"
+                                             alt="{{ 'image de ' ~ article.title }}">
+                                    {% else %}
+                                        <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover sepia_img_cover"
+                                             src="/{{ article.picture }}"
+                                             alt="{{ 'image de ' ~ article.title }}">
+                                    {% endif %}
                                 </div>
-                                <div class="card-footer card-footer_article">
-                                    <div class="p-3 text-center button-container">
-                                        <a class="btn btn_item" href="/Article/show/{{ articles[1].id }}"
-                                           role="button">En
-                                            savoir plus</a>
+                                <div>
+                                    <div class="row card-body">
+                                        <div class="col-sm-12">
+                                            <h4 class="card-title text-center">{{ article.title }}</h4>
+                                            <div class="heading-divider-extent"></div>
+                                            <p class="card-text text-justify card-article-text"> {{ article.description|striptags|length > 400 ? article.description|striptags|slice(0, 400) ~ ' [...]' : article.description|striptags }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer card-footer_article">
+                                        <div class="p-3 text-center button-container">
+                                            <a class="btn btn_item" href="/Article/show/{{ article.id }}"
+                                               role="button">En
+                                                savoir plus</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-sm-12 my-2">
-                    <div class="card card-article card_evt_article rounded-0">
-                        <div class="card-header text-left card-header_article">
-                            <div><h4><span class="badge badge-info">#{{ articles[2].category | capitalize }}</span></h4>
-                            </div>
-                            <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ articles[2].date_publicated }}
-                        </div>
-                        <div class="card-body">
-                            <img class="p-1 rounded-0 article-small text-center mx-auto card_img_small img_cover sepia_img_cover"
-                                 src="{{ articles[2].picture }}"
-                                 alt="{{ 'image de ' ~ articles[2].title }}">
-                            <div>
-                                <div class="row card-body">
-                                    <div class="col-sm-12">
-                                        <h4 class="card-title text-center">{{ articles[2].title }}</h4>
-                                        <div class="heading-divider-extent"></div>
-                                        <p class="card-text text-justify"> {{ articles[2].description|striptags|length > 200 ? articles[2].description|striptags|slice(0, 200) ~ ' [...]' : articles[2].description|striptags }}</p>
-                                    </div>
-                                </div>
-                                <div class="card-footer card-footer_article">
-                                    <div class="p-3 text-center button-container">
-                                        <a class="btn btn_item" href="/Article/show/{{ articles[2].id }}"
-                                           role="button">En
-                                            savoir plus</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mx-auto text-center mt-4 mb-5">
-                    <a class="btn btn_item w-50 mt-2" href="/Article/index" role="button">Voir toutes les actualités</a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -353,7 +304,7 @@
                     <div class="col-lg-2 col-md-4 col-sm-4 col-12 p-0">
                         <div class="sponsor_wrapper pt-3 pb-3 mx-auto">
                             <a href="{{ partner.url }}">
-                                <img src="{{ base_path ~ directory }}/{{ partner.picture }}"
+                                <img src="/{{ partner.picture }}"
                                      class="rounded partner_img sepia_img_cover" alt="{{ partner.name }}">
                             </a>
                         </div>

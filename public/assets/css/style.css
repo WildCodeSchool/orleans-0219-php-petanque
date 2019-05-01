@@ -869,6 +869,7 @@ p {
 @media screen and (max-width: 1600px) {
     .card_img_member {
         width: 300px;
+        height: 250px;
     }
 }
 
@@ -883,8 +884,11 @@ p {
 /******************* ARTICLE SPORTIF CARTE ****************************************************/
 /*-------------------------------------------------------------------------------------------------*/
 .article-small {
-    width:50%;
+    max-width:100%;
+    max-height:300px;
+    object-fit: cover;
 }
+
 
 .card_evt_article{
     margin-left: auto;
@@ -895,6 +899,10 @@ p {
     height:100%;
     cursor: pointer;
     border: none;
+}
+
+.card-article-text{
+    white-space:pre-wrap;
 }
 
 .row_article{
