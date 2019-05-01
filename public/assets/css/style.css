@@ -871,6 +871,7 @@ p {
 @media screen and (max-width: 1600px) {
     .card_img_member {
         width: 300px;
+        height: 250px;
     }
 }
 

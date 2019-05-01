@@ -104,6 +104,10 @@
                     </div>
                 {% endfor %}
             </div>
+            <div class="w-100 text-center mt-2">
+                <a class="btn btn_item py-2" href="/Member/index/#members"
+                   role="button">L'équipe</a>
+            </div>
         </div>
     </section>
 
@@ -294,7 +298,7 @@
                     <div class="col-xl-2 p-0">
                         <div class="sponsor_wrapper pt-3 pb-3">
                             <a href="{{ partner.url }}">
-                                <img src="{{ base_path ~ directory }}/{{ partner.picture }}"
+                                <img src="/{{ partner.picture }}"
                                      class="rounded partner_img" alt="{{ partner.name }}">
                             </a>
                         </div>
