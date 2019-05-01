@@ -20,7 +20,10 @@ class ContactController extends AbstractController
     {
         $errorContactData = [];
         $contactData = [];
-        $status = $_GET['status'];
+        $status="";
+        if (isset($_GET['status'])) {
+            $status = $_GET['status'];
+        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $postDatum = new PostDatum($_POST);
