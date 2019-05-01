@@ -125,9 +125,7 @@
                                 </li>
                             </div>
                             <div class="text-center">
-                                {% if event.article_id > 0 %}
-                                    <a class="btn btn_item mb-3" href="/article/show/{{ event.article_id }}" role="button">Y accéder ...</a>
-                                {% endif %}
+                                <a class="btn btn_item mb-3" href="/Event/show/{{ event.id }}" role="button">En savoir plus</a>
                             </div>
                         </div>
                     {% endfor %}
