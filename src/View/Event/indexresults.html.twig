@@ -11,20 +11,17 @@
 
     <section id="viesportive">
         <div class="container-fluid mb-5">
-            <div class="col-lg-12 text-center">
-                <h2>Vie sportive</h2>
-                <div class="h2_separator"></div>
-            </div>
 
-            <div class="row justify-content-around mx-5">
+            <div class="row justify-content-around">
                 {% for event in events %}
-                    <div class="card rounded-0 px-5 col-lg-12 col-xl-4 mt-5 card-evt">
+                <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
+                    <div class="card rounded-0 mt-5 card-evt-event">
                         <div class="text-center m-2" >
                             <h5 class="card-title-evt text-center p-2 mt-3">{{ event.level | capitalize }}</h5>
                         </div>
                         <div class="card-body rounded-0 text-center mx-auto mx-3 p-0">
                             <div class="img_wrapper_viesportive">
-                                <img class="card-img-top img-event-small p-2 textrounded-0 mb-5"
+                                <img class="card-img-top img-event-small p-2 textrounded-0 mb-5 sepia_img_cover"
                                         {% if event.gendermix|lower == 'homme' %}
                                      src="/assets/images/compet/evt_homm2.jpg"
                                      alt="compétition homme">
@@ -57,10 +54,13 @@
                         </div>
                         <div class="text-center">
                             {% if event.article_id > 0 %}
-                                <a class="btn btn_item mb-3" href="/article/show/{{ event.article_id }}" role="button">Y accéder ...</a>
+                                <a class="btn btn_item mb-3" href="/article/show/{{ event.article_id }}" role="button">Voir les résultats</a>
+                                {% else %}
+                                    <button type="button" class="btn btn_item mb-3"  role="button"  disabled>Pas de résultats</button>
                             {% endif %}
                         </div>
                     </div>
+                </div>
                 {% endfor %}
             </div>
         </div>

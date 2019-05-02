@@ -8,23 +8,29 @@
     {{ parent() }}
 {% endblock %}
 {% block content %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row row_article">
             <div class="col-sm-12">
-                <div class="card card-article card_evt_article">
+                <div class="card card-article-show card_evt_article rounded-0">
                     <div class="card-header text-left card-header_article">
                         <div><h4><span class="badge badge-info">#{{ article.category | capitalize }}</span></h4>
                         </div>
                         <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ article.date_publicated }}
                     </div>
                     <div class="row card-body">
-                        <img class="p-1 rounded-0 article-small text-center mx-auto"
-                             src="/{{ article.picture }}"
-                             alt="{{ 'image de ' ~ article.title }}">
-                        <div class="col-sm-12 col-md-6">
+                        {% if article.picture is empty %}
+                            <img class="p-1 rounded-0 article-small-show text-center mb-3 mx-auto sepia_img_cover"
+                                 src="/assets/images/article-default.jpg"
+                                 alt="{{ 'image de ' ~ article.title }}">
+                        {% else %}
+                            <img class="p-1 rounded-0 article-small-show text-center mb-3 mx-auto sepia_img_cover"
+                                 src="/{{ article.picture }}"
+                                 alt="{{ 'image de ' ~ article.title }}">
+                        {% endif %}
+                        <div class="col-sm-12">
                             <h4 class="card-title text-center">{{ article.title }}</h4>
-                            <div class="heading-divider-extent"></div>
-                            <p class="card-text text-justify"> {{ article.description }}</p>
+                            <div class="heading-divider-extent w-75 mx-auto"></div>
+                            <p class="card-text text-justify card-article-text w-75 mx-auto"> {{ article.description }}</p>
                         </div>
                     </div>
 
@@ -43,7 +49,7 @@
                 </div>
                 <div class="row justify-content-center">
                     {% for picture in pictures %}
-                        <div class="col-md-3 col-sm-3 fg-img-card">
+                        <div class="col-md-3 col-sm-3 fg-img-card text-center">
                             <div class="feature-gallery">
                                 <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="{{ picture.legend }}"
                                    data-image="/{{ picture.picture }}"

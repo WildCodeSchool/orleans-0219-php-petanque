@@ -1,5 +1,13 @@
 {% extends 'sublayout_visitor.html.twig' %}
 
+{% block title %}UPA - Horaires - Administration{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'Administration'  %}
+    {%  set headerSubTitle = ''  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
+
 {% block content %}
 
     <div class="container">

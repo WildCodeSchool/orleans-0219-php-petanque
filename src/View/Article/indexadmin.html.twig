@@ -2,17 +2,26 @@
 
 {% block title %}UPA - Vie du club{% endblock %}
 {% block headercontent %}
-    {%  set headerMainTitle = 'VIE DU CLUB'  %}
-    {%  set headerSubTitle = 'Administration des actualités'  %}
+    {%  set headerMainTitle = 'ADMINISTRATION'  %}
+    {%  set headerSubTitle = ''  %}
     {%  set smallHeader = true  %}
     {{ parent() }}
 {% endblock %}
 
 {% block content %}
     <div class="container-fluid ">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Gestion des actualités</h2>
+                <div class="h2_separator"></div>
+            </div>
+        </div>
+
         {% if statusAlert == 'deletesuccess' %}
             <div class="alert alert-danger alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
                 L'article a été correctement supprimé.
+            </div>
+        {% endif %}
         {% if statusAlert == 'addsuccess' %}
             <div class="alert alert-success alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
                 L'article a été correctement ajouté.
@@ -30,7 +39,7 @@
             </div>
         {% endif %}
         <div class="col-md-4 mx-auto py-2 justify-content-center">
-            <a class="btn btn-success w-100" href="add/" role="button">Ajouter un article ...</a>
+            <a class="btn btn-success w-100" href="/adminArticle/add/" role="button">Ajouter un article ...</a>
         </div>
         <div class="table-responsive-vertical mx-5">
             <!-- Table starts here -->
@@ -51,7 +60,7 @@
                         <td data-title="Date">{{ article.date_publicated }}</td>
                         <td data-title="Titre">{{ article.title | capitalize }}</td>
                         <td data-title="Catégorie">{{ article.category | capitalize }}</td>
-                        <td><a class="btn btn-info w-100" href="/AdminPictureArticle/index/{{ article.id }}" role="button">Gérer ...</a>
+                        <td><a class="btn btn-info w-100" href="/AdminPictureArticle/showpicture/{{ article.id }}" role="button">Gérer ...</a>
                         </td>
                         <td><a class="btn btn-warning w-100" href="/AdminArticle/edit/{{ article.id }}" role="button">Editer ...</a>
                         </td>

@@ -9,9 +9,9 @@
 {% endblock %}
 
 {% block content %}
-   
-    <div class="container-fluid p-0">
-        <section class="colored_background p-2">
+
+    <section class="colored_background p-2">
+        <div class="container-fluid">
             <div id="panelfilter">
                 <div class="row">
                     <div class="col-lg-12 text-center">
@@ -23,36 +23,36 @@
             <form id="formfilter" method="get" action="/event/index/">
                 <section>
                     <div class="row px-2">
-                        <div class="form-group px-2 col-md-3">
+                        <div class="form-group col-md-3">
                             <label for="evtlevel">Niveau de compétition :</label>
-                            <select class="form-control" id="evtlevel" name="level_id">
+                            <select class="form-control rounded-0" id="evtlevel" name="level_id">
                                 <option value="">Tous</option>
                                 {% for level in levels %}
                                     <option value="{{ level.id }}" {{ level.id == eventsfilters.level_id ? 'selected' : '' }}>{{ level.name | capitalize }}</option>
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="form-group px-2 col-md-3">
+                        <div class="form-group col-md-3">
                             <label for="evttype">Type(s) de rencontres :</label>
-                            <select class="form-control" id="evttype" name="type_id">
+                            <select class="form-control rounded-0" id="evttype" name="type_id">
                                 <option value="">Tous</option>
                                 {% for type in types %}
                                     <option value="{{ type.id }}" {{ type.id == eventsfilters.type_id ? 'selected' : '' }}>{{ type.name | capitalize }}</option>
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="form-group px-2 col-md-3">
+                        <div class="form-group col-md-3">
                             <label for="evtcategory">Catégorie :</label>
-                            <select class="form-control" id="evtcategory" name="category_id">
+                            <select class="form-control rounded-0" id="evtcategory" name="category_id">
                                 <option value="">Toutes</option>
                                 {% for categorie in categories %}
                                     <option value="{{ categorie.id }}" {{ categorie.id == eventsfilters.category_id ? 'selected' : '' }}>{{ categorie.name | capitalize }}</option>
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="form-group px-2 col-md-3">
-                            <label for="evtgendermix">Mixité,:</label>
-                            <select class="form-control" id="evtgendermix" name="gendermix_id">
+                        <div class="form-group col-md-3">
+                            <label for="evtgendermix">Mixité:</label>
+                            <select class="form-control rounded-0" id="evtgendermix" name="gendermix_id">
                                 <option value="">Toutes</option>
                                 {% for gender in genders %}
                                     <option value="{{ gender.id }}" {{ gender.id == eventsfilters.gendermix_id ? 'selected' : '' }}>{{ gender.name | capitalize }}</option>
@@ -64,7 +64,7 @@
                 <section>
                     <div class="form-group px-2 col-md-3 mx-auto">
                         <label for="evtdepartment">Département du site :</label>
-                        <select class="form-control" id="evtdepartment" name="departement_id">
+                        <select class="form-control rounded-0" id="evtdepartment" name="departement_id">
                             <option value="">Tous</option>
                             {% for departement in departements %}
                                 <option value="{{ departement.id }}" {{ departement.id == eventsfilters.departement_id ? 'selected' : '' }} >{{ departement.name }}
@@ -77,23 +77,25 @@
                 <div class="mt-3 mb-4 text-center">
                     <a class="btn btn_item" href="/event/index/reset=true" role="button">Réinitialiser les
                         filtres...</a>
-                    <button type="submit" class="btn btn_item">Rechercher ...</button>
+                    <button type="submit" class="btn btn_item">Rechercher...</button>
                 </div>
             </form>
-        </section>
+        </div>
+    </section>
 
-        <section class="mt-3">
-            <div class="container-fluid">
-                <div class="row justify-content-around mb-5 mx-5">
-                    {% if not events is empty %}
-                    {% for event in events %}
-                        <div class="card rounded-0 px-5 col-lg-12 col-xl-4 mt-5 card-evt">
-                            <div class="text-center m-2" >
+    <section class="mt-3 mx-auto">
+        <div class="container-fluid mx-auto">
+            <div class="row mx-auto mb-5">
+                {% if not events is empty %}
+                {% for event in events %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
+                        <div class="card rounded-0 mt-5 card-evt-event">
+                            <div class="card-header card_title_footer text-center m-2">
                                 <h5 class="card-title-evt text-center p-2 mt-3">{{ event.level | capitalize }}</h5>
                             </div>
-                            <div class="card-body rounded-0 text-center mx-auto mx-3 p-0">
+                            <div class="card-body rounded-0 text-center mx-auto p-0">
                                 <div class="img_wrapper_viesportive">
-                                    <img class="card-img-top img-event-small p-2 textrounded-0 mb-5"
+                                    <img class="card-img-top img-event-small p-2 textrounded-0 mb-5 sepia_img_cover"
                                             {% if event.gendermix|lower == 'homme' %}
                                          src="/assets/images/compet/evt_homm2.jpg"
                                          alt="compétition homme">
@@ -107,39 +109,42 @@
                             <div class="card-body card_body_evt pt-0">
                                 <div class="heading-divider-extent"></div>
                                 <ul class="list-group list-group-flush text-center">
-                                    <li class="list-group-item p-0 border-0">{{ event.dept_name }} ( {{ event.dept_num }})</li>
+                                    <li class="list-group-item p-0 border-0">{{ event.dept_name }}
+                                        ( {{ event.dept_num }})
+                                    </li>
                                 </ul>
                                 <div class="heading-divider-extent"></div>
                                 <ul class="list-group list-group-flush text-center">
-                                    <li class="list-group-item p-0 border-0">Catégorie : {{ event.category | capitalize }}</li>
+                                    <li class="list-group-item p-0 border-0">Catégorie
+                                        : {{ event.category | capitalize }}</li>
                                     <li class="list-group-item p-0 border-0">Type : {{ event.type | capitalize }}</li>
-                                    <li class="list-group-item p-0 border-0">Mixité : {{ event.gendermix | capitalize }}</li>
+                                    <li class="list-group-item p-0 border-0">Mixité
+                                        : {{ event.gendermix | capitalize }}</li>
                                 </ul>
                                 <div class="heading-divider-extent"></div>
-                                <li class="list-group-item p-0 border-0 text-center">
+                                <div class="list-group-item p-0 border-0 text-center">
                                     {% if event.date_begin < event.date_end %}
                                         Du {{ event.date_begin }} au {{ event.date_end }}
                                     {% else %}
                                         Le {{ event.date_begin }}
                                     {% endif %}
-                                </li>
+                                </div>
                             </div>
                             <div class="text-center">
-                                {% if event.article_id > 0 %}
-                                    <a class="btn btn_item mb-3" href="/article/show/{{ event.article_id }}" role="button">Y accéder ...</a>
-                                {% endif %}
+                                <a class="btn btn_item mb-3" href="/Event/show/{{ event.id }}" role="button">En savoir
+                                    plus</a>
                             </div>
                         </div>
-                    {% endfor %}
-                </div>
-                {% else %}
-                    <div class="row m-5">
-                        <div class="col-md-8 mx-auto text-center">
-                            <h3>Désolé, mais aucun évènement sportif n'est prévu</h3>
-                        </div>
                     </div>
-                {% endif %}
+                {% endfor %}
             </div>
-        </section>
-    </div>
+            {% else %}
+                <div class="row m-5">
+                    <div class="col-md-8 mx-auto text-center">
+                        <h3>Désolé, mais aucun évènement sportif n'est prévu</h3>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </section>
 {% endblock %}
