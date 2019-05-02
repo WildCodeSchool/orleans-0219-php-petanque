@@ -677,6 +677,12 @@ p {
     width: 100%;
 }
 
+.img-wrap-big-header
+{
+    height: 100vh;
+    object-fit: cover;
+    width: 100%;
+}
 
 .custom-toggler .navbar-toggler-icon
 {
