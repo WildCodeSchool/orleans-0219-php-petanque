@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Model\PictureArticleManager;
 
 /**
  * Class ItemController
@@ -45,11 +46,15 @@ class ArticleController extends AbstractController
      */
     public function show(int $id)
     {
+        $pictureArticleManager = new PictureArticleManager();
+        $pictures = $pictureArticleManager->selectPicturesFromArticleById($id);
+
         $articleManager = new ArticleManager();
         $article = $articleManager->selectOneArticleById($id);
 
         return $this->twig->render('Article/show.html.twig', [
             'article' => $article,
+            'pictures' =>$pictures,
         ]);
     }
 }

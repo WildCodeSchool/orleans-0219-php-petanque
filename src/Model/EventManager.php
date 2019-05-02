@@ -29,11 +29,10 @@ class EventManager extends AbstractManager
     }
 
     /**
-     * Get all row from database - Override abstrast Method
-     *
+     * @param array $filters
      * @return array
      */
-    public function selectEventsToCome(): array
+    public function selectEventsToCome(array $filters = []): array
     {
         $statement = "
             SELECT evenement.id, 
@@ -55,9 +54,14 @@ class EventManager extends AbstractManager
             INNER JOIN level ON evenement.level_id = level.id
             INNER JOIN gendermix ON evenement.gendermix_id = gendermix.id
             INNER JOIN evtcategory ON evenement.category_id = evtcategory.id
-            INNER JOIN evttype ON evenement.gendermix_id = evttype.id
-            WHERE date_begin >= NOW()
-            ORDER BY evenement.date_begin ASC, level.id, gendermix.id;";
+            INNER JOIN evttype ON evenement.type_id = evttype.id
+            WHERE date_begin >= NOW() ";
+        foreach ($filters as $keyfilter => $filter) {
+            if (!empty($filter)) {
+                $statement .= " AND $keyfilter=$filter ";
+            }
+        }
+        $statement .= " ORDER BY evenement.date_begin ASC, level.id, gendermix.id;";
 
         return $this->pdo->query($statement)->fetchAll();
     }
