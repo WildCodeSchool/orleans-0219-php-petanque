@@ -46,8 +46,8 @@ class ArticleManager extends AbstractManager
         DATE_FORMAT(a.date_publicated,'%d/%m/%Y') as date_publicated, 
         c.name as category,
         c.descr as category_description 
-        FROM db_upa.article as a 
-        LEFT JOIN db_upa.articlecategory AS c 
+        FROM article as a 
+        LEFT JOIN articlecategory AS c 
         ON a.articlecategory_id = c.id
         LEFT JOIN picture AS p 
         ON a.id = p.article_id 
@@ -96,8 +96,8 @@ class ArticleManager extends AbstractManager
         DATE_FORMAT(a.date_publicated,'%d/%m/%Y') as date_publicated, 
         c.name as category,
         c.descr as category_description 
-        FROM db_upa.article as a 
-        LEFT JOIN db_upa.articlecategory AS c 
+        FROM article as a 
+        LEFT JOIN articlecategory AS c 
         ON a.articlecategory_id = c.id
         LEFT JOIN picture AS p 
         ON a.id = p.article_id 
