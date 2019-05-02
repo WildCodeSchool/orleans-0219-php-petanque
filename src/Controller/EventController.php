@@ -37,11 +37,50 @@ class EventController extends AbstractController
     */
     public function index()
     {
-        $eventManager = new EventManager();
-        $events = $eventManager->selectEventsToCome();
+        $eventFilters=[];
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            if (isset($_GET['level_id'])) {
+                $eventFilters['level_id'] =  $_GET['level_id'];
+            }
+            if (isset($_GET['type_id'])) {
+                $eventFilters['type_id'] =  $_GET['type_id'];
+            }
+            if (isset($_GET['category_id'])) {
+                $eventFilters['category_id'] =  $_GET['category_id'];
+            }
+            if (isset($_GET['gendermix_id'])) {
+                $eventFilters['gendermix_id'] =  $_GET['gendermix_id'];
+            }
+            if (isset($_GET['departement_id'])) {
+                $eventFilters['departement_id'] =  $_GET['departement_id'];
+            }
+        }
 
+        $eventManager = new EventManager();
+        $events = $eventManager->selectEventsToCome($eventFilters);
+
+        $departementManager = new DepartementManager();
+        $departements = $departementManager->selectall();
+
+        $levelManager = new EventLevelManager();
+        $levels = $levelManager->selectall();
+
+        $genderManager = new EventGenderManager();
+        $genders = $genderManager->selectall();
+
+        $evtCategoryManager = new EventCategoryManager();
+        $categories = $evtCategoryManager->selectall();
+
+        $evtTypeManager = new EventTypeManager();
+        $types = $evtTypeManager->selectall();
         return $this->twig->render('Event/index.html.twig', [
             'events' => $events,
+            'eventsfilters' => $eventFilters,
+            'departements' => $departements,
+            'levels' => $levels,
+            'genders'=> $genders,
+            'categories' => $categories,
+            'types' => $types,
             ]);
     }
 
@@ -59,11 +98,16 @@ class EventController extends AbstractController
     {
         $eventManager = new EventManager();
         $event = $eventManager->selectOneEventToComeById($id);
+        $alertResult = isset($_GET['status']);
+        $adminStatus = isset($_GET['type']);
 
         return $this->twig->render('Event/show.html.twig', [
             'event' => $event,
-            ]);
+            'statusAlert' => $alertResult,
+            'adminStatus' => $adminStatus,
+        ]);
     }
+
 
     /**
      * Display past events listing

@@ -5,3 +5,8 @@
 db.php
 .idea
 /sql/
+/public/assets/images/article/
+/public/assets/images/members/
+/public/assets/images/sponsors/
+config/swiftmailerconf.php
+/public/assets/images/partners/

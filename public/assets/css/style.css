@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Montserrat');
-
 /*-------------------------------------------------------------------------------*/
 /* Titres de bases*/
 body {
@@ -8,6 +7,11 @@ body {
     font-weight: 400;
     line-height: 1.5;
     color: #737273;
+    background-color: #ececec;
+}
+
+header {
+    box-shadow: 0 .5rem 1rem rgba(83, 83, 83, 0.5);
 }
 
 h1,h2 {
@@ -66,7 +70,7 @@ p {
 
 .colored_background{
     background-color: #e2d3ba;
-    padding-bottom: 5%;
+    padding-bottom: 3%;
 }
 
 
@@ -76,7 +80,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 2% 0 10% 0;
+    margin: 1% 0 3% 0;
     background-color: #3E3631;
 }
 
@@ -84,7 +88,7 @@ p {
     display: inline-block;
     width: 80px;
     height: 3px;
-    margin: 2% 0 10% 0;
+    margin: 1% 0 3% 0;
     background-color: #d3aa4e;
 }
 
@@ -96,6 +100,18 @@ p {
 }
 
 .btn_item{
+    margin-top: 20px;
+    text-decoration: none;
+    padding: 13px 35px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    background-image: none;
+    background-color: #3e3631;
+}
+
+.btn_item_froze{
+    margin-top: 20px;
     text-decoration: none;
     padding: 13px 35px;
     color: white;
@@ -106,10 +122,27 @@ p {
 }
 
 .btn_item:hover{
-    color: #d3aa4e;
-    background-color: transparent;
+    color: black;
+    background-color: #d3aa4e;
     text-decoration: none;
-    border: solid 1px #d3aa4e;
+}
+
+.btn_item_invert{
+    width: 400px;
+    text-decoration: none;
+    padding: 13px 35px;
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+    background-image: none;
+    background-color: #d3aa4e;
+}
+
+.btn_item_invert:hover{
+    color: white;
+    background-color: #3E3631;
+    text-decoration: none;
+    border: solid 1px #3E3631;
 }
 
 
@@ -118,6 +151,7 @@ p {
 .card_yourwishes {
     border: none;
     max-width: 75%;
+    height:100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -128,12 +162,43 @@ p {
 }
 
 .card_img_yourwishes{
-    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0px;
+    max-width: 300px;
 }
 
 .card_margin_yourwishes{
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+.card_body_yourwishes{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    max-width: 300px;
+    padding:0;
+}
+
+.img_secWishes{
+    max-width: 300px;
+}
+
+.img_page_wishes{
+    height:100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.p_wishes{
+    line-height: 28px;
+    font-weight: 700;
+}
+
+.p_wishes_gray{
+    line-height: 28px;
+    color: #535353;
 }
 
 /* ---- Styles Section Horaires ---- */
@@ -450,9 +515,22 @@ p {
 /******************* EVENEMENT SPORTIF CARTE ****************************************************/
 /*-------------------------------------------------------------------------------------------------*/
 .card-evt {
-
-    max-width: 800px;
+    max-width: 475px;
     min-height: 300px;
+    cursor: pointer;
+    border: none;
+}
+
+.card-evt-event {
+
+    min-height: 300px;
+    cursor: pointer;
+    border: none;
+}
+
+.card-body-evt-small {
+    max-width: 400px;
+    min-height: 100px;
     cursor: pointer;
     box-shadow: 0 1rem 1rem rgba(83, 83, 83, 0.2);
     border: 2px solid rgba(211, 170, 78, 1);
@@ -461,22 +539,49 @@ p {
     object-fit: cover;
     height: 100%;
     max-height: 100%;
-    display:block;
-    margin:auto;
+    display: block;
+    margin: auto;
     filter: blur(0px) opacity(50%);
-    transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);
-
+    transition: filter 0.5s cubic-bezier(.43, .41, .22, .91);
 }
+
+.img-event-small {
+    height: 350px;
+    object-fit: cover;
+    flex: none;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .card-title-evt {
     background-color: rgba(211, 170, 78, 0.8);
-    padding: 5px;
+    padding: 5px 0;
     margin-top: 0px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .card-title-evt-date {
-    background-color: rgba(211, 211, 211, 0.8);
-    padding: 3px;
-    margin-bottom: 0px;
+    height: 45px;
+    padding: 2px;
+    margin-bottom: 2%;
 }
+.card-title-evt-date-force {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 0;
+    margin-top: 0px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size:26px;
+    border: 1px solid rgba(211, 170, 78, 1);
+}
+
+.h5_evt{
+    margin-bottom:25px;
+    height: 50px;
+}
+
 
 /***********************Formulaire Global ********************************************/
 .form-required::after{
@@ -494,6 +599,7 @@ p {
 .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover
 {
     color: white;
+    font-size : 18px;
 }
 
 .dropdown-menu
@@ -536,6 +642,22 @@ p {
 
 .h1-centered
 {
+    color: #fff;
+    margin: auto;
+    font-size: 5vw;
+}
+
+.h2-centered
+{
+    color: #fff;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2.5vw;
+    padding-top: 20px;
+}
+
+.title-wrapper{
     color: white;
     position: absolute;
     left: 0;
@@ -555,6 +677,24 @@ p {
     width: 100%;
 }
 
+.img-wrap-big-header
+{
+    height: 100vh;
+    object-fit: cover;
+    width: 100%;
+}
+
+.custom-toggler .navbar-toggler-icon
+{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler
+{
+    border-color: rgb(255,255,255);
+}
+
+
 .custom-toggler .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
@@ -565,10 +705,12 @@ p {
 /*link navbar animation*/
 
 .nav-item-underline > a {
+
     position: relative;
     color: #fff;
     text-decoration: none;
 }
+
 
 .nav-item-underline > a:before {
     content: "";
@@ -577,18 +719,82 @@ p {
     height: 3px;
     bottom: 2px;
     left: 0;
-    background-color: #000;
+    background-color: #fff;
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out 0s;
 }
+
 
 .nav-item-underline > a:hover:before {
     visibility: visible;
     transform: scaleX(1);
 }
 
+.nav_item_cursor_pointer{
+    cursor: pointer;
+}
+
+.feature-gallery_header {
+    filter:sepia(.8);
+    z-index: -10;
+}
+
+#HquiSommesNous
+{
+    background-color: #e2d3ba;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.qui_title_wrap, .qui_role_wrap, .qui_desc_wrap{
+    overflow: hidden;
+    max-width: 500px;
+}
+
+.qui_title_wrap > p, .qui_role_wrap > p{
+    margin-bottom: 0.5rem;
+}
+
+.qui_title_wrap > p{
+    font-size: 125%;
+}
+
+.qui_role_wrap > p{
+    font-size: 80%;
+}
+
+
+.home_members_picture{
+    width: 150px;
+    height: 150px;
+    object-fit:cover;
+}
+
+.box_shadow_toggle{
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.50);
+}
+
 /* ================================= Début Styles Admin ================================== */
+
+/* Styles Admin Accueil */
+
+.icon_admin{
+    font-size: 100px;
+    margin: 20px;
+}
+
+.row_adminIndex{
+    margin: 80px;
+}
+
+.card_adminIndex_margin{
+    margin-top: 40px;
+}
+
+.card_body_adminIndex{
+    height: 100px;
+}
 
 /* Styles Admin Horaires */
 
@@ -609,5 +815,508 @@ p {
 }
 
 /* ================================= Fin Styles Admin ================================== */
+
+.card_img_member{
+    width: 400px;
+    max-height:300px;
+    object-fit: cover;
+}
+
+.card_members{
+    font-size: 18px;
+    min-width: 300px;
+    border: 1px solid rgb(115, 114, 115);
+}
+
+.btn_item_members{
+    margin-top: 20px;
+    text-decoration: none;
+    padding: 13px 35px;
+    color: #d3aa4e;
+    font-size: 14px;
+    font-weight: 700;
+    background-image: none;
+    background-color: #3e3631;
+}
+
+.btn_item_members:hover{
+    background-color: #3E3631;
+    color: #d3aa4e;
+}
+
+.card_member_text{
+    font-weight: 700;
+}
+
+.card_header_member{
+    border: 0px;
+}
+
+.sponsor_wrapper{
+    max-width: 200px;
+}
+
+.img_sponsor{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.sponsor_background{
+    width: 100%;
+    background-color: #e2d3ba;
+}
+
+.btn_toggle_member{
+    background-color: #d3aa4e;
+    color: #3E3631;
+}
+
+.btn_toggle_member_dark{
+    background-color: #3E3631;
+}
+
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+    box-shadow: none;
+    outline: none;
+    background-color: #737273;
+}
+
+.card_member_image{
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    height: 250px;
+}
+
+.card_member{
+    border: 0px;
+}
+
+.card_member_text{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.card-header{
+    background-color: unset;
+}
+
+.name_rol_member_card{
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.border_bottom_member_card{
+    margin: auto;
+    padding-bottom: 15px;
+    width: 95%;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.desc_member_card{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    width: 95%
+}
+
+.img_partner{
+    width: 220px;
+}
+
+@media screen and (max-width: 1600px) {
+    .card_img_member {
+        width: 300px;
+        height: 250px;
+    }
+}
+
+#Hpartenaires{
+    background-color: #e2d3ba;
+}
+
+.partner_img{
+    width: 150px;
+}
+
+/******************* ARTICLE SPORTIF CARTE ****************************************************/
+/*-------------------------------------------------------------------------------------------------*/
+.article-small {
+    max-width:100%;
+    max-height:300px;
+    object-fit: cover;
+}
+
+
+.card_evt_article{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-article{
+    max-width: 800px;
+    height:100%;
+    cursor: pointer;
+    border: none;
+}
+
+.article-small-show {
+    width:100%;
+    max-height:300px;
+    object-fit: cover;
+}
+
+.card-article-show{
+    width: 90%;
+    height:100%;
+    cursor: pointer;
+    border: none;
+}
+
+.card-article-text{
+    white-space:pre-wrap;
+}
+
+.row_article{
+    margin: 80px;
+}
+
+.card-header_article, .card-footer_article{
+    border: none;
+    background-color: transparent;
+}
+
+.img_wrapper_viesportive{
+    overflow: hidden;
+    width: 100%;
+    max-height: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+/************************ GALERIE PHOTO ADMIN *****************************************/
+.thumbnail img {width:auto;height:250px; object-fit: contain;}
+/*-------------------------------------------------------------------------------------------------*/
+/********************GALLERY *************************************************************************/
+.img-gallery {
+    width: 100%;
+    height: 100%;
+}
+.fg-img-card {
+    min-height: 150px;
+    min-width: 150px;
+}
+.feature-gallery {
+    margin: 15px 0;
+    overflow: hidden;
+    position: relative;
+}
+.feature-gallery img.thumb {
+    filter:sepia(.8);
+    transform: scale(1);
+    transition: all 700ms ease;
+}
+.feature-gallery:hover img.thumb {
+    opacity: 1;
+    filter:none;
+    transition: all 0.35s;
+    transform: scale(1.13);
+}
+.fg-overlay {
+    background-color: rgba(0, 0, 0, .2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: all.3s;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    cursor: pointer;
+}
+.feature-gallery:hover .fg-overlay {
+    background-color: rgba(0, 0, 0, 0);
+    filter:none;
+    opacity: 1;
+    transform: scale(1);
+}
+.fg-overlay h2 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #fff;
+    opacity: 1;
+    margin-bottom: 5px;
+    transform: scale(1);
+    transition: all .35s;
+}
+.fg-overlay p {
+    font-size: 14px;
+    color: #fff;
+    opacity: 1;
+    transform: scale(1);
+    transition: all .35s;
+}
+.feature-gallery:hover .fg-overlay h2,
+.feature-gallery:hover .fg-overlay p{
+    opacity: 0;
+    transform: scale(0.1);
+}
+.fg-overlay:before {
+    opacity: .5;
+    position: absolute;
+    top:15px;
+    left:15px;
+    bottom:15px;
+    right:15px;
+    z-index: 10;
+    content: "";
+    display: block;
+    transform: scale(0.5);
+    transition: all .35s;
+}
+.feature-gallery:hover .fg-overlay:before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.btn:focus, .btn:active, button:focus, button:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#image-gallery .modal-footer{
+    display: block;
+}
+
+
+/****************************************************************************************************/
+
+.card-footer{
+    margin-top: 30px;
+}
+
+#panelfilter{
+    cursor:pointer;
+}
+
+#iconfilter{
+    font-size: 24px;
+    color: rgba(58, 51, 45,1);
+}
+
+#panelfilter .rotate{
+    transition: all .4s linear;
+}
+
+#panelfilter .rotate.down {
+    transform: rotate(90deg);
+}
+
+
+
+/*************************** ARTICLE HOME SECTION *************************************/
+
+
+.big_club_article{
+    height:100%;
+}
+
+
+.big_club_img
+{
+    object-fit:cover;
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.info_article_big:hover + .big_club_img
+{
+    filter: brightness(80%);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.small_club_img
+{
+    object-fit:cover;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.info_article_big
+{
+    z-index: 1;
+    width: 95%;
+    height: 480px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.info_article_small
+{
+    z-index: 1;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 20px;
+    left:20px;
+    margin: auto;
+}
+
+.info_article_big > ul{
+    padding: 0;
+}
+
+.info_article_big > ul > li{
+    display: inline;
+    list-style: none;
+    padding-left: 10px;
+    color: white;
+}
+
+.info_article_big{
+    font-size: 95%;
+}
+
+.article_tag_and_title_big{
+    position: absolute;
+    bottom:0;
+}
+
+.article_tag_small{
+    top:0;
+    z-index:5;
+    position:absolute;
+}
+
+.button_tag {
+    color: #fff;
+    background-color:#3E3631;
+    padding: .180rem .50rem;
+}
+
+.button_tag:hover, .button_tag:focus {
+    background-color: #bf9b30;
+}
+
+.title_article_big{
+    padding-top: 20px;
+    color: white;
+}
+
+.hover_content_big_article{
+    overflow:hidden;
+    opacity: 0.9;
+    width: 500px;
+    position: absolute;
+    bottom: -110px;
+    padding: 5px;
+}
+
+.no_display{
+    display:none;
+}
+
+.card_img_small{
+    width: 100%;
+    height:300px;
+}
+
+
+.card_small_article{
+    height:500px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.badge-info{
+    background-color: #3E3631;
+}
+/****************************************************************************************/
+
+.img_cover{
+    object-fit:cover;
+}
+
+.button-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    bottom: 0px;
+}
+/* ===================== Style Page Vos Envies... ================== */
+
+.section_wishes_card{
+    margin: 80px;
+    border-radius:0px;
+}
+
+.section_wishes_body{
+    background-color: transparent;
+    border: none;
+}
+
+.section_wishes_colored{
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background-color: #e2d3ba;
+}
+
+.font_title_partner{
+    font-size:220%;
+}
+
+/* ======== Sepia =========== */
+
+.sepia_img_cover {
+    filter:sepia(60%);
+    transform: scale(1);
+    transition: all 700ms ease;
+}
+.sepia_img_cover:hover {
+    opacity: 1;
+    filter:sepia(0%);
+    transition: all 0.35s;
+    transform: scale(1);
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.sepia_img_cover_map {
+    filter:saturate(0);
+}
+.sepia_img_cover_map:hover {
+    opacity: 1;
+    filter:saturate(1);
+}
+
+/* ========== Placeholder =========== */
+
+::placeholder{
+    color: #e0e0e0;
+    opacity: 1;
+    font-size: 12px;
+}
 
 

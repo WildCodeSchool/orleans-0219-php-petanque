@@ -27,7 +27,7 @@
             </div>
             <div class="form-group px-2 my-3">
                 <label for="evendescription">Description :</label>
-                <textarea class="form-control" id="evendescription" name="descr" value="{{ event.descr }}" rows="4"></textarea>
+                <textarea class="form-control" id="evendescription" name="descr" value="{{ event.descr }}" rows="4">{{ event.descr }}</textarea>
             </div>
         </section>
         <section class="mt-5">
@@ -106,14 +106,10 @@
                 </div>
                 <div class="error-form">{{ errors.date_register }}</div>
             </div>
-            <div class="custom-file my-3">
-                <input type="file" class="custom-file-input" id="eventrulefile" name="rulesfile_id" >
-                <label class="custom-file-label" for="eventrulefile">Télécharger un fichier de réglèment ...</label>
-            </div>
             <input type="hidden" value="-1" name="article_id">
         </section>
         <section class="mt-5 text-center">
-            <button type="submit" class="btn btn-block btn-lg w-100 btn-primary">Ajouter l'évènement</button>
+            <button type="submit" class="btn btn-block btn-lg w-100 btn-primary">{{ buttonSubmitTitle }}</button>
         </section>
     </form>
 </div>

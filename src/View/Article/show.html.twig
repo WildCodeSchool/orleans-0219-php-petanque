@@ -1,0 +1,92 @@
+{% extends 'sublayout_visitor.html.twig' %}
+
+{% block title %}UPA - Actualité{% endblock %}
+{% block headercontent %}
+    {%  set headerMainTitle = 'Vie du club'  %}
+    {%  set headerSubTitle = 'Actualité'  %}
+    {%  set smallHeader = true  %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row row_article">
+            <div class="col-sm-12">
+                <div class="card card-article-show card_evt_article rounded-0">
+                    <div class="card-header text-left card-header_article">
+                        <div><h4><span class="badge badge-info">#{{ article.category | capitalize }}</span></h4>
+                        </div>
+                        <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ article.date_publicated }}
+                    </div>
+                    <div class="row card-body">
+                        {% if article.picture is empty %}
+                            <img class="p-1 rounded-0 article-small-show text-center mb-3 mx-auto sepia_img_cover"
+                                 src="/assets/images/article-default.jpg"
+                                 alt="{{ 'image de ' ~ article.title }}">
+                        {% else %}
+                            <img class="p-1 rounded-0 article-small-show text-center mb-3 mx-auto sepia_img_cover"
+                                 src="/{{ article.picture }}"
+                                 alt="{{ 'image de ' ~ article.title }}">
+                        {% endif %}
+                        <div class="col-sm-12">
+                            <h4 class="card-title text-center">{{ article.title }}</h4>
+                            <div class="heading-divider-extent w-75 mx-auto"></div>
+                            <p class="card-text text-justify card-article-text w-75 mx-auto"> {{ article.description }}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if pictures %}
+        <section class="colored_background">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="h2_colored_section">Nos Souvenirs</h2>
+                        <div class="h2_separator_dark"></div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    {% for picture in pictures %}
+                        <div class="col-md-3 col-sm-3 fg-img-card text-center">
+                            <div class="feature-gallery">
+                                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="{{ picture.legend }}"
+                                   data-image="/{{ picture.picture }}"
+                                   data-target="#image-gallery">
+                                    <img class="thumb img-gallery" src="/{{ picture.picture }}"
+                                         alt="image {{ picture.picture }}" title="">
+                                    <div class="fg-overlay">
+                                        <p>{{ picture.legend }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="image-gallery-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img id="image-gallery-image" class="img-responsive col-md-12" src="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary float-left" id="show-previous-image"><i class="fa fa-arrow-left"></i>
+                        </button>
+
+                        <button type="button" id="show-next-image" class="btn btn-secondary float-right"><i class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+

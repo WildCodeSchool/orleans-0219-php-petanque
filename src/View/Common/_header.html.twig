@@ -1,0 +1,47 @@
+<div class="header-wrap">
+    <div class="img-header text-center">
+        <div class="title-wrapper">
+            <h1 class="h1-centered">{{ headerMainTitle }}</h1>
+            <h2 class="h2-centered">{{ headerSubTitle }}</h2>
+        </div>
+        {% if smallHeader %}
+            <img class="img-wrap-header feature-gallery_header" src="/assets/images/common/img_header_small.jpg" alt="header-image">
+        {% else %}
+            <img class="img-wrap-big-header feature-gallery_header" src="/assets/images/common/img_header_big.jpg" alt="header-image">
+        {% endif %}
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-transp" id="navbarMain">
+        <a class="navbar-brand" href="/Home/index"><img class="logo-nav" src="/assets/images/logo_upa.png" alt="logo-img"></a>
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto main-nav-ul-color">
+                <li class="nav-item pr-4 nav-item-underline">
+                    <a class="nav-link" href="/wishes/index">Vos Envies</a>
+                </li>
+                <li class="nav-item pr-4 nav-item-underline">
+                    <a class="nav-link" href="/article/index">Vie du club</a>
+                </li>
+                <li class="nav-item dropdown pr-4 nav-item-underline nav_item_cursor_pointer">
+                    <a class="nav-link dropdown-toggle" role="menu" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Vie sportive
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/event/index">Événements à venir</a>
+                        <a class="dropdown-item" href="/event/indexresults">Événements passés</a>
+                    </div>
+                </li>
+                <li class="nav-item pr-4 nav-item-underline">
+                    <a class="nav-link" href="/member/index">Qui sommes nous</a>
+                </li>
+                <li class="nav-item pr-4 nav-item-underline">
+                    <a class="nav-link" href="/home/index#horaires">Horaires</a>
+                </li>
+                <li class="nav-item pr-4 nav-item-underline">
+                    <a class="nav-link" href="/member/index#sponsors">Partenaires</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
