@@ -127,14 +127,12 @@
             </div>
             <div class="row mb-4">
                 {% for article in articles %}
-                {% if loop.index == 1 %}
-                <div class="col-xl-6 col-sm-12 my-2">
-                    {% else %}
-                    <div class="col-xl-3 col-sm-12 my-2">
-                        {% endif %}
+                    <div class="col-xl-{{ loop.index == 1 ? '6' : '3' }} col-sm-12 my-2">
+
                         <div class="card card-article card_evt_article {% if loop.index == 1 %} big_club_article {% endif %}">
                             <div class="card-header text-left card-header_article">
-                                <div><h4><span class="badge badge-info">#{{ article.category | capitalize }}</span></h4>
+                                <div>
+                                    <h4><span class="badge badge-info">#{{ article.category | capitalize }}</span></h4>
                                 </div>
                                 <i class="fas fa-calendar-alt">&nbsp;</i>&nbsp;le {{ article.date_publicated }}
                             </div>
@@ -155,22 +153,23 @@
                                         <div class="col-sm-12">
                                             <h4 class="card-title text-center">{{ article.title }}</h4>
                                             <div class="heading-divider-extent"></div>
-                                            <p class="card-text text-justify card-article-text">{{ article.description|striptags|length > 400 ? article.description|striptags|slice(0, 400) ~ ' [...]' : article.description|striptags }}</p>
+                                            <p class="card-text text-justify card-article-text">
+                                                {{ article.description|striptags|length > 400 ? article.description|striptags|slice(0, 400) ~ ' [...]' : article.description|striptags }}
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="card-footer card-footer_article">
                                         <div class="p-3 text-center button-container">
                                             <a class="btn btn_item" href="/Article/show/{{ article.id }}"
-                                               role="button">En
-                                                savoir plus</a>
+                                               role="button">En savoir plus
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -220,7 +219,7 @@
 
     <!-- ============== Début section Vie sportive ============= -->
     <section id="viesportive">
-        <div class="container">
+        <div class="container-fluid">
             <div class="col-lg-12 text-center">
                 <h2>Vie sportive</h2>
                 <div class="h2_separator"></div>
