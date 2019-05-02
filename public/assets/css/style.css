@@ -1296,3 +1296,21 @@ p {
     object-fit: cover;
     overflow: hidden;
 }
+
+.sepia_img_cover_map {
+    filter:saturate(0);
+}
+.sepia_img_cover_map:hover {
+    opacity: 1;
+    filter:saturate(1);
+}
+
+/* ========== Placeholder =========== */
+
+::placeholder{
+    color: #e0e0e0;
+    opacity: 1;
+    font-size: 12px;
+}
+
+
