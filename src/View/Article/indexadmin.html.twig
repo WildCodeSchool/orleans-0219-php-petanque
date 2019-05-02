@@ -2,14 +2,21 @@
 
 {% block title %}UPA - Vie du club{% endblock %}
 {% block headercontent %}
-    {%  set headerMainTitle = 'VIE DU CLUB'  %}
-    {%  set headerSubTitle = 'Administration des actualités'  %}
+    {%  set headerMainTitle = 'ADMINISTRATION'  %}
+    {%  set headerSubTitle = ''  %}
     {%  set smallHeader = true  %}
     {{ parent() }}
 {% endblock %}
 
 {% block content %}
     <div class="container-fluid ">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Gestion des actualités</h2>
+                <div class="h2_separator"></div>
+            </div>
+        </div>
+
         {% if statusAlert == 'deletesuccess' %}
             <div class="alert alert-danger alert-dismissible fade show col-md-6 text-center mx-auto py-2 " role="alert">
                 L'article a été correctement supprimé.
